@@ -124,7 +124,7 @@
 + (BOOL)refreshAccessTokenSync{
     
     NSMutableDictionary *jsonRequest = [NSMutableDictionary dictionaryWithDictionary:@{
-                                       		@"refresh_token" : [UD objectForKey:UD_REFRESH_TOKEN],
+                                       		KEY_REFRESH_TOKEN : [UD objectForKey:UD_REFRESH_TOKEN],
                                            	KEY_CLIENT_ID : VAL_CLIENT_ID,
                                				KEY_CLIENT_SECRET : VAL_CLIENT_SECRET}];
 

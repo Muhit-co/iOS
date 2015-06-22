@@ -10,11 +10,13 @@ build/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
+xcshareddata
 profile
 *.moved-aside
 DerivedData
 .idea/
 *.xcuserstate
+*.xccheckout
 Muhit.xcodeproj/project.xcworkspace/xcuserdata/emreyanik.xcuserdatad/UserInterfaceState.xcuserstate
 Muhit.xcworkspace/xcuserdata/emreyanik.xcuserdatad/UserInterfaceState.xcuserstate
 # Pods - for those of you who use CocoaPods

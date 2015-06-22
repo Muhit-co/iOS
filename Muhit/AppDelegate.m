@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "Crittercism.h"
+#import "RavenClient.h"
 #import "MainVC.h"
 #import "NavBar.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
@@ -36,8 +36,9 @@
     }
     
     [self initNavigationBar];
-    
-    [Crittercism enableWithAppID:@"556cb8a5d4c2452f5c33bd15"];
+	RavenClient *client = [RavenClient clientWithDSN:@"https://a99355627f1b4f879988b7b333f6c3ff:263a42d3689445aa93190906060a14a5@app.getsentry.com/46406"];
+    [RavenClient setSharedClient:client];
+    [client setupExceptionHandler];
     [GMSServices provideAPIKey:@"AIzaSyDhFJMt6qYhCayG6MdiVZ5OqxG1CUjjNfY"];
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application

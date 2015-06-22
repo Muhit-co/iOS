@@ -21,8 +21,8 @@
 #define SERVICE_SIGNUP @"auth/register"
 #define SERVICE_LOGIN @"auth/login"
 #define SERVICE_LOGIN_WITH_FACEBOOK @"auth/login-with-facebook"
-#define SERVICE_REFRESH_ACCESS_TOKEN @"auth/refreshToken"
-#define SERVICE_GET_PROFILE @"profile"
+#define SERVICE_REFRESH_ACCESS_TOKEN @"auth/refresh-token"
+#define SERVICE_GET_PROFILE @"members/profile"
 #define SERVICE_GET_TAGS @"tags"
 #define SERVICE_GET_ISSUES @"issues/list"
 #define SERVICE_ADD_ISSUE @"issues/add"
@@ -57,6 +57,7 @@
 #define KEY_CLIENT_ID @"client_id"
 #define KEY_CLIENT_SECRET @"client_secret"
 #define KEY_ACCESS_TOKEN @"access_token"
+#define KEY_REFRESH_TOKEN @"refresh_token"
 #define KEY_ID @"id"
 
 #define KEY_ERROR @"error"
