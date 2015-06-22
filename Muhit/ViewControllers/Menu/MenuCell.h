@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MenuCell.h
 //  Muhit
 //
 //  Created by Emre YANIK on 01/06/15.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface MenuCell : UITableViewCell
 
-
+- (void)setTitle:(NSString *)title icon:(NSString *)icon;
 @end
-

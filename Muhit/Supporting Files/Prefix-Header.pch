@@ -1,0 +1,49 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+	#import "Constants.h"
+	#import "RootVC.h"
+    #import "Muhit.h"
+	#import "ScreenOperations.h"
+    #import "MuhitServices.h"
+	#import "LanguageManager.h"
+	#import "UIButton+Additions.h"
+	#import "UIView+Layout.h"
+	#import "UIView+CustomNib.h"
+    #import "TrackManager.h"
+    #import "UtilityFunctions.h"
+	#import "AppDelegate.h"
+    #import "IonIcons.h"
+	#import "MTTextField.h"
+	#import "UIImageView+WebCache.h"
+	#import <GoogleMaps/GoogleMaps.h>
+
+#endif
+
+#define DEBUG_MODE
+#define LOGGING_ON
+
+#ifdef DEBUG_MODE
+#define isDebugModeOn 1
+#else
+#define isDebugModeOn 0
+#endif
+
+#ifdef LOGGING_ON
+#define DLog( s, ... ) NSLog( @"<%s %@:(%d)>\n%@", __FUNCTION__, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#else
+#define DLog( s, ... )
+#endif

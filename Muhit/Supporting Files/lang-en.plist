@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>* Köprü ücreti dahil, otoyol ücreti hariçtir</key>
+	<string>* Bridge toll is included, the road toll is excluded</string>
+	<key>* Köprü ücreti dahildir</key>
+	<string>* Bridge toll is included</string>
+	<key>Adres Defterim</key>
+	<string>Address Book</string>
+	<key>Write Address</key>
+	<string>Write Address</string>
+	<key>Activation</key>
+	<string>Activation</string>
+	<key>Aktivasyon kodunuzu kontrol ediniz</key>
+	<string>Please check your activation code</string>
+	<key>appFailedToShare</key>
+	<string>Please check your BiTaksi application permissions on Facebook.</string>
+	<key>appSuccessfullySharedOnFacebook</key>
+	<string>You have shared BiTaksi on Facebook.</string>
+	<key>Area Code</key>
+	<string>Area Code</string>
+	<key>Profile</key>
+	<string>Profile</string>
+	<key>Bu noktaya taksi çağırabilmeniz için haritayı daha yakın ölçeğe getirmelisiniz</key>
+	<string>Please zoom in on the map to request a taxi to this location</string>
+	<key>Bu noktaya taksi çağıramazsınız!</key>
+	<string>You may not request a taxi to this location!</string>
+	<key>Bulunduğunuz noktadan farklı bir yere taksi çağırmak isterseniz, haritayı hareket ettirerek başka bir noktaya taksi çağırabilirsiniz.</key>
+	<string>If you want to request a taxi to  different point than your current location, you can move the map and request a taxi to that location.</string>
+	<key>Büyükşehirde yaşıyorsanız, BiTaksi&apos;yi kullanarak hayatınızı kolaylaştırabilirsiniz.</key>
+	<string>If you live in a big city, you can use BiTaksi to make your life simpler.</string>
+	<key>CardName</key>
+	<string>Card Name</string>
+	<key>CardNo</key>
+	<string>Card No</string>
+	<key>Cihanızda kayıtlı bir e-posta adresi bulunmamaktadır</key>
+	<string>There is no recorded email address on your device.</string>
+	<key>Cihanızda kayıtlı bir Twitter hesabı bulunmamaktadır.</key>
+	<string>There is no recorded Twitter account on your device.</string>
+	<key>Cihanızın SMS gönderme özelliği bulunmamaktadır</key>
+	<string>Your device does have to ability to send SMS.</string>
+	<key>Cihazınızda kayıtlı bir Facebook hesabı bulunmamaktadır.</key>
+	<string>There is no recorded Facebook account on your device.</string>
+	<key>Change Language</key>
+	<string>Language / Dil</string>
+	<key>Close</key>
+	<string>Close</string>
+	<key>confirmCancelTrip</key>
+	<string>Do you want to cancel your trip?</string>
+	<key>Submit</key>
+	<string>Submit</string>
+	<key>Çıkış Yap</key>
+	<string>Logout</string>
+	<key>d</key>
+	<string>m</string>
+	<key>destek@bitaksi.com</key>
+	<string>info@bitaksi.com</string>
+	<key>Edit</key>
+	<string>Edit</string>
+	<key>Eski şifrenizi kontrol ediniz</key>
+	<string>Please check your old password</string>
+	<key>ExpirationDate</key>
+	<string>Expiration Date</string>
+	<key>Evet</key>
+	<string>Yes</string>
+	<key>Favorite Addresses</key>
+	<string>Favorite Addresses</string>
+	<key>Favorilere eklemek için geçerli bir isim girmelisiniz</key>
+	<string>Please enter a valid name to add to your favorites.</string>
+	<key>Geçerli bir ad-soyad girmelisiniz</key>
+	<string>Please enter a valid first and last name</string>
+	<key>Geçerli bir cep telefonu numarası girmelisiniz</key>
+	<string>Please enter a valid phone number</string>
+	<key>Geçerli bir e-posta adresi girmelisiniz</key>
+	<string>Please enter a valid email address</string>
+	<key>Girdiğiniz bilgilerle eşleşen birden fazla sonuç bulunmakta. Lütfen birini seçiniz.</key>
+	<string>There are multiple results. Please select one.</string>
+	<key>Girdiğiniz bilgilerle eşleşen sonuç aşağıdadır.</key>
+	<string>Here are the results that match the information you have entered.</string>
+	<key>Girdiğiniz bilgilerle eşleşen sonuç bulunamadı. Tekrar deneyiniz.</key>
+	<string>There are no results that match the information you have entered. Please try again.</string>
+	<key>LoginTitle</key>
+	<string>Login</string>
+	<key>About Us</key>
+	<string>About Us</string>
+	<key>Pick From Map</key>
+	<string>From Map</string>
+	<key>Hata oluştu</key>
+	<string>Error</string>
+	<key>Hayır</key>
+	<string>No</string>
+	<key>İnternet bağlantınızı kontrol ediniz</key>
+	<string>Please check your internet connection</string>
+	<key>Cancel</key>
+	<string>Cancel</string>
+	<key>İstanbul dışına taksi çağıramazsınız</key>
+	<string>Taxis cannot be requested outside of Istanbul</string>
+	<key>Ankara dışına taksi çağıramazsınız</key>
+	<string>Taxis cannot be requested outside of Ankara</string>
+	<key>İstanbul ve Ankara dışındayken taksi çağıramazsınız</key>
+	<string>Taxis may only be requested within Istanbul and Ankara</string>
+	<key>Köprü ücreti dahil,\notoyol ücreti hariçtir</key>
+	<string>The bridge toll is included, the road toll is excluded</string>
+	<key>Köprü ücreti dahildir</key>
+	<string>The bridge toll is included</string>
+	<key>Kredi Kartı</key>
+	<string>Credit Card</string>
+	<key>Kredi Kartı ile ödeme seçeneğimiz yakında aktif olacaktır</key>
+	<string>The option to pay with Credit Card will soon be active.</string>
+	<key>Kullanım koşullarını onaylamalısınız</key>
+	<string>Please check terms of use</string>
+	<key>languageChanged</key>
+	<string>Your application language has been successfully changed</string>
+	<key>locationDataError</key>
+	<string>There was an error processing your location</string>
+	<key>Month</key>
+	<string>Month</string>
+	<key>more than 250</key>
+	<string>Do you wish to request a taxi %d m. distant to location?</string>
+	<key>Cash</key>
+	<string>Cash</string>
+	<key>How to Use?</key>
+	<string>How to Use?</string>
+	<key>Noktayı Kaldır</key>
+	<string>Remove Pin</string>
+	<key>Otoyol ücreti hariçtir</key>
+	<string>Road toll is excluded</string>
+	<key>Ödemeniz alınmıştır</key>
+	<string>Your payment has been processed</string>
+	<key>Önce ilçe seçmelisiniz</key>
+	<string>Please first choose a district</string>
+	<key>Öneri ve Şikayet</key>
+	<string>Feedback</string>
+	<key>Save</key>
+	<string>Save</string>
+	<key>Share</key>
+	<string>Share</string>
+	<key>s</key>
+	<string>h</string>
+	<key>Seçtiğiniz kişi için adres bilgisi bulunamamaktadır</key>
+	<string>There is no address info for the person you have selected</string>
+	<key>Seçtiğiniz kişi için yeterli adres bilgisi bulunamamaktadır</key>
+	<string>There is not enough address info for the person you have selected</string>
+	<key>Neighborhood</key>
+	<string>Neighborhood</string>
+	<key>Size en yakın taksiler aranıyor...</key>
+	<string>Searching for a taxi...</string>
+	<key>Previous Trips</key>
+	<string>Previous Trips</string>
+	<key>Points of Interest</key>
+	<string>Points of Interest</string>
+	<key>FAQ</key>
+	<string>FAQ</string>
+	<key>FAQ_Icon_Path</key>
+	<string>faq_icon.png</string>
+	<key>selectDestinationInstruction</key>
+	<string>You can see estimated fare and duration by selecting destination</string>
+	<key>selectDistrictInstruction</key>
+	<string>Select Destination District</string>
+	<key>selectCountryCodeInstruction</key>
+	<string>Select Country Code</string>
+	<key>selectLanguageInstruction</key>
+	<string>Please Select Language</string>
+	<key>selectNeighborhoodInstruction</key>
+	<string>Select Destination Neighborhood</string>
+	<key>Şifreniz en az 6 haneli olmalıdır</key>
+	<string>Your password must be at least 6 characters long</string>
+	<key>Şifreniz ve tekrarı uyuşmamaktadır</key>
+	<string>Your passwords do not match</string>
+	<key>Şifrenizin uzunluğu en az 6 karakter olmalıdır</key>
+	<string>Your password must be at least 6 characters long</string>
+	<key>Şifreyi Değiştir</key>
+	<string>Change Password</string>
+	<key>Taksi çağrınız iptal edilmiştir</key>
+	<string>Your taxi request has been cancelled</string>
+	<key>Taksi çağrınızı bu butona basarak iptal edebilirsiniz.</key>
+	<string>You may cancel your taxi request by tapping this button.</string>
+	<key>Taksi çağırabilmek hesabınızı aktive etmeniz gerekmektedir</key>
+	<string>You need to activate your account to request a taxi.</string>
+	<key>Taksinin kaç dakika içinde geleceğini görebilir, izlediği yolu harita üzerinden takip edebilirsiniz.</key>
+	<string>You can see the ETA for your taxi and follow it real-time on the map.</string>
+	<key>Taksinizin geliş süresi 10 dakikadan fazladır. Kabul etmek istiyor musunuz?</key>
+	<string>Your taxi has an ETA of more than 10 minutes. Do you want to accept?</string>
+	<key>tripSuccessfullySharedOnFacebook</key>
+	<string>You have shared your BiTaksi trip on Facebook.</string>
+	<key>tripFailedToShare</key>
+	<string>Please check your BiTaksi application permissions on Facebook.</string>
+	<key>OK</key>
+	<string>OK</string>
+	<key>Uygulama içindeki yardımcı menülerle yolculuklarınızı görüntüleyebilir, adresleri kaydedebilir ve ücret hesaplayabilirsiniz.</key>
+	<string>You can use the menu within the app to see your previous trips, record addresses and calculate fares.</string>
+	<key>Uygulamamız şuan için bulunduğunuz şehirde hizmet vermemektedir.</key>
+	<string>BiTaksi is currently not available in your city.</string>
+	<key>Uygulamamızı kullanabilmeniz için konum servisleriniz aktif olmalıdır</key>
+	<string>Your location services must be active in order to use BiTaksi.</string>
+	<key>waitForLocationCalibration</key>
+	<string>Please wait while we are processing your location</string>
+	<key>Fare Calculator</key>
+	<string>Fare Calculator</string>
+	<key>Sign Up</key>
+	<string>Sign Up</string>
+	<key>Üyeliğinizi iptal etmek istediğinizden emin misiniz?</key>
+	<string>Are you sure that you want to cancel your account?</string>
+	<key>Varış noktanızı belirterek yolculuk detaylarını tahmini olarak öğrenebilirsiniz.</key>
+	<string>You can learn the estimated length and cost of your trip by entering the destination.</string>
+	<key>Vazgeç</key>
+	<string>Cancel</string>
+	<key>Year</key>
+	<string>Year</string>
+	<key>Yeni şifreniz ve tekrarı uyuşmamaktadır</key>
+	<string>Your new passwords do not match</string>
+	<key>Yeniden Dene</key>
+	<string>Try Again</string>
+	<key>Yolculuk bitiminde sürücüyü değerlendirebilir, bize yorumlarınızı iletebilirsiniz.</key>
+	<string>You can rate the driver and enter comments after your trip has ended.</string>
+	<key>Back</key>
+	<string>Back</string>
+	<key>activationInstruction</key>
+	<string>Please enter the activation code that we sent to your mobile phone:</string>
+	<key>Send Again</key>
+	<string>Send Again</string>
+	<key>Confirm Password</key>
+	<string>New Password (Again)</string>
+	<key>New Password</key>
+	<string>New Password</string>
+	<key>Old Password</key>
+	<string>Old Password</string>
+	<key>Change Password</key>
+	<string>Change Password</string>
+	<key>Change</key>
+	<string>Change</string>
+	<key>districtAddressInstruction</key>
+	<string>You can also choose your destination by selecting only district and neighborhood.</string>
+	<key>Avenue / Street</key>
+	<string>Avenue / Street</string>
+	<key>District</key>
+	<string>District</string>
+	<key>Search</key>
+	<string>Search</string>
+	<key>Driver</key>
+	<string>Driver</string>
+	<key>Plate</key>
+	<string>Plate</string>
+	<key>taxiArriving</key>
+	<string>Taxi is arriving!</string>
+	<key>min</key>
+	<string>min</string>
+	<key>km</key>
+	<string>km</string>
+	<key>startPointInstruction</key>
+	<string>Choose pick-up location</string>
+	<key>endPointInstruction</key>
+	<string>Choose destination</string>
+	<key>Forgot Password</key>
+	<string>Forgot Password</string>
+	<key>Cell Phone</key>
+	<string>Mobile Phone</string>
+	<key>Code</key>
+	<string>Activation Code</string>
+	<key>Nasıl Kullanırım?</key>
+	<string>How to Use BiTaksi</string>
+	<key>catchPhrase</key>
+	<string>Fast, easy, safe. You can now start using BiTaksi.</string>
+	<key>Try</key>
+	<string>Try</string>
+	<key>Ödeme yönteminizi seçiniz.</key>
+	<string>Please choose your form of payment.</string>
+	<key>Kredi Kartı İle Öde</key>
+	<string>Pay with Credit Card</string>
+	<key>Kart No:</key>
+	<string>Card Number:</string>
+	<key>&apos;nı okudum, onaylıyorum</key>
+	<string>I have read and accept</string>
+	<key>Son Kullanma Tarihi:</key>
+	<string>Valid Thru:</string>
+	<key>Kartınızdan Çekilecek Tutar:</key>
+	<string>The Amount to be Charged to Your Card:</string>
+	<key>CVV:</key>
+	<string>CVV:</string>
+	<key>Ödeme Koşullarını</key>
+	<string>Payment Terms</string>
+	<key>Sonraki kullanımlar için kart bilgilerimi cihazda sakla</key>
+	<string>Remember my credit card details for future use</string>
+	<key>(Kart bilgileriniz cihazda gizli olarak</key>
+	<string>(Your credit card information will</string>
+	<key>saklanacak ve kullanmadan önce size tekrar CVV kodu olarak sorulacaktir.)</key>
+	<string>be securely stored and you will be prompted to enter the CVV in your next use.)</string>
+	<key>The Trip Has Ended</key>
+	<string>The Trip Has Ended</string>
+	<key>End</key>
+	<string>End</string>
+	<key>Start</key>
+	<string>Start</string>
+	<key>Password</key>
+	<string>Password</string>
+	<key>Login</key>
+	<string>Login</string>
+	<key>Remember Me</key>
+	<string>Remember Me</string>
+	<key>numberChangeActivationInstruction</key>
+	<string>* When you change your phone number, an activation code will be sent</string>
+	<key>Close Account</key>
+	<string>Delete Account</string>
+	<key>First &amp; Last Name</key>
+	<string>First &amp; Last Name</string>
+	<key>Email</key>
+	<string>Email</string>
+	<key>Yolculuk Bitti</key>
+	<string>The Trip Has Ended</string>
+	<key>Amount Paid</key>
+	<string>Amount Paid</string>
+	<key>rateDriverInstruction</key>
+	<string>Rate the driver</string>
+	<key>leaveANoteInstruction</key>
+	<string>Write a comment (optional)</string>
+	<key>shareInstruction</key>
+	<string>Share BiTaksi with your friends.</string>
+	<key>rateInstruction</key>
+	<string>How did you like BiTaksi?\nRate us!</string>
+	<key>Şifre (tekrar)</key>
+	<string>Password (Again)</string>
+	<key>Terms Of Use (read)</key>
+	<string>the terms of use.</string>
+	<key>agreeTermsOfUse</key>
+	<string>I have read and accept</string>
+	<key>Optional</key>
+	<string>Optional</string>
+	<key>Promotion Code</key>
+	<string>Promotion Code (optional)</string>
+	<key>promotionCodeInstruction</key>
+	<string>Tap here if you have a promotion code</string>
+	<key>Terms of Use</key>
+	<string>Terms of Use</string>
+	<key>Trip Information</key>
+	<string>Trip Information</string>
+	<key>Add</key>
+	<string>Add</string>
+	<key>addressNameInstruction</key>
+	<string>Name for your address:</string>
+	<key>addressNameSample</key>
+	<string>(Home, Work etc.)</string>
+	<key>Köprü ücreti dahil,\nOtoyol ücreti hariçtir.</key>
+	<string>The bridge toll is included,\nthe road toll is excluded.</string>
+	<key>Done</key>
+	<string>Done</string>
+	<key>Kredi Kartlarim</key>
+	<string>Credit Cards</string>
+	<key>Indirim Kodlarim</key>
+	<string>Promotions</string>
+	<key>Kart Sahibi</key>
+	<string>Cardholder&apos;s Name</string>
+	<key>Kart Adi</key>
+	<string>Card Alias</string>
+	<key>Kart No</key>
+	<string>Card No</string>
+	<key>Kart Ekle</key>
+	<string>Add Credit Card</string>
+	<key>back</key>
+	<string>Back</string>
+	<key>Indirim Kodu Ekle</key>
+	<string>Add</string>
+	<key>Indirim kodunuz bulunmamaktadir</key>
+	<string>You do not have any promotion code</string>
+	<key>discountCodeInstruction</key>
+	<string>Enter promotion code:</string>
+	<key>Ödeme Onayı</key>
+	<string>Payment Confirmation</string>
+	<key>Tutar</key>
+	<string>Amount</string>
+	<key>Bahsis</key>
+	<string>Tip</string>
+	<key>Toplam Tutar</key>
+	<string>Total Amount</string>
+	<key>Indirim Kodunuz</key>
+	<string>Select Promotion Code</string>
+	<key>Odeme yapacaginiz karti seciniz</key>
+	<string>Select Credit Card for Payment</string>
+	<key>Odenecek Tutar</key>
+	<string>Final Amount</string>
+	<key>Onayla</key>
+	<string>Confirm</string>
+	<key>Sorun Bildir</key>
+	<string>Report</string>
+	<key>Kredi Karti</key>
+	<string>Credit Card</string>
+	<key>Nakit</key>
+	<string>Cash</string>
+	<key>Odeme Tipini Seciniz</key>
+	<string>Select Payment Type</string>
+	<key>Taksiyi Cagirdiginiz Adres</key>
+	<string>Pick up Location</string>
+	<key>Nakit Ode</key>
+	<string>Pay by Cash</string>
+	<key>Tutar degistir</key>
+	<string>Revise Amount</string>
+	<key>Yolculuk Gerceklesmedi</key>
+	<string>Trip didn&apos;t occur</string>
+	<key>Kart Sahibi Adi Eksik</key>
+	<string>Cardholder&apos;s name must be minimum 6 characters long </string>
+	<key>Gecersiz Kart No</key>
+	<string>Invalid card no</string>
+	<key>Gecersiz Kart Adi</key>
+	<string>You should enter a card alias</string>
+	<key>Agree Agreement</key>
+	<string>You should agree with Terms &amp; Conditions to add a card</string>
+	<key>Card</key>
+	<string>Card</string>
+	<key>Yok</key>
+	<string>None</string>
+	<key>tut_arrivalinfo</key>
+	<string>tut_arrivalinfo_en.png</string>
+	<key>tut_cash_text</key>
+	<string>tut_cash_text_en.png</string>
+	<key>tut_cc_text</key>
+	<string>tut_cc_text_en.png</string>
+	<key>tut_driverInfo</key>
+	<string>tut_driverInfo_en.png</string>
+	<key>tut_gt</key>
+	<string>tut_gt_en.png</string>
+	<key>tut_pickup</key>
+	<string>tut_pickup_en.png</string>
+	<key>tut_pin</key>
+	<string>tut_pin_en.png</string>
+	<key>tut_rate</key>
+	<string>tut_rate_en.png</string>
+	<key>tut_share</key>
+	<string>tut_share_en.png</string>
+	<key>tut_taxi</key>
+	<string>tut_taxi_en.png</string>
+	<key>dkk</key>
+	<string>m</string>
+	<key>tut_arriving</key>
+	<string>tut_arriving_en.png</string>
+	<key>tut_or</key>
+	<string>tut_or_en.png</string>
+	<key>poor accuracy</key>
+	<string>Your location accuracy is poor. Can you confirm your requested location?</string>
+	<key>Cagri Iptali</key>
+	<string>Cancel Request</string>
+	<key>Card Alias Placeholder</key>
+	<string>(Personal, Business, etc.)</string>
+	<key>Cagriyi Iptal Et</key>
+	<string>Cancel request</string>
+	<key>Delete</key>
+	<string>Delete</string>
+	<key>detail</key>
+	<string>Detail</string>
+	<key>yandeximage</key>
+	<string>yandex-en.png</string>
+	<key>point</key>
+	<string>Score</string>
+	<key>Mobil</key>
+	<string>Mobile</string>
+	<key>TurkcellMobilOdeme</key>
+	<string>Turkcell Mobil</string>
+	<key>Notifications</key>
+	<string>Notifications</string>
+	<key>gelis suresi</key>
+	<string>Est. time of arrival</string>
+	<key>Cihanız sms göndermeye uygun değildir</key>
+	<string>Your device is not able to send any text message</string>
+	<key>btnPersonal</key>
+	<string>Personal</string>
+	<key>btnCorporate</key>
+	<string>Business</string>
+	<key>noNotification</key>
+	<string>There are no notifications</string>
+	<key>Odeme Araclarim</key>
+	<string>Payment Methods</string>
+	<key>start-finish same</key>
+	<string>Please choose different pick up and drop off locations</string>
+	<key>btnAddPaypal</key>
+	<string>Add PayPal Account</string>
+	<key>btnAddCreditCard</key>
+	<string>Add Credit Card</string>
+	<key>deafText</key>
+	<string>Hearing impaired</string>
+	<key>sendMessage</key>
+	<string>Send Message</string>
+	<key>incomeMessage</key>
+	<string>Incoming Message</string>
+	<key>yakinda taksi yok</key>
+	<string>There are no taxis nearby</string>
+	<key>chooseItem</key>
+	<string>Choose</string>
+	<key>odemeYapacaginizHesap</key>
+	<string>Account For Payment</string>
+	<key>rateMessage</key>
+	<string>If you enjoy using BiTaksi, please rate us.</string>
+	<key>dontRemind</key>
+	<string>No</string>
+	<key>rateNow</key>
+	<string>Rate It Now</string>
+	<key>remindLater</key>
+	<string>Remind Me Later</string>
+	<key>rateBitaksi</key>
+	<string>Yay! We got 5 stars</string>
+	<key>mcText</key>
+	<string>Your credit card information is secured by Mastercard and is not visible to us or any other party.</string>
+	<key>myAccount</key>
+	<string>My Account</string>
+	<key>help</key>
+	<string>Help</string>
+	<key>PasswordPlaceholder</key>
+	<string>Password (min. 6 characters)</string>
+	<key>veya</key>
+	<string>or</string>
+	<key>lblCode</key>
+	<string>Code</string>
+	<key>expiryDate</key>
+	<string>Expiration date</string>
+	<key>addDiscountCode</key>
+	<string>Add Promo Code</string>
+	<key>btnGonderTaksi</key>
+	<string>Request BiTaksi</string>
+	<key>btnAddBkm</key>
+	<string>Add BKM Express Account</string>
+	<key>AA/YYYY</key>
+	<string>MM / YYYY</string>
+	<key>slider_bottom</key>
+	<string>sliderHowTo_en.png</string>
+	<key>gettaxi_howto</key>
+	<string>getTaxiBtnHowto_en.png</string>
+	<key>accShowMyLocation</key>
+	<string>Center map to location</string>
+	<key>accShowLocationHint</key>
+	<string>Centers the map to your current location</string>
+	<key>accMenu</key>
+	<string>Menu</string>
+	<key>accDakika</key>
+	<string>minutes</string>
+	<key>accOdemeYontemiGenel</key>
+	<string>Double tap to select this payment method. Then double tap the request a taxi button below.</string>
+	<key>accOdemeYontemiNakit</key>
+	<string>Double tap to select cash payment method. Then double tap the request a taxi button below.</string>
+	<key>accOdemeYontemiKart</key>
+	<string>Double tap to select credit card  payment method. Then double tap the request a taxi button below.</string>
+	<key>accHesaplaniyor</key>
+	<string>Calculating</string>
+	<key>accCancelTrip</key>
+	<string>Cancel request</string>
+	<key>accKm</key>
+	<string>Kilometers</string>
+	<key>accCallDriver</key>
+	<string>Call driver</string>
+	<key>accMessageDriver</key>
+	<string>Send message to driver</string>
+	<key>accMesafe</key>
+	<string>Distance to driver</string>
+	<key>accSelectDiscountCode</key>
+	<string>Select promotion code</string>
+	<key>accIndirimTutari</key>
+	<string>Discount amount</string>
+	<key>accMenuShare</key>
+	<string>Share</string>
+	<key>accMenuLanguage</key>
+	<string>Select language</string>
+	<key>accMenuParent</key>
+	<string>This menu has submenus, double tap to access the submenus</string>
+	<key>accDestAddress</key>
+	<string>Destination</string>
+	<key>accStartAddress</key>
+	<string>Pickup location</string>
+	<key>accSendMessageTitle</key>
+	<string>You may send one of the predefined messages below</string>
+	<key>accGelenMesaj</key>
+	<string>Received messages</string>
+	<key>accCurrentLocation</key>
+	<string>Your current location</string>
+	<key>accGeoCodeHint</key>
+	<string>Double tap the button on the right to update to your current location</string>
+	<key>accSelectedCreditCard</key>
+	<string>Selected credit card</string>
+	<key>accPaymentConfirmHint</key>
+	<string>Double tap to confirm payment</string>
+	<key>accSelectedCancelHint</key>
+	<string>Double tap in order to change payment amount or pay cash</string>
+	<key>accStar</key>
+	<string>Stars</string>
+	<key>accLeaveANoteInstruction</key>
+	<string>Write comments (optional)</string>
+	<key>accStartTime</key>
+	<string>Pickup time</string>
+	<key>accFinishTime</key>
+	<string>Dropoff time</string>
+	<key>accAddFavAddress</key>
+	<string>Double tap to add this address to your favorite addresses</string>
+	<key>accAddress</key>
+	<string>Address</string>
+	<key>accShareFacebook</key>
+	<string>Share on Facebook</string>
+	<key>accShareTwitter</key>
+	<string>Share on Twitter</string>
+	<key>accShareEmail</key>
+	<string>Share with email</string>
+	<key>accShareSms</key>
+	<string>Share with SMS</string>
+	<key>accBitaksiMain</key>
+	<string>Home screen</string>
+	<key>accBitaksiOngoing</key>
+	<string>Ongoing trip screen</string>
+	<key>accBitaksiWaiting</key>
+	<string>Driver arriving screen</string>
+	<key>accBitaksiSearching</key>
+	<string>Searching available drivers screen</string>
+	<key>accFavoriteAdd</key>
+	<string>Add a favourite address</string>
+	<key>accSelectSemt</key>
+	<string>Select neighborhood</string>
+	<key>accSelectIlce</key>
+	<string>Select district</string>
+	<key>accPaypalAccount</key>
+	<string>Paypal account</string>
+	<key>accAddPaypalAccount</key>
+	<string>Add Paypal account</string>
+	<key>accDoubleTapChange</key>
+	<string>Double tap to change</string>
+	<key>accDoubleTapClose</key>
+	<string>Double tap to close</string>
+	<key>accTermsOfUse</key>
+	<string>Terms of use</string>
+	<key>accCheckTermsOfUse</key>
+	<string>I have read and accept the terms of use.</string>
+	<key>accHowtoPage0</key>
+	<string>Tap in order to listen to how to use BiTaksi.</string>
+	<key>accHowtoPage1</key>
+	<string>BiTaksi connects you to the taxis around you. When you press the request a taxi button, BiTaksi directs to you the closest taxi.</string>
+	<key>accHowtoPage2</key>
+	<string>You can see the name and license plate of the taxi driver coming to pick you up.</string>
+	<key>accHowtoPage3</key>
+	<string>Your ride begins after the taxi has picked you up.</string>
+	<key>accHowtoPage4</key>
+	<string>You can by cash or credit card. You can rate the driver at the end of the trip.</string>
+	<key>accRoute</key>
+	<string>Route</string>
+	<key>accTutar</key>
+	<string>Estimated fare</string>
+	<key>accTime</key>
+	<string>Estimated duration</string>
+	<key>accVoiceOverAlert</key>
+	<string>You are using your iPhone&apos;s &quot;Voice over&quot; feature. Double tap the &quot;Yes&quot; button in order to activate the visually impaired mode.</string>
+	<key>visualImpairedText</key>
+	<string>Visually impaired</string>
+	<key>accDriverNearest</key>
+	<string>Your taxi is about to arrive</string>
+	<key>linkBKM</key>
+	<string>BKM Express Bağla</string>
+	<key>accPaypal</key>
+	<string>Paypal</string>
+	<key>accBKMAccount</key>
+	<string>Bekame express account</string>
+	<key>accAddBKMAccount</key>
+	<string>Add Bekame express account</string>
+	<key>accBKM</key>
+	<string>Bekame express</string>
+	<key>fbPermissionMessage</key>
+	<string>To login with Facebook please give permission to BiTaksi from settings.</string>
+	<key>definePassword</key>
+	<string>Define Password</string>
+	<key>signupWithFB</key>
+	<string>Sign Up with Facebook</string>
+	<key>loginWithFB</key>
+	<string>Login with Facebook</string>
+	<key>linkFB</key>
+	<string>Link Facebook Account</string>
+	<key>unlinkFB</key>
+	<string>Unlink Facebook Account</string>
+	<key>accSignupWithFB</key>
+	<string>Sign Up with Facebook</string>
+	<key>accLoginWithFB</key>
+	<string>Login with Facebook</string>
+	<key>accLinkFB</key>
+	<string>Link Facebook Account</string>
+	<key>accunlinkFB</key>
+	<string>Unlink Facebook Account</string>
+	<key>subject</key>
+	<string>Subject</string>
+	<key>selectSubject</key>
+	<string>Please Select Subject</string>
+	<key>accSubject</key>
+	<string>Please Select Subject</string>
+	<key>body</key>
+	<string>Message</string>
+	<key>suggestionDescription</key>
+	<string>* Email address is necessary to respond back.</string>
+	<key>poorAccuracyFromShowMyLocation</key>
+	<string>Your GPS signal is weak. Please check your pick-up location on the map.</string>
+	<key>suggectionBodyValidation</key>
+	<string>Message can not be empty</string>
+	<key>dontCallText</key>
+	<string>Block driver calls *</string>
+	<key>fareCalculatorEstimated</key>
+	<string>Estimates may vary slightly due to traffic</string>
+	<key>yolculukBasladi</key>
+	<string>On trip</string>
+	<key>dontCallInstruction</key>
+	<string>* You can send in-app messages to the driver.</string>
+	<key>accSettings</key>
+	<string>Settings</string>
+	<key>voipIncoming</key>
+	<string>Sürücünüz sizi arıyor</string>
+	<key>voipOutgoing</key>
+	<string>Sürücü aranıyor</string>
+	<key>voipConnectionPending</key>
+	<string>Konuşma başlatılıyor</string>
+	<key>voipConnectionStart</key>
+	<string>Konuşma başladı</string>
+	<key>voipConnectionStop</key>
+	<string>Konuşma sona erdi</string>
+	<key>gecerliPromosyonKoduGirin</key>
+	<string>Please enter a valid code</string>
+	<key>enterMOtp</key>
+	<string>Telefonunuza gelen şifreyi giriniz</string>
+	<key>enterMPin</key>
+	<string>Mpininizi giriniz</string>
+	<key>defineMPin</key>
+	<string>Mpin tanımlayınız</string>
+	<key>accPaymentMethod</key>
+	<string>Ödeme yönteminiz</string>
+	<key>addFavoriteAddress</key>
+	<string>Add Favorite Address</string>
+	<key>DriverFound</key>
+	<string>Driver assigned</string>
+	<key>mfsMpinFormatHatasi</key>
+	<string>Mpin en az 6 karakter olmalıdır.</string>
+	<key>mfsNetworkHatasi</key>
+	<string>İnternet bağlantınızı kontrol ediniz</string>
+	<key>mfsKartFormatHatasi</key>
+	<string>Kart numarası yanlış</string>
+	<key>btnAddMasterPass</key>
+	<string>MasterPass Hesabı Ekle</string>
+	<key>pleaseWait</key>
+	<string>Please wait..</string>
+	<key>callDriver</key>
+	<string>Call Driver</string>
+	<key>shareTrip</key>
+	<string>Share Trip</string>
+	<key>payWithMasterPass</key>
+	<string>MasterPass ile Öde</string>
+</dict>
+</plist>
