@@ -26,6 +26,7 @@
 #define SERVICE_GET_TAGS @"tags"
 #define SERVICE_GET_ISSUES @"issues/list"
 #define SERVICE_ADD_ISSUE @"issues/add"
+#define SERVICE_GET_ANNOUNCEMENTS @"announcements"
 #define SERVICE_GET_CITIES @"hoods/cities"
 #define SERVICE_GET_DISTRICTS @"hoods/districts"
 #define SERVICE_GET_HOODS @"hoods/hoods"

@@ -89,8 +89,10 @@
                 [UD setObject:response[AUTH][@"access_token"] forKey:UD_ACCESS_TOKEN];
                 [UD setObject:response[AUTH][@"refresh_token"] forKey:UD_REFRESH_TOKEN];
                 [UD setObject:response[AUTH][@"expires_in"] forKey:UD_ACCESS_TOKEN_LIFETIME];
-                [UD setObject:response[@"user"][@"first_name"] forKey:UD_FIRSTNAME];
-                [UD setObject:response[@"user"][@"last_name"] forKey:UD_SURNAME];
+                [UD setObject:response[USER][@"first_name"] forKey:UD_FIRSTNAME];
+                [UD setObject:response[USER][@"last_name"] forKey:UD_SURNAME];
+                [UD setObject:response[AUTH][@"active_hood"] forKey:UD_ACCESS_TOKEN];
+                [UD setObject:response[AUTH][@"id"] forKey:UD_ACCESS_TOKEN];
                 [[MT navCon] popToRootViewControllerAnimated:YES];
                 [MT setIsLoggedIn:YES];
                 [[MT menuVC] viewWillAppear:NO];

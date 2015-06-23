@@ -9,6 +9,8 @@
 #import "MuhitServices.h"
 #import "UtilityFunctions.h"
 
+const int itemPerPage = 10;
+
 @implementation MuhitServices
 
 +(void)signUp:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password activeHood:(NSString *)activeHood handler:(GeneralResponseHandler)handler{
@@ -43,11 +45,9 @@
 
 +(void)getProfile:(NSString *)profileId handler:(GeneralResponseHandler)handler{
     
-    NSDictionary *requestDict = @{
-                                  KEY_ID : profileId
-                                  };
+    NSString *url = [NSString stringWithFormat:@"%@/%@",SERVICE_GET_PROFILE,profileId];
     
-    [SERVICES postRequestWithMethod:SERVICE_GET_PROFILE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
+    [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
 +(void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password activeHood:(NSString *)activeHood handler:(GeneralResponseHandler)handler{
@@ -63,14 +63,11 @@
     [SERVICES postRequestWithMethod:SERVICE_SIGNUP requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
-+(void)getIssues:(int)from number:(int)number handler:(GeneralResponseHandler)handler{
++(void)getIssues:(int)from handler:(GeneralResponseHandler)handler{
     
-    NSDictionary *requestDict = @{
-                                  KEY_START : NUMBER_INT(from),
-                                  KEY_TAKE : NUMBER_INT(number)
-                                  };
+    NSString *url = [NSString stringWithFormat:@"%@/%d/%d",SERVICE_GET_ISSUES,from,itemPerPage];
     
-    [SERVICES postRequestWithMethod:SERVICE_GET_ISSUES requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
+    [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
 +(void)addIssue:(NSString *)title description:(NSString *)description location:(NSString *)location tags:(NSArray *)tags images:(NSArray *)images handler:(GeneralResponseHandler)handler{
@@ -85,13 +82,18 @@
     [SERVICES postRequestWithMethod:SERVICE_ADD_ISSUE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
++(void)getAnnouncements:(int)from handler:(GeneralResponseHandler)handler{
+    
+    NSString *url = [NSString stringWithFormat:@"%@/%@/%d/%d",SERVICE_GET_ANNOUNCEMENTS,[UD objectForKey:UD_HOOD_ID],from,itemPerPage];
+    
+    [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
+}
+
 +(void)getTags:(NSString*)query handler:(GeneralResponseHandler)handler{
-
-    NSDictionary *requestDict = @{
-                                  KEY_SEARCH : query
-                                  };
-
-    [SERVICES postRequestWithMethod:SERVICE_GET_TAGS requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
+    
+    NSString *url = [NSString stringWithFormat:@"%@/%@",SERVICE_GET_TAGS,query];
+    
+    [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
 +(void)getCities:(NSString*)query handler:(GeneralResponseHandler)handler{
@@ -186,9 +188,23 @@
 /*********************************************************/
 /*********************************************************/
 
-+(void)postRequestWithMethod:(NSString*)method requestDict:requestDict backgroundCall:(BOOL)backgroundCall responseHandler:(GeneralResponseHandler)responseHandler {
++(void)getRequestWithMethod:(NSString*)method backgroundCall:(BOOL)backgroundCall repeatCall:(BOOL)repeatCall responseHandler:(GeneralResponseHandler)responseHandler {
+    
+    NSString *url = [NSString stringWithFormat:@"%@/api/%@",[MT serviceURL],method];
+    
+    if ([UD objectForKey:UD_ACCESS_TOKEN]) { //refresh access_token if is it expire
+        if (![UF isAccessTokenValid]) {
+            BOOL isRefreshedAccessToken = [self refreshAccessTokenSync];
+            if (!isRefreshedAccessToken) {
+                responseHandler(nil,[NSError errorWithDomain:@"muhit" code:1 userInfo:nil]);
+            }
+        }
+    }
 
-    [self postRequestWithMethod:method requestDict:requestDict backgroundCall:backgroundCall repeatCall:NO responseHandler:responseHandler];
+    [SERVICE_HANDLER getRequest: url
+                 backgroundCall: backgroundCall
+                     repeatCall: repeatCall
+                responseHandler: responseHandler];
 }
 
 +(void)postRequestWithMethod:(NSString*)method requestDict:requestDict backgroundCall:(BOOL)backgroundCall repeatCall:(BOOL)repeatCall responseHandler:(GeneralResponseHandler)responseHandler {
@@ -203,21 +219,6 @@
     
     [reqDict setObject:VAL_CLIENT_ID forKey: KEY_CLIENT_ID];
     [reqDict setObject:VAL_CLIENT_SECRET forKey: KEY_CLIENT_SECRET];
-    
-    if ([UD objectForKey:UD_ACCESS_TOKEN]) {
-        if (![UF isAccessTokenValid]) {
-            BOOL isRefreshedAccessToken = [self refreshAccessTokenSync];
-            if (isRefreshedAccessToken) {
-                [reqDict setObject:[UD objectForKey:UD_ACCESS_TOKEN] forKey:KEY_ACCESS_TOKEN];
-            }
-            else{
-                responseHandler(nil,[NSError errorWithDomain:@"muhit" code:1 userInfo:nil]);
-            }
-        }
-        else{
-            [reqDict setObject:[UD objectForKey:UD_ACCESS_TOKEN] forKey:KEY_ACCESS_TOKEN];
-        }
-    }
     
     NSLog(@"%@ : %@",method,reqDict);
     

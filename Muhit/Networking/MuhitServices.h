@@ -24,7 +24,9 @@
 
 + (void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password activeHood:(NSString *)activeHood handler:(GeneralResponseHandler)handler;
 
-+ (void)getIssues:(int)from number:(int)number handler:(GeneralResponseHandler)handler;
++ (void)getIssues:(int)from handler:(GeneralResponseHandler)handler;
+
++ (void)getAnnouncements:(int)from handler:(GeneralResponseHandler)handler;
 
 + (void)addIssue:(NSString*)title description:(NSString*)description location:(NSString*)location tags:(NSArray*)tags images:(NSArray*)images handler:(GeneralResponseHandler)handler;
 

@@ -33,6 +33,7 @@ static const CGFloat cornerRadius = 6;
 
 #define USER_LANGUAGE @"UserSelectedLanguage"
 #define AUTH @"oauth2"
+#define USER @"user"
 
 #define isNotNull(variable) variable == [NSNull null] ? NO : (variable ? YES : NO)
 
@@ -65,5 +66,5 @@ static const CGFloat cornerRadius = 6;
 #define UD_REFRESH_TOKEN @"UD_REFRESH_TOKEN"
 #define UD_ACCESS_TOKEN_LIFETIME @"UD_ACCESS_TOKEN_LIFETIME"
 #define UD_ACCESS_TOKEN_TAKEN_DATE @"UD_ACCESS_TOKEN_TAKEN_DATE"
-
-
+#define UD_HOOD_ID @"UD_HOOD_ID"
+#define UD_USER_ID @"UD_USER_ID"

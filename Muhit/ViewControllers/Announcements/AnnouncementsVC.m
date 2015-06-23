@@ -11,7 +11,8 @@
 
 @interface AnnouncementsVC (){
     IBOutlet UITableView *tblAnnouncements;
-    NSArray *arrAnnouncements;
+    NSMutableArray *arrAnnouncements;
+    int lastIndex;
 }
 
 @end
@@ -20,32 +21,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self test];
+    arrAnnouncements = [[NSMutableArray alloc] init];
+    [self getAnnouncements];
 }
 
--(void)test{
-    arrAnnouncements =@[
-                        @{
-                            @"title":@"Lorem ipsum dolor sit amet, consectetur adipiscing",
-                            @"date":@"10.11.2015",
-                            @"description":@"Aliquam ut tellus sit amet nulla porta congue vitae vel leo. Pellentesque ac accumsan felis. Curabitur euismod placerat tortor posuere venenatis. Proin id bibendum orci, eu lobortis libero."
-                            },
-                        @{
-                            @"title":@"Lorem ipsum dolor sit amet, consectetur adipiscing",
-                            @"date":@"12.11.2015",
-                            @"description":@"Aliquam ut tellus sit amet nulla porta congue vitae vel leo. Pellentesque ac accumsan felis. Curabitur euismod placerat tortor posuere venenatis. Proin id bibendum orci, eu lobortis libero."
-                            },
-                        
-                        @{
-                            @"title":@"Lorem ipsum dolor sit amet, consectetur adipiscing",
-                            @"date":@"08.11.2015",
-                            @"description":@"Aliquam ut tellus sit amet nulla porta congue vitae vel leo. Pellentesque ac accumsan felis. Curabitur euismod placerat tortor posuere venenatis. Proin id bibendum orci, eu lobortis libero."
-                            }];
+- (void)getAnnouncements{
     
-    [tblAnnouncements reloadData];
+    lastIndex = (int)arrAnnouncements.count;
+    [SERVICES getAnnouncements:lastIndex handler:^(NSDictionary *response, NSError *error) {
+        if (error) {
+            SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
+        }
+        else{
+            NSLog(@"loginFacebookResponse:%@",response);
+            [arrAnnouncements addObjectsFromArray:response[@"data"]];
+            [tblAnnouncements reloadData];
+            REMOVE_HUD
+            
+            [tblAnnouncements scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:lastIndex inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            
+        }
+        REMOVE_HUD
+    }];
 }
 
 #pragma mark - UITableView Delegates
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    [cell setBackgroundColor:[UIColor clearColor]];
+    
+    if ([indexPath isEqual:[NSIndexPath indexPathForRow:[self tableView:tblAnnouncements numberOfRowsInSection:0]-1 inSection:0]]){
+        [self getAnnouncements];
+    }
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     float textHeight = [UF heightOfTextForString:arrAnnouncements[indexPath.row][@"description"] andFont:[UIFont fontWithName:@"SourceSansPro-It" size:17.0] maxSize:CGSizeMake(self.view.width-100, 200)];

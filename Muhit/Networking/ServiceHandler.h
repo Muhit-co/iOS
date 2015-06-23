@@ -20,7 +20,7 @@ typedef void(^RouteMatrixHandler) (NSDictionary *routeMatrix, NSError *error);
 + (id)sharedHandler;
 
 - (void)postRequest:(NSString*)url requestDict:(NSDictionary*)requestDict backgroundCall:(BOOL)backgroundCall repeatCall:(BOOL)repeatCall responseHandler:(GeneralResponseHandler)responseHandler;
-
+- (void)getRequest:(NSString*)url backgroundCall:(BOOL)backgroundCall repeatCall:(BOOL)repeatCall responseHandler:(GeneralResponseHandler)responseHandler;
 - (void)getRequestWithURL:(NSString*)url responseHandler:(GeneralResponseHandler)responseHandler;
 
 @end

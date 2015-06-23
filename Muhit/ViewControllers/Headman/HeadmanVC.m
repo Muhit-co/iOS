@@ -16,7 +16,7 @@
     IBOutlet UIView *viewPhone,*viewCell,*viewMail,*viewAddress;
     IBOutlet MKMapView *map;
     CLLocationManager *locationManager;
-    IBOutlet NSLayoutConstraint *constPhoneHeight,*constCellHeight,*constMailHeight,*constAddressHeight;
+    IBOutlet NSLayoutConstraint *constPhoneTop,*constCellTop,*constMailTop,*constAddressTop,*constMapTop;
 }
 
 @end
@@ -26,11 +26,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self adjustUI];
+    [self test];
 }
 
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    [self test];
+    
 }
 
 -(void)adjustUI{
@@ -66,39 +67,48 @@
 
 -(void)setDetailsWithDictionary:(NSDictionary*)dict{
     
+    float total = 20;
+    
     [lblName setText:dict[@"name"]];
     
     if (isNotNull(dict[@"phone"])) {
         [lblPhone setText:dict[@"phone"]];
+        constPhoneTop.constant = total;
+        total += 40;
+
     }
     else{
         [viewPhone setHidden:YES];
-    	constPhoneHeight.constant = 0;
     }
     
     if (isNotNull(dict[@"cell"])) {
         [lblCell setText:dict[@"cell"]];
+        constCellTop.constant = total;
+        total += 40;
     }
     else{
         [viewCell setHidden:YES];
-        constCellHeight.constant = 0;
     }
     
     if (isNotNull(dict[@"email"])) {
         [lblMail setText:dict[@"email"]];
+        constMailTop.constant = total;
+        total += 40;
     }
     else{
-//        [viewMail setHidden:YES];
-        constMailHeight.constant = 0;
+        [viewMail setHidden:YES];
     }
     
     if (isNotNull(dict[@"address"])) {
         [lblAddress setText:dict[@"address"]];
+        constAddressTop.constant = total;
+        total += 40;
     }
     else{
         [viewAddress setHidden:YES];
-        constAddressHeight.constant = 0;
     }
+    
+    constMapTop.constant = total;
     
     [self.view layoutIfNeeded];
     
