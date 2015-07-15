@@ -58,12 +58,7 @@
         }
         else{
             NSLog(@"loginResponse:%@",response);
-            [UD setObject:[NSDate date] forKey:UD_ACCESS_TOKEN_TAKEN_DATE];
-            [UD setObject:response[AUTH][@"access_token"] forKey:UD_ACCESS_TOKEN];
-            [UD setObject:response[AUTH][@"refresh_token"] forKey:UD_REFRESH_TOKEN];
-            [UD setObject:response[AUTH][@"expires_in"] forKey:UD_ACCESS_TOKEN_LIFETIME];
-            [UD setObject:response[@"user"][@"first_name"] forKey:UD_FIRSTNAME];
-            [UD setObject:response[@"user"][@"last_name"] forKey:UD_SURNAME];
+            [UF setUserDefaultsWithDetails:response];
             [[MT navCon] popToRootViewControllerAnimated:YES];
             [MT setIsLoggedIn:YES];
             [[MT menuVC] viewWillAppear:NO];
@@ -73,32 +68,41 @@
 }
 
 -(IBAction)actFacebook:(id)sender{
-    [FACEBOOK openSessionWithDelegate:self];
+    ADD_HUD
+    [FACEBOOK requestUserInfoWithDelegate:self];
 }
 
--(void)openedFacebookSessionWithToken:(NSString *)accessToken{
-    if(accessToken){
-        ADD_HUD
-    	[MuhitServices loginWithFacebook:accessToken handler:^(NSDictionary *response, NSError *error) {
+- (void) fetchedFacebookUserInfo:(id<FBGraphUser>)userInfo error:(NSError *)error{
+    DLog(@"user: %@",userInfo);
+    if (userInfo) {
+        [MuhitServices loginWithFacebook:[FACEBOOK accessToken] handler:^(NSDictionary *response, NSError *error) {
             if (error) {
                 SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
             }
             else{
                 NSLog(@"loginFacebookResponse:%@",response);
-                [UD setObject:[NSDate date] forKey:UD_ACCESS_TOKEN_TAKEN_DATE];
-                [UD setObject:response[AUTH][@"access_token"] forKey:UD_ACCESS_TOKEN];
-                [UD setObject:response[AUTH][@"refresh_token"] forKey:UD_REFRESH_TOKEN];
-                [UD setObject:response[AUTH][@"expires_in"] forKey:UD_ACCESS_TOKEN_LIFETIME];
-                [UD setObject:response[USER][@"first_name"] forKey:UD_FIRSTNAME];
-                [UD setObject:response[USER][@"last_name"] forKey:UD_SURNAME];
-                [UD setObject:response[AUTH][@"active_hood"] forKey:UD_ACCESS_TOKEN];
-                [UD setObject:response[AUTH][@"id"] forKey:UD_ACCESS_TOKEN];
+                [UF setUserDefaultsWithDetails:response];
                 [[MT navCon] popToRootViewControllerAnimated:YES];
                 [MT setIsLoggedIn:YES];
                 [[MT menuVC] viewWillAppear:NO];
             }
             REMOVE_HUD
         }];
+    }
+    else if(error){
+        REMOVE_HUD
+        if ([FBErrorUtility shouldNotifyUserForError:error] == YES){
+            SHOW_ALERT(LocalizedString(@"fbPermissionMessage"))
+        }
+        else if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryUserCancelled) {
+            DLog(@"User cancelled permission");
+        }
+        else{
+            [self actFacebook:nil];
+        }
+    }
+    else{
+        [self actFacebook:nil];
     }
 }
 
@@ -135,9 +139,9 @@
 
 - (void)setLocalizedStrings{
     [self setTitle:LocalizedString(@"Giriş Yap")];
-    [btnLogin setTitle:LocalizedString(@"GİRİŞ YAP")];
-    [btnSignup setTitle:LocalizedString(@"ÜYE OL")];
-    [btnForgotPassword setTitle:LocalizedString(@"ŞİFREMİ UNUTTUM")];
+    [btnLogin setTitle:[LocalizedString(@"Giriş Yap") toUpper]];
+    [btnSignup setTitle:[LocalizedString(@"Üye Ol") toUpper]];
+    [btnForgotPassword setTitle:[LocalizedString(@"Şifremi Unuttum") toUpper]];
     [lblEmail setText:LocalizedString(@"E-posta adresi")];
     [lblPassword setText:LocalizedString(@"Şifre")];
 }

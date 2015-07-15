@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ServiceHandler.h"
 #import "ServiceConstants.h"
+#import <CoreLocation/CoreLocation.h>
 
 #define SERVICES MuhitServices
 
@@ -22,20 +23,20 @@
 
 + (void)getProfile:(NSString*)profileId handler:(GeneralResponseHandler)handler;
 
-+ (void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password activeHood:(NSString *)activeHood handler:(GeneralResponseHandler)handler;
++ (void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName password:(NSString *)password activeHood:(NSString *)activeHood picture:(NSString *)picture handler:(GeneralResponseHandler)handler;
 
 + (void)getIssues:(int)from handler:(GeneralResponseHandler)handler;
 
 + (void)getAnnouncements:(int)from handler:(GeneralResponseHandler)handler;
 
-+ (void)addIssue:(NSString*)title description:(NSString*)description location:(NSString*)location tags:(NSArray*)tags images:(NSArray*)images handler:(GeneralResponseHandler)handler;
++ (void)addOrUpdateIssue:(NSString*)title description:(NSString*)description location:(NSString*)location tags:(NSArray*)tags images:(NSArray*)images isAnonymous:(BOOL)isAnonymous coordinate:(NSString *)coordinate issueId:(NSString *)issueId handler:(GeneralResponseHandler)handler;
 
 + (void)getTags:(NSString*)query handler:(GeneralResponseHandler)handler;
 
-+ (void)getCities:(NSString*)query handler:(GeneralResponseHandler)handler;
++ (void)support:(NSString*)issueId handler:(GeneralResponseHandler)handler;
 
-+ (void)getDistricts:(NSString*)query handler:(GeneralResponseHandler)handler;
++ (void)unSupport:(NSString*)issueId handler:(GeneralResponseHandler)handler;
 
-+ (void)getHoods:(NSString*)query handler:(GeneralResponseHandler)handler;
++ (void)getAddressesWithLocation:(CLLocationCoordinate2D)coord handler:(GeneralResponseHandler)handler;
 
 @end

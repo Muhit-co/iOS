@@ -8,7 +8,9 @@
 
 #import "FacebookManager.h"
 
-@interface FacebookManager ()
+#define FACEBOOK_ERROR_DUPLICATE_MESSAGE @"code = 506"
+
+@interface FacebookManager () <FBLoginViewDelegate>
 
 @end
 
@@ -34,30 +36,56 @@
 
 #pragma mark -
 
-- (void) informDelegateForSessionOpened:(id <FacebookDelegate>) delegate{
+NSString *NSStringFromFBSessionState(FBSessionState state)
+{
+    switch (state) {
+        case FBSessionStateClosed:
+            return @"FBSessionStateClosed";
+        case FBSessionStateClosedLoginFailed:
+            return @"FBSessionStateClosedLoginFailed";
+        case FBSessionStateCreated:
+            return @"FBSessionStateCreated";
+        case FBSessionStateCreatedOpening:
+            return @"FBSessionStateCreatedOpening";
+        case FBSessionStateCreatedTokenLoaded:
+            return @"FBSessionStateCreatedTokenLoaded";
+        case FBSessionStateOpen:
+            return @"FBSessionStateOpen";
+        case FBSessionStateOpenTokenExtended:
+            return @"FBSessionStateOpenTokenExtended";
+            
+    }
+    return @"Not Found";
+}
+
+- (void) informDelegateForSessionOpened:(id <FacebookDelegate>) delegate
+{
     if([delegate respondsToSelector:@selector(openedFacebookSessionWithToken:)]) {
-        [delegate openedFacebookSessionWithToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
+        [delegate openedFacebookSessionWithToken:FBSession.activeSession.accessTokenData.accessToken];
     }
 }
 
-- (void) closeSession{
-    [FBSDKAccessToken setCurrentAccessToken:nil];
+- (void) closeSessionWithToken:(BOOL)withToken {
+    if(withToken) {
+        [FBSession.activeSession closeAndClearTokenInformation];
+    } else {
+        [FBSession.activeSession close];
+    }
 }
 
 - (void) openSessionWithCompletionBlock:(void (^)(NSError *error))block {
-    if (![FBSDKAccessToken currentAccessToken]) {
-        FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-        [login logInWithReadPermissions:@[@"public_profile", @"email"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+    if (!FBSession.activeSession.isOpen) {
+        DLog(@"1");
+        if (FBSession.activeSession.state != FBSessionStateCreated) {
+            FBSession.activeSession = [[FBSession alloc] initWithPermissions:@[@"public_profile", @"email"]];
+        }
+
+        [FBSession.activeSession openWithBehavior:FBSessionLoginBehaviorUseSystemAccountIfPresent completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+            if(status == FBSessionStateOpen) {
+                block(nil);
+            }
             if (error) {
                 block(error);
-            } else if (result.isCancelled) {
-                block(error);
-            } else {
-                // If you ask for multiple permissions at once, you
-                // should check if specific permissions missing
-                if ([result.grantedPermissions containsObject:@"email"]) {
-                    block(nil);
-                }
             }
         }];
     }
@@ -73,19 +101,31 @@
     }];
 }
 
-- (void) requestUserInfoWithDelegate:(id<FacebookDelegate>) delegate {
+- (void) publishMessage:(NSString *)message withDelegate:(id <FacebookDelegate>)delegate {
     
-    if ([FBSDKAccessToken currentAccessToken]) {
-        [self informDelegateForSessionOpened:delegate];
-        
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil]
-         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-             if([delegate respondsToSelector:@selector(fetchedFacebookUserInfo:error:)]) {
-                 [delegate fetchedFacebookUserInfo:result error:error];
-             }
-         }];
+    if (FBSession.activeSession.isOpen) {
+        [FBRequestConnection startForPostStatusUpdate:message
+                                    completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                                        if([delegate respondsToSelector:@selector(postedOnFacebook:successfully:)]) {
+                                            [delegate postedOnFacebook:message successfully:!error || [error.description rangeOfString:FACEBOOK_ERROR_DUPLICATE_MESSAGE].length > 0];
+                                        }
+                                    }];
+    } else {
+        [self openSessionWithCompletionBlock:^(NSError *error){
+            [self publishMessage:message withDelegate:delegate];
+        }];
     }
-    else {
+}
+
+- (void) requestUserInfoWithDelegate:(id <FacebookDelegate>) delegate {
+    if (FBSession.activeSession.isOpen) {
+        [self informDelegateForSessionOpened:delegate];
+        [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            if([delegate respondsToSelector:@selector(fetchedFacebookUserInfo:error:)]) {
+                [delegate fetchedFacebookUserInfo:result error:error];
+            }
+        }];
+    } else {
         [self openSessionWithCompletionBlock:^(NSError *error){
             if (error) {
                 if([delegate respondsToSelector:@selector(fetchedFacebookUserInfo:error:)]) {
@@ -100,8 +140,8 @@
 }
 
 - (NSString *) accessToken{
-    if ([FBSDKAccessToken currentAccessToken]) {
-        return [[FBSDKAccessToken currentAccessToken] tokenString];
+    if (FBSession.activeSession.isOpen) {
+        return FBSession.activeSession.accessTokenData.accessToken;
     }
     else{
         return nil;

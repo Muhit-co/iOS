@@ -51,7 +51,7 @@
     [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
     [[manager requestSerializer] setValue:[NSString stringWithFormat:@"Bearer %@",[UD objectForKey:UD_ACCESS_TOKEN]] forHTTPHeaderField:@"Authorization"];
     [[manager responseSerializer] setAcceptableContentTypes:[NSSet setWithObjects:@"text/plain",@"application/json", nil]];
-    
+
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     [manager GET: url
@@ -96,7 +96,8 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 
     [manager setResponseSerializer:[AFJSONResponseSerializer serializer]];
-    [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];;
+    [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
+    [[manager requestSerializer] setValue:[NSString stringWithFormat:@"Bearer %@",[UD objectForKey:UD_ACCESS_TOKEN]] forHTTPHeaderField:@"Authorization"];
     [[manager responseSerializer] setAcceptableContentTypes:[NSSet setWithObjects:@"text/plain",@"application/json", nil]];
 
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -112,7 +113,9 @@
           }
           failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
               
-              NSLog(@"errorDesc:%@",error.description);
+              NSLog(@"errorCode:%@",error.description);
+              NSLog(@"errorResponse:%@",operation.responseObject);
+              
               [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
               if(error && (error.code == -1001 || error.code == -1009 || error.code == -1004)){

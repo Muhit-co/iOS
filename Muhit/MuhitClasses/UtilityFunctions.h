@@ -60,6 +60,8 @@ typedef enum{
 +(NSString*)getDateFromDateTime:(NSString*)date;
 +(NSString*)getTimeFromDateTime:(NSString*)d;
 +(NSString*)getMeanTime:(NSString*)d;
++(NSString*)getFormattedDateString:(NSString*)d;
++(NSString*)getDetailedDateString:(NSString*)d;
 +(NSString *)backwardReferencedTimeStringForDate:(NSDate *)date;
 +(NSDate*)getCurrentDateFromDateTime:(NSString*)date;
 +(NSString*)sha1:(NSString*)input;
@@ -93,5 +95,7 @@ typedef enum{
 
 + (BOOL)isAccessTokenValid;
 + (NSDictionary *)parsePlaces:(GMSAutocompletePrediction *)address;
+
++(void)setUserDefaultsWithDetails:(NSDictionary*)details;
 
 @end

@@ -23,6 +23,7 @@
 	#import "UIButton+Additions.h"
 	#import "UIView+Layout.h"
 	#import "UIView+CustomNib.h"
+	#import "NSString+Extended.h"
     #import "TrackManager.h"
     #import "UtilityFunctions.h"
 	#import "AppDelegate.h"
@@ -34,7 +35,7 @@
 #endif
 
 #define DEBUG_MODE
-#define LOGGING_ON
+//#define LOGGING_ON
 
 #ifdef DEBUG_MODE
 #define isDebugModeOn 1

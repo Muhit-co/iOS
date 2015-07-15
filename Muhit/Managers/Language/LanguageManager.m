@@ -9,19 +9,17 @@
 #import "LanguageManager.h"
 
 static const NSString *localizedDictionaryPrefix = @"lang-";
-static const BTLanguageType kDefaultLanguage = BTTurkish;
 
-@interface LanguageManager()
-
-@property (nonatomic, retain) NSDictionary *localizedDictionary;
-@property (strong, nonatomic) NSArray *localeIdentifiers;
+@interface LanguageManager(){
+	NSDictionary *localizedDictionary;
+    NSArray *localeIdentifiers;
+}
 
 @end
 
 @implementation LanguageManager
 
-+ (LanguageManager *)instance
-{
++ (LanguageManager *)instance{
     static LanguageManager *sharedLocalizationManager = nil;
 	@synchronized(self)
     {
@@ -32,38 +30,41 @@ static const BTLanguageType kDefaultLanguage = BTTurkish;
 	return sharedLocalizationManager;
 }
 
-- (void) changeLanguage:(BTLanguageType)language
-{
+- (id)init{
+    self = [super init];
+    if (self) {
+        [self onLocalizationChange];
+    }
+    return self;
+}
+
+- (void)changeLanguage:(LanguageType)language{
     if([self currentLanguage] != language) {
         [UD setObject:NUMBER_INT(language) forKey:USER_LANGUAGE];
         [self onLocalizationChange];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kLocalizationChanged object:nil];
+        [NC postNotificationName:kLocalizationChanged object:nil];
     }
 }
 
-- (NSArray *)localeIdentifiers
-{
-    if(_localeIdentifiers == nil) {
-        _localeIdentifiers = @[@"tr",@"en"];
+- (NSArray *)localeIdentifiers{
+    if(localeIdentifiers == nil) {
+        localeIdentifiers = @[@"tr",@"en"];
     }
-    return _localeIdentifiers;
+    return localeIdentifiers;
 }
 
-- (NSLocale *)currentLocale
-{
-    NSLocale *aLocale = [[NSLocale alloc] initWithLocaleIdentifier:[[self localeIdentifiers] objectAtIndex:[self currentLanguage]]];
-    return aLocale;
+- (NSString *)currentLocaleIdentifier{
+    return [[self localeIdentifiers] objectAtIndex:[self currentLanguage]];
 }
 
-- (NSLocale *)turkishLocale
-{
-    NSLocale *aLocale = [[NSLocale alloc] initWithLocaleIdentifier:[[self localeIdentifiers] objectAtIndex:BTTurkish]];
-    return aLocale;
+- (NSLocale *)currentLocale{
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:[[self localeIdentifiers] objectAtIndex:[self currentLanguage]]];
+    return locale;
 }
 
-- (BTLanguageType)currentLanguage
-{
-    int lang = BTTurkish;
+
+- (LanguageType)currentLanguage{
+    int lang = Turkish;
     if([UD objectForKey:USER_LANGUAGE]) {
         lang = [[UD objectForKey:USER_LANGUAGE] intValue];
     }
@@ -79,49 +80,20 @@ static const BTLanguageType kDefaultLanguage = BTTurkish;
     return lang;
 }
 
-- (NSString *)currentLocaleIdentifier
-{
-    return [[self localeIdentifiers] objectAtIndex:[self currentLanguage]];
-}
 
-- (id)init
-{
-    self = [super init]; 
-	if (self) {
-        [self onLocalizationChange];
-	}			
-	return self; 
-}
 
-- (void) onLocalizationChange
-{
+- (void) onLocalizationChange{
     NSString *currentLocaleIdentifier = [[self currentLocale] localeIdentifier];
-
-    DLog(@"current locale %@",currentLocaleIdentifier);
-    
-    [[[NSUserDefaults alloc] initWithSuiteName:@"group.bitaksi"] setObject:currentLocaleIdentifier forKey:@"LANG"];
-
-    _localizedDictionary = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@%@", localizedDictionaryPrefix, currentLocaleIdentifier] ofType:@"plist"]];
-    
+    localizedDictionary = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@%@", localizedDictionaryPrefix, currentLocaleIdentifier] ofType:@"plist"]];
 }
 
-- (NSString *)localizedStringForKey:(NSString *)key
-{
-	NSString *localizedString = [self.localizedDictionary objectForKey:key];
+- (NSString *)localizedStringForKey:(NSString *)key{
+	NSString *localizedString = localizedDictionary[key];
     if (localizedString == nil) {
         DLog(@" REQUESTED KEY IS MISSING: '%@'", key);
         return key;
     } else {
         return localizedString;
-    }
-}
-
-- (NSString *)localizedFileName:(NSString *)fileName extension:(NSString *)extension
-{
-    if([self currentLanguage] == kDefaultLanguage) {
-        return [fileName stringByAppendingString:extension];
-    } else {
-        return [[[fileName stringByAppendingString:@"_"] stringByAppendingString:[self currentLocaleIdentifier]] stringByAppendingString:extension];
     }
 }
 

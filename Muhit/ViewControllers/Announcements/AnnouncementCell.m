@@ -26,8 +26,8 @@
 
 - (void)setWithDictionary:(NSDictionary *)dict{
     [lblTitle setText:dict[@"title"]];
-    [lblDate setText:dict[@"date"]];
-	[lblDescription setText:dict[@"description"]];
+    [lblDate setText:[UF getDetailedDateString:dict[@"created_at"]]];
+	[lblDescription setText:dict[@"content"]];
     [imgIcon setImage:[IonIcons imageWithIcon:ion_chatbox size:23 color:CLR_LIGHT_BLUE]];
 }
 

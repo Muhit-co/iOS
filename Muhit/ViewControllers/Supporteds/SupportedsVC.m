@@ -75,7 +75,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSDictionary *item = [arrSupporteds objectAtIndex:indexPath.row];
-    [ScreenOperations openIssueWithId:item[@"id"]];
+    [ScreenOperations openIssueWitDetail:item];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{

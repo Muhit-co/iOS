@@ -23,14 +23,14 @@
 #define SERVICE_LOGIN_WITH_FACEBOOK @"auth/login-with-facebook"
 #define SERVICE_REFRESH_ACCESS_TOKEN @"auth/refresh-token"
 #define SERVICE_GET_PROFILE @"members/profile"
+#define SERVICE_UPDATE_PROFILE @"members/update-profile"
 #define SERVICE_GET_TAGS @"tags"
 #define SERVICE_GET_ISSUES @"issues/list"
 #define SERVICE_ADD_ISSUE @"issues/add"
+#define SERVICE_DELETE_ISSUE @"issues/delete"
 #define SERVICE_GET_ANNOUNCEMENTS @"announcements"
-#define SERVICE_GET_CITIES @"hoods/cities"
-#define SERVICE_GET_DISTRICTS @"hoods/districts"
-#define SERVICE_GET_HOODS @"hoods/hoods"
-
+#define SERVICE_SUPPORT @"support"
+#define SERVICE_UNSUPPORT @"un-support"
 
 /*********************************************************/
 /*********************************************************/
@@ -41,6 +41,8 @@
 /*********************************************************/
 #pragma mark - SERVICE KEYS
 
+#define KEY_COORDINATE @"coordinates"
+#define KEY_PICTURE @"picture"
 #define KEY_EMAIL @"email"
 #define KEY_PASSWORD @"password"
 #define KEY_USERNAME @"username"
@@ -55,6 +57,7 @@
 #define KEY_SEARCH @"search"
 #define KEY_START @"start"
 #define KEY_TAKE @"take"
+#define KEY_IS_ANONYMOUS @"is_anonymous"
 #define KEY_CLIENT_ID @"client_id"
 #define KEY_CLIENT_SECRET @"client_secret"
 #define KEY_ACCESS_TOKEN @"access_token"

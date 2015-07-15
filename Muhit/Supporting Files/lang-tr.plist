@@ -2,68 +2,56 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>TÜMÜ</key>
+	<key>Tümü</key>
 	<string>TÜMÜ</string>
-	<key>DESTEKLEDİKLERİM</key>
-	<string>DESTEKLEDİKLERİM</string>
-	<key>FİKİRLERİM</key>
-	<string>FİKİRLERİM</string>
-	<key>DUYURULAR</key>
-	<string>DUYURULAR</string>
-	<key>MUHTARIM</key>
-	<string>MUHTARIM</string>
-	<key>ÜYE OL</key>
-	<string>ÜYE OL</string>
-	<key>GİRİŞ YAP</key>
-	<string>GİRİŞ YAP</string>
-	<key>PROFİLİM</key>
-	<string>PROFİLİM</string>
-	<key>ÇIKIŞ YAP</key>
-	<string>ÇIKIŞ YAP</string>
-	<key>POPÜLER</key>
-	<string>POPÜLER</string>
-	<key>EN SON</key>
-	<string>EN SON</string>
-	<key>Giriş Yap</key>
-	<string>Giriş Yap</string>
-	<key>ŞİFREMİ UNUTTUM</key>
-	<string>ŞİFREMİ UNUTTUM</string>
-	<key>Kullanıcı adı veya e-posta adresi</key>
-	<string>Kullanıcı adı veya e-posta adresi</string>
-	<key>Şifre</key>
-	<string>Şifre</string>
-	<key>Şifremi Unuttum</key>
-	<string>Şifremi Unuttum</string>
-	<key>ŞİFREMİ GÖNDER</key>
-	<string>ŞİFREMİ GÖNDER</string>
-	<key>E-posta adresi</key>
-	<string>E-posta adresi</string>
-	<key>Üye Ol</key>
-	<string>Üye Ol</string>
-	<key>Ad Soyad</key>
-	<string>Ad Soyad</string>
-	<key>Kullanıcı adı</key>
-	<string>Kullanıcı adı</string>
-	<key>Şifre (tekrar)</key>
-	<string>Şifre (tekrar)</string>
-	<key>Mahalle</key>
-	<string>Mahalle</string>
-	<key>Duyurular</key>
-	<string>Duyurular</string>
 	<key>Desteklediklerim</key>
 	<string>Desteklediklerim</string>
+	<key>Fikirlerim</key>
+	<string>Fikirlerim</string>
+	<key>Duyurular</key>
+	<string>Duyurular</string>
 	<key>Muhtarım</key>
 	<string>Muhtarım</string>
 	<key>Muhtar</key>
 	<string>Muhtar</string>
+	<key>Üye Ol</key>
+	<string>Üye Ol</string>
+	<key>Giriş Yap</key>
+	<string>Giriş Yap</string>
 	<key>Profilim</key>
 	<string>Profilim</string>
+	<key>Profil</key>
+	<string>Profil</string>
+	<key>Çıkış Yap</key>
+	<string>Çıkış Yap</string>
+	<key>Popüler</key>
+	<string>Popüler</string>
+	<key>En Son</key>
+	<string>En Son</string>
+	<key>Şifremi Unuttum</key>
+	<string>Şifremi Unuttum</string>
+	<key>Şifre</key>
+	<string>Şifre</string>
+	<key>Şifre (tekrar)</key>
+	<string>Şifre (tekrar)</string>
+	<key>Şifremi Gönder</key>
+	<string>Şifremi Gönder</string>
+	<key>E-posta adresi</key>
+	<string>E-posta adresi</string>
+	<key>Ad</key>
+	<string>Ad</string>
+	<key>Soyad</key>
+	<string>Soyad</string>
+	<key>Kullanıcı adı</key>
+	<string>Kullanıcı adı</string>
+	<key>Mahalle</key>
+	<string>Mahalle</string>
 	<key>Yarattığı Fikirler</key>
 	<string>Yarattığı Fikirler</string>
 	<key>Profili Düzenle</key>
 	<string>Profili Düzenle</string>
-	<key>GÜNCELLE</key>
-	<string>GÜNCELLE</string>
+	<key>Güncelle</key>
+	<string>Güncelle</string>
 	<key>Arama Sonuçları</key>
 	<string>Arama Sonuçları</string>
 	<key>Başvuruldu</key>
@@ -72,10 +60,10 @@
 	<string>Gelişmekte</string>
 	<key>Çözüldü</key>
 	<string>Çözüldü</string>
-	<key>Muhtardan gelen yorumlar</key>
-	<string>Muhtardan gelen yorumlar</string>
-	<key>DESTEKÇİ</key>
-	<string>DESTEKÇİ</string>
+	<key>Yorumlar</key>
+	<string>Yorumlar</string>
+	<key>Destekçi</key>
+	<string>Destekçi</string>
 	<key>Düzenle</key>
 	<string>Düzenle</string>
 	<key>Ekle</key>
@@ -84,14 +72,12 @@
 	<string>Başlık</string>
 	<key>Açıklama</key>
 	<string>Açıklama</string>
-	<key>Etiketler</key>
-	<string>Etiketler</string>
-	<key>Resimler</key>
-	<string>Resimler</string>
+	<key>Etiketler (max 3)</key>
+	<string>Etiketler  (max 3)</string>
+	<key>Resimler  (max 3)</key>
+	<string>Resimler  (max 3)</string>
 	<key>Anonim olarak başvuru yap</key>
 	<string>Anonim olarak başvuru yap</string>
-	<key>Yerimi belirle</key>
-	<string>Yerimi belirle</string>
 	<key>Kaydet</key>
 	<string>Kaydet</string>
 	<key>Fotoğraf Çek</key>
@@ -102,5 +88,11 @@
 	<string>İnternet bağlantınızı kontrol ediniz</string>
 	<key>Tamam</key>
 	<string>Tamam</string>
+	<key>Fikir</key>
+	<string>Fikir</string>
+	<key>Değiştir</key>
+	<string>Değiştir</string>
+	<key>fbPermissionMessage</key>
+	<string>Facebook ile giriş yapabilmek için ayarlardan BiTaksi uygulamasına izin vermelisiniz.</string>
 </dict>
 </plist>

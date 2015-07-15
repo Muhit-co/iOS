@@ -462,6 +462,62 @@
     return  [f stringFromDate:date];
 }
 
++(NSString*)getFormattedDateString:(NSString*)d{
+    
+    NSDateFormatter *f = [[NSDateFormatter alloc] init];
+    [f setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSDate *date = [f dateFromString:d];
+    
+    [f setLocale:[NSLocale localeWithLocaleIdentifier:@"tr"]];
+    [f setDateStyle:NSDateFormatterLongStyle];
+    [f setTimeStyle:NSDateFormatterNoStyle];
+    
+    return  [f stringFromDate:date];
+}
+
++(NSString*)getDetailedDateString:(NSString*)d{
+    
+    NSDateFormatter *f = [[NSDateFormatter alloc] init];
+    [f setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date = [f dateFromString:d];
+    NSDate *now = [NSDate date];
+    
+    NSTimeInterval totalSeconds = [now timeIntervalSinceDate:date];
+    
+    if (totalSeconds<60) {
+        return [NSString stringWithFormat:@"%d sn önce",(int)totalSeconds];
+    }
+    else if (totalSeconds<60*60){
+        return [NSString stringWithFormat:@"%d dk önce",(int)totalSeconds/60];
+    }
+    else if (totalSeconds<60*60*24){
+        return [NSString stringWithFormat:@"%d sa önce",(int)totalSeconds/(60*60)];
+    }
+    else if (totalSeconds<60*60*24*2){
+        return @"Dün";
+    }
+    else if (totalSeconds<60*60*24*3){
+        return @"2 gün önce";
+    }
+    else{
+        NSInteger year = [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:date] year];
+        NSInteger currentYear = [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:now] year];
+        
+        [f setLocale:[NSLocale localeWithLocaleIdentifier:@"tr"]];
+        [f setDateStyle:NSDateFormatterMediumStyle];
+        [f setTimeStyle:NSDateFormatterNoStyle];
+        
+        if (year == currentYear) {
+            NSString *str = [f stringFromDate:date];
+            return [str substringToIndex:[str length] - 5];
+        }
+        else{
+            return  [f stringFromDate:date];
+        }
+    }
+}
+
 + (NSString *)backwardReferencedTimeStringForDate:(NSDate *)date {
     NSDateFormatter *f = [[NSDateFormatter alloc] init];
     [f setLocale:[[LanguageManager instance] currentLocale]];
@@ -524,13 +580,14 @@
 + (void)addHud:(UIView*)view {
     if (![MT HUD]) {
         [MT setHUD:[[MBProgressHUD alloc] init]];
-        [MT HUD].color = [UIColor clearColor];
-        [MT HUD].dimBackground =YES;
     }
     
     [[MT HUD] setFrame:view.bounds];
     [view addSubview:[MT HUD]];
+    [[MT HUD] bringToFront];
+    [[MT HUD] bringToFront];
     [[MT HUD] show:YES];
+    [[MT HUD] bringToFront];
 }
 
 + (void)removeHud{
@@ -802,6 +859,24 @@
     
     return @{@"hood":arrTexts[index],
              @"detail":detail};
+}
+
++(void)setUserDefaultsWithDetails:(NSDictionary*)details{
+    [UD setObject:[NSDate date] forKey:UD_ACCESS_TOKEN_TAKEN_DATE];
+    [UD setObject:details[AUTH][@"access_token"] forKey:UD_ACCESS_TOKEN];
+    [UD setObject:details[AUTH][@"refresh_token"] forKey:UD_REFRESH_TOKEN];
+    [UD setObject:details[AUTH][@"expires_in"] forKey:UD_ACCESS_TOKEN_LIFETIME];
+    [UD setObject:details[USER][@"first_name"] forKey:UD_FIRSTNAME];
+    [UD setObject:details[USER][@"last_name"] forKey:UD_SURNAME];
+    [UD setObject:details[USER][@"id"] forKey:UD_USER_ID];
+    [UD setObject:details[USER][@"picture"] forKey:UD_USER_PICTURE];
+    
+    if (details[USER][@"active_hood"] == [NSNull null]) {
+        [UD setObject:nil forKey:UD_HOOD_ID];
+    }
+    else{
+    	[UD setObject:details[USER][@"active_hood"] forKey:UD_HOOD_ID];
+    }
 }
 
 

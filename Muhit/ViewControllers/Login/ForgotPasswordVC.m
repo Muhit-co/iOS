@@ -34,7 +34,7 @@
 
 - (void)setLocalizedStrings{
     [self setTitle:LocalizedString(@"Şifremi Unuttum")];
-    [btnSendPassword setTitle:LocalizedString(@"ŞİFREMİ GÖNDER")];
+    [btnSendPassword setTitle:[LocalizedString(@"Şifremi Gönder") toUpper]];
     [lblEmail setText:LocalizedString(@"E-posta adresi")];
 }
 

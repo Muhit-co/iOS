@@ -50,17 +50,17 @@ const int itemPerPage = 10;
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
-+(void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password activeHood:(NSString *)activeHood handler:(GeneralResponseHandler)handler{
++ (void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName password:(NSString *)password activeHood:(NSString *)activeHood picture:(NSString *)picture handler:(GeneralResponseHandler)handler{
     
     NSDictionary *requestDict = @{
                                   KEY_FIRSTNAME : firstName,
                                   KEY_LASTNAME : lastName,
-                                  KEY_EMAIL : email,
                                   KEY_PASSWORD : password,
-                                  KEY_ACTIVE_HOOD : activeHood
+                                  KEY_ACTIVE_HOOD : activeHood,
+                                  KEY_PICTURE : picture,
                                   };
     
-    [SERVICES postRequestWithMethod:SERVICE_SIGNUP requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
+    [SERVICES postRequestWithMethod:SERVICE_UPDATE_PROFILE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
 +(void)getIssues:(int)from handler:(GeneralResponseHandler)handler{
@@ -70,16 +70,27 @@ const int itemPerPage = 10;
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
-+(void)addIssue:(NSString *)title description:(NSString *)description location:(NSString *)location tags:(NSArray *)tags images:(NSArray *)images handler:(GeneralResponseHandler)handler{
++ (void)addOrUpdateIssue:(NSString*)title description:(NSString*)description location:(NSString*)location tags:(NSArray*)tags images:(NSArray*)images isAnonymous:(BOOL)isAnonymous coordinate:(NSString *)coordinate issueId:(NSString *)issueId handler:(GeneralResponseHandler)handler{
     NSDictionary *requestDict = @{
                                   KEY_ISSUE_TITLE : title,
                                   KEY_ISSUE_DESC : description,
                                   KEY_ISSUE_LOCATION : location,
                                   KEY_ISSUE_TAGS : tags,
-                                  KEY_ISSUE_IMAGES : images
+                                  KEY_ISSUE_IMAGES : images,
+                                  KEY_IS_ANONYMOUS: NUMBER_BOOL(isAnonymous),
+                                  KEY_COORDINATE: coordinate
                                   };
-    
-    [SERVICES postRequestWithMethod:SERVICE_ADD_ISSUE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
+    if(!issueId){
+        [SERVICES postRequestWithMethod:SERVICE_ADD_ISSUE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
+    }
+    else{
+        NSString *url = [NSString stringWithFormat:@"%@/%@",SERVICE_DELETE_ISSUE,issueId];
+        [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:^(NSDictionary *response, NSError *error) {
+            if(!error){
+                [SERVICES postRequestWithMethod:SERVICE_ADD_ISSUE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
+            }
+        }];
+    }
 }
 
 +(void)getAnnouncements:(int)from handler:(GeneralResponseHandler)handler{
@@ -96,31 +107,18 @@ const int itemPerPage = 10;
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
-+(void)getCities:(NSString*)query handler:(GeneralResponseHandler)handler{
++(void)support:(NSString *)issueId handler:(GeneralResponseHandler)handler{
     
-    NSDictionary *requestDict = @{
-                                  KEY_SEARCH : query
-                                  };
+    NSString *url = [NSString stringWithFormat:@"%@/%@",SERVICE_SUPPORT,issueId];
     
-    [SERVICES postRequestWithMethod:SERVICE_GET_CITIES requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
+    [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
-+(void)getDistricts:(NSString*)query handler:(GeneralResponseHandler)handler{
++(void)unSupport:(NSString *)issueId handler:(GeneralResponseHandler)handler{
     
-    NSDictionary *requestDict = @{
-                                  KEY_SEARCH : query
-                                  };
+    NSString *url = [NSString stringWithFormat:@"%@/%@",SERVICE_UNSUPPORT,issueId];
     
-    [SERVICES postRequestWithMethod:SERVICE_GET_DISTRICTS requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
-}
-
-+(void)getHoods:(NSString*)query handler:(GeneralResponseHandler)handler{
-    
-    NSDictionary *requestDict = @{
-                                  KEY_SEARCH : query
-                                  };
-    
-    [SERVICES postRequestWithMethod:SERVICE_GET_HOODS requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
+    [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
 + (BOOL)refreshAccessTokenSync{
@@ -173,7 +171,15 @@ const int itemPerPage = 10;
 /*********************************************************/
 
 + (void)getAddressesWithInput:(NSString *)input handler:(GeneralResponseHandler)handler{
-    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%@&types=geocode&language=tr&key=AIzaSyALCF1Bh451Q9OMZdDRL_fg_od31rogS50",input];
+    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%@&types=geocode&language=tr&key=AIzaSyDhFJMt6qYhCayG6MdiVZ5OqxG1CUjjNfY",input];
+    
+    [SERVICE_HANDLER getRequestWithURL:url responseHandler:^(NSDictionary *response, NSError *error) {
+        handler(response,error);
+    }];
+}
+
++ (void)getAddressesWithLocation:(CLLocationCoordinate2D)coord handler:(GeneralResponseHandler)handler{
+    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?latlng=%.6f,%.6f&language=tr",coord.latitude,coord.longitude];
     
     [SERVICE_HANDLER getRequestWithURL:url responseHandler:^(NSDictionary *response, NSError *error) {
         handler(response,error);

@@ -2,105 +2,107 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>TÜMÜ</key>
-    <string>TÜMÜ</string>
-    <key>DESTEKLEDİKLERİM</key>
-    <string>DESTEKLEDİKLERİM</string>
-    <key>FİKİRLERİM</key>
-    <string>FİKİRLERİM</string>
-    <key>DUYURULAR</key>
-    <string>DUYURULAR</string>
-    <key>MUHTARIM</key>
-    <string>MUHTARIM</string>
-    <key>ÜYE OL</key>
-    <string>ÜYE OL</string>
-    <key>GİRİŞ YAP</key>
-    <string>GİRİŞ YAP</string>
-    <key>PROFİLİM</key>
-    <string>PROFİLİM</string>
-    <key>ÇIKIŞ YAP</key>
-    <string>ÇIKIŞ YAP</string>
-    <key>POPÜLER</key>
-    <string>POPÜLER</string>
-    <key>EN SON</key>
-    <string>EN SON</string>
-    <key>Giriş Yap</key>
-    <string>Giriş Yap</string>
-    <key>ŞİFREMİ UNUTTUM</key>
-    <string>ŞİFREMİ UNUTTUM</string>
-    <key>Kullanıcı adı veya e-posta adresi</key>
-    <string>Kullanıcı adı veya e-posta adresi</string>
-    <key>Şifre</key>
-    <string>Şifre</string>
-    <key>Şifremi Unuttum</key>
-    <string>Şifremi Unuttum</string>
-    <key>ŞİFREMİ GÖNDER</key>
-    <string>ŞİFREMİ GÖNDER</string>
-    <key>E-posta adresi</key>
-    <string>E-posta adresi</string>
-    <key>Üye Ol</key>
-    <string>Üye Ol</string>
-    <key>Ad Soyad</key>
-    <string>Ad Soyad</string>
-    <key>Kullanıcı adı</key>
-    <string>Kullanıcı adı</string>
-    <key>Şifre (tekrar)</key>
-    <string>Şifre (tekrar)</string>
-    <key>Mahalle</key>
-    <string>Mahalle</string>
-    <key>Duyurular</key>
-    <string>Duyurular</string>
-    <key>Desteklediklerim</key>
-    <string>Desteklediklerim</string>
-    <key>Muhtarım</key>
-    <string>Muhtarım</string>
-    <key>Muhtar</key>
-    <string>Muhtar</string>
-    <key>Profilim</key>
-    <string>Profilim</string>
-    <key>Yarattığı Fikirler</key>
-    <string>Yarattığı Fikirler</string>
-    <key>Profili Düzenle</key>
-    <string>Profili Düzenle</string>
-    <key>GÜNCELLE</key>
-    <string>GÜNCELLE</string>
-    <key>Arama Sonuçları</key>
-    <string>Arama Sonuçları</string>
-    <key>Başvuruldu</key>
-    <string>Başvuruldu</string>
-    <key>Gelişmekte</key>
-    <string>Gelişmekte</string>
-    <key>Çözüldü</key>
-    <string>Çözüldü</string>
-    <key>Muhtardan gelen yorumlar</key>
-    <string>Muhtardan gelen yorumlar</string>
-    <key>DESTEKÇİ</key>
-    <string>DESTEKÇİ</string>
-    <key>Düzenle</key>
-    <string>Düzenle</string>
-    <key>Ekle</key>
-    <string>Ekle</string>
-    <key>Başlık</key>
-    <string>Başlık</string>
-    <key>Açıklama</key>
-    <string>Açıklama</string>
-    <key>Etiketler</key>
-    <string>Etiketler</string>
-    <key>Resimler</key>
-    <string>Resimler</string>
-    <key>Anonim olarak başvuru yap</key>
-    <string>Anonim olarak başvuru yap</string>
-    <key>Yerimi belirle</key>
-    <string>Yerimi belirle</string>
-    <key>Kaydet</key>
-    <string>Kaydet</string>
-    <key>Fotoğraf Çek</key>
-    <string>Fotoğraf Çek</string>
-    <key>İptal</key>
-    <string>İptal</string>
-    <key>İnternet bağlantınızı kontrol ediniz</key>
-    <string>İnternet bağlantınızı kontrol ediniz</string>
-    <key>Tamam</key>
-    <string>Tamam</string>
+	<key>TÜMÜ</key>
+	<string>TÜMÜ</string>
+	<key>DESTEKLEDİKLERİM</key>
+	<string>DESTEKLEDİKLERİM</string>
+	<key>FİKİRLERİM</key>
+	<string>FİKİRLERİM</string>
+	<key>DUYURULAR</key>
+	<string>DUYURULAR</string>
+	<key>MUHTARIM</key>
+	<string>MUHTARIM</string>
+	<key>ÜYE OL</key>
+	<string>ÜYE OL</string>
+	<key>GİRİŞ YAP</key>
+	<string>GİRİŞ YAP</string>
+	<key>PROFİLİM</key>
+	<string>PROFİLİM</string>
+	<key>ÇIKIŞ YAP</key>
+	<string>ÇIKIŞ YAP</string>
+	<key>POPÜLER</key>
+	<string>POPÜLER</string>
+	<key>EN SON</key>
+	<string>EN SON</string>
+	<key>Giriş Yap</key>
+	<string>Giriş Yap</string>
+	<key>ŞİFREMİ UNUTTUM</key>
+	<string>ŞİFREMİ UNUTTUM</string>
+	<key>Kullanıcı adı veya e-posta adresi</key>
+	<string>Kullanıcı adı veya e-posta adresi</string>
+	<key>Şifre</key>
+	<string>Şifre</string>
+	<key>Şifremi Unuttum</key>
+	<string>Şifremi Unuttum</string>
+	<key>ŞİFREMİ GÖNDER</key>
+	<string>ŞİFREMİ GÖNDER</string>
+	<key>E-posta adresi</key>
+	<string>E-posta adresi</string>
+	<key>Üye Ol</key>
+	<string>Üye Ol</string>
+	<key>Ad Soyad</key>
+	<string>Ad Soyad</string>
+	<key>Kullanıcı adı</key>
+	<string>Kullanıcı adı</string>
+	<key>Şifre (tekrar)</key>
+	<string>Şifre (tekrar)</string>
+	<key>Mahalle</key>
+	<string>Mahalle</string>
+	<key>Duyurular</key>
+	<string>Duyurular</string>
+	<key>Desteklediklerim</key>
+	<string>Desteklediklerim</string>
+	<key>Muhtarım</key>
+	<string>Muhtarım</string>
+	<key>Muhtar</key>
+	<string>Muhtar</string>
+	<key>Profilim</key>
+	<string>Profilim</string>
+	<key>Yarattığı Fikirler</key>
+	<string>Yarattığı Fikirler</string>
+	<key>Profili Düzenle</key>
+	<string>Profili Düzenle</string>
+	<key>GÜNCELLE</key>
+	<string>GÜNCELLE</string>
+	<key>Arama Sonuçları</key>
+	<string>Arama Sonuçları</string>
+	<key>Başvuruldu</key>
+	<string>Başvuruldu</string>
+	<key>Gelişmekte</key>
+	<string>Gelişmekte</string>
+	<key>Çözüldü</key>
+	<string>Çözüldü</string>
+	<key>Muhtardan gelen yorumlar</key>
+	<string>Muhtardan gelen yorumlar</string>
+	<key>DESTEKÇİ</key>
+	<string>DESTEKÇİ</string>
+	<key>Düzenle</key>
+	<string>Düzenle</string>
+	<key>Ekle</key>
+	<string>Ekle</string>
+	<key>Başlık</key>
+	<string>Başlık</string>
+	<key>Açıklama</key>
+	<string>Açıklama</string>
+	<key>Etiketler</key>
+	<string>Etiketler</string>
+	<key>Resimler</key>
+	<string>Resimler</string>
+	<key>Anonim olarak başvuru yap</key>
+	<string>Anonim olarak başvuru yap</string>
+	<key>Yerimi belirle</key>
+	<string>Yerimi belirle</string>
+	<key>Kaydet</key>
+	<string>Kaydet</string>
+	<key>Fotoğraf Çek</key>
+	<string>Fotoğraf Çek</string>
+	<key>İptal</key>
+	<string>İptal</string>
+	<key>İnternet bağlantınızı kontrol ediniz</key>
+	<string>İnternet bağlantınızı kontrol ediniz</string>
+	<key>Tamam</key>
+	<string>Tamam</string>
+	<key>FİKİR</key>
+	<string>FİKİR</string>
 </dict>
 </plist>

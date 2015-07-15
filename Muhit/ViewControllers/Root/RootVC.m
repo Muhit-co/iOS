@@ -24,8 +24,11 @@
 }
 
 -(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    if ([MT HUD]) {
+        [[MT HUD] bringToFront];
+    }
 }
-
 - (void)viewDidLoad{
     [super viewDidLoad];
     [[self view] setBackgroundColor:CLR_LIGHT_BLUE];

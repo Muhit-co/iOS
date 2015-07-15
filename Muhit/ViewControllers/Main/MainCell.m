@@ -32,22 +32,29 @@
 - (void)setWithDictionary:(NSDictionary *)dict{
     
     [lblTitle setText:dict[@"title"]];
-    [lblDate setText:dict[@"date"]];
-    [lblCount setText:dict[@"count"]];
-    [imgIssue sd_setImageWithURL:[NSURL URLWithString:dict[@"imageUrl"]] placeholderImage:[UIImage imageNamed:@"issuePlaceholder"]];
+    [lblDate setText:[UF getDetailedDateString:dict[@"created_at"]]];
+    [lblCount setText:[dict[@"supporter_counter"] stringValue]];
+    if (dict[@"images"] && [dict[@"images"] count]>0) {
+        NSString *imgUrl = [NSString stringWithFormat:@"%@/140x140/%@",IMAGE_PROXY,dict[@"images"][0][@"image"]];
+        [imgIssue sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"issuePlaceholder"]];
+    }
+    else{
+        [imgIssue setImage:[UIImage imageNamed:@"issuePlaceholder"]];
+    }
+    
     imgIssue.layer.cornerRadius = cornerRadius;
     imgIssue.layer.masksToBounds = YES;
 
     viewType.layer.cornerRadius = cornerRadius;
     CGSize textSize = [[lblCount text] sizeWithAttributes:@{NSFontAttributeName:[lblCount font]}];
     constViewTypeWidth.constant = 40 + textSize.width+3;
-    
-    int type = [dict[@"type"] intValue];
-    if (type == 0) {
+    [self layoutIfNeeded];
+
+    if ([dict[@"status"] isEqualToString:@"new"]) {
         [viewType setBackgroundColor:[HXColor colorWithHexString:@"44a2e0"]];
         [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_lightbulb size:20 color:[HXColor colorWithHexString:@"FFFFFF"]]];
     }
-    else if (type == 1){
+    else if ([dict[@"status"] isEqualToString:@"developing"]){
         [viewType setBackgroundColor:[HXColor colorWithHexString:@"c677ea"]];
         [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_wrench size:20 color:[HXColor colorWithHexString:@"FFFFFF"]]];
     }
@@ -80,6 +87,8 @@
         [viewTag2 removeFromSuperview];
         [viewTag3 removeFromSuperview];
     }
+    
+    [self layoutIfNeeded];
 }
 
 -(void)setTags:(UIView *)view tag:(NSDictionary *)tag{

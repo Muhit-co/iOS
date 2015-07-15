@@ -11,15 +11,11 @@
 #import "FacebookManager.h"
 #import "MMDrawerController+Subclass.h"
 
-#define DK_IMAGE @"image"
-#define DK_TITLE @"title"
-#define DK_SELECTOR @"selector"
-#define DK_PARENT @"parent"
-
 @interface MenuVC (){
     
-    IBOutlet UIImageView *imgBG;
+    IBOutlet UIImageView *imgBG,*imgProfile;
     IBOutlet UIButton *btnLogout,*btnProfile,*btnLogin,*btnSignup;
+    IBOutlet UILabel *lblName;
     IBOutlet UITableView *tblMenu;
     IBOutlet UIView *viewLoggedIn,*viewLoggedOut;
     NSMutableArray *arrMenu;
@@ -40,7 +36,10 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [[self view] setBackgroundColor:CLR_DARK_BLUE];
-    [btnProfile setImage:[IonIcons imageWithIcon:ion_person size:30 color:[HXColor colorWithHexString:@"FFFFFF" alpha:0.3]]];
+
+    imgProfile.layer.cornerRadius = 20;
+    imgProfile.layer.masksToBounds = YES;
+    
     [btnLogout setImage:[IonIcons imageWithIcon:ion_log_out size:30 color:[HXColor colorWithHexString:@"FFFFFF" alpha:0.3]]];
     [btnLogin setImage:[IonIcons imageWithIcon:ion_log_in size:30 color:[HXColor colorWithHexString:@"FFFFFF" alpha:0.3]]];
     [btnSignup setImage:[IonIcons imageWithIcon:ion_person_add size:30 color:[HXColor colorWithHexString:@"FFFFFF" alpha:0.3]]];
@@ -51,6 +50,9 @@
     if ([MT isLoggedIn]) {
         [viewLoggedIn setHidden:NO];
         [viewLoggedOut setHidden:YES];
+         NSString *imgUrl = [NSString stringWithFormat:@"%@/80x80/%@",IMAGE_PROXY,[UD objectForKey:UD_USER_PICTURE]];
+        [imgProfile sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"userPlaceholder"]];
+        lblName.text = [NSString stringWithFormat:@"%@ %@",[UD objectForKey:UD_FIRSTNAME],[UD objectForKey:UD_SURNAME]];
     }
     else{
         [viewLoggedIn setHidden:YES];
@@ -61,11 +63,20 @@
 
 - (void)createMenu{
     arrMenu = [[NSMutableArray alloc] init];
-    [arrMenu addObject:@{@"title":LocalizedString(@"TÜMÜ"),@"icon":ion_home,@"selector":SELECTOR_MAIN}];
-    [arrMenu addObject:@{@"title":LocalizedString(@"DESTEKLEDİKLERİM"),@"icon":ion_thumbsup,@"selector":SELECTOR_SUPPORTS}];
-    [arrMenu addObject:@{@"title":LocalizedString(@"FİKİRLERİM"),@"icon":ion_lightbulb,@"selector":SELECTOR_IDEAS}];
-    [arrMenu addObject:@{@"title":LocalizedString(@"DUYURULAR"),@"icon":ion_speakerphone,@"selector":SELECTOR_NOTIFICATIONS}];
-	[arrMenu addObject:@{@"title":LocalizedString(@"MUHTARIM"),@"icon":ion_information_circled,@"selector":SELECTOR_HEADMAN}];
+    
+    [arrMenu addObject:@{@"title":[LocalizedString(@"Tümü") toUpper],@"icon":ion_home,@"selector":SELECTOR_MAIN}];
+    
+    if ([MT isLoggedIn]) {
+        [arrMenu addObject:@{@"title":[LocalizedString(@"Desteklediklerim") toUpper],@"icon":ion_thumbsup,@"selector":SELECTOR_SUPPORTS}];
+        [arrMenu addObject:@{@"title":[LocalizedString(@"Fikirlerim") toUpper],@"icon":ion_lightbulb,@"selector":SELECTOR_IDEAS}];
+
+    }
+    
+    [arrMenu addObject:@{@"title":[LocalizedString(@"Duyurular") toUpper],@"icon":ion_speakerphone,@"selector":SELECTOR_NOTIFICATIONS}];
+    
+    if ([MT isLoggedIn]) {
+		[arrMenu addObject:@{@"title":[LocalizedString(@"Muhtarım") toUpper],@"icon":ion_information_circled,@"selector":SELECTOR_HEADMAN}];
+    }
 }
 -(void)reloadMenu{
     [self createMenu];
@@ -74,6 +85,7 @@
 
 - (void)openMain:(id)sender{
     [ScreenOperations openMain];
+    [[MT drawerController] closeDrawerAnimated:YES completion:nil];
 }
 
 - (void)openSupports:(id)sender{
@@ -101,22 +113,16 @@
 }
 
 - (IBAction)actProfile:(id)sender{
-    [ScreenOperations openProfile];
+    [ScreenOperations openProfileWithId:@""];
 }
 
 - (IBAction)actLogout:(id)sender{
-    
-//    [FACEBOOK closeSessionWithToken:YES];
+
+    [FACEBOOK closeSessionWithToken:YES];
     [MT setIsLoggedIn:NO];
     [self viewWillAppear:NO];
     [NC postNotificationName:NC_LOGGED_OUT object:nil];
-    [UD setObject:nil forKey:UD_ACCESS_TOKEN];
-    [UD setObject:nil forKey:UD_REFRESH_TOKEN];
-    [UD setObject:nil forKey:UD_ACCESS_TOKEN_LIFETIME];
-    [UD setObject:nil forKey:UD_ACCESS_TOKEN_TAKEN_DATE];
-    [UD setObject:nil forKey:UD_FIRSTNAME];
-    [UD setObject:nil forKey:UD_SURNAME];
-//    [self reloadMenu];
+    [UF setUserDefaultsWithDetails:nil];
 	[[MT navCon] popToRootViewControllerAnimated:YES];
 }
 
@@ -155,7 +161,7 @@
     #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     if ([self respondsToSelector:NSSelectorFromString(item[@"selector"])]) {
         [self performSelector:NSSelectorFromString(item[@"selector"]) withObject:nil];
-        [NC postNotificationName:MENU_ITEM_SELECTED object:item[@"selector"]];
+//        [NC postNotificationName:MENU_ITEM_SELECTED object:item[@"selector"]];
     }
     #pragma clang diagnostic pop
 }
@@ -170,8 +176,8 @@
 
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     MenuCell *cell = (MenuCell *)[tableView cellForRowAtIndexPath:indexPath];
-    cell.contentView.backgroundColor = CLR_LIGHT_BLUE;
-    cell.backgroundColor = CLR_LIGHT_BLUE;
+    cell.contentView.backgroundColor = [HXColor colorWithHexString:@"1E455E"];
+    cell.backgroundColor = [HXColor colorWithHexString:@"1E455E"];
 }
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -184,10 +190,9 @@
 
 - (void) setLocalizedStrings{
     [self reloadMenu];
-    [btnSignup setTitle:LocalizedString(@"ÜYE OL")];
-    [btnLogin setTitle:LocalizedString(@"GİRİŞ YAP")];
-    [btnProfile setTitle:LocalizedString(@"PROFİLİM")];
-    [btnLogout setTitle:LocalizedString(@"ÇIKIŞ YAP")];
+    [btnSignup setTitle:[LocalizedString(@"Üye Ol") toUpper]];
+    [btnLogin setTitle:[LocalizedString(@"Giriş Yap") toUpper]];
+    [btnLogout setTitle:[LocalizedString(@"Çıkış Yap") toUpper]];
 }
 
 - (void)didReceiveMemoryWarning{

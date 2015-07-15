@@ -12,8 +12,9 @@ target 'Muhit' do
 	pod 'BSKeyboardControls', '~> 2.2'
 	pod 'SDWebImage', '~> 3.7'
 	pod 'ionicons', '~> 2.0'
-	pod 'FBSDKCoreKit', '~> 4.2'
-	pod 'FBSDKLoginKit', '~> 4.2'
+#	pod 'FBSDKCoreKit', '~> 4.2'
+#	pod 'FBSDKLoginKit', '~> 4.2'
+	pod 'Facebook-iOS-SDK', '~> 3.23'
 	pod 'GoogleMaps'
 	pod 'Raven'
 end

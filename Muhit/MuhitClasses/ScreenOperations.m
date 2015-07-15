@@ -18,7 +18,7 @@
 #import "HeadmanVC.h"
 #import "IssueVC.h"
 #import "AddEditIssueVC.h"
-
+#import "PickFromMapVC.h"
 
 @implementation ScreenOperations
 
@@ -37,13 +37,13 @@
     [[MT navCon] pushViewController:vc animated:YES];
 }
 
-+ (void)openProfile{
-    ProfileVC *vc = [[ProfileVC alloc] init];
++ (void)openProfileWithId:(NSString *)profileId{
+    ProfileVC *vc = [[ProfileVC alloc] initWithId:profileId];
     [[MT navCon] pushViewController:vc animated:YES];
 }
 
-+ (void)openEditProfile{
-    EditProfileVC *vc = [[EditProfileVC alloc] init];
++ (void)openEditProfileWithInfo:(NSDictionary *)profileInfo{
+    EditProfileVC *vc = [[EditProfileVC alloc] initWithInfo:profileInfo];
     [[MT navCon] pushViewController:vc animated:YES];
 }
 
@@ -52,8 +52,8 @@
     [[MT navCon] pushViewController:vc animated:YES];
 }
 
-+ (void)openIssueWithId:(NSString *)issueId{
-    IssueVC *vc = [[IssueVC alloc] initWithId:issueId];
++ (void)openIssueWitDetail:(NSDictionary *)issueDetail{
+    IssueVC *vc = [[IssueVC alloc] initWithDetail:issueDetail];
     [[MT navCon] pushViewController:vc animated:YES];
 }
 
@@ -88,4 +88,10 @@
     HeadmanVC *vc = [[HeadmanVC alloc] init];
     [[MT navCon] pushViewController:vc animated:YES];
 }
+
++ (void)openPickFromMap{
+    PickFromMapVC * vc = [[PickFromMapVC alloc] init];
+    [[MT navCon] presentViewController:vc animated:YES completion:nil];
+}
+
 @end

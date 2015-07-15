@@ -9,41 +9,72 @@
 #import "EditProfileVC.h"
 
 @interface EditProfileVC (){
-    IBOutlet MTTextField *txtFullName,*txtEmail,*txtUsername,*txtPassword,*txtHood;
-    IBOutlet UILabel *lblFullName,*lblEmail,*lblUsername,*lblPassword,*lblHood;
-    IBOutlet UIButton *btnSave;
+    IBOutlet MTTextField *txtName,*txtSurname,*txtEmail,*txtUsername,*txtPassword;
+    IBOutlet UILabel *lblName,*lblSurname,*lblEmail,*lblUsername,*lblPassword,*lblHood,*lblPicture;
+    IBOutlet UIButton *btnSave,*btnChangePicture,*btnHood;
     IBOutlet UIPickerView *pickerHood;
-    IBOutlet UIImageView *imgDownIcon;
+    IBOutlet UIImageView *imgDownIcon,*imgProfile;
     IBOutlet UIView *viewHood;
     NSArray *arrHoods;
+    NSString *fullGeoCode;
     BSKeyboardControls *keyboardControl;
+    UIActionSheet *actionSheet;
+    UIImagePickerController * imgPicker;
+    NSDictionary *profileDict;
 }
 
 @end
 
 @implementation EditProfileVC
 
+- (id)initWithInfo:(NSDictionary *)_info{
+    self = [super init];
+    if (self){
+        profileDict = _info;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self adjustUI];
     
-    NSArray *txtFields = @[txtFullName ,txtEmail,txtUsername,txtPassword,txtHood];
+    NSArray *txtFields = @[txtName, txtSurname, txtEmail,txtUsername,txtPassword];
     keyboardControl = [[BSKeyboardControls alloc] initWithFields:txtFields];
     [keyboardControl setDelegate:self];
     
-    if (!pickerHood) {
-        pickerHood = [[UIPickerView alloc] init];
-    }
+    [self setDetailsWithDictionary:profileDict];
     
-    [pickerHood setDelegate:self];
-    [pickerHood setDataSource:self];
-    [pickerHood setShowsSelectionIndicator:YES];
-    [txtHood setInputView:pickerHood];
-    [txtHood setText:@""];
+    [NC addObserver:self selector:@selector(geoCodePicked:) name:NC_GEOCODE_PICKED object:nil];
+}
+
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    [btnSave setSize:CGSizeMake(70, 36)];
+    UIBarButtonItem *barBtnSave = [[UIBarButtonItem alloc] initWithCustomView:btnSave];
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    negativeSpacer.width = -12;
+    [[self navigationItem] setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, barBtnSave, nil] animated:NO];
+    [self.view layoutIfNeeded];
+}
+
+-(void)setDetailsWithDictionary:(NSDictionary*)dict{
+
+    [txtUsername setText:dict[@"username"]];
+    [txtName setText:dict[@"first_name"]];
+    [txtSurname setText:dict[@"last_name"]];
+    [txtEmail setText:dict[@"email"]];
+    [btnHood setTitle:dict[@"address"]];
+    fullGeoCode = dict[@"address"];
     
-    arrHoods = @[@"Siyavuş",@"Çamlık",@"Yayla",@"UEFA",@"Çaldıran"];
-    [pickerHood reloadAllComponents];
+    NSString *imgUrl = [NSString stringWithFormat:@"%@/180x180/%@",IMAGE_PROXY,dict[@"picture"]];
+    [imgProfile sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"userPlaceholder"]];
+}
+
+- (void)geoCodePicked:(NSNotification*)notification{
+    NSDictionary *dict = [notification object];
+    fullGeoCode = dict[@"full"];
+    [btnHood setTitle:dict[@"hood"]];
 }
 
 -(void)adjustUI{
@@ -51,9 +82,12 @@
     
     CGFloat borderWidth = 1;
     
-    txtFullName.layer.cornerRadius = cornerRadius;
-    txtFullName.layer.borderWidth = borderWidth;
-    txtFullName.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
+    txtName.layer.cornerRadius = cornerRadius;
+    txtName.layer.borderWidth = borderWidth;
+    txtName.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
+    txtSurname.layer.cornerRadius = cornerRadius;
+    txtSurname.layer.borderWidth = borderWidth;
+    txtSurname.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
     txtEmail.layer.cornerRadius = cornerRadius;
     txtEmail.layer.borderWidth = borderWidth;
     txtEmail.layer.borderColor = [[HXColor colorWithHexString:@"eeeeee"] CGColor];
@@ -67,69 +101,87 @@
     viewHood.layer.borderWidth = borderWidth;
     viewHood.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
     btnSave.layer.cornerRadius = cornerRadius;
+    imgProfile.layer.cornerRadius = 45;
+    imgProfile.layer.masksToBounds = YES;
     
     [imgDownIcon setImage:[IonIcons imageWithIcon:ion_chevron_down size:26 color:CLR_LIGHT_BLUE]];
 }
 
 -(IBAction)actSave:(id)sender{
-    [MuhitServices updateProfile:@"" lastName:@"" email:@"" password:@"" activeHood:@"" handler:^(NSDictionary *response, NSError *error) {
-        
+    ADD_HUD
+    NSString * picture = [UIImagePNGRepresentation(imgProfile.image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    [MuhitServices updateProfile:txtName.text lastName:txtSurname.text password:txtPassword.text activeHood:fullGeoCode picture:picture handler:^(NSDictionary *response, NSError *error) {
+        if (error) {
+            SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
+            REMOVE_HUD
+        }
+        else{
+            NSLog(@"updateProfileResponse:%@",response);
+        }
     }];
 }
 
-#pragma mark -
-#pragma mark Picker Delegate
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
+-(IBAction)actSearchHood:(id)sender{
+    [ScreenOperations openPickFromMap];
 }
 
--(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return [arrHoods count];
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    return arrHoods[row];
-}
-
-- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
+-(IBAction)actChangePicture:(id)sender{
+    if (!actionSheet) {
+        actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:LocalizedString(@"İptal") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"Fotoğraf Çek"),LocalizedString(@"Kütüphaneden Seç"),nil];
+    }
     
-    NSString *title = arrHoods[row];
-    
-    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:title];
-    [str addAttribute:NSForegroundColorAttributeName value:CLR_DARK_BLUE range:NSMakeRange(0,[title length])];
-    [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"SourceSansPro-Bold" size:20.0] range:NSMakeRange(0, [title length])];
-    
-    return str;
+    [actionSheet showInView:self.view];
+    [actionSheet reloadInputViews];
 }
 
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    [txtHood setText:arrHoods[row]];
+#pragma mark - UIImagePickerViewController
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [imgProfile setImage:image];
+    [imgPicker dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark -
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [imgPicker dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex){
+            
+        case 0:{
+            imgPicker = [[UIImagePickerController alloc] init];
+            [imgPicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+            [imgPicker setDelegate:self];
+            [imgPicker setAllowsEditing:YES];
+            [self presentViewController:imgPicker animated:YES completion:nil];
+        }
+            break;
+        case 1:{
+            imgPicker = [[UIImagePickerController alloc] init];
+            [imgPicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+            [imgPicker setDelegate:self];
+            [imgPicker setAllowsEditing:YES];
+            [self presentViewController:imgPicker animated:YES completion:nil];
+        }
+            break;
+    }
+    
+}
 
 #pragma mark -
 #pragma mark Keyboard Controls Delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-    if (textField == txtHood) {
-        [scrollRoot setContentOffset:CGPointMake(0,[textField superview].frame.origin.y - 35 ) animated:YES];
-    }
-    else{
-        [scrollRoot setContentOffset:CGPointMake(0,textField.frame.origin.y - 35 ) animated:YES];
-    }
-    
+
+    [scrollRoot setContentOffset:CGPointMake(0,textField.frame.origin.y - 35 ) animated:YES];
     [keyboardControl setActiveField:textField];
 }
 
 - (void)keyboardControls:(BSKeyboardControls *)keyboardControls selectedField:(UIView *)field inDirection:(BSKeyboardControlsDirection)direction{
-    if (field == txtHood) {
-        [scrollRoot setContentOffset:CGPointMake(0,[field superview].frame.origin.y - 35 ) animated:YES];
-    }
-    else{
-        [scrollRoot setContentOffset:CGPointMake(0,field.frame.origin.y - 35 ) animated:YES];
-    }
+    [scrollRoot setContentOffset:CGPointMake(0,field.frame.origin.y - 35 ) animated:YES];
 }
 
 - (void)keyboardControlsDonePressed:(BSKeyboardControls *)keyboardControls{
@@ -145,12 +197,14 @@
 
 - (void)setLocalizedStrings{
     [self setTitle:LocalizedString(@"Profili Düzenle")];
-    [btnSave setTitle:LocalizedString(@"GÜNCELLE")];
-    [lblFullName setText:LocalizedString(@"Ad Soyad")];
+    [btnSave setTitle:LocalizedString(@"Kaydet")];
+    [lblName setText:LocalizedString(@"Ad")];
+    [lblSurname setText:LocalizedString(@"Soyad")];
     [lblEmail setText:LocalizedString(@"E-posta adresi")];
     [lblUsername setText:LocalizedString(@"Kullanıcı adı")];
     [lblPassword setText:LocalizedString(@"Şifre")];
     [lblHood setText:LocalizedString(@"Mahalle")];
+    [lblPicture setText:LocalizedString(@"Değiştir")];
 }
 
 @end

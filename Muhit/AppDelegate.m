@@ -10,7 +10,6 @@
 #import "RavenClient.h"
 #import "MainVC.h"
 #import "NavBar.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface AppDelegate ()
 
@@ -26,6 +25,7 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[UITextField appearance] setTintColor:CLR_DARK_BLUE];
+    [[UITextView appearance] setTintColor:CLR_DARK_BLUE];
     
 //    [MT setServiceURL:@"http://api1.muhit.co"];//Production
     [MT setServiceURL:@"http://api51.muhit.co"];//Sandbox
@@ -41,15 +41,7 @@
     [client setupExceptionHandler];
     [GMSServices provideAPIKey:@"AIzaSyDhFJMt6qYhCayG6MdiVZ5OqxG1CUjjNfY"];
     
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                    didFinishLaunchingWithOptions:launchOptions];
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation];
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -59,7 +51,6 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -81,7 +72,7 @@
                                                             leftDrawerViewController: [[MenuVC alloc] init]]];
     
     [[MT drawerController] setMaximumLeftDrawerWidth:240.0];
-    [[MT drawerController] setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
+    [[MT drawerController] setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [[MT drawerController] setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     [[MT drawerController] setShowsShadow:YES];
     [[MT drawerController] setShouldStretchDrawer:NO];

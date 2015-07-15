@@ -17,8 +17,9 @@
     IBOutlet UIView *viewActiveLine,*viewSearch,*viewHood;
     IBOutlet UIImageView *imgSearch,*imgDownIcon;
     IBOutlet UITableView *tblIssues;
-    PlacesView *placeView;
-    NSArray *arrIssues;
+    NSMutableArray *arrIssues;
+    NSString *fullGeoCode;
+    int lastIndex;
 }
 
 @end
@@ -27,72 +28,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self adjustUI];
     [self actPopular:nil];
+    [NC addObserver:self selector:@selector(geoCodePicked:) name:NC_GEOCODE_PICKED object:nil];
 }
 
--(void)test{
-    arrIssues = @[
-                      @{
-                        @"id":@"1",
-                      	@"title":@"Lorem ipsum dolor sit amet, consectetur adipiscing",
-                      	@"date":@"10.11.2015",
-                      	@"count" :@"120",
-                      	@"type" : @"0",
-                      	@"imageUrl":@"http://cdn.gottabemobile.com/wp-content/uploads/2012/02/nikon-d800-sample-library-photo-620x413.jpg",
-                        @"tags":@[
-                                @{
-                                    @"name":@"AĞAÇLANDIRMA",
-                                    @"background":@"5e9455"
-                                    },
-                                @{
-                                    @"name":@"TRAFİK IŞIĞI",
-                                    @"background":@"e96c4a"
-                                    },
-                                @{
-                                    @"name":@"YAYA",
-                                    @"background":@"f0b328"
-                                    }]
-                      	},
-                      @{
-                        @"id":@"1",
-                        @"title":@"Lorem ipsum dolor sit amet, consectetur adipiscing",
-                        @"date":@"12.11.2015",
-                        @"count" :@"70",
-                        @"type" : @"1",
-                        @"imageUrl":@"http://farm5.staticflickr.com/4044/5163861339_10d4ba7d4d_z.jpg",
-                        @"tags":@[
-                                @{
-                                    @"name":@"AĞAÇLANDIRMA",
-                                    @"background":@"5e9455"
-                                    },
-                                @{
-                                    @"name":@"YAYA",
-                                    @"background":@"f0b328"
-                                    }]
-                        },
-
-                      @{
-                        @"id":@"1",
-                        @"title":@"Lorem ipsum dolor sit amet, consectetur adipiscing",
-                        @"date":@"08.11.2015",
-                        @"count" :@"15",
-                        @"type" : @"2",
-                        @"imageUrl":@"http://www.canon.com.tr/Images/PowerShot%20G1%20X%20Mark%20II%20sample%20Z2%20med_tcm123-1139968.jpg",
-                        @"tags":@[
-                                @{
-                                    @"name":@"KAMİL",
-                                    @"background":@"f0b328"
-                                    }]
-                        }];
-    
-    [tblIssues reloadData];
+- (void)geoCodePicked:(NSNotification*)notification{
+    NSDictionary *dict = [notification object];
+    fullGeoCode = dict[@"full"];
+    [btnHood setTitle:dict[@"hood"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [[MT navCon] setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
+    arrIssues = [[NSMutableArray alloc] init];
+    [self getIssues];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -102,7 +53,6 @@
 
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    [self test];
     [self.view layoutIfNeeded];
 }
 
@@ -121,6 +71,27 @@
     viewHood.layer.cornerRadius = cornerRadius;
     viewSearch.layer.cornerRadius = cornerRadius;
 }
+
+- (void)getIssues{
+    ADD_HUD
+    lastIndex = (int)arrIssues.count;
+    [SERVICES getIssues:lastIndex handler:^(NSDictionary *response, NSError *error) {
+        if (error) {
+            SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
+        }
+        else{
+            DLog(@"getIssuesResponse:%@",response);
+			[arrIssues addObjectsFromArray:(NSArray*)response];
+            [tblIssues reloadData];
+            REMOVE_HUD
+            
+            [tblIssues scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:lastIndex inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            
+        }
+        REMOVE_HUD
+    }];
+}
+
 
 -(IBAction)actPopular:(id)sender{
     if (![btnPopular isSelected]) {
@@ -147,7 +118,12 @@
 }
 
 -(IBAction)actCreateIssue:(id)sender{
-    [ScreenOperations openCreateIssue];
+    if ([MT isLoggedIn]) {
+        [ScreenOperations openCreateIssue];
+    }
+    else{
+        [ScreenOperations openLogin];
+    }
 }
 
 -(IBAction)actMenu:(id)sender{
@@ -156,16 +132,7 @@
 }
 
 -(IBAction)actSearchHood:(id)sender{
-    if (!placeView) {
-        placeView = [[PlacesView alloc] init];
-        [placeView setDelegate:self];
-    }
-    [placeView show];
-}
-
--(void)placesView:(PlacesView *)placesView selectedAddress:(GMSAutocompletePrediction *)selectedAddress{
-    NSDictionary *parsedAddress = [UF parsePlaces:selectedAddress];
-    [btnHood setTitle:parsedAddress[@"hood"]];
+    [ScreenOperations openPickFromMap];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -178,6 +145,13 @@
     return 100;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    [cell setBackgroundColor:[UIColor clearColor]];
+    
+    if ([indexPath isEqual:[NSIndexPath indexPathForRow:[self tableView:tblIssues numberOfRowsInSection:0]-1 inSection:0]]){
+        [self getIssues];
+    }
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [arrIssues count];
@@ -202,7 +176,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
    	NSDictionary *item = [arrIssues objectAtIndex:indexPath.row];
-    [ScreenOperations openIssueWithId:item[@"id"]];
+    [ScreenOperations openIssueWitDetail:item];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -215,7 +189,8 @@
 }
 
 - (void)setLocalizedStrings{
-    [btnPopular setTitle:LocalizedString(@"POPÜLER")];
-    [btnNewest setTitle:LocalizedString(@"EN SON")];
+    [btnPopular setTitle:[LocalizedString(@"Popüler") toUpper]];
+    [btnNewest setTitle:[LocalizedString(@"En Son") toUpper]];
+    [btnCreateIssue setTitle:[LocalizedString(@"Fikir") toUpper]];
 }
 @end

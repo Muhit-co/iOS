@@ -7,13 +7,15 @@
 //
 #import <HexColors/HexColor.h>
 
-static const float kmBetweenClientAndDriverToVibrate = 100;
 static const CGFloat cornerRadius = 6;
+
+#define IMAGE_PROXY @"http://d1vwk06lzcci1w.cloudfront.net"
 
 #define APPDELEGATE ((AppDelegate *)[[UIApplication sharedApplication] delegate])
 #define UD [NSUserDefaults standardUserDefaults]
 #define NC [NSNotificationCenter defaultCenter]
 #define MT [Muhit instance]
+#define LM [LanguageManager instance]
 #define LocalizedString(key) [[LanguageManager instance] localizedStringForKey:key]
 #define TRACKER [TrackManager sharedManager]
 
@@ -36,26 +38,14 @@ static const CGFloat cornerRadius = 6;
 #define USER @"user"
 
 #define isNotNull(variable) variable == [NSNull null] ? NO : (variable ? YES : NO)
+#define nilOrJson(VAL) [VAL isKindOfClass:[NSNull class]] ? nil : VAL
 
 #define CLR_LIGHT_BLUE [HXColor colorWithHexString:@"44a2e0"]
 #define CLR_DARK_BLUE [HXColor colorWithHexString:@"245573"]
 #define CLR_DARK_PUPRPLE [HXColor colorWithHexString:@"666677"]
 
-#define PATH_FARE_CALCULATOR @"fareCalculator"
-#define PATH_PAYMENT_TOOLS @"paymentTools"
-#define PATH_ADD_CARD @"addCard"
-#define PATH_ADD_BKM @"addBkm"
-#define PATH_ADD_PAYPAL @"addPaypal"
-#define PATH_ADD_DISCOUNT_CODE @"addDiscount"
-#define PATH_FAV_ADDRESS @"favAddresses"
-#define PATH_OLD_TRIPS @"oldTrips"
-#define PATH_PROFILE @"profile"
-#define PATH_SHARE @"share"
-#define PATH_HOW_TO @"howTo"
-#define PATH_NOTIFICATIONS @"notifications"
-
-
 #define NC_LOGGED_OUT @"NC_LOGGED_OUT"
+#define NC_GEOCODE_PICKED @"NC_GEOCODE_PICKED"
 
 #define UD_FIRSTNAME @"UD_FIRSTNAME"
 #define UD_SURNAME @"UD_SURNAME"
@@ -68,3 +58,4 @@ static const CGFloat cornerRadius = 6;
 #define UD_ACCESS_TOKEN_TAKEN_DATE @"UD_ACCESS_TOKEN_TAKEN_DATE"
 #define UD_HOOD_ID @"UD_HOOD_ID"
 #define UD_USER_ID @"UD_USER_ID"
+#define UD_USER_PICTURE @"UD_USER_PICTURE"

@@ -25,16 +25,76 @@
     [self getAnnouncements];
 }
 
-- (void)getAnnouncements{
+-(NSArray*)arrTestData{
+	
+    NSArray* arrSupporteds = @[
+                          @{
+                              @"title":@"Hola",
+                              @"created_at": @"2015-06-14 10:00:00",
+                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                              },
+                          @{
+                              @"title":@"Hola",
+                              @"created_at": @"2015-06-14 10:00:00",
+                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                              },
+                          
+                          @{
+                              @"title":@"Hola",
+                              @"created_at": @"2015-06-14 10:00:00",
+                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                              },
+                          @{
+                              @"title":@"Hola",
+                              @"created_at": @"2015-06-14 10:00:00",
+                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                              },
+                          @{
+                              @"title":@"Hola",
+                              @"created_at": @"2015-06-14 10:00:00",
+                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                              },
+                          @{
+                              @"title":@"Hola",
+                              @"created_at": @"2015-06-14 10:00:00",
+                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                              },
+                          @{
+                              @"title":@"Hola",
+                              @"created_at": @"2015-06-14 10:00:00",
+                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                              },
+                          
+                          @{
+                              @"title":@"Hola",
+                              @"created_at": @"2015-06-14 10:00:00",
+                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                              },
+                          @{
+                              @"title":@"Hola",
+                              @"created_at": @"2015-06-14 10:00:00",
+                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                              },
+                          @{
+                              @"title":@"Hola",
+                              @"created_at": @"2015-06-14 10:00:00",
+                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                              }];
     
+    return arrSupporteds;
+}
+
+- (void)getAnnouncements{
+    ADD_HUD
     lastIndex = (int)arrAnnouncements.count;
     [SERVICES getAnnouncements:lastIndex handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
         }
         else{
-            NSLog(@"loginFacebookResponse:%@",response);
-            [arrAnnouncements addObjectsFromArray:response[@"data"]];
+            NSLog(@"getAnnouncementsResponse:%@",response);
+//            [arrAnnouncements addObjectsFromArray:response[@"data"]];
+            [arrAnnouncements addObjectsFromArray:[self arrTestData]];
             [tblAnnouncements reloadData];
             REMOVE_HUD
             
@@ -56,7 +116,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    float textHeight = [UF heightOfTextForString:arrAnnouncements[indexPath.row][@"description"] andFont:[UIFont fontWithName:@"SourceSansPro-It" size:17.0] maxSize:CGSizeMake(self.view.width-100, 200)];
+    float textHeight = [UF heightOfTextForString:arrAnnouncements[indexPath.row][@"content"] andFont:[UIFont fontWithName:@"SourceSansPro-It" size:17.0] maxSize:CGSizeMake(self.view.width-100, 200)];
     
     return textHeight + 81;
 }
@@ -80,11 +140,6 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-   	NSDictionary *item = [arrAnnouncements objectAtIndex:indexPath.row];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -8,6 +8,6 @@
 
 @interface IssueVC : RootVC <UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
-- (id)initWithId:(NSString *)_id;
+- (id)initWithDetail:(NSDictionary *)_detail;
 
 @end

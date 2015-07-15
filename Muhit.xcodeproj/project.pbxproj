@@ -32,6 +32,13 @@
 		4B21696F1B21D5C500DEBA01 /* SearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B21696D1B21D5C500DEBA01 /* SearchVC.xib */; };
 		4B2169711B247C1700DEBA01 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2169701B247C1700DEBA01 /* MapKit.framework */; };
 		4B2169731B24830600DEBA01 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2169721B24830600DEBA01 /* CoreLocation.framework */; };
+		4B6FF5A91B3F0D0500F3ED8A /* TagSelectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6FF5A71B3F0D0500F3ED8A /* TagSelectorVC.m */; };
+		4B6FF5AA1B3F0D0500F3ED8A /* TagSelectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B6FF5A81B3F0D0500F3ED8A /* TagSelectorVC.xib */; };
+		4B6FF5AE1B3F0D5B00F3ED8A /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6FF5AC1B3F0D5B00F3ED8A /* TagCell.m */; };
+		4B6FF5AF1B3F0D5B00F3ED8A /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B6FF5AD1B3F0D5B00F3ED8A /* TagCell.xib */; };
+		4B70C8F31B4BE01E009BC526 /* PickFromMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B70C8F11B4BE01E009BC526 /* PickFromMapVC.m */; };
+		4B70C8F41B4BE01E009BC526 /* PickFromMapVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B70C8F21B4BE01E009BC526 /* PickFromMapVC.xib */; };
+		4B70C8FE1B51A093009BC526 /* NSString+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B70C8FD1B51A093009BC526 /* NSString+Extended.m */; };
 		4B7688A71B2B181500B2B6EF /* MTTagLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7688A61B2B181500B2B6EF /* MTTagLabel.m */; };
 		4B9F04EF1B1D8A6C009CB713 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F04EE1B1D8A6C009CB713 /* Podfile */; };
 		4B9F04F31B1D9415009CB713 /* lang-en.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F04F01B1D9415009CB713 /* lang-en.plist */; };
@@ -60,6 +67,7 @@
 		4B9F053E1B1DE38E009CB713 /* SourceSansPro-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F05391B1DE38E009CB713 /* SourceSansPro-Italic.ttf */; };
 		4B9F053F1B1DE38E009CB713 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F053A1B1DE38E009CB713 /* SourceSansPro-Regular.ttf */; };
 		4B9F05401B1DE38E009CB713 /* SourceSansPro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F053B1B1DE38E009CB713 /* SourceSansPro-Semibold.ttf */; };
+		4BBF76FA1B56855A0059497B /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF76F91B56855A0059497B /* FacebookManager.m */; };
 		4BC583811B1C4D4800180B3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC583801B1C4D4800180B3D /* main.m */; };
 		4BC583841B1C4D4800180B3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC583831B1C4D4800180B3D /* AppDelegate.m */; };
 		4BC5838C1B1C4D4800180B3D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BC5838B1B1C4D4800180B3D /* Images.xcassets */; };
@@ -70,7 +78,6 @@
 		4BC9EE9D1B1EF43300441353 /* ForgotPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC9EE9B1B1EF43300441353 /* ForgotPasswordVC.m */; };
 		4BC9EE9E1B1EF43300441353 /* ForgotPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BC9EE9C1B1EF43300441353 /* ForgotPasswordVC.xib */; };
 		4BD0A3B51B2C6D75008ECD02 /* BSKeyboardControls.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BD0A3B41B2C6D75008ECD02 /* BSKeyboardControls.strings */; };
-		4BD0A3B81B2EAF09008ECD02 /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD0A3B71B2EAF09008ECD02 /* FacebookManager.m */; };
 		4BD654DF1B32035100343C16 /* PlacesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD654DD1B32035100343C16 /* PlacesView.m */; };
 		4BD654E01B32035100343C16 /* PlacesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BD654DE1B32035100343C16 /* PlacesView.xib */; };
 		4BD654E41B32043700343C16 /* PlacesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD654E21B32043700343C16 /* PlacesCell.m */; };
@@ -132,6 +139,17 @@
 		4B21696D1B21D5C500DEBA01 /* SearchVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchVC.xib; sourceTree = "<group>"; };
 		4B2169701B247C1700DEBA01 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4B2169721B24830600DEBA01 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4B6FF5A61B3F0D0500F3ED8A /* TagSelectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagSelectorVC.h; sourceTree = "<group>"; };
+		4B6FF5A71B3F0D0500F3ED8A /* TagSelectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagSelectorVC.m; sourceTree = "<group>"; };
+		4B6FF5A81B3F0D0500F3ED8A /* TagSelectorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagSelectorVC.xib; sourceTree = "<group>"; };
+		4B6FF5AB1B3F0D5B00F3ED8A /* TagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
+		4B6FF5AC1B3F0D5B00F3ED8A /* TagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCell.m; sourceTree = "<group>"; };
+		4B6FF5AD1B3F0D5B00F3ED8A /* TagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
+		4B70C8F01B4BE01E009BC526 /* PickFromMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickFromMapVC.h; sourceTree = "<group>"; };
+		4B70C8F11B4BE01E009BC526 /* PickFromMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickFromMapVC.m; sourceTree = "<group>"; };
+		4B70C8F21B4BE01E009BC526 /* PickFromMapVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickFromMapVC.xib; sourceTree = "<group>"; };
+		4B70C8FD1B51A093009BC526 /* NSString+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extended.m"; sourceTree = "<group>"; };
+		4B70C8FF1B51A0A7009BC526 /* NSString+Extended.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extended.h"; sourceTree = "<group>"; };
 		4B7688A51B2B181500B2B6EF /* MTTagLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTagLabel.h; sourceTree = "<group>"; };
 		4B7688A61B2B181500B2B6EF /* MTTagLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTagLabel.m; sourceTree = "<group>"; };
 		4B9F04EE1B1D8A6C009CB713 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = ../../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -176,6 +194,8 @@
 		4B9F05391B1DE38E009CB713 /* SourceSansPro-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Italic.ttf"; sourceTree = "<group>"; };
 		4B9F053A1B1DE38E009CB713 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
 		4B9F053B1B1DE38E009CB713 /* SourceSansPro-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.ttf"; sourceTree = "<group>"; };
+		4BBF76F81B56855A0059497B /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
+		4BBF76F91B56855A0059497B /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
 		4BC5837B1B1C4D4800180B3D /* Muhit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muhit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BC5837F1B1C4D4800180B3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BC583801B1C4D4800180B3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -193,8 +213,6 @@
 		4BC9EE9B1B1EF43300441353 /* ForgotPasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordVC.m; sourceTree = "<group>"; };
 		4BC9EE9C1B1EF43300441353 /* ForgotPasswordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotPasswordVC.xib; sourceTree = "<group>"; };
 		4BD0A3B41B2C6D75008ECD02 /* BSKeyboardControls.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = BSKeyboardControls.strings; sourceTree = "<group>"; };
-		4BD0A3B61B2EAF09008ECD02 /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
-		4BD0A3B71B2EAF09008ECD02 /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
 		4BD654DC1B32035100343C16 /* PlacesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesView.h; sourceTree = "<group>"; };
 		4BD654DD1B32035100343C16 /* PlacesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesView.m; sourceTree = "<group>"; };
 		4BD654DE1B32035100343C16 /* PlacesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacesView.xib; sourceTree = "<group>"; };
@@ -320,6 +338,29 @@
 			path = AddEditIssue;
 			sourceTree = "<group>";
 		};
+		4B6FF5A51B3F0CBA00F3ED8A /* TagSelector */ = {
+			isa = PBXGroup;
+			children = (
+				4B6FF5A61B3F0D0500F3ED8A /* TagSelectorVC.h */,
+				4B6FF5A71B3F0D0500F3ED8A /* TagSelectorVC.m */,
+				4B6FF5A81B3F0D0500F3ED8A /* TagSelectorVC.xib */,
+				4B6FF5AB1B3F0D5B00F3ED8A /* TagCell.h */,
+				4B6FF5AC1B3F0D5B00F3ED8A /* TagCell.m */,
+				4B6FF5AD1B3F0D5B00F3ED8A /* TagCell.xib */,
+			);
+			path = TagSelector;
+			sourceTree = "<group>";
+		};
+		4B70C8EF1B4BE001009BC526 /* PickFromMap */ = {
+			isa = PBXGroup;
+			children = (
+				4B70C8F01B4BE01E009BC526 /* PickFromMapVC.h */,
+				4B70C8F11B4BE01E009BC526 /* PickFromMapVC.m */,
+				4B70C8F21B4BE01E009BC526 /* PickFromMapVC.xib */,
+			);
+			path = PickFromMap;
+			sourceTree = "<group>";
+		};
 		4B9F05121B1D96E1009CB713 /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +383,8 @@
 				4B9F04FF1B1D9524009CB713 /* UIView+CustomNib.m */,
 				4B9F05001B1D9524009CB713 /* UIView+Layout.h */,
 				4B9F05011B1D9524009CB713 /* UIView+Layout.m */,
+				4B70C8FF1B51A0A7009BC526 /* NSString+Extended.h */,
+				4B70C8FD1B51A093009BC526 /* NSString+Extended.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -489,8 +532,8 @@
 		4BD0A3B91B2EAF12008ECD02 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
-				4BD0A3B61B2EAF09008ECD02 /* FacebookManager.h */,
-				4BD0A3B71B2EAF09008ECD02 /* FacebookManager.m */,
+				4BBF76F81B56855A0059497B /* FacebookManager.h */,
+				4BBF76F91B56855A0059497B /* FacebookManager.m */,
 			);
 			name = Facebook;
 			path = Managers/Facebook;
@@ -506,12 +549,14 @@
 				4BD654E21B32043700343C16 /* PlacesCell.m */,
 				4BD654E31B32043700343C16 /* PlacesCell.xib */,
 			);
-			name = PlacesView;
+			path = PlacesView;
 			sourceTree = "<group>";
 		};
 		4BF7F8FB1B1CF31100A35FD1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4B70C8EF1B4BE001009BC526 /* PickFromMap */,
+				4B6FF5A51B3F0CBA00F3ED8A /* TagSelector */,
 				4BD654DB1B32032900343C16 /* PlacesView */,
 				4B2169601B21D56300DEBA01 /* AddEditIssue */,
 				4B21695F1B21D55B00DEBA01 /* Issue */,
@@ -696,6 +741,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B2169441B218E6F00DEBA01 /* SupportedsVC.xib in Resources */,
+				4B70C8F41B4BE01E009BC526 /* PickFromMapVC.xib in Resources */,
 				4B9F04F31B1D9415009CB713 /* lang-en.plist in Resources */,
 				4B9F04EF1B1D8A6C009CB713 /* Podfile in Resources */,
 				4BD0A3B51B2C6D75008ECD02 /* BSKeyboardControls.strings in Resources */,
@@ -714,11 +760,13 @@
 				4B21693A1B218E3700DEBA01 /* AnnouncementCell.xib in Resources */,
 				4BC5838F1B1C4D4800180B3D /* LaunchScreen.xib in Resources */,
 				4BD654E01B32035100343C16 /* PlacesView.xib in Resources */,
+				4B6FF5AF1B3F0D5B00F3ED8A /* TagCell.xib in Resources */,
 				4B9F050F1B1D96D7009CB713 /* PresentedRootVC.xib in Resources */,
 				4B9F053F1B1DE38E009CB713 /* SourceSansPro-Regular.ttf in Resources */,
 				4B21692F1B20798500DEBA01 /* MainCell.xib in Resources */,
 				4B21696F1B21D5C500DEBA01 /* SearchVC.xib in Resources */,
 				4BC9EE9E1B1EF43300441353 /* ForgotPasswordVC.xib in Resources */,
+				4B6FF5AA1B3F0D0500F3ED8A /* TagSelectorVC.xib in Resources */,
 				4B21693F1B218E5700DEBA01 /* SupportedCell.xib in Resources */,
 				4BC5838C1B1C4D4800180B3D /* Images.xcassets in Resources */,
 				4BD654E51B32043700343C16 /* PlacesCell.xib in Resources */,
@@ -796,18 +844,22 @@
 				4BC583811B1C4D4800180B3D /* main.m in Sources */,
 				4BD654DF1B32035100343C16 /* PlacesView.m in Sources */,
 				4B9F05351B1DDA42009CB713 /* LoginVC.m in Sources */,
+				4BBF76FA1B56855A0059497B /* FacebookManager.m in Sources */,
 				4B2169571B21D48C00DEBA01 /* ProfileVC.m in Sources */,
 				4B9F05061B1D9524009CB713 /* UIView+Layout.m in Sources */,
 				4B9F05281B1DBE0F009CB713 /* MenuVC.m in Sources */,
 				4B9F050E1B1D96D7009CB713 /* PresentedRootVC.m in Sources */,
+				4B6FF5AE1B3F0D5B00F3ED8A /* TagCell.m in Sources */,
+				4B70C8FE1B51A093009BC526 /* NSString+Extended.m in Sources */,
 				4B9F05041B1D9524009CB713 /* UIButton+Additions.m in Sources */,
 				4B2169481B218E8B00DEBA01 /* AnnouncementsVC.m in Sources */,
-				4BD0A3B81B2EAF09008ECD02 /* FacebookManager.m in Sources */,
 				4B21692A1B1F138500DEBA01 /* MTTextField.m in Sources */,
 				4B9F05251B1DBE0F009CB713 /* MenuCell.m in Sources */,
 				4BD654E41B32043700343C16 /* PlacesCell.m in Sources */,
+				4B70C8F31B4BE01E009BC526 /* PickFromMapVC.m in Sources */,
 				4B2169391B218E3700DEBA01 /* AnnouncementCell.m in Sources */,
 				4B21692E1B20798500DEBA01 /* MainCell.m in Sources */,
+				4B6FF5A91B3F0D0500F3ED8A /* TagSelectorVC.m in Sources */,
 				4B2169431B218E6F00DEBA01 /* SupportedsVC.m in Sources */,
 				4B21695C1B21D49B00DEBA01 /* EditProfileVC.m in Sources */,
 				4B2169641B21D5A600DEBA01 /* AddEditIssueVC.m in Sources */,

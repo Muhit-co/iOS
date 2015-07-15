@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SourceSansPro-Regular.ttf">
@@ -67,10 +67,10 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="105" id="Nho-8n-d8X">
-                                            <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                                            <variation key="heightClass=regular-widthClass=compact" constant="30"/>
                                         </constraint>
                                         <constraint firstAttribute="width" constant="100" id="iR9-Q8-f4Z">
-                                            <variation key="heightClass=regular-widthClass=compact" constant="200"/>
+                                            <variation key="heightClass=regular-widthClass=compact" constant="100"/>
                                         </constraint>
                                     </constraints>
                                     <variation key="default">
@@ -182,7 +182,9 @@
                                     <rect key="frame" x="20" y="340" width="360" height="60"/>
                                     <color key="backgroundColor" red="0.14117647058823529" green="0.33333333333333331" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="60" id="HSf-GA-zj7"/>
+                                        <constraint firstAttribute="height" constant="60" id="HSf-GA-zj7">
+                                            <variation key="heightClass=regular-widthClass=compact" constant="50"/>
+                                        </constraint>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="24"/>
                                     <state key="normal" title="GİRİŞ YAP">
@@ -214,7 +216,7 @@
                                             <variation key="heightClass=regular-widthClass=compact" constant="90"/>
                                         </constraint>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="20"/>
+                                    <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
                                     <state key="normal" title="KAYIT OL">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -243,7 +245,7 @@
                                             <variation key="heightClass=regular-widthClass=compact" constant="50"/>
                                         </constraint>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="20"/>
+                                    <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
                                     <state key="normal" title="ŞİFREMİ UNUTTUM">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -268,7 +270,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="60" id="OuO-dU-fRQ"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="24"/>
+                                    <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="22"/>
                                     <state key="normal" title="FACEBOOK İLE GİRİŞ">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

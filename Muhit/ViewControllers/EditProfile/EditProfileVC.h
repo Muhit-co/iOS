@@ -8,6 +8,8 @@
 
 #import "BSKeyboardControls.h"
 
-@interface EditProfileVC : RootVC <BSKeyboardControlsDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
+@interface EditProfileVC : RootVC <BSKeyboardControlsDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate>
+
+- (id)initWithInfo:(NSDictionary *)_info;
 
 @end

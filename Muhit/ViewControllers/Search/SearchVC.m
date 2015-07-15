@@ -19,6 +19,7 @@
     IBOutlet UIButton *btnHood;
     PlacesView *placeView;
     NSArray *arrSearchResults;
+    NSString *fullGeoCode;
 }
 
 @end
@@ -29,6 +30,17 @@
     [super viewDidLoad];
     [self adjustUI];
     [self test];
+    [NC addObserver:self selector:@selector(geoCodePicked:) name:NC_GEOCODE_PICKED object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+- (void)geoCodePicked:(NSNotification*)notification{
+    NSDictionary *dict = [notification object];
+    fullGeoCode = dict[@"full"];
+    [btnHood setTitle:dict[@"hood"]];
 }
 
 -(void)adjustUI{
@@ -61,16 +73,7 @@
 }
 
 -(IBAction)actSearchHood:(id)sender{
-    if (!placeView) {
-        placeView = [[PlacesView alloc] init];
-        [placeView setDelegate:self];
-    }
-    [placeView show];
-}
-
--(void)placesView:(PlacesView *)placesView selectedAddress:(GMSAutocompletePrediction *)selectedAddress{
-    NSDictionary *parsedAddress = [UF parsePlaces:selectedAddress];
-    [btnHood setTitle:parsedAddress[@"hood"]];
+    [ScreenOperations openPickFromMap];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -106,7 +109,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
    	NSDictionary *item = [arrSearchResults objectAtIndex:indexPath.row];
-    [ScreenOperations openIssueWithId:item[@"id"]];
+    [ScreenOperations openIssueWitDetail:item];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{

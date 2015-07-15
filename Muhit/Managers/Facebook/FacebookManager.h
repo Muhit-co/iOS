@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 #define FACEBOOK [FacebookManager sharedManager]
 #define FB_EMAIL @"email"
@@ -21,7 +20,8 @@
 @optional
 
 - (void) openedFacebookSessionWithToken:(NSString *)accessToken;
-- (void) fetchedFacebookUserInfo:(NSDictionary*)userInfo error:(NSError *)error;
+- (void) fetchedFacebookUserInfo:(id<FBGraphUser>)userInfo error:(NSError *)error;
+- (void) postedOnFacebook:(NSString *)message successfully:(BOOL)success;
 
 @end
 
@@ -29,10 +29,11 @@
 
 + (FacebookManager *) sharedManager;
 
-- (void) closeSession;
+- (void) closeSessionWithToken:(BOOL)withToken;
 
 - (void) openSessionWithDelegate:(id <FacebookDelegate>) delegate;
 - (void) requestUserInfoWithDelegate:(id <FacebookDelegate>) delegate;
+- (void) publishMessage:(NSString *)message withDelegate:(id<FacebookDelegate>)delegate;
 - (NSString *) accessToken;
 
 @end

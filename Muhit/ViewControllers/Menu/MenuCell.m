@@ -30,7 +30,7 @@
 - (void)setTitle:(NSString *)title icon:(NSString *)icon{
     lblTitle.text = title;
     imgIcon.image = [IonIcons imageWithIcon:icon
-                                       size:20
+                                       size:18
                                       color:[HXColor colorWithHexString:@"FFFFFF"]];
 
 }

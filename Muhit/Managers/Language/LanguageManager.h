@@ -9,21 +9,19 @@
 static NSString *kLocalizationChanged = @"localizationChanged";
 
 typedef enum {
-    BTTurkish = 0,
-    BTEnglish = 1
-} BTLanguageType;
+    Turkish = 0,
+    English = 1
+} LanguageType;
 
 @interface LanguageManager : NSObject
 
 + (LanguageManager *) instance;
 
 - (NSString *)localizedStringForKey:(NSString *)key;
-- (NSString *)localizedFileName:(NSString *)fileName extension:(NSString *)extension;
 
-- (void) changeLanguage:(BTLanguageType)language;
+- (void) changeLanguage:(LanguageType)language;
 - (NSLocale *)currentLocale;
-- (NSLocale *)turkishLocale;
-- (BTLanguageType)currentLanguage;
+- (LanguageType)currentLanguage;
 - (NSArray *) localeIdentifiers;
 - (NSString *)currentLocaleIdentifier;
 

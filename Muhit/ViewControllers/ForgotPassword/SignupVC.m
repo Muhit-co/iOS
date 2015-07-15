@@ -15,6 +15,7 @@
     IBOutlet UIImageView *imgDownIcon;
     BSKeyboardControls *keyboardControl;
     PlacesView *placeView;
+    NSString *fullGeoCode;
 }
 
 @end
@@ -29,6 +30,17 @@
     NSArray *txtFields = @[txtFirstname, txtSurname, txtEmail,txtPassword,txtRePassword];
     keyboardControl = [[BSKeyboardControls alloc] initWithFields:txtFields];
     [keyboardControl setDelegate:self];
+    [NC addObserver:self selector:@selector(geoCodePicked:) name:NC_GEOCODE_PICKED object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+- (void)geoCodePicked:(NSNotification*)notification{
+    NSDictionary *dict = [notification object];
+    fullGeoCode = dict[@"full"];
+    [btnHood setTitle:dict[@"hood"]];
 }
 
 -(void)adjustUI{
@@ -65,12 +77,7 @@
         }
         else{
             NSLog(@"signUpResponse:%@",response);
-            [UD setObject:[NSDate date] forKey:UD_ACCESS_TOKEN_TAKEN_DATE];
-            [UD setObject:response[AUTH][@"access_token"] forKey:UD_ACCESS_TOKEN];
-            [UD setObject:response[AUTH][@"refresh_token"] forKey:UD_REFRESH_TOKEN];
-            [UD setObject:response[AUTH][@"expires_in"] forKey:UD_ACCESS_TOKEN_LIFETIME];
-            [UD setObject:response[@"user"][@"first_name"] forKey:UD_FIRSTNAME];
-            [UD setObject:response[@"user"][@"last_name"] forKey:UD_SURNAME];
+            [UF setUserDefaultsWithDetails:response];
             [[MT navCon] popToRootViewControllerAnimated:YES];
             [MT setIsLoggedIn:YES];
             [[MT menuVC] viewWillAppear:NO];
@@ -80,16 +87,7 @@
 }
 
 -(IBAction)actSearchHood:(id)sender{
-    if (!placeView) {
-        placeView = [[PlacesView alloc] init];
-        [placeView setDelegate:self];
-    }
-    [placeView show];
-}
-
--(void)placesView:(PlacesView *)placesView selectedAddress:(GMSAutocompletePrediction *)selectedAddress{
-    NSDictionary *parsedAddress = [UF parsePlaces:selectedAddress];
-    [btnHood setTitle:parsedAddress[@"hood"]];
+    [ScreenOperations openPickFromMap];
 }
 
 #pragma mark -
@@ -117,7 +115,7 @@
 
 - (void)setLocalizedStrings{
     [self setTitle:LocalizedString(@"Üye Ol")];
-    [btnSignup setTitle:LocalizedString(@"ÜYE OL")];
+    [btnSignup setTitle:[LocalizedString(@"Üye Ol") toUpper]];
     [lblFirstname setText:LocalizedString(@"Ad")];
     [lblSurname setText:LocalizedString(@"Soyad")];
     [lblEmail setText:LocalizedString(@"E-posta adresi")];

@@ -11,10 +11,10 @@
 + (void)openLogin;
 + (void)openSignUp;
 + (void)openForgotPassword;
-+ (void)openProfile;
-+ (void)openEditProfile;
++ (void)openProfileWithId:(NSString *)profileId;
++ (void)openEditProfileWithInfo:(NSDictionary *)profileInfo;
 + (void)openSearch;
-+ (void)openIssueWithId:(NSString *)issueId;
++ (void)openIssueWitDetail:(NSDictionary *)issueDetail;
 + (void)openCreateIssue;
 + (void)openEditIssueWithInfo:(NSDictionary *)info;
 + (void)openMain;
@@ -22,5 +22,6 @@
 + (void)openIdeas;
 + (void)openAnnouncements;
 + (void)openHeadman;
++ (void)openPickFromMap;
 
 @end

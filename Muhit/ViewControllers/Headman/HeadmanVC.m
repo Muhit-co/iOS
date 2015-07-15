@@ -7,15 +7,15 @@
 //
 
 #import "HeadmanVC.h"
-#import <MapKit/MapKit.h>
 
-@interface HeadmanVC ()<MKMapViewDelegate,CLLocationManagerDelegate>{
+@interface HeadmanVC ()<CLLocationManagerDelegate>{
 
     IBOutlet UILabel *lblHeadman,*lblName,*lblPhone,*lblCell,*lblMail,*lblAddress;
     IBOutlet UIImageView *imgHeadman,*imgPhone,*imgCell,*imgMail,*imgAddress;
     IBOutlet UIView *viewPhone,*viewCell,*viewMail,*viewAddress;
-    IBOutlet MKMapView *map;
+    IBOutlet GMSMapView *map;
     CLLocationManager *locationManager;
+    CLLocationCoordinate2D coordHeadman,coordUser;
     IBOutlet NSLayoutConstraint *constPhoneTop,*constCellTop,*constMailTop,*constAddressTop,*constMapTop;
 }
 
@@ -43,7 +43,7 @@
     [imgMail setImage:[IonIcons imageWithIcon:ion_email size:25 color:CLR_LIGHT_BLUE]];
     [imgAddress setImage:[IonIcons imageWithIcon:ion_location size:25 color:CLR_LIGHT_BLUE]];
     
-    [map setShowsUserLocation:YES];
+
     locationManager = [[CLLocationManager alloc] init];
     if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [locationManager requestWhenInUseAuthorization];
@@ -112,38 +112,24 @@
     
     [self.view layoutIfNeeded];
     
-    if (dict[@"image"]) {
-        [imgHeadman sd_setImageWithURL:[NSURL URLWithString:dict[@"image"]] placeholderImage:[UIImage imageNamed:@"userPlaceholder"]];
-    }
-    else{
-        [imgHeadman setImage:[UIImage imageNamed:@"userPlaceholder"]];
-    }
+    NSString *imgUrl = [NSString stringWithFormat:@"%@/170x170/%@",IMAGE_PROXY,dict[@"picture"]];
+    [imgHeadman sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"userPlaceholder"]];
     
-    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-    [point setCoordinate:CLLocationCoordinate2DMake([dict[@"lat"] floatValue], [dict[@"lon"] floatValue])];
-    [point setTitle:LocalizedString(@"Muhtar")];
-    [point setSubtitle:dict[@"name"]];
-
-    [map addAnnotation:point];
+    coordHeadman = CLLocationCoordinate2DMake([dict[@"lat"] floatValue], [dict[@"lon"] floatValue]);
+    coordUser = locationManager.location.coordinate;
     
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake([dict[@"lat"] floatValue], [dict[@"lon"] floatValue]), 300, 300);
-    [map setRegion:[map regionThatFits:region] animated:YES];
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.position = coordHeadman;
+    marker.appearAnimation = kGMSMarkerAnimationPop;
+    marker.icon = [IonIcons imageWithIcon:ion_location size:60 color:CLR_LIGHT_BLUE];
+    marker.title = LocalizedString(@"Muhtar");
+    marker.snippet = dict[@"name"];
+    marker.map = map;
+    map.myLocationEnabled = YES;
+    
+    [map animateWithCameraUpdate:[GMSCameraUpdate fitBounds:[[GMSCoordinateBounds alloc] initWithCoordinate:coordHeadman coordinate:coordUser] withPadding:100]];
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)_map viewForAnnotation:(id <MKAnnotation>)annotation{
-    static NSString *annotationViewReuseIdentifier = @"annotationViewReuseIdentifier";
-    
-    MKAnnotationView *annotationView = (MKAnnotationView *)[map dequeueReusableAnnotationViewWithIdentifier:annotationViewReuseIdentifier];
-    
-    if (annotationView == nil){
-        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationViewReuseIdentifier];
-    }
-    
-    annotationView.image = [IonIcons imageWithIcon:ion_location size:60 color:CLR_LIGHT_BLUE];
-    annotationView.annotation = annotation;
-    
-    return annotationView;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
