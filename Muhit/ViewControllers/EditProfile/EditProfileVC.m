@@ -17,7 +17,7 @@
     IBOutlet UIView *viewHood;
     NSArray *arrHoods;
     NSString *fullGeoCode;
-    BSKeyboardControls *keyboardControl;
+    KeyboardControls *keyboardControl;
     UIActionSheet *actionSheet;
     UIImagePickerController * imgPicker;
     NSDictionary *profileDict;
@@ -40,7 +40,7 @@
     [self adjustUI];
     
     NSArray *txtFields = @[txtName, txtSurname, txtEmail,txtUsername,txtPassword];
-    keyboardControl = [[BSKeyboardControls alloc] initWithFields:txtFields];
+    keyboardControl = [[KeyboardControls alloc] initWithFields:txtFields];
     [keyboardControl setDelegate:self];
     
     [self setDetailsWithDictionary:profileDict];
@@ -59,7 +59,7 @@
 }
 
 -(void)setDetailsWithDictionary:(NSDictionary*)dict{
-
+    
     [txtUsername setText:dict[@"username"]];
     [txtName setText:dict[@"first_name"]];
     [txtSurname setText:dict[@"last_name"]];
@@ -90,10 +90,10 @@
     txtSurname.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
     txtEmail.layer.cornerRadius = cornerRadius;
     txtEmail.layer.borderWidth = borderWidth;
-    txtEmail.layer.borderColor = [[HXColor colorWithHexString:@"eeeeee"] CGColor];
+    txtEmail.layer.borderColor = [[HXColor hx_colorWithHexRGBAString:@"eeeeee"] CGColor];
     txtUsername.layer.cornerRadius = cornerRadius;
     txtUsername.layer.borderWidth = borderWidth;
-    txtUsername.layer.borderColor = [[HXColor colorWithHexString:@"eeeeee"] CGColor];
+    txtUsername.layer.borderColor = [[HXColor hx_colorWithHexRGBAString:@"eeeeee"] CGColor];
     txtPassword.layer.cornerRadius = cornerRadius;
     txtPassword.layer.borderWidth = borderWidth;
     txtPassword.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
@@ -175,16 +175,16 @@
 #pragma mark Keyboard Controls Delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-
+    
     [scrollRoot setContentOffset:CGPointMake(0,textField.frame.origin.y - 35 ) animated:YES];
     [keyboardControl setActiveField:textField];
 }
 
-- (void)keyboardControls:(BSKeyboardControls *)keyboardControls selectedField:(UIView *)field inDirection:(BSKeyboardControlsDirection)direction{
+- (void)keyboardControls:(KeyboardControls *)keyboardControls selectedField:(UIView *)field inDirection:(KeyboardControlsDirection)direction{
     [scrollRoot setContentOffset:CGPointMake(0,field.frame.origin.y - 35 ) animated:YES];
 }
 
-- (void)keyboardControlsDonePressed:(BSKeyboardControls *)keyboardControls{
+- (void)keyboardControlsDonePressed:(KeyboardControls *)keyboardControls{
     [self.view endEditing:YES];
     [scrollRoot setContentOffset:CGPointMake(0,0) animated:YES];
 }

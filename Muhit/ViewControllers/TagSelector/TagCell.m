@@ -9,7 +9,7 @@
 #import "TagCell.h"
 
 @interface TagCell(){
-	IBOutlet UILabel *lblTitle;
+    IBOutlet UILabel *lblTitle;
 }
 @end
 
@@ -24,7 +24,7 @@
 
 - (void)setWithTitle:(NSString*)title bgColor:(NSString*)bgColor{
     [lblTitle setText:[title toUpper]];
-    [[self contentView] setBackgroundColor:[HXColor colorWithHexString:bgColor]];
+    [[self contentView] setBackgroundColor:[HXColor hx_colorWithHexRGBAString:bgColor]];
 }
 
 @end

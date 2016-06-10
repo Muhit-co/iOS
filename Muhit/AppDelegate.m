@@ -12,7 +12,6 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
-
 #define ALERT_PUSH_NOTIFICATION 10
 
 @interface AppDelegate (){
@@ -36,7 +35,7 @@
     [[UITextField appearance] setTintColor:CLR_DARK_BLUE];
     [[UITextView appearance] setTintColor:CLR_DARK_BLUE];
     
-//    [MT setServiceURL:@"http://muhit.co"];//Production
+    //    [MT setServiceURL:@"http://muhit.co"];//Production
     [MT setServiceURL:@"http://muhit.co"];//Sandbox
     
     if ([UD objectForKey:UD_ACCESS_TOKEN]) {
@@ -125,7 +124,7 @@
     [[MT drawerController] setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     [[MT drawerController] setShowsShadow:YES];
     [[MT drawerController] setShouldStretchDrawer:NO];
-
+    
     [[self window] setRootViewController:[MT drawerController]];
 }
 
@@ -138,24 +137,15 @@
     if (!isRegisteredPush) {
         isRegisteredPush = YES;
         
-        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-            [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:
-                                                                                 (UIUserNotificationTypeAlert |
-                                                                                  UIUserNotificationTypeSound |
-                                                                                  UIUserNotificationTypeBadge) categories:nil]];
-            
-        }
-        else{
-            [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-             UIRemoteNotificationTypeAlert |
-             UIRemoteNotificationTypeSound |
-             UIRemoteNotificationTypeBadge];
-        }
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:
+                                                                             (UIUserNotificationTypeAlert |
+                                                                              UIUserNotificationTypeSound |
+                                                                              UIUserNotificationTypeBadge) categories:nil]];
     }
 }
 
 - (void)showPushNotificationPopup{
-        
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:pushNotification[@"t"]
                                                     message:pushNotification[@"M"]
                                                    delegate:self

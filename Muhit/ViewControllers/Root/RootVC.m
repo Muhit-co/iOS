@@ -35,9 +35,9 @@
     [scrollRoot setBackgroundColor:[UIColor clearColor]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setLocalizedStrings) name:kLocalizationChanged object:nil];
-
+    
     if ([[UF osVersion] floatValue] >= 7.0) {
-        UIBarButtonItem *barBack = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(back)];
+        UIBarButtonItem *barBack = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
         [[self navigationItem] setBackBarButtonItem:barBack];
     }
     

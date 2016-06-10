@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Muhit. All rights reserved.
 //
 
-#import "BSKeyboardControls.h"
+#import "KeyboardControls.h"
 #import "PlacesView.h"
 
-@interface SignupVC : RootVC <BSKeyboardControlsDelegate,UITextFieldDelegate,PlacesViewDelegate>
+@interface SignupVC : RootVC <KeyboardControlsDelegate,UITextFieldDelegate,PlacesViewDelegate>
 
 @end

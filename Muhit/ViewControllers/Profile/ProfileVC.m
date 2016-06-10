@@ -74,17 +74,17 @@
     
     [[self view] setBackgroundColor:[UIColor whiteColor]];
 
-    [imgAddress setImage:[IonIcons imageWithIcon:ion_location size:22 color:[HXColor colorWithHexString:@"dddddd"]]];
-    [imgMail setImage:[IonIcons imageWithIcon:ion_email size:22 color:[HXColor colorWithHexString:@"dddddd"]]];
+    [imgAddress setImage:[IonIcons imageWithIcon:ion_location size:22 color:[HXColor hx_colorWithHexRGBAString:@"dddddd"]]];
+    [imgMail setImage:[IonIcons imageWithIcon:ion_email size:22 color:[HXColor hx_colorWithHexRGBAString:@"dddddd"]]];
     [imgIdeas setImage:[IonIcons imageWithIcon:ion_lightbulb size:24 color:CLR_LIGHT_BLUE]];
     [imgSupports setImage:[IonIcons imageWithIcon:ion_thumbsup size:24 color:CLR_LIGHT_BLUE]];
     
     viewIdeas.layer.cornerRadius = cornerRadius;
-    viewIdeas.layer.borderColor = [[HXColor colorWithHexString:@"dbdbdb"] CGColor];
+    viewIdeas.layer.borderColor = [[HXColor hx_colorWithHexRGBAString:@"dbdbdb"] CGColor];
     viewIdeas.layer.borderWidth = 1;
     
     viewSupports.layer.cornerRadius = cornerRadius;
-    viewSupports.layer.borderColor = [[HXColor colorWithHexString:@"dbdbdb"] CGColor];
+    viewSupports.layer.borderColor = [[HXColor hx_colorWithHexRGBAString:@"dbdbdb"] CGColor];
     viewSupports.layer.borderWidth = 1;
     
     imgUser.layer.cornerRadius = 35;

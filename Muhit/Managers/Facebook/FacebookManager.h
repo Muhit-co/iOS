@@ -7,21 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <FacebookSDK/FacebookSDK.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
+#define ERROR_FB_LOGIN_CANCELLED 101
 #define FACEBOOK [FacebookManager sharedManager]
 #define FB_EMAIL @"email"
 #define FB_FULLNAME @"name"
 #define FB_ID @"id"
 #define FB_GENDER @"gender"
+#define FB_BIRTHDAY @"birthday"
 
 @protocol FacebookDelegate <NSObject>
 
 @optional
 
-- (void) openedFacebookSessionWithToken:(NSString *)accessToken;
-- (void) fetchedFacebookUserInfo:(id<FBGraphUser>)userInfo error:(NSError *)error;
-- (void) postedOnFacebook:(NSString *)message successfully:(BOOL)success;
+- (void) fetchedFacebookUserInfo:(NSDictionary *)userInfo error:(NSError *)error;
 
 @end
 
@@ -29,11 +30,8 @@
 
 + (FacebookManager *) sharedManager;
 
-- (void) closeSessionWithToken:(BOOL)withToken;
-
-- (void) openSessionWithDelegate:(id <FacebookDelegate>) delegate;
-- (void) requestUserInfoWithDelegate:(id <FacebookDelegate>) delegate;
-- (void) publishMessage:(NSString *)message withDelegate:(id<FacebookDelegate>)delegate;
+- (void) logout;
+- (void) loginWithDelegate:(id <FacebookDelegate>)delegate fromViewController:(UIViewController *)fromViewController;
 - (NSString *) accessToken;
 
 @end

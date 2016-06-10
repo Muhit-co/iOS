@@ -69,7 +69,7 @@
 
 -(void)setDetailsWithDictionary:(NSDictionary*)dict{
     NSLog(@"issueDetail:%@",dict);
-
+    
     if ([dict[@"user_id"] integerValue] == [UD integerForKey:UD_USER_ID]) {
         [btnEdit setHidden:NO];
         [btnSupport setHidden:YES];
@@ -85,10 +85,10 @@
             [btnSupport setTitle:[LocalizedString(@"Destekle") toUpper]];
         }
     }
-
+    
     arrComments = [NSArray arrayWithArray:dict[@"comments"]];
     [tblComments reloadData];
-	[imgCreator sd_setImageWithURL:[NSURL URLWithString:dict[@"user"][@"picture"]] placeholderImage:[UIImage imageNamed:@"userPlaceholder"]];
+    [imgCreator sd_setImageWithURL:[NSURL URLWithString:dict[@"user"][@"picture"]] placeholderImage:[UIImage imageNamed:@"userPlaceholder"]];
     
     [lblCreatorName setText:[NSString stringWithFormat:@"%@ %@",dict[@"user"][@"first_name"],dict[@"user"][@"last_name"]]];
     [lblSupportCount setText:[dict[@"supporter_counter"] stringValue]];
@@ -102,18 +102,18 @@
     
     if ([dict[@"status"] isEqualToString:@"new"]) {
         [lblType setText:LocalizedString(@"Başvuruldu")];
-        [viewType setBackgroundColor:[HXColor colorWithHexString:@"44a2e0"]];
-        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_lightbulb size:20 color:[HXColor colorWithHexString:@"FFFFFF"]]];
+        [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"44a2e0"]];
+        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_lightbulb size:20 color:CLR_WHITE]];
     }
     else if ([dict[@"status"] isEqualToString:@"developing"]){
         [lblType setText:LocalizedString(@"Gelişmekte")];
-        [viewType setBackgroundColor:[HXColor colorWithHexString:@"c677ea"]];
-        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_wrench size:20 color:[HXColor colorWithHexString:@"FFFFFF"]]];
+        [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"c677ea"]];
+        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_wrench size:20 color:CLR_WHITE]];
     }
     else{
         [lblType setText:LocalizedString(@"Çözüldü")];
-        [viewType setBackgroundColor:[HXColor colorWithHexString:@"27ae61"]];
-        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_checkmark_circled size:20 color:[HXColor colorWithHexString:@"FFFFFF"]]];
+        [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"27ae61"]];
+        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_checkmark_circled size:20 color:CLR_WHITE]];
     }
     
     CGSize textSize = [[lblType text] sizeWithAttributes:@{NSFontAttributeName:[lblType font]}];
@@ -151,7 +151,7 @@
         }
         else{
             [pageControl setNumberOfPages:arrImages.count];
-        	[scrollImages setContentSize:CGSizeMake(scrollImages.frame.size.width * arrImages.count, scrollImages.frame.size.height)];
+            [scrollImages setContentSize:CGSizeMake(scrollImages.frame.size.width * arrImages.count, scrollImages.frame.size.height)];
         }
         
     }
@@ -207,18 +207,18 @@
         [lbl setTextAlignment:NSTextAlignmentCenter];
         [lbl setTextColor:[UIColor whiteColor]];
         
-
+        
         UIView *viewItem = [[UIView alloc] initWithFrame:CGRectMake(totalTagsWidth, lastTagsY, viewItemWidth, 30)];
         viewItem.layer.cornerRadius = cornerRadius;
         [viewItem setClipsToBounds:YES];
-        [viewItem setBackgroundColor:[HXColor colorWithHexString:tag[@"background"]]];
+        [viewItem setBackgroundColor:[HXColor hx_colorWithHexRGBAString:tag[@"background"]]];
         [viewItem addSubview:lbl];
         
         totalTagsWidth += viewItemWidth + 10;
         
         [viewTagsContainer addSubview:viewItem];
     }
-     /**************************************/
+    /**************************************/
     [scrollRoot setContentSize:CGSizeMake(scrollRoot.width, viewTagsContainer.bottomPosition + 10)];
     
     constContainerHeight.constant = viewTagsContainer.bottomPosition +10;
@@ -309,7 +309,7 @@
                                        UIActivityTypePostToVimeo,
                                        UIActivityTypePostToTencentWeibo]];
     
-    [sharer setCompletionHandler:nil];
+    [sharer setCompletionWithItemsHandler:nil];
     [[MT navCon] presentViewController:sharer animated:YES completion:nil];
 }
 

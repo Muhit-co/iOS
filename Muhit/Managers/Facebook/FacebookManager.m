@@ -8,9 +8,9 @@
 
 #import "FacebookManager.h"
 
-#define FACEBOOK_ERROR_DUPLICATE_MESSAGE @"code = 506"
-
-@interface FacebookManager () <FBLoginViewDelegate>
+@interface FacebookManager (){
+    FBSDKLoginManager *manager;
+}
 
 @end
 
@@ -28,124 +28,73 @@
 }
 
 - (id)init {
-    if (self = [super init]) {
-        
-    }
+    if (self = [super init]) {}
     return self;
 }
 
-#pragma mark -
-
-NSString *NSStringFromFBSessionState(FBSessionState state)
-{
-    switch (state) {
-        case FBSessionStateClosed:
-            return @"FBSessionStateClosed";
-        case FBSessionStateClosedLoginFailed:
-            return @"FBSessionStateClosedLoginFailed";
-        case FBSessionStateCreated:
-            return @"FBSessionStateCreated";
-        case FBSessionStateCreatedOpening:
-            return @"FBSessionStateCreatedOpening";
-        case FBSessionStateCreatedTokenLoaded:
-            return @"FBSessionStateCreatedTokenLoaded";
-        case FBSessionStateOpen:
-            return @"FBSessionStateOpen";
-        case FBSessionStateOpenTokenExtended:
-            return @"FBSessionStateOpenTokenExtended";
-            
-    }
-    return @"Not Found";
+- (void) logout{
+    //    if (!manager) {
+    manager = [[FBSDKLoginManager alloc] init];
+    //    }
+    [manager logOut];
 }
 
-- (void) informDelegateForSessionOpened:(id <FacebookDelegate>) delegate
-{
-    if([delegate respondsToSelector:@selector(openedFacebookSessionWithToken:)]) {
-        [delegate openedFacebookSessionWithToken:FBSession.activeSession.accessTokenData.accessToken];
-    }
-}
-
-- (void) closeSessionWithToken:(BOOL)withToken {
-    if(withToken) {
-        [FBSession.activeSession closeAndClearTokenInformation];
-    } else {
-        [FBSession.activeSession close];
-    }
-}
-
-- (void) openSessionWithCompletionBlock:(void (^)(NSError *error))block {
-    if (!FBSession.activeSession.isOpen) {
-        DLog(@"1");
-        if (FBSession.activeSession.state != FBSessionStateCreated) {
-            FBSession.activeSession = [[FBSession alloc] initWithPermissions:@[@"public_profile", @"email"]];
-        }
-
-        [FBSession.activeSession openWithBehavior:FBSessionLoginBehaviorUseSystemAccountIfPresent completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-            if(status == FBSessionStateOpen) {
-                block(nil);
-            }
-            if (error) {
-                block(error);
-            }
-        }];
-    }
-    else {
-        block(nil);
-    }
-}
-
-- (void) openSessionWithDelegate:(id<FacebookDelegate>)delegate
-{
-    [self openSessionWithCompletionBlock:^(NSError *error){
-        [self informDelegateForSessionOpened:delegate];
-    }];
-}
-
-- (void) publishMessage:(NSString *)message withDelegate:(id <FacebookDelegate>)delegate {
+- (void) loginWithDelegate:(id <FacebookDelegate>) delegate fromViewController:(UIViewController *)fromViewController{
     
-    if (FBSession.activeSession.isOpen) {
-        [FBRequestConnection startForPostStatusUpdate:message
-                                    completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                                        if([delegate respondsToSelector:@selector(postedOnFacebook:successfully:)]) {
-                                            [delegate postedOnFacebook:message successfully:!error || [error.description rangeOfString:FACEBOOK_ERROR_DUPLICATE_MESSAGE].length > 0];
-                                        }
-                                    }];
-    } else {
-        [self openSessionWithCompletionBlock:^(NSError *error){
-            [self publishMessage:message withDelegate:delegate];
-        }];
+    
+    if ([self accessToken]) {
+        [self getUserInfo:delegate];
     }
-}
-
-- (void) requestUserInfoWithDelegate:(id <FacebookDelegate>) delegate {
-    if (FBSession.activeSession.isOpen) {
-        [self informDelegateForSessionOpened:delegate];
-        [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-            if([delegate respondsToSelector:@selector(fetchedFacebookUserInfo:error:)]) {
-                [delegate fetchedFacebookUserInfo:result error:error];
-            }
-        }];
-    } else {
-        [self openSessionWithCompletionBlock:^(NSError *error){
+    else{
+        if (!manager) {
+            manager = [[FBSDKLoginManager alloc] init];
+        }
+        
+        [manager setLoginBehavior:FBSDKLoginBehaviorSystemAccount];
+        
+        [manager logInWithReadPermissions:@[@"email",@"user_birthday"] fromViewController:fromViewController handler: ^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+            ADD_HUD_TOP
             if (error) {
+                DLog(@"FB Error Code: %ld Desc: %@",(long)error.code,error.description);
                 if([delegate respondsToSelector:@selector(fetchedFacebookUserInfo:error:)]) {
                     [delegate fetchedFacebookUserInfo:nil error:error];
                 }
             }
-            else{
-                [self requestUserInfoWithDelegate:delegate];
+            else if (result.isCancelled) {
+                NSError *cancelError = [NSError errorWithDomain:@"bitaksi" code:ERROR_FB_LOGIN_CANCELLED userInfo:nil];
+                
+                if([delegate respondsToSelector:@selector(fetchedFacebookUserInfo:error:)]) {
+                    [delegate fetchedFacebookUserInfo:nil error:cancelError];
+                }
+            }
+            else {
+                [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
+                [self getUserInfo:delegate];
             }
         }];
     }
 }
 
+-(void) getUserInfo:(id <FacebookDelegate>) delegate{
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me?fields=email,birthday,gender,name,id" parameters:nil]
+     startWithCompletionHandler: ^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+         if (!error) {
+             DLog(@"FB Graph Result:%@",result);
+             if([delegate respondsToSelector:@selector(fetchedFacebookUserInfo:error:)]) {
+                 [delegate fetchedFacebookUserInfo:result error:error];
+             }
+         }
+         else{
+             DLog(@"FB Error Code: %ld Desc: %@",(long)error.code,error.description);
+             if([delegate respondsToSelector:@selector(fetchedFacebookUserInfo:error:)]) {
+                 [delegate fetchedFacebookUserInfo:nil error:error];
+             }
+         }
+     }];
+}
+
 - (NSString *) accessToken{
-    if (FBSession.activeSession.isOpen) {
-        return FBSession.activeSession.accessTokenData.accessToken;
-    }
-    else{
-        return nil;
-    }
+    return [[FBSDKAccessToken currentAccessToken] tokenString];
 }
 
 @end

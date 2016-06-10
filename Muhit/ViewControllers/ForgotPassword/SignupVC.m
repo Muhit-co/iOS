@@ -13,7 +13,7 @@
     IBOutlet UILabel *lblFirstname,*lblSurname,*lblEmail,*lblPassword,*lblRePassword,*lblHood;
     IBOutlet UIButton *btnSignup,*btnHood;
     IBOutlet UIImageView *imgDownIcon;
-    BSKeyboardControls *keyboardControl;
+    KeyboardControls *keyboardControl;
     PlacesView *placeView;
     NSString *fullGeoCode;
 }
@@ -28,7 +28,7 @@
     [self adjustUI];
     
     NSArray *txtFields = @[txtFirstname, txtSurname, txtEmail,txtPassword,txtRePassword];
-    keyboardControl = [[BSKeyboardControls alloc] initWithFields:txtFields];
+    keyboardControl = [[KeyboardControls alloc] initWithFields:txtFields];
     [keyboardControl setDelegate:self];
     [NC addObserver:self selector:@selector(geoCodePicked:) name:NC_GEOCODE_PICKED object:nil];
 }
@@ -61,7 +61,7 @@
                                            surname:txtSurname.text
                                              email:txtEmail.text
                                           password:txtPassword.text
-                    					rePassword:txtRePassword.text
+                                        rePassword:txtRePassword.text
                                    isFacebookLogin:NO];
     
     if (isValid == NO){
@@ -98,11 +98,11 @@
     [keyboardControl setActiveField:textField];
 }
 
-- (void)keyboardControls:(BSKeyboardControls *)keyboardControls selectedField:(UIView *)field inDirection:(BSKeyboardControlsDirection)direction{
+- (void)keyboardControls:(KeyboardControls *)keyboardControls selectedField:(UIView *)field inDirection:(KeyboardControlsDirection)direction{
     [scrollRoot setContentOffset:CGPointMake(0,field.frame.origin.y - 35 ) animated:YES];
 }
 
-- (void)keyboardControlsDonePressed:(BSKeyboardControls *)keyboardControls{
+- (void)keyboardControlsDonePressed:(KeyboardControls *)keyboardControls{
     [self.view endEditing:YES];
     [scrollRoot setContentOffset:CGPointMake(0,0) animated:YES];
 }

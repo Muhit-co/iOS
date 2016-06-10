@@ -12,7 +12,7 @@
     IBOutlet UILabel *lblTitle;
     IBOutlet UIImageView *imgIcon;
     IBOutlet UIImageView *imgDown;
-	IBOutlet NSLayoutConstraint *iconLeadingConstraint;
+    IBOutlet NSLayoutConstraint *iconLeadingConstraint;
 }
 @end
 
@@ -31,8 +31,8 @@
     lblTitle.text = title;
     imgIcon.image = [IonIcons imageWithIcon:icon
                                        size:18
-                                      color:[HXColor colorWithHexString:@"FFFFFF"]];
-
+                                      color:CLR_WHITE];
+    
 }
 
 @end

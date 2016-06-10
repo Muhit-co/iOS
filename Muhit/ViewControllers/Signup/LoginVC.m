@@ -12,7 +12,7 @@
     IBOutlet MTTextField *txtEmail,*txtPassword;
     IBOutlet UILabel *lblEmail,*lblPassword;
     IBOutlet UIButton *btnLogin,*btnSignup,*btnForgotPassword,*btnFacebook;
-    BSKeyboardControls *keyboardControl;
+    KeyboardControls *keyboardControl;
     
 }
 
@@ -25,7 +25,7 @@
     [self adjustUI];
     
     NSArray *txtFields = @[txtEmail ,txtPassword];
-    keyboardControl = [[BSKeyboardControls alloc] initWithFields:txtFields];
+    keyboardControl = [[KeyboardControls alloc] initWithFields:txtFields];
     [keyboardControl setDelegate:self];
 }
 
@@ -39,7 +39,7 @@
 }
 
 -(IBAction)actLogin:(id)sender{
-
+    
     [self resetScrollOffset];
     [self.view endEditing:YES];
     
@@ -50,7 +50,7 @@
         [scrollRoot setContentOffset:CGPointMake(0,0) animated:YES];
         return;
     }
-	
+    
     ADD_HUD
     [MuhitServices login:txtEmail.text password:txtPassword.text handler:^(NSDictionary *response, NSError *error) {
         if (error) {
@@ -68,11 +68,10 @@
 }
 
 -(IBAction)actFacebook:(id)sender{
-    ADD_HUD
-    [FACEBOOK requestUserInfoWithDelegate:self];
+    [FACEBOOK loginWithDelegate:self fromViewController:self];
 }
 
-- (void) fetchedFacebookUserInfo:(id<FBGraphUser>)userInfo error:(NSError *)error{
+- (void) fetchedFacebookUserInfo:(NSDictionary*)userInfo error:(NSError *)error{
     DLog(@"user: %@",userInfo);
     if (userInfo) {
         [MuhitServices loginWithFacebook:[FACEBOOK accessToken] handler:^(NSDictionary *response, NSError *error) {
@@ -91,11 +90,11 @@
     }
     else if(error){
         REMOVE_HUD
-        if ([FBErrorUtility shouldNotifyUserForError:error] == YES){
-            SHOW_ALERT(LocalizedString(@"fbPermissionMessage"))
-        }
-        else if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryUserCancelled) {
+        if ([error.domain isEqualToString:@"bitaksi"] && error.code==ERROR_FB_LOGIN_CANCELLED){
             DLog(@"User cancelled permission");
+        }
+        else if ([error.domain isEqualToString:FBSDKLoginErrorDomain] &&  error.code==FBSDKLoginSystemAccountAppDisabledErrorCode) {
+            SHOW_ALERT(LocalizedString(@"fbPermissionMessage"))
         }
         else{
             [self actFacebook:nil];
@@ -104,10 +103,11 @@
     else{
         [self actFacebook:nil];
     }
+
 }
 
 -(IBAction)actSignup:(id)sender{
-	[ScreenOperations openSignUp];
+    [ScreenOperations openSignUp];
 }
 
 -(IBAction)actForgotPassword:(id)sender{
@@ -122,11 +122,11 @@
     [keyboardControl setActiveField:textField];
 }
 
-- (void)keyboardControls:(BSKeyboardControls *)keyboardControls selectedField:(UIView *)field inDirection:(BSKeyboardControlsDirection)direction{
+- (void)keyboardControls:(KeyboardControls *)keyboardControls selectedField:(UIView *)field inDirection:(KeyboardControlsDirection)direction{
     [scrollRoot setContentOffset:CGPointMake(0,field.frame.origin.y - 35 ) animated:YES];
 }
 
-- (void)keyboardControlsDonePressed:(BSKeyboardControls *)keyboardControls{
+- (void)keyboardControlsDonePressed:(KeyboardControls *)keyboardControls{
     [self.view endEditing:YES];
     [self resetScrollOffset];
 }

@@ -69,7 +69,7 @@
     negativeSpacer.width = -12;
     [[self navigationItem] setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, barBtnSave, nil] animated:NO];
     
-
+    
     [self.view layoutIfNeeded];
 }
 -(void)updateViewConstraints{
@@ -126,7 +126,7 @@
 }
 
 -(void)setForEdit{
-
+    
     issueCoordinate = nilOrJson(issueDict[@"coordinates"]);
     issueGeoCode = nilOrJson(issueDict[@"location"]);
     [btnHood setTitle:issueDict[@"location"]];
@@ -139,30 +139,30 @@
     /************ Images Area ************/
     
     arrPhotos = [[NSMutableArray alloc] init];
-
+    
     NSArray * arrImages = [NSArray arrayWithArray:issueDict[@"images"]];
-
+    
     for (int i = 0; i < arrImages.count; i++) {
-
+        
         NSString *imgUrl = [NSString stringWithFormat:@"%@/3000x3000/%@",IMAGE_PROXY,arrImages[i][@"image"]];
-
-    	[[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:imgUrl]
-                          options:0
-                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {}
-                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                            if (image) {
-                                [arrPhotos addObject:image];
-                                if (i==arrImages.count-1) {
-                                    [self refreshPhotosView];
-                                    REMOVE_HUD
-                                }
-                            }
-                        }];
+        
+        [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:imgUrl]
+                                                        options:0
+                                                       progress:^(NSInteger receivedSize, NSInteger expectedSize) {}
+                                                      completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                          if (image) {
+                                                              [arrPhotos addObject:image];
+                                                              if (i==arrImages.count-1) {
+                                                                  [self refreshPhotosView];
+                                                                  REMOVE_HUD
+                                                              }
+                                                          }
+                                                      }];
     }
- 	/************************************/
+    /************************************/
     
     /************ Tags Area ************/
-
+    
     arrTags = [[NSMutableArray alloc] initWithArray:issueDict[@"tags"]];
     arrTagIds = [[NSMutableArray alloc] init];
     
@@ -175,7 +175,7 @@
 }
 
 -(void)getTags{
-	ADD_HUD
+    ADD_HUD
     [SERVICES getTags:@"" handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
@@ -198,7 +198,7 @@
     if (!actionSheet) {
         actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:LocalizedString(@"İptal") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"Fotoğraf Çek"),LocalizedString(@"Kütüphaneden Seç"),nil];
     }
-
+    
     [actionSheet showInView:self.view];
     [actionSheet reloadInputViews];
 }
@@ -227,9 +227,9 @@
     
     NSString *issueId = nil;
     if (issueDict) {
-    	issueId = STRING_W_INT([issueDict[@"id"] intValue]);
+        issueId = STRING_W_INT([issueDict[@"id"] intValue]);
     }
-
+    
     ADD_HUD
     [MuhitServices addOrUpdateIssue:txtTitle.text description:txtDescription.text location:issueGeoCode tags:arrTagIds images:arrBase64Photos isAnonymous:isAnonim coordinate:issueCoordinate issueId:issueId handler:^(NSDictionary *response, NSError *error) {
         if (error) {
@@ -239,7 +239,7 @@
             if(response[@"id"]){
                 [self back];
             }
-                
+            
             NSLog(@"addIssueResponse:%@",response);
         }
         REMOVE_HUD
@@ -258,7 +258,7 @@
 - (void)refreshTagsView{
     
     UIFont *tagFont = [UIFont fontWithName:@"SourceSansPro-Bold" size:16.0];
-
+    
     for (UIView *view in [viewTags subviews]) {
         if (view != viewAddTag) {
             [view removeFromSuperview];
@@ -269,13 +269,13 @@
         [viewAddTag setHidden:YES];
     }
     else{
-    	[viewAddTag setHidden:NO];
+        [viewAddTag setHidden:NO];
     }
     constBtnAddTagTop.constant = 0;
     constBtnAddTagLeft.constant = 0;
-
+    
     constTagsViewHeight.constant = 30;
-	[self.view layoutIfNeeded];
+    [self.view layoutIfNeeded];
     constContainerHeight.constant = [viewAnonim bottomPosition] + 10;
     totalTagsWidth = 0;
     lastTagsY = 0;
@@ -299,7 +299,7 @@
         [lbl setFont:tagFont];
         [lbl setTextAlignment:NSTextAlignmentCenter];
         [lbl setTextColor:[UIColor whiteColor]];
-
+        
         UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(viewItemWidth-30, 0, 30, 30)];
         btn.tag = [tag[@"id"] intValue];
         [btn addTarget:self action:@selector(actRemoveTag:) forControlEvents:UIControlEventTouchUpInside];
@@ -308,7 +308,7 @@
         UIView *viewItem = [[UIView alloc] initWithFrame:CGRectMake(totalTagsWidth, lastTagsY, viewItemWidth, 30)];
         viewItem.layer.cornerRadius = cornerRadius;
         [viewItem setClipsToBounds:YES];
-        [viewItem setBackgroundColor:[HXColor colorWithHexString:tag[@"background"]]];
+        [viewItem setBackgroundColor:[HXColor hx_colorWithHexRGBAString:tag[@"background"]]];
         [viewItem addSubview:lbl];
         [viewItem addSubview:btn];
         
@@ -345,7 +345,7 @@
         [btnAddPhoto setHidden:YES];
     }
     else{
-    	[btnAddPhoto setHidden:NO];
+        [btnAddPhoto setHidden:NO];
     }
     
     if ([arrPhotos count] == 0) {
@@ -380,7 +380,7 @@
 #pragma mark - TagSelector
 
 - (void)selectedTagIndex:(int)index{
-
+    
     if (!arrTags) {
         arrTags = [[NSMutableArray alloc] init];
     }
@@ -410,19 +410,19 @@
     }
     
     [arrPhotos addObject:image];
-
+    
     [self refreshPhotosView];
     [imgPicker dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
- 	[imgPicker dismissViewControllerAnimated:YES completion:nil];
+    [imgPicker dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     switch (buttonIndex){
-        
+            
         case 0:{
             imgPicker = [[UIImagePickerController alloc] init];
             [imgPicker setSourceType:UIImagePickerControllerSourceTypeCamera];
@@ -433,18 +433,18 @@
                                                             };
             [self presentViewController:imgPicker animated:YES completion:nil];
         }
-        break;
+            break;
         case 1:{
             imgPicker = [[UIImagePickerController alloc] init];
             [imgPicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
             [imgPicker setDelegate:self];
             imgPicker.navigationBar.titleTextAttributes = @{
-                                                         NSForegroundColorAttributeName:CLR_LIGHT_BLUE,
-                                                         NSFontAttributeName: [UIFont fontWithName:@"SourceSansPro-Semibold" size:19.0f]
-                                                         };
+                                                            NSForegroundColorAttributeName:CLR_LIGHT_BLUE,
+                                                            NSFontAttributeName: [UIFont fontWithName:@"SourceSansPro-Semibold" size:19.0f]
+                                                            };
             [self presentViewController:imgPicker animated:YES completion:nil];
         }
-        break;
+            break;
     }
     
 }
@@ -468,7 +468,7 @@
 }
 
 - (void)setLocalizedStrings{
-
+    
     [lblTitle setText:LocalizedString(@"Başlık")];
     [lblDescription setText:LocalizedString(@"Açıklama")];
     [lblHood setText:LocalizedString(@"Mahalle")];

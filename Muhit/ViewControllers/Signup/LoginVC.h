@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Muhit. All rights reserved.
 //
 
-#import "BSKeyboardControls.h"
+#import "KeyboardControls.h"
 #import "FacebookManager.h"
 
-@interface LoginVC : RootVC <BSKeyboardControlsDelegate,UITextFieldDelegate,FacebookDelegate>
+@interface LoginVC : RootVC <KeyboardControlsDelegate,UITextFieldDelegate,FacebookDelegate>
 
 @end

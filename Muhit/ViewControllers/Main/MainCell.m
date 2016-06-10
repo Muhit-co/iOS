@@ -44,29 +44,29 @@
     
     imgIssue.layer.cornerRadius = cornerRadius;
     imgIssue.layer.masksToBounds = YES;
-
+    
     viewType.layer.cornerRadius = cornerRadius;
     CGSize textSize = [[lblCount text] sizeWithAttributes:@{NSFontAttributeName:[lblCount font]}];
     constViewTypeWidth.constant = 40 + textSize.width+3;
     [self layoutIfNeeded];
-
+    
     if ([dict[@"status"] isEqualToString:@"new"]) {
-        [viewType setBackgroundColor:[HXColor colorWithHexString:@"44a2e0"]];
-        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_lightbulb size:20 color:[HXColor colorWithHexString:@"FFFFFF"]]];
+        [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"44a2e0"]];
+        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_lightbulb size:20 color:CLR_WHITE]];
     }
     else if ([dict[@"status"] isEqualToString:@"developing"]){
-        [viewType setBackgroundColor:[HXColor colorWithHexString:@"c677ea"]];
-        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_wrench size:20 color:[HXColor colorWithHexString:@"FFFFFF"]]];
+        [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"c677ea"]];
+        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_wrench size:20 color:CLR_WHITE]];
     }
     else{
-        [viewType setBackgroundColor:[HXColor colorWithHexString:@"27ae61"]];
-        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_checkmark_circled size:20 color:[HXColor colorWithHexString:@"FFFFFF"]]];
+        [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"27ae61"]];
+        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_checkmark_circled size:20 color:CLR_WHITE]];
     }
     
     /* Tags Area */
     
     totalTagsWidth = 0;
-
+    
     if ([dict[@"tags"] count]==3) {
         [self setTags:viewTag1 tag:dict[@"tags"][0]];
         [self setTags:viewTag2 tag:dict[@"tags"][1]];
@@ -93,7 +93,7 @@
 
 -(void)setTags:(UIView *)view tag:(NSDictionary *)tag{
     view.layer.cornerRadius = 15/2;
-    [view setBackgroundColor:[HXColor colorWithHexString:tag[@"background"]]];
+    [view setBackgroundColor:[HXColor hx_colorWithHexRGBAString:tag[@"background"]]];
 }
 
 @end

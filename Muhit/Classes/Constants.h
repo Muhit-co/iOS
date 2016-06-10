@@ -5,7 +5,7 @@
 //  Created by Emre YANIK on 01/06/15.
 //  Copyright (c) 2015 Muhit. All rights reserved.
 //
-#import <HexColors/HexColor.h>
+#import <HexColors/HexColors.h>
 
 static const CGFloat cornerRadius = 6;
 
@@ -40,9 +40,10 @@ static const CGFloat cornerRadius = 6;
 #define isNotNull(variable) variable == [NSNull null] ? NO : (variable ? YES : NO)
 #define nilOrJson(VAL) [VAL isKindOfClass:[NSNull class]] ? nil : VAL
 
-#define CLR_LIGHT_BLUE [HXColor colorWithHexString:@"44a2e0"]
-#define CLR_DARK_BLUE [HXColor colorWithHexString:@"245573"]
-#define CLR_DARK_PUPRPLE [HXColor colorWithHexString:@"666677"]
+#define CLR_LIGHT_BLUE [HXColor hx_colorWithHexRGBAString:@"44a2e0"]
+#define CLR_DARK_BLUE [HXColor hx_colorWithHexRGBAString:@"245573"]
+#define CLR_DARK_PUPRPLE [HXColor hx_colorWithHexRGBAString:@"666677"]
+#define CLR_WHITE [HXColor hx_colorWithHexRGBAString:@"FFFFFF"]
 
 #define NC_LOGGED_OUT @"NC_LOGGED_OUT"
 #define NC_GEOCODE_PICKED @"NC_GEOCODE_PICKED"
@@ -59,3 +60,10 @@ static const CGFloat cornerRadius = 6;
 #define UD_HOOD_ID @"UD_HOOD_ID"
 #define UD_USER_ID @"UD_USER_ID"
 #define UD_USER_PICTURE @"UD_USER_PICTURE"
+
+#define FONT_BLACK @"SourceSansPro-Black"
+#define FONT_REGULAR @"SourceSansPro-Regular"
+#define FONT_BOLD @"SourceSansPro-Bold"
+#define FONT_SEMI_BOLD @"SourceSansPro-Semibold"
+#define FONT_ITALIC @"SourceSansPro-Italic"
+

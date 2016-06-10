@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Muhit. All rights reserved.
 //
 
-#import "BSKeyboardControls.h"
+#import "KeyboardControls.h"
 
-@interface EditProfileVC : RootVC <BSKeyboardControlsDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate>
+@interface EditProfileVC : RootVC <KeyboardControlsDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate>
 
 - (id)initWithInfo:(NSDictionary *)_info;
 

@@ -36,13 +36,13 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [[self view] setBackgroundColor:CLR_DARK_BLUE];
-
+    
     imgProfile.layer.cornerRadius = 20;
     imgProfile.layer.masksToBounds = YES;
     
-    [btnLogout setImage:[IonIcons imageWithIcon:ion_log_out size:30 color:[HXColor colorWithHexString:@"FFFFFF" alpha:0.3]]];
-    [btnLogin setImage:[IonIcons imageWithIcon:ion_log_in size:30 color:[HXColor colorWithHexString:@"FFFFFF" alpha:0.3]]];
-    [btnSignup setImage:[IonIcons imageWithIcon:ion_person_add size:30 color:[HXColor colorWithHexString:@"FFFFFF" alpha:0.3]]];
+    [btnLogout setImage:[IonIcons imageWithIcon:ion_log_out size:30 color:[HXColor hx_colorWithHexRGBAString:@"FFFFFF" alpha:0.3]]];
+    [btnLogin setImage:[IonIcons imageWithIcon:ion_log_in size:30 color:[HXColor hx_colorWithHexRGBAString:@"FFFFFF" alpha:0.3]]];
+    [btnSignup setImage:[IonIcons imageWithIcon:ion_person_add size:30 color:[HXColor hx_colorWithHexRGBAString:@"FFFFFF" alpha:0.3]]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -50,7 +50,7 @@
     if ([MT isLoggedIn]) {
         [viewLoggedIn setHidden:NO];
         [viewLoggedOut setHidden:YES];
-         NSString *imgUrl = [NSString stringWithFormat:@"%@/80x80/%@",IMAGE_PROXY,[UD objectForKey:UD_USER_PICTURE]];
+        NSString *imgUrl = [NSString stringWithFormat:@"%@/80x80/%@",IMAGE_PROXY,[UD objectForKey:UD_USER_PICTURE]];
         [imgProfile sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"userPlaceholder"]];
         lblName.text = [NSString stringWithFormat:@"%@ %@",[UD objectForKey:UD_FIRSTNAME],[UD objectForKey:UD_SURNAME]];
     }
@@ -58,7 +58,7 @@
         [viewLoggedIn setHidden:YES];
         [viewLoggedOut setHidden:NO];
     }
-	[self reloadMenu];
+    [self reloadMenu];
 }
 
 - (void)createMenu{
@@ -69,13 +69,13 @@
     if ([MT isLoggedIn]) {
         [arrMenu addObject:@{@"title":[LocalizedString(@"Desteklediklerim") toUpper],@"icon":ion_thumbsup,@"selector":SELECTOR_SUPPORTS}];
         [arrMenu addObject:@{@"title":[LocalizedString(@"Fikirlerim") toUpper],@"icon":ion_lightbulb,@"selector":SELECTOR_IDEAS}];
-
+        
     }
     
     [arrMenu addObject:@{@"title":[LocalizedString(@"Duyurular") toUpper],@"icon":ion_speakerphone,@"selector":SELECTOR_NOTIFICATIONS}];
     
     if ([MT isLoggedIn]) {
-		[arrMenu addObject:@{@"title":[LocalizedString(@"Muhtarım") toUpper],@"icon":ion_information_circled,@"selector":SELECTOR_HEADMAN}];
+        [arrMenu addObject:@{@"title":[LocalizedString(@"Muhtarım") toUpper],@"icon":ion_information_circled,@"selector":SELECTOR_HEADMAN}];
     }
 }
 -(void)reloadMenu{
@@ -117,19 +117,19 @@
 }
 
 - (IBAction)actLogout:(id)sender{
-
-    [FACEBOOK closeSessionWithToken:YES];
+    
+    [FACEBOOK logout];
     [MT setIsLoggedIn:NO];
     [self viewWillAppear:NO];
     [NC postNotificationName:NC_LOGGED_OUT object:nil];
     [UF setUserDefaultsWithDetails:nil];
-	[[MT navCon] popToRootViewControllerAnimated:YES];
+    [[MT navCon] popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableView Delegates
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	return 60;
+    return 60;
 }
 
 
@@ -138,7 +138,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     NSDictionary *item = [arrMenu objectAtIndex:indexPath.row];
     
     MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell"];
@@ -154,16 +154,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
    	NSDictionary *item = [arrMenu objectAtIndex:indexPath.row];
     
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     if ([self respondsToSelector:NSSelectorFromString(item[@"selector"])]) {
         [self performSelector:NSSelectorFromString(item[@"selector"]) withObject:nil];
-//        [NC postNotificationName:MENU_ITEM_SELECTED object:item[@"selector"]];
+        //        [NC postNotificationName:MENU_ITEM_SELECTED object:item[@"selector"]];
     }
-    #pragma clang diagnostic pop
+#pragma clang diagnostic pop
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -176,8 +176,8 @@
 
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     MenuCell *cell = (MenuCell *)[tableView cellForRowAtIndexPath:indexPath];
-    cell.contentView.backgroundColor = [HXColor colorWithHexString:@"1E455E"];
-    cell.backgroundColor = [HXColor colorWithHexString:@"1E455E"];
+    cell.contentView.backgroundColor = [HXColor hx_colorWithHexRGBAString:@"1E455E"];
+    cell.backgroundColor = [HXColor hx_colorWithHexRGBAString:@"1E455E"];
 }
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {

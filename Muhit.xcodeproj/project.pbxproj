@@ -67,37 +67,26 @@
 		4B9F053E1B1DE38E009CB713 /* SourceSansPro-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F05391B1DE38E009CB713 /* SourceSansPro-Italic.ttf */; };
 		4B9F053F1B1DE38E009CB713 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F053A1B1DE38E009CB713 /* SourceSansPro-Regular.ttf */; };
 		4B9F05401B1DE38E009CB713 /* SourceSansPro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F053B1B1DE38E009CB713 /* SourceSansPro-Semibold.ttf */; };
-		4BBF76FA1B56855A0059497B /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF76F91B56855A0059497B /* FacebookManager.m */; };
 		4BC583811B1C4D4800180B3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC583801B1C4D4800180B3D /* main.m */; };
 		4BC583841B1C4D4800180B3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC583831B1C4D4800180B3D /* AppDelegate.m */; };
 		4BC5838C1B1C4D4800180B3D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BC5838B1B1C4D4800180B3D /* Images.xcassets */; };
 		4BC5838F1B1C4D4800180B3D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BC5838D1B1C4D4800180B3D /* LaunchScreen.xib */; };
-		4BC5839B1B1C4D4800180B3D /* MuhitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC5839A1B1C4D4800180B3D /* MuhitTests.m */; };
 		4BC9EE981B1EF41800441353 /* SignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC9EE961B1EF41800441353 /* SignupVC.m */; };
 		4BC9EE991B1EF41800441353 /* SignupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BC9EE971B1EF41800441353 /* SignupVC.xib */; };
 		4BC9EE9D1B1EF43300441353 /* ForgotPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC9EE9B1B1EF43300441353 /* ForgotPasswordVC.m */; };
 		4BC9EE9E1B1EF43300441353 /* ForgotPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BC9EE9C1B1EF43300441353 /* ForgotPasswordVC.xib */; };
-		4BD0A3B51B2C6D75008ECD02 /* BSKeyboardControls.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4BD0A3B41B2C6D75008ECD02 /* BSKeyboardControls.strings */; };
 		4BD654DF1B32035100343C16 /* PlacesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD654DD1B32035100343C16 /* PlacesView.m */; };
 		4BD654E01B32035100343C16 /* PlacesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BD654DE1B32035100343C16 /* PlacesView.xib */; };
 		4BD654E41B32043700343C16 /* PlacesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD654E21B32043700343C16 /* PlacesCell.m */; };
 		4BD654E51B32043700343C16 /* PlacesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BD654E31B32043700343C16 /* PlacesCell.xib */; };
+		4BE862881D0AD2CD00CF4013 /* KeyboardControls.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE862871D0AD2CD00CF4013 /* KeyboardControls.m */; };
+		4BE8628C1D0AD49C00CF4013 /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE8628B1D0AD49C00CF4013 /* FacebookManager.m */; };
 		4BF7F9051B1CF39D00A35FD1 /* MuhitServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7F9011B1CF39D00A35FD1 /* MuhitServices.m */; };
 		4BF7F9061B1CF39D00A35FD1 /* ServiceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7F9041B1CF39D00A35FD1 /* ServiceHandler.m */; };
 		4BF7F90A1B1CF43A00A35FD1 /* TrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7F9091B1CF43A00A35FD1 /* TrackManager.m */; };
 		4BF7F90D1B1D882100A35FD1 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7F90C1B1D882100A35FD1 /* LanguageManager.m */; };
 		5C3C2924A058694C22EE0003 /* libPods-Muhit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE7C34FB45BFDDACF4BF7B4 /* libPods-Muhit.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		4BC583951B1C4D4800180B3D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4BC583731B1C4D4800180B3D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4BC5837A1B1C4D4800180B3D;
-			remoteInfo = Muhit;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		337E1D8B8459AB7B86DF7213 /* Pods-Muhit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Muhit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Muhit/Pods-Muhit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,8 +184,6 @@
 		4B9F05391B1DE38E009CB713 /* SourceSansPro-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Italic.ttf"; sourceTree = "<group>"; };
 		4B9F053A1B1DE38E009CB713 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
 		4B9F053B1B1DE38E009CB713 /* SourceSansPro-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.ttf"; sourceTree = "<group>"; };
-		4BBF76F81B56855A0059497B /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
-		4BBF76F91B56855A0059497B /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
 		4BC5837B1B1C4D4800180B3D /* Muhit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muhit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BC5837F1B1C4D4800180B3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BC583801B1C4D4800180B3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -204,7 +191,6 @@
 		4BC583831B1C4D4800180B3D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4BC5838B1B1C4D4800180B3D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4BC5838E1B1C4D4800180B3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		4BC583941B1C4D4800180B3D /* MuhitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MuhitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BC583991B1C4D4800180B3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BC5839A1B1C4D4800180B3D /* MuhitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MuhitTests.m; sourceTree = "<group>"; };
 		4BC9EE951B1EF41800441353 /* SignupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupVC.h; sourceTree = "<group>"; };
@@ -213,13 +199,16 @@
 		4BC9EE9A1B1EF43300441353 /* ForgotPasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordVC.h; sourceTree = "<group>"; };
 		4BC9EE9B1B1EF43300441353 /* ForgotPasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordVC.m; sourceTree = "<group>"; };
 		4BC9EE9C1B1EF43300441353 /* ForgotPasswordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotPasswordVC.xib; sourceTree = "<group>"; };
-		4BD0A3B41B2C6D75008ECD02 /* BSKeyboardControls.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = BSKeyboardControls.strings; sourceTree = "<group>"; };
 		4BD654DC1B32035100343C16 /* PlacesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesView.h; sourceTree = "<group>"; };
 		4BD654DD1B32035100343C16 /* PlacesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesView.m; sourceTree = "<group>"; };
 		4BD654DE1B32035100343C16 /* PlacesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacesView.xib; sourceTree = "<group>"; };
 		4BD654E11B32043700343C16 /* PlacesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesCell.h; sourceTree = "<group>"; };
 		4BD654E21B32043700343C16 /* PlacesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesCell.m; sourceTree = "<group>"; };
 		4BD654E31B32043700343C16 /* PlacesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacesCell.xib; sourceTree = "<group>"; };
+		4BE862861D0AD2CD00CF4013 /* KeyboardControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardControls.h; sourceTree = "<group>"; };
+		4BE862871D0AD2CD00CF4013 /* KeyboardControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardControls.m; sourceTree = "<group>"; };
+		4BE8628A1D0AD49C00CF4013 /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
+		4BE8628B1D0AD49C00CF4013 /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
 		4BF7F9001B1CF39D00A35FD1 /* MuhitServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuhitServices.h; sourceTree = "<group>"; };
 		4BF7F9011B1CF39D00A35FD1 /* MuhitServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuhitServices.m; sourceTree = "<group>"; };
 		4BF7F9021B1CF39D00A35FD1 /* ServiceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceConstants.h; sourceTree = "<group>"; };
@@ -240,13 +229,6 @@
 				4B2169731B24830600DEBA01 /* CoreLocation.framework in Frameworks */,
 				4B2169711B247C1700DEBA01 /* MapKit.framework in Frameworks */,
 				5C3C2924A058694C22EE0003 /* libPods-Muhit.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4BC583911B1C4D4800180B3D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +436,6 @@
 			isa = PBXGroup;
 			children = (
 				4BC5837B1B1C4D4800180B3D /* Muhit.app */,
-				4BC583941B1C4D4800180B3D /* MuhitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -465,7 +446,7 @@
 				4BC583821B1C4D4800180B3D /* AppDelegate.h */,
 				4BC583831B1C4D4800180B3D /* AppDelegate.m */,
 				4BF7F8FB1B1CF31100A35FD1 /* ViewControllers */,
-				4BF7F8FC1B1CF31F00A35FD1 /* MuhitClasses */,
+				4BF7F8FC1B1CF31F00A35FD1 /* Classes */,
 				4BF7F8FD1B1CF33E00A35FD1 /* Managers */,
 				4B9F05131B1D9736009CB713 /* Categories */,
 				4BF7F9071B1CF3B700A35FD1 /* Networking */,
@@ -486,7 +467,6 @@
 				4B9F04EE1B1D8A6C009CB713 /* Podfile */,
 				4BC5837F1B1C4D4800180B3D /* Info.plist */,
 				4BC583801B1C4D4800180B3D /* main.m */,
-				4BD0A3B41B2C6D75008ECD02 /* BSKeyboardControls.strings */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -533,8 +513,8 @@
 		4BD0A3B91B2EAF12008ECD02 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
-				4BBF76F81B56855A0059497B /* FacebookManager.h */,
-				4BBF76F91B56855A0059497B /* FacebookManager.m */,
+				4BE8628A1D0AD49C00CF4013 /* FacebookManager.h */,
+				4BE8628B1D0AD49C00CF4013 /* FacebookManager.m */,
 			);
 			name = Facebook;
 			path = Managers/Facebook;
@@ -551,6 +531,16 @@
 				4BD654E31B32043700343C16 /* PlacesCell.xib */,
 			);
 			path = PlacesView;
+			sourceTree = "<group>";
+		};
+		4BE862891D0AD2F500CF4013 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				4BE862861D0AD2CD00CF4013 /* KeyboardControls.h */,
+				4BE862871D0AD2CD00CF4013 /* KeyboardControls.m */,
+			);
+			name = Keyboard;
+			path = Managers/Keyboard;
 			sourceTree = "<group>";
 		};
 		4BF7F8FB1B1CF31100A35FD1 /* ViewControllers */ = {
@@ -577,16 +567,16 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		4BF7F8FC1B1CF31F00A35FD1 /* MuhitClasses */ = {
+		4BF7F8FC1B1CF31F00A35FD1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4B9F04F71B1D950D009CB713 /* Constants.h */,
 				4B9F05141B1DBD04009CB713 /* NavBar.h */,
 				4B9F05151B1DBD04009CB713 /* NavBar.m */,
 				4B9F05021B1D9524009CB713 /* UtilityFunctions.h */,
 				4B9F05031B1D9524009CB713 /* UtilityFunctions.m */,
 				4B9F04F51B1D950D009CB713 /* Muhit.h */,
 				4B9F04F61B1D950D009CB713 /* Muhit.m */,
-				4B9F04F71B1D950D009CB713 /* Constants.h */,
 				4B9F04F81B1D950D009CB713 /* ScreenOperations.h */,
 				4B9F04F91B1D950D009CB713 /* ScreenOperations.m */,
 				4B2169281B1F138500DEBA01 /* MTTextField.h */,
@@ -594,12 +584,13 @@
 				4B7688A51B2B181500B2B6EF /* MTTagLabel.h */,
 				4B7688A61B2B181500B2B6EF /* MTTagLabel.m */,
 			);
-			path = MuhitClasses;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		4BF7F8FD1B1CF33E00A35FD1 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				4BE862891D0AD2F500CF4013 /* Keyboard */,
 				4BD0A3B91B2EAF12008ECD02 /* Facebook */,
 				4BF7F9131B1D888E00A35FD1 /* Language */,
 				4BF7F9121B1D888800A35FD1 /* Track */,
@@ -665,13 +656,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4BC5839E1B1C4D4800180B3D /* Build configuration list for PBXNativeTarget "Muhit" */;
 			buildPhases = (
-				E20C8A7069F5E1E63F8C4473 /* Check Pods Manifest.lock */,
+				E20C8A7069F5E1E63F8C4473 /* [CP] Check Pods Manifest.lock */,
 				4BC583771B1C4D4800180B3D /* Sources */,
 				4BC583781B1C4D4800180B3D /* Frameworks */,
 				4BC583791B1C4D4800180B3D /* Resources */,
-				9376FCCD1839DF82474B7CBA /* Copy Pods Resources */,
+				9376FCCD1839DF82474B7CBA /* [CP] Copy Pods Resources */,
 				4BB5808F1BA452B20013CF50 /* ShellScript */,
-				7DFD8D283DAB7EC488E3B916 /* Embed Pods Frameworks */,
+				7DFD8D283DAB7EC488E3B916 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -682,40 +673,18 @@
 			productReference = 4BC5837B1B1C4D4800180B3D /* Muhit.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4BC583931B1C4D4800180B3D /* MuhitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4BC583A11B1C4D4800180B3D /* Build configuration list for PBXNativeTarget "MuhitTests" */;
-			buildPhases = (
-				4BC583901B1C4D4800180B3D /* Sources */,
-				4BC583911B1C4D4800180B3D /* Frameworks */,
-				4BC583921B1C4D4800180B3D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4BC583961B1C4D4800180B3D /* PBXTargetDependency */,
-			);
-			name = MuhitTests;
-			productName = MuhitTests;
-			productReference = 4BC583941B1C4D4800180B3D /* MuhitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		4BC583731B1C4D4800180B3D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Muhit;
 				TargetAttributes = {
 					4BC5837A1B1C4D4800180B3D = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 5EVA6K9E87;
-					};
-					4BC583931B1C4D4800180B3D = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 4BC5837A1B1C4D4800180B3D;
 					};
 				};
 			};
@@ -733,7 +702,6 @@
 			projectRoot = "";
 			targets = (
 				4BC5837A1B1C4D4800180B3D /* Muhit */,
-				4BC583931B1C4D4800180B3D /* MuhitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -747,7 +715,6 @@
 				4B70C8F41B4BE01E009BC526 /* PickFromMapVC.xib in Resources */,
 				4B9F04F31B1D9415009CB713 /* lang-en.plist in Resources */,
 				4B9F04EF1B1D8A6C009CB713 /* Podfile in Resources */,
-				4BD0A3B51B2C6D75008ECD02 /* BSKeyboardControls.strings in Resources */,
 				4B9F053C1B1DE38E009CB713 /* SourceSansPro-Black.ttf in Resources */,
 				4B21696A1B21D5B500DEBA01 /* IssueVC.xib in Resources */,
 				4B9F05111B1D96D7009CB713 /* RootVC.xib in Resources */,
@@ -781,13 +748,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4BC583921B1C4D4800180B3D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -802,16 +762,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" a65b46fd38f4114c749e79c5ca1c7a45ee4119b7 351587b2dedb44d9591f16e821dbf528484afe049b18ae79e689306146e9ce31";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" a65b46fd38f4114c749e79c5ca1c7a45ee4119b7 351587b2dedb44d9591f16e821dbf528484afe049b18ae79e689306146e9ce31";
 		};
-		7DFD8D283DAB7EC488E3B916 /* Embed Pods Frameworks */ = {
+		7DFD8D283DAB7EC488E3B916 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -819,14 +779,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Muhit/Pods-Muhit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9376FCCD1839DF82474B7CBA /* Copy Pods Resources */ = {
+		9376FCCD1839DF82474B7CBA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -834,14 +794,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Muhit/Pods-Muhit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E20C8A7069F5E1E63F8C4473 /* Check Pods Manifest.lock */ = {
+		E20C8A7069F5E1E63F8C4473 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -869,13 +829,13 @@
 				4B21696E1B21D5C500DEBA01 /* SearchVC.m in Sources */,
 				4B9F05161B1DBD04009CB713 /* NavBar.m in Sources */,
 				4B7688A71B2B181500B2B6EF /* MTTagLabel.m in Sources */,
+				4BE8628C1D0AD49C00CF4013 /* FacebookManager.m in Sources */,
 				4BF7F90D1B1D882100A35FD1 /* LanguageManager.m in Sources */,
 				4B9F052F1B1DBFE0009CB713 /* MainVC.m in Sources */,
 				4B21693E1B218E5700DEBA01 /* SupportedCell.m in Sources */,
 				4BC583811B1C4D4800180B3D /* main.m in Sources */,
 				4BD654DF1B32035100343C16 /* PlacesView.m in Sources */,
 				4B9F05351B1DDA42009CB713 /* LoginVC.m in Sources */,
-				4BBF76FA1B56855A0059497B /* FacebookManager.m in Sources */,
 				4B2169571B21D48C00DEBA01 /* ProfileVC.m in Sources */,
 				4B9F05061B1D9524009CB713 /* UIView+Layout.m in Sources */,
 				4B9F05281B1DBE0F009CB713 /* MenuVC.m in Sources */,
@@ -896,27 +856,12 @@
 				4B2169641B21D5A600DEBA01 /* AddEditIssueVC.m in Sources */,
 				4B9F04FB1B1D950D009CB713 /* ScreenOperations.m in Sources */,
 				4B9F05071B1D9524009CB713 /* UtilityFunctions.m in Sources */,
+				4BE862881D0AD2CD00CF4013 /* KeyboardControls.m in Sources */,
 				4BC9EE9D1B1EF43300441353 /* ForgotPasswordVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4BC583901B1C4D4800180B3D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4BC5839B1B1C4D4800180B3D /* MuhitTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4BC583961B1C4D4800180B3D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4BC5837A1B1C4D4800180B3D /* Muhit */;
-			targetProxy = 4BC583951B1C4D4800180B3D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4BC5838D1B1C4D4800180B3D /* LaunchScreen.xib */ = {
@@ -952,6 +897,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -967,7 +913,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1004,7 +950,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1017,14 +963,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: L Daniel Swakman (5Z7AABK87Z)";
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Muhit/Supporting Files/Prefix-Header.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Muhit/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.muhit.client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fa4f7f2f-1c71-481d-9e75-eae824843e5b";
+				PROVISIONING_PROFILE = "000ea32d-91bb-49a3-90cc-d794bfce5dd0";
 			};
 			name = Debug;
 		};
@@ -1034,51 +982,76 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: L Daniel Swakman (5EVA6K9E87)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: L Daniel Swakman (5EVA6K9E87)";
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Muhit/Supporting Files/Prefix-Header.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Muhit/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.muhit.client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f025083e-c183-4587-b5ee-b5838c5429a0";
+				PROVISIONING_PROFILE = "fac51d7a-cc40-4fd8-9e45-4c3500e9b670";
 			};
 			name = Release;
 		};
-		4BC583A21B1C4D4800180B3D /* Debug */ = {
+		4BE862811D0AD0FF00CF4013 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MuhitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Muhit.app/Muhit";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Adhoc;
 		};
-		4BC583A31B1C4D4800180B3D /* Release */ = {
+		4BE862821D0AD0FF00CF4013 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A96C53F71E5C1549FCD3C74 /* Pods-Muhit.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MuhitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: L Daniel Swakman (5EVA6K9E87)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: L Daniel Swakman (5EVA6K9E87)";
+				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Muhit/Supporting Files/Prefix-Header.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Muhit/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.muhit.client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Muhit.app/Muhit";
+				PROVISIONING_PROFILE = "fd7af0ce-6128-4631-881f-17ae12a6d4d2";
 			};
-			name = Release;
+			name = Adhoc;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1088,6 +1061,7 @@
 			buildConfigurations = (
 				4BC5839C1B1C4D4800180B3D /* Debug */,
 				4BC5839D1B1C4D4800180B3D /* Release */,
+				4BE862811D0AD0FF00CF4013 /* Adhoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1097,15 +1071,7 @@
 			buildConfigurations = (
 				4BC5839F1B1C4D4800180B3D /* Debug */,
 				4BC583A01B1C4D4800180B3D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4BC583A11B1C4D4800180B3D /* Build configuration list for PBXNativeTarget "MuhitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4BC583A21B1C4D4800180B3D /* Debug */,
-				4BC583A31B1C4D4800180B3D /* Release */,
+				4BE862821D0AD0FF00CF4013 /* Adhoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

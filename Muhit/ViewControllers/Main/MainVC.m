@@ -44,7 +44,7 @@
     [[MT navCon] setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
     arrIssues = [[NSMutableArray alloc] init];
-//    [self getIssues];
+    //    [self getIssues];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -59,13 +59,13 @@
 
 -(void)adjustUI{
     btnCreateIssue.layer.cornerRadius = cornerRadius;
-    btnCreateIssue.layer.borderColor = [[HXColor colorWithHexString:@"FFFFFF"] CGColor];
+    btnCreateIssue.layer.borderColor = [CLR_WHITE CGColor];
     btnCreateIssue.layer.borderWidth = 1;
     
-    [btnCreateIssue setImage:[IonIcons imageWithIcon:ion_plus size:15 color:[HXColor colorWithHexString:@"FFFFFF"]]];
+    [btnCreateIssue setImage:[IonIcons imageWithIcon:ion_plus size:15 color:[HXColor hx_colorWithHexRGBAString:@"FFFFFF"]]];
     
-    [imgLocation setImage:[IonIcons imageWithIcon:ion_location size:115 color:[HXColor colorWithHexString:@"676778"]]];
-
+    [imgLocation setImage:[IonIcons imageWithIcon:ion_location size:115 color:[HXColor hx_colorWithHexRGBAString:@"676778"]]];
+    
     [imgDownIcon setImage:[IonIcons imageWithIcon:ion_android_locate size:20 color:CLR_LIGHT_BLUE]];
     [imgSearch setImage:[IonIcons imageWithIcon:ion_search size:20 color:CLR_LIGHT_BLUE]];
     
@@ -103,7 +103,7 @@
     if (![btnPopular isSelected]) {
         [btnPopular setSelected:YES];
         [btnNewest setSelected:NO];
-
+        
         [UIView animateWithDuration:0.2 animations:^{
             constActiveLine.constant = 0;
             [self.view layoutIfNeeded];
@@ -134,7 +134,7 @@
 
 -(IBAction)actMenu:(id)sender{
     [self.view endEditing:YES];
-	[[MT drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    [[MT drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 -(IBAction)actSearchHood:(id)sender{
