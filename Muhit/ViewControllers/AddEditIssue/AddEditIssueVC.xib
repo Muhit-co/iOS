@@ -52,6 +52,7 @@
                 <outlet property="txtTitle" destination="wyD-aI-1rA" id="XE9-7S-Yq3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewAddTag" destination="y7c-g2-hR0" id="hXL-qO-n91"/>
+                <outlet property="viewAnonim" destination="74A-Dr-0ih" id="8yc-v7-03l"/>
                 <outlet property="viewDescription" destination="cRK-uW-4E6" id="sqc-bd-1Iq"/>
                 <outlet property="viewHood" destination="a9y-67-xYJ" id="9ej-a1-fPB"/>
                 <outlet property="viewPhotos" destination="OJ7-HD-rlY" id="O6Z-g8-Y4s"/>
@@ -696,7 +697,7 @@
                                 <constraint firstItem="OJ7-HD-rlY" firstAttribute="top" secondItem="1Bm-iB-pDR" secondAttribute="bottom" constant="5" id="jNi-EY-cLI"/>
                                 <constraint firstItem="jiE-2F-XrH" firstAttribute="top" secondItem="1Bm-iB-pDR" secondAttribute="bottom" constant="5" id="lA3-DC-o6F"/>
                                 <constraint firstAttribute="height" constant="736" id="lEF-Be-4tZ">
-                                    <variation key="heightClass=regular-widthClass=compact" constant="504"/>
+                                    <variation key="heightClass=regular-widthClass=compact" constant="495"/>
                                 </constraint>
                                 <constraint firstItem="wyD-aI-1rA" firstAttribute="leading" secondItem="LyT-en-oH6" secondAttribute="leading" constant="20" id="lRz-iN-LQk"/>
                                 <constraint firstItem="51u-lE-lH5" firstAttribute="leading" secondItem="LyT-en-oH6" secondAttribute="leading" constant="20" id="npp-IU-MDO"/>
@@ -891,7 +892,7 @@
             <connections>
                 <action selector="actSave:" destination="-1" eventType="touchUpInside" id="aim-pN-7rp"/>
             </connections>
-            <point key="canvasLocation" x="617.5" y="383.5"/>
+            <point key="canvasLocation" x="747" y="370.5"/>
         </button>
     </objects>
 </document>

@@ -20,6 +20,7 @@
     NSMutableArray *arrIssues;
     NSString *fullGeoCode;
     int lastIndex;
+    BOOL isEndOfList;
 }
 
 @end
@@ -43,7 +44,7 @@
     [[MT navCon] setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
     arrIssues = [[NSMutableArray alloc] init];
-    [self getIssues];
+//    [self getIssues];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -65,7 +66,7 @@
     
     [imgLocation setImage:[IonIcons imageWithIcon:ion_location size:115 color:[HXColor colorWithHexString:@"676778"]]];
 
-    [imgDownIcon setImage:[IonIcons imageWithIcon:ion_chevron_down size:20 color:CLR_LIGHT_BLUE]];
+    [imgDownIcon setImage:[IonIcons imageWithIcon:ion_android_locate size:20 color:CLR_LIGHT_BLUE]];
     [imgSearch setImage:[IonIcons imageWithIcon:ion_search size:20 color:CLR_LIGHT_BLUE]];
     
     viewHood.layer.cornerRadius = cornerRadius;
@@ -77,18 +78,23 @@
     lastIndex = (int)arrIssues.count;
     [SERVICES getIssues:lastIndex handler:^(NSDictionary *response, NSError *error) {
         if (error) {
+            REMOVE_HUD
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
         }
         else{
-            DLog(@"getIssuesResponse:%@",response);
-			[arrIssues addObjectsFromArray:(NSArray*)response];
-            [tblIssues reloadData];
-            REMOVE_HUD
-            
-            [tblIssues scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:lastIndex inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-            
+            if (response.count>0) {
+                DLog(@"getIssuesResponse:%@",response);
+                [arrIssues addObjectsFromArray:(NSArray*)response];
+                [tblIssues reloadData];
+                
+                [tblIssues scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:lastIndex inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                REMOVE_HUD
+            }
+            else{
+                REMOVE_HUD
+                isEndOfList = YES;
+            }
         }
-        REMOVE_HUD
     }];
 }
 
@@ -148,7 +154,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     [cell setBackgroundColor:[UIColor clearColor]];
     
-    if ([indexPath isEqual:[NSIndexPath indexPathForRow:[self tableView:tblIssues numberOfRowsInSection:0]-1 inSection:0]]){
+    if ([indexPath isEqual:[NSIndexPath indexPathForRow:[self tableView:tblIssues numberOfRowsInSection:0]-1 inSection:0]] && !isEndOfList){
         [self getIssues];
     }
 }

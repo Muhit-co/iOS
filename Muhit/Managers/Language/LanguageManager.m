@@ -73,6 +73,7 @@ static const NSString *localizedDictionaryPrefix = @"lang-";
         for(int index = 0; index < [[self localeIdentifiers] count] ; index ++) {
             if([[[self localeIdentifiers] objectAtIndex:index] isEqualToString:selectedLanguage]) {
                 lang = index;
+                [UD setObject:NUMBER_INT(lang) forKey:USER_LANGUAGE];
                 break;
             }
         }

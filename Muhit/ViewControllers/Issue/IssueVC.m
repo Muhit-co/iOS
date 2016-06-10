@@ -11,7 +11,7 @@
 
 @interface IssueVC (){
     IBOutlet UILabel *lblSupportTitle,*lblSupportCount,*lblHood,*lblDate,*lblType,*lblIssueTitle,*lblIssueDescription,*lblCommentTitle,*lblCreatorName;
-    IBOutlet UIButton *btnBack,*btnSupport,*btnEdit;
+    IBOutlet UIButton *btnBack,*btnSupport,*btnEdit,*btnShare;
     IBOutlet UIImageView *imgLocationIcon,*imgTypeIcon,*imgCreator;
     IBOutlet UIView *viewSupport,*viewType,*viewTagsContainer,*viewCommentsHolder;
     IBOutlet UIScrollView *scrollImages;
@@ -22,6 +22,7 @@
     NSArray *arrComments;
     IBOutlet GMSMapView *map;
     NSString *issueCoordinate;
+    BOOL isSupported;
 }
 
 @end
@@ -76,6 +77,13 @@
     else{
         [btnEdit setHidden:YES];
         [btnSupport setHidden:NO];
+        if ([dict[@"is_supported"] boolValue]) {
+            isSupported = YES;
+            [btnSupport setTitle:[LocalizedString(@"Destekledim") toUpper]];
+        }
+        else{
+            [btnSupport setTitle:[LocalizedString(@"Destekle") toUpper]];
+        }
     }
 
     arrComments = [NSArray arrayWithArray:dict[@"comments"]];
@@ -131,6 +139,7 @@
             
             UIImageView *img = [[UIImageView alloc] initWithFrame:frame];
             NSString *imgUrl = [NSString stringWithFormat:@"%@/%dx%d/%@",IMAGE_PROXY,2*(int)frame.size.width,2*(int)frame.size.height,arrImages[i][@"image"]];
+            
             [UF logFrame:img identifier:@"imageView"];
             [img sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"issuePlaceholder"]];
             [scrollImages addSubview:img];
@@ -190,7 +199,6 @@
             totalTagsWidth = 0;
             lastTagsY += 40;
             constTagsViewHeight.constant = 30 + lastTagsY;
-//            constContainerHeight.constant += 40;
         }
         
         UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, lblWidth, 30)];
@@ -232,6 +240,8 @@
     imgCreator.layer.masksToBounds = YES;
     btnSupport.layer.cornerRadius = cornerRadius;
     btnEdit.layer.cornerRadius = cornerRadius;
+    btnShare.layer.cornerRadius = cornerRadius;
+    [btnShare setImage:[IonIcons imageWithIcon:ion_share size:20 color:[UIColor whiteColor]]];
 }
 
 -(IBAction)actBack:(id)sender{
@@ -241,18 +251,35 @@
 -(IBAction)actSupport:(id)sender{
     if ([MT isLoggedIn]) {
         ADD_HUD
-        [MuhitServices support:STRING_W_INT([detail[@"id"] intValue]) handler:^(NSDictionary *response, NSError *error) {
-            if (error) {
-                SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
-            }
-            else{
-                if(response.count>0){
-                    NSLog(@"support:%@",response);
-                    [lblSupportCount setText:STRING_W_INT([response[@"current_supporter_counter"] intValue]) ];
+        
+        if (isSupported) {
+            [MuhitServices unSupport:STRING_W_INT([detail[@"id"] intValue]) handler:^(NSDictionary *response, NSError *error) {
+                if (error) {
+                    SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
                 }
-            }
-            REMOVE_HUD
-        }];
+                else{
+                    if(response.count>0){
+                        NSLog(@"support:%@",response);
+                        [lblSupportCount setText:STRING_W_INT([response[@"current_supporter_counter"] intValue]) ];
+                    }
+                }
+                REMOVE_HUD
+            }];
+        }
+        else{
+            [MuhitServices support:STRING_W_INT([detail[@"id"] intValue]) handler:^(NSDictionary *response, NSError *error) {
+                if (error) {
+                    SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
+                }
+                else{
+                    if(response.count>0){
+                        NSLog(@"support:%@",response);
+                        [lblSupportCount setText:STRING_W_INT([response[@"current_supporter_counter"] intValue]) ];
+                    }
+                }
+                REMOVE_HUD
+            }];
+        }
     }
     else{
         [ScreenOperations openLogin];
@@ -266,6 +293,26 @@
 -(IBAction)actEdit:(id)sender{
     [ScreenOperations openEditIssueWithInfo:detail];
 }
+
+-(IBAction)actShare:(id)sender{
+    
+    NSURL *shareUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/issues/view/%@",[MT serviceURL],STRING_W_INT([detail[@"id"] intValue])]];
+    
+    UIActivityViewController *sharer = [[UIActivityViewController alloc] initWithActivityItems:@[shareUrl] applicationActivities:nil];
+    
+    [sharer setExcludedActivityTypes:@[UIActivityTypeAirDrop,
+                                       UIActivityTypePostToWeibo,
+                                       UIActivityTypeAssignToContact,
+                                       UIActivityTypeSaveToCameraRoll,
+                                       UIActivityTypeAddToReadingList,
+                                       UIActivityTypePostToFlickr,
+                                       UIActivityTypePostToVimeo,
+                                       UIActivityTypePostToTencentWeibo]];
+    
+    [sharer setCompletionHandler:nil];
+    [[MT navCon] presentViewController:sharer animated:YES completion:nil];
+}
+
 
 - (IBAction)changePage {
     // update the scroll view to the appropriate page
@@ -329,7 +376,13 @@
     [lblCommentTitle setText:LocalizedString(@"Yorumlar")];
     [lblSupportTitle setText:[LocalizedString(@"Destekçi") toUpper]];
     [btnEdit setTitle:[LocalizedString(@"Düzenle") toUpper]];
-    [btnSupport setTitle:[LocalizedString(@"Destekle") toUpper]];
+    
+    if (isSupported) {
+        [btnSupport setTitle:[LocalizedString(@"Destekledim") toUpper]];
+    }
+    else{
+        [btnSupport setTitle:[LocalizedString(@"Destekle") toUpper]];
+    }
 }
 
 @end

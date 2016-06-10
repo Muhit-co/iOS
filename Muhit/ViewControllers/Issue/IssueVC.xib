@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SourceSansPro-Bold.ttf">
@@ -21,6 +21,7 @@
             <string>SourceSansPro-Semibold</string>
             <string>SourceSansPro-Semibold</string>
             <string>SourceSansPro-Semibold</string>
+            <string>SourceSansPro-Semibold</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -28,6 +29,7 @@
             <connections>
                 <outlet property="btnBack" destination="QbO-ZG-Fh5" id="OOB-RK-aSg"/>
                 <outlet property="btnEdit" destination="V1p-RA-9nD" id="nqI-QM-Ui5"/>
+                <outlet property="btnShare" destination="KAk-ml-Lvu" id="lni-oi-2Qf"/>
                 <outlet property="btnSupport" destination="p15-OV-Q25" id="0jZ-8s-YOj"/>
                 <outlet property="constContainerHeight" destination="mQS-lA-jKZ" id="KEB-fb-x1h"/>
                 <outlet property="constDescriptionHeight" destination="DFA-xC-TeJ" id="hc9-kF-2yO"/>
@@ -95,7 +97,7 @@
                                         <action selector="changePage" destination="-1" eventType="valueChanged" id="qzG-VY-5yG"/>
                                     </connections>
                                 </pageControl>
-                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DB8-Sy-co6" userLabel="viewLocation">
+                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DB8-Sy-co6" userLabel="viewLocation">
                                     <rect key="frame" x="20" y="208" width="400" height="40"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bM6-Wj-zb6" userLabel="iconLocation">
@@ -167,7 +169,7 @@
                                         </mask>
                                     </variation>
                                 </view>
-                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0mh-uj-uhZ" userLabel="viewSupports">
+                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0mh-uj-uhZ" userLabel="viewSupports">
                                     <rect key="frame" x="345" y="177" width="60" height="60"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8S-fc-k6a" userLabel="lblSupportsCount">
@@ -274,7 +276,7 @@
                                         </mask>
                                     </variation>
                                 </label>
-                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ePf-QZ-uyu" userLabel="viewType">
+                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ePf-QZ-uyu" userLabel="viewType">
                                     <rect key="frame" x="285" y="263" width="120" height="26"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eUy-XG-gOc" userLabel="imgTypeIcon">
@@ -668,17 +670,17 @@
                                 <action selector="actBack:" destination="-1" eventType="touchUpInside" id="rla-4y-x7P"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p15-OV-Q25" userLabel="btnSupport">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p15-OV-Q25" userLabel="btnSupport">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                             <color key="backgroundColor" red="0.2666666667" green="0.63529411759999999" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="2ej-U6-Ghf"/>
                                 <constraint firstAttribute="width" constant="74" id="Qt8-sU-bXJ">
-                                    <variation key="heightClass=regular-widthClass=compact" constant="100"/>
+                                    <variation key="heightClass=regular-widthClass=compact" constant="115"/>
                                 </constraint>
                             </constraints>
                             <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
-                            <state key="normal" title="DESTEKLE">
+                            <state key="normal" title="DESTEKLEDİM">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -698,7 +700,37 @@
                                 <action selector="actSupport:" destination="-1" eventType="touchUpInside" id="Etf-sv-mDT"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1p-RA-9nD" userLabel="btnEdit">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAk-ml-Lvu" userLabel="btnShare">
+                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <color key="backgroundColor" red="0.2666666667" green="0.63529411759999999" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="74" id="2zf-kR-30U">
+                                    <variation key="heightClass=regular-widthClass=compact" constant="40"/>
+                                </constraint>
+                                <constraint firstAttribute="height" constant="40" id="KBc-Aa-eIg"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="2zf-kR-30U"/>
+                                    <exclude reference="KBc-Aa-eIg"/>
+                                </mask>
+                            </variation>
+                            <variation key="heightClass=regular-widthClass=compact">
+                                <mask key="constraints">
+                                    <include reference="2zf-kR-30U"/>
+                                    <include reference="KBc-Aa-eIg"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="actShare:" destination="-1" eventType="touchUpInside" id="YvD-0p-yFP"/>
+                            </connections>
+                        </button>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1p-RA-9nD" userLabel="btnEdit">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                             <color key="backgroundColor" red="0.2666666667" green="0.63529411759999999" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -708,7 +740,7 @@
                                 </constraint>
                             </constraints>
                             <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
-                            <state key="normal" title="DESTEKLE">
+                            <state key="normal" title="DÜZENLE">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -731,9 +763,11 @@
                     </subviews>
                     <color key="backgroundColor" red="0.2666666667" green="0.63529411759999999" blue="0.87843137250000003" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="KAk-ml-Lvu" firstAttribute="top" secondItem="p15-OV-Q25" secondAttribute="top" id="E5v-wr-2BF"/>
                         <constraint firstAttribute="bottom" secondItem="p15-OV-Q25" secondAttribute="bottom" constant="5" id="OVh-I7-qRS"/>
                         <constraint firstAttribute="bottom" secondItem="V1p-RA-9nD" secondAttribute="bottom" constant="5" id="bg6-cQ-hRg"/>
                         <constraint firstAttribute="trailing" secondItem="V1p-RA-9nD" secondAttribute="trailing" constant="5" id="jkp-cF-rgP"/>
+                        <constraint firstItem="p15-OV-Q25" firstAttribute="leading" secondItem="KAk-ml-Lvu" secondAttribute="trailing" constant="10" id="mnG-PF-Wle"/>
                         <constraint firstItem="QbO-ZG-Fh5" firstAttribute="leading" secondItem="gyx-5t-jbs" secondAttribute="leading" constant="5" id="v09-Bb-mUv"/>
                         <constraint firstAttribute="trailing" secondItem="p15-OV-Q25" secondAttribute="trailing" constant="5" id="yMD-lZ-Si9"/>
                         <constraint firstAttribute="bottom" secondItem="QbO-ZG-Fh5" secondAttribute="bottom" constant="5" id="yPy-hi-vK9"/>
@@ -745,15 +779,18 @@
                         <mask key="subviews">
                             <exclude reference="QbO-ZG-Fh5"/>
                             <exclude reference="p15-OV-Q25"/>
+                            <exclude reference="KAk-ml-Lvu"/>
                             <exclude reference="V1p-RA-9nD"/>
                         </mask>
                         <mask key="constraints">
                             <exclude reference="zsq-3w-DEI"/>
+                            <exclude reference="E5v-wr-2BF"/>
                             <exclude reference="v09-Bb-mUv"/>
                             <exclude reference="yPy-hi-vK9"/>
                             <exclude reference="bg6-cQ-hRg"/>
                             <exclude reference="jkp-cF-rgP"/>
                             <exclude reference="OVh-I7-qRS"/>
+                            <exclude reference="mnG-PF-Wle"/>
                             <exclude reference="yMD-lZ-Si9"/>
                         </mask>
                     </variation>
@@ -761,15 +798,18 @@
                         <mask key="subviews">
                             <include reference="QbO-ZG-Fh5"/>
                             <include reference="p15-OV-Q25"/>
+                            <include reference="KAk-ml-Lvu"/>
                             <include reference="V1p-RA-9nD"/>
                         </mask>
                         <mask key="constraints">
                             <include reference="zsq-3w-DEI"/>
+                            <include reference="E5v-wr-2BF"/>
                             <include reference="v09-Bb-mUv"/>
                             <include reference="yPy-hi-vK9"/>
                             <include reference="bg6-cQ-hRg"/>
                             <include reference="jkp-cF-rgP"/>
                             <include reference="OVh-I7-qRS"/>
+                            <include reference="mnG-PF-Wle"/>
                             <include reference="yMD-lZ-Si9"/>
                         </mask>
                     </variation>
@@ -924,7 +964,7 @@
                     <include reference="b7u-An-qAg"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="779" y="217.5"/>
+            <point key="canvasLocation" x="779" y="177.5"/>
         </view>
     </objects>
     <resources>

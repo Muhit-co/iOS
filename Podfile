@@ -4,11 +4,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'Muhit' do
-	pod 'GoogleAnalytics', '~> 3.12'
+	pod 'GoogleAnalytics', '~> 3.14'
 	pod 'MBProgressHUD', '~> 0.9'
 	pod 'MMDrawerController', '~> 0.5'
 	pod 'HexColors', '~> 2.2.1'
-	pod 'AFNetworking', '~> 2.5.2'
+	pod 'AFNetworking', '3.0.0-beta.3'
 	pod 'BSKeyboardControls', '~> 2.2'
 	pod 'SDWebImage', '~> 3.7'
 	pod 'ionicons', '~> 2.0'
@@ -16,6 +16,7 @@ target 'Muhit' do
 #	pod 'FBSDKLoginKit', '~> 4.2'
 	pod 'Facebook-iOS-SDK', '~> 3.23'
 	pod 'GoogleMaps'
-	pod 'Raven'
+    pod 'Fabric'
+    pod 'Crashlytics'
 end
 

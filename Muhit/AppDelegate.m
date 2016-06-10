@@ -7,18 +7,27 @@
 //
 
 #import "AppDelegate.h"
-#import "RavenClient.h"
 #import "MainVC.h"
 #import "NavBar.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
-@interface AppDelegate ()
+
+#define ALERT_PUSH_NOTIFICATION 10
+
+@interface AppDelegate (){
+    NSDictionary *pushNotification;
+    BOOL isRegisteredPush;
+}
 
 @end
 
 @implementation AppDelegate
 
+#pragma mark - Application Delegates
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
     [[self window] setBackgroundColor:[UIColor whiteColor]];
     [[self window] makeKeyAndVisible];
@@ -27,8 +36,8 @@
     [[UITextField appearance] setTintColor:CLR_DARK_BLUE];
     [[UITextView appearance] setTintColor:CLR_DARK_BLUE];
     
-//    [MT setServiceURL:@"http://api1.muhit.co"];//Production
-    [MT setServiceURL:@"http://api51.muhit.co"];//Sandbox
+//    [MT setServiceURL:@"http://muhit.co"];//Production
+    [MT setServiceURL:@"http://muhit.co"];//Sandbox
     
     if ([UD objectForKey:UD_ACCESS_TOKEN]) {
         [UF isAccessTokenValid];
@@ -36,10 +45,13 @@
     }
     
     [self initNavigationBar];
-	RavenClient *client = [RavenClient clientWithDSN:@"https://a99355627f1b4f879988b7b333f6c3ff:263a42d3689445aa93190906060a14a5@app.getsentry.com/46406"];
-    [RavenClient setSharedClient:client];
-    [client setupExceptionHandler];
-    [GMSServices provideAPIKey:@"AIzaSyDhFJMt6qYhCayG6MdiVZ5OqxG1CUjjNfY"];
+    [self initThirdPartyServices];
+    [self registerPushNotifications];
+    
+    if(launchOptions && [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]){
+        pushNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+        [self showPushNotificationPopup];
+    }
     
     return YES;
 }
@@ -58,6 +70,43 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 }
+
+#pragma mark -
+
+#pragma mark - Notification Delegates
+
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    NSString *pushToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    pushToken = [pushToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    DLog(@"token:%@",pushToken);
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings{
+    [application registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler{
+    
+    DLog(@"userInfo %@",userInfo);
+}
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+    
+    DLog(@"failed: %@",[NSString stringWithFormat: @"Error: %@", err]);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    pushNotification = userInfo;
+    [self showPushNotificationPopup];
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+}
+#pragma mark -
+
+#pragma mark - Initialize Methods
 
 -(void)initNavigationBar{
     MainVC *main = [[MainVC alloc] init];
@@ -79,5 +128,42 @@
 
     [[self window] setRootViewController:[MT drawerController]];
 }
+
+-(void)initThirdPartyServices{
+    [Fabric with:@[[Crashlytics class]]];
+    [GMSServices provideAPIKey:@"AIzaSyDhFJMt6qYhCayG6MdiVZ5OqxG1CUjjNfY"];
+}
+
+-(void)registerPushNotifications{
+    if (!isRegisteredPush) {
+        isRegisteredPush = YES;
+        
+        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+            [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:
+                                                                                 (UIUserNotificationTypeAlert |
+                                                                                  UIUserNotificationTypeSound |
+                                                                                  UIUserNotificationTypeBadge) categories:nil]];
+            
+        }
+        else{
+            [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+             UIRemoteNotificationTypeAlert |
+             UIRemoteNotificationTypeSound |
+             UIRemoteNotificationTypeBadge];
+        }
+    }
+}
+
+- (void)showPushNotificationPopup{
+        
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:pushNotification[@"t"]
+                                                    message:pushNotification[@"M"]
+                                                   delegate:self
+                                          cancelButtonTitle:@"İptal"
+                                          otherButtonTitles:@"Detay",nil];
+    [alert setTag:ALERT_PUSH_NOTIFICATION];
+    [alert show];
+}
+
 
 @end

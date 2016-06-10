@@ -129,7 +129,7 @@
 #pragma mark - UITableView Delegates
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	return 45;
+	return 60;
 }
 
 

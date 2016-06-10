@@ -14,9 +14,9 @@
     IBOutlet UILabel *lblTitle,*lblDescription,*lblHood,*lblTags,*lblPhotos,*lblAnonim,*lblAddTag;
     IBOutlet UITextField *txtTitle;
     IBOutlet UITextView *txtDescription;
-    IBOutlet UIView *viewHood,*viewDescription,*viewTags,*viewPhotos,*viewAddTag;
+    IBOutlet UIView *viewHood,*viewDescription,*viewTags,*viewPhotos,*viewAddTag,*viewAnonim;
     IBOutlet UIButton *btnSave,*btnAnonim,*btnAddTag,*btnAddPhoto,*btnHood;
-    IBOutlet UIImageView *imgDownIconHood,*imgDownIconTag,*imgAnonim,*imgLocation,*imgAnonimTick,*imgLocationTick,*imgAddTag;
+    IBOutlet UIImageView *imgDownIconHood,*imgAnonim,*imgLocation,*imgAnonimTick,*imgLocationTick,*imgAddTag;
     IBOutlet NSLayoutConstraint *constPhotosViewWidth,*constBtnAddImageLeft,*constTagsViewHeight,*constBtnAddTagLeft,*constBtnAddTagTop,*constContainerHeight;
     BOOL isAnonim,displayOnce;
     float totalPhotosWidth,totalTagsWidth,lastTagsY;
@@ -115,8 +115,7 @@
     imgLocationTick.layer.cornerRadius = cornerRadius;
     imgLocationTick.layer.masksToBounds = YES;
     
-    [imgDownIconHood setImage:[IonIcons imageWithIcon:ion_chevron_down size:20 color:CLR_LIGHT_BLUE]];
-    [imgDownIconTag setImage:[IonIcons imageWithIcon:ion_chevron_down size:20 color:CLR_LIGHT_BLUE]];
+    [imgDownIconHood setImage:[IonIcons imageWithIcon:ion_android_locate size:20 color:CLR_LIGHT_BLUE]];
     [imgAnonim setImage:[IonIcons imageWithIcon:ion_eye_disabled size:26 color:CLR_LIGHT_BLUE]];
     [imgLocation setImage:[IonIcons imageWithIcon:ion_location size:26 color:CLR_LIGHT_BLUE]];
     [btnAddPhoto setImage:[IonIcons imageWithIcon:ion_plus size:26 color:[UIColor whiteColor]]];
@@ -272,13 +271,12 @@
     else{
     	[viewAddTag setHidden:NO];
     }
-    
-    if ([arrTags count] == 0) {
-        constBtnAddTagTop.constant = 0;
-        constBtnAddTagLeft.constant = 0;
-    }
-    
+    constBtnAddTagTop.constant = 0;
+    constBtnAddTagLeft.constant = 0;
+
     constTagsViewHeight.constant = 30;
+	[self.view layoutIfNeeded];
+    constContainerHeight.constant = [viewAnonim bottomPosition] + 10;
     totalTagsWidth = 0;
     lastTagsY = 0;
     
@@ -291,7 +289,8 @@
             totalTagsWidth = 0;
             lastTagsY += 40;
             constTagsViewHeight.constant = 30 + lastTagsY;
-            constContainerHeight.constant += 40;
+            [self.view layoutIfNeeded];
+            constContainerHeight.constant = [viewAnonim bottomPosition] + 10;
             [self.view layoutIfNeeded];
         }
         
@@ -319,7 +318,8 @@
             totalTagsWidth = 0;
             lastTagsY += 40;
             constTagsViewHeight.constant = 30 + lastTagsY;
-            constContainerHeight.constant += 40;
+            [self.view layoutIfNeeded];
+            constContainerHeight.constant = [viewAnonim bottomPosition] + 10;
             [self.view layoutIfNeeded];
         }
         
@@ -334,10 +334,7 @@
 }
 
 -(void)actRemovePhoto:(UIButton*)sender{
-    NSLog(@"sender:%d",(int)sender.tag);
-    NSLog(@"arr1:%@",arrPhotos);
    	[arrPhotos removeObjectAtIndex:sender.tag];
-    NSLog(@"arr2:%@",arrPhotos);
     [self refreshPhotosView];
 }
 
@@ -430,7 +427,10 @@
             imgPicker = [[UIImagePickerController alloc] init];
             [imgPicker setSourceType:UIImagePickerControllerSourceTypeCamera];
             [imgPicker setDelegate:self];
-            [imgPicker setAllowsEditing:YES];
+            imgPicker.navigationBar.titleTextAttributes = @{
+                                                            NSForegroundColorAttributeName:[UIColor whiteColor],
+                                                            NSFontAttributeName: [UIFont fontWithName:@"SourceSansPro-Semibold" size:19.0f]
+                                                            };
             [self presentViewController:imgPicker animated:YES completion:nil];
         }
         break;
@@ -438,7 +438,10 @@
             imgPicker = [[UIImagePickerController alloc] init];
             [imgPicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
             [imgPicker setDelegate:self];
-            [imgPicker setAllowsEditing:YES];
+            imgPicker.navigationBar.titleTextAttributes = @{
+                                                         NSForegroundColorAttributeName:CLR_LIGHT_BLUE,
+                                                         NSFontAttributeName: [UIFont fontWithName:@"SourceSansPro-Semibold" size:19.0f]
+                                                         };
             [self presentViewController:imgPicker animated:YES completion:nil];
         }
         break;
