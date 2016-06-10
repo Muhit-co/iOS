@@ -17,7 +17,7 @@
     IBOutlet UIScrollView *scrollImages;
     IBOutlet UITableView *tblComments;
     IBOutlet UIPageControl *pageControl;
-    IBOutlet NSLayoutConstraint *contTitleHeight,*constDescriptionHeight,*constViewTypeWidth,*constTagsViewHeight,*constContainerHeight;
+    IBOutlet NSLayoutConstraint *constViewTypeWidth,*constTagsViewHeight,*constContainerHeight;
     NSDictionary *detail;
     NSArray *arrComments;
     IBOutlet GMSMapView *map;

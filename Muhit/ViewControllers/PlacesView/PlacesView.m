@@ -30,7 +30,7 @@
 }
 
 -(void)show{
-
+    
     [imgSearchIcon setImage:[IonIcons imageWithIcon:ion_search size:20 color:CLR_DARK_PUPRPLE]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     [[[[UIApplication sharedApplication] delegate] window] addSubview:self];
@@ -52,23 +52,23 @@
         [tblPlaces reloadData];
         return;
     }
-
+    
     GMSAutocompleteFilter *filter = [[GMSAutocompleteFilter alloc] init];
     filter.type = kGMSPlacesAutocompleteTypeFilterRegion;
     
     [[GMSPlacesClient sharedClient] autocompleteQuery:query bounds:nil filter:nil callback:^(NSArray *results, NSError *error) {
-         if (error != nil) {
-             NSLog(@"Autocomplete error %@", [error localizedDescription]);
-             return;
-         }
+        if (error != nil) {
+            NSLog(@"Autocomplete error %@", [error localizedDescription]);
+            return;
+        }
         arrPlaces = [[NSMutableArray alloc] init];
         for (GMSAutocompletePrediction *obj in results) {
             if ([[obj types] containsObject:@"administrative_area_level_4"]) {
                 [arrPlaces addObject:obj];
             }
         }
-         [tblPlaces reloadData];
-     }];
+        [tblPlaces reloadData];
+    }];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -101,10 +101,10 @@
         order = @"first";
     }
     else if(indexPath.row == [arrPlaces count]-1){
-    	order = @"last";
+        order = @"last";
     }
     else{
-    	order = @"middle";
+        order = @"middle";
     }
     
     [cell setWithDictionary:item cellOrder:order];
