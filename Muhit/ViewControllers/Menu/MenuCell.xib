@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SourceSansPro-Semibold.ttf">
@@ -16,26 +17,28 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4" id="ROX-nJ-lc4">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5">
-                        <rect key="frame" x="53" y="11" width="191" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5" userLabel="lblTitle">
+                        <rect key="frame" x="38" y="5" width="272" height="34.5"/>
                         <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <size key="shadowOffset" width="0.0" height="1"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="center" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="82" userLabel="icon">
-                        <rect key="frame" x="6" y="3" width="39" height="37"/>
+                    <imageView userInteractionEnabled="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="82" userLabel="icon">
+                        <rect key="frame" x="10" y="13" width="18" height="18"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="39" id="4gL-Bg-7yB">
                                 <variation key="heightClass=regular-widthClass=compact" constant="18"/>
                             </constraint>
+                            <constraint firstAttribute="width" constant="18" id="9As-Er-96d"/>
                             <constraint firstAttribute="height" constant="37" id="GEZ-MV-GyV">
                                 <variation key="heightClass=regular-widthClass=compact" constant="18"/>
                             </constraint>
+                            <constraint firstAttribute="height" constant="18" id="ND8-LN-W33"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -51,9 +54,10 @@
                         </variation>
                     </imageView>
                     <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6L-ZF-jJW" userLabel="viewLine">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="43" width="320" height="1"/>
                         <color key="backgroundColor" red="0.1176470588" green="0.27058823529999998" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Tcd-wS-IDs"/>
                             <constraint firstAttribute="height" constant="1" id="xOa-do-Cwl"/>
                         </constraints>
                         <variation key="default">
@@ -71,27 +75,35 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="5" secondAttribute="bottom" constant="5" id="27C-Ba-1nA"/>
+                    <constraint firstItem="82" firstAttribute="centerY" secondItem="ROX-nJ-lc4" secondAttribute="centerY" id="675-kM-OdD"/>
+                    <constraint firstAttribute="trailing" secondItem="X6L-ZF-jJW" secondAttribute="trailing" id="6AW-7m-N5P"/>
+                    <constraint firstAttribute="bottom" secondItem="5" secondAttribute="bottom" constant="5" id="6yr-qt-05T"/>
+                    <constraint firstAttribute="bottom" secondItem="X6L-ZF-jJW" secondAttribute="bottom" id="7e5-Xq-0TU"/>
+                    <constraint firstItem="82" firstAttribute="leading" secondItem="ROX-nJ-lc4" secondAttribute="leading" constant="10" id="CiQ-SJ-W90"/>
                     <constraint firstAttribute="centerY" secondItem="82" secondAttribute="centerY" constant="11.5" id="FLz-ge-3sF">
                         <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                     </constraint>
+                    <constraint firstItem="X6L-ZF-jJW" firstAttribute="leading" secondItem="ROX-nJ-lc4" secondAttribute="leading" id="MqB-qk-aSc"/>
                     <constraint firstItem="5" firstAttribute="leading" secondItem="82" secondAttribute="trailing" constant="10" id="Tyd-ws-wT8"/>
                     <constraint firstItem="5" firstAttribute="top" secondItem="ROX-nJ-lc4" secondAttribute="top" constant="11" id="XDE-Xg-KB5">
                         <variation key="heightClass=regular-widthClass=compact" constant="5"/>
                     </constraint>
                     <constraint firstAttribute="trailing" secondItem="5" secondAttribute="trailing" constant="10" id="crb-TJ-EK2"/>
+                    <constraint firstItem="5" firstAttribute="top" secondItem="ROX-nJ-lc4" secondAttribute="top" constant="5" id="fso-Ue-i9P"/>
                     <constraint firstAttribute="trailing" secondItem="X6L-ZF-jJW" secondAttribute="trailing" id="gkV-wu-pd7"/>
                     <constraint firstItem="X6L-ZF-jJW" firstAttribute="leading" secondItem="ROX-nJ-lc4" secondAttribute="leading" id="l0h-od-ZYc"/>
+                    <constraint firstAttribute="trailing" secondItem="5" secondAttribute="trailing" constant="10" id="rmb-Vz-mCl"/>
+                    <constraint firstItem="5" firstAttribute="leading" secondItem="82" secondAttribute="trailing" constant="10" id="sVG-cm-TyU"/>
+                    <constraint firstItem="82" firstAttribute="leading" secondItem="ROX-nJ-lc4" secondAttribute="leadingMargin" constant="10" id="to8-AG-IQ4"/>
                     <constraint firstAttribute="bottom" secondItem="X6L-ZF-jJW" secondAttribute="bottom" id="xFI-Ok-9Hm"/>
                     <constraint firstItem="82" firstAttribute="leading" secondItem="ROX-nJ-lc4" secondAttribute="leading" constant="5" id="xMb-uj-2hH">
                         <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                     </constraint>
                 </constraints>
                 <variation key="default">
-                    <mask key="subviews">
-                        <exclude reference="X6L-ZF-jJW"/>
-                    </mask>
                     <mask key="constraints">
                         <exclude reference="FLz-ge-3sF"/>
+                        <exclude reference="to8-AG-IQ4"/>
                         <exclude reference="xMb-uj-2hH"/>
                         <exclude reference="27C-Ba-1nA"/>
                         <exclude reference="Tyd-ws-wT8"/>
@@ -103,9 +115,6 @@
                     </mask>
                 </variation>
                 <variation key="heightClass=regular-widthClass=compact">
-                    <mask key="subviews">
-                        <include reference="X6L-ZF-jJW"/>
-                    </mask>
                     <mask key="constraints">
                         <include reference="FLz-ge-3sF"/>
                         <include reference="xMb-uj-2hH"/>

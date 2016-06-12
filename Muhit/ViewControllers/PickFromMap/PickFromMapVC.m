@@ -107,7 +107,7 @@
 
 #pragma mark Localization
 - (void) setLocalizedStrings {
-    [btnPick setTitle:LocalizedString(@"Tamam")];
+    [btnPick setTitle:LocalizedString(@"ok")];
 }
 #pragma mark -
 @end

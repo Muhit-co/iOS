@@ -14,37 +14,45 @@
 	<string>Muhtarım</string>
 	<key>Muhtar</key>
 	<string>Muhtar</string>
-	<key>Üye Ol</key>
-	<string>Üye Ol</string>
-	<key>Giriş Yap</key>
+	<key>signup</key>
+	<string>Kayıt Ol</string>
+	<key>login</key>
 	<string>Giriş Yap</string>
+	<key>login-with-facebook</key>
+	<string>Facebook ile Bağlan</string>
+	<key>or</key>
+	<string>veya</string>
 	<key>Profilim</key>
 	<string>Profilim</string>
 	<key>Profil</key>
 	<string>Profil</string>
-	<key>Çıkış Yap</key>
+	<key>logout</key>
 	<string>Çıkış Yap</string>
+	<key>connect</key>
+	<string>Bağlan</string>
 	<key>Popüler</key>
 	<string>Popüler</string>
 	<key>En Son</key>
 	<string>En Son</string>
-	<key>Şifremi Unuttum</key>
-	<string>Şifremi Unuttum</string>
-	<key>Şifre</key>
+	<key>forgot-pass</key>
+	<string>Şifremi unuttum</string>
+	<key>submit</key>
+	<string>Gönder</string>
+	<key>forgot-pass-description</key>
+	<string>Eğer şifreni unuttuysan aşağıya e-posta adresini yazarak gönderdiğimiz link ile yeni bir şifre oluşturabilirsin.</string>
+	<key>password</key>
 	<string>Şifre</string>
-	<key>Şifre (tekrar)</key>
-	<string>Şifre (tekrar)</string>
-	<key>Şifremi Gönder</key>
-	<string>Şifremi Gönder</string>
-	<key>E-posta adresi</key>
+	<key>email</key>
 	<string>E-posta adresi</string>
-	<key>Ad</key>
+	<key>read-agreement</key>
+	<string>Kullanım koşullarını kabul ediyorum</string>
+	<key>name</key>
 	<string>Ad</string>
-	<key>Soyad</key>
+	<key>surname</key>
 	<string>Soyad</string>
-	<key>Kullanıcı adı</key>
+	<key>username</key>
 	<string>Kullanıcı adı</string>
-	<key>Mahalle</key>
+	<key>hood</key>
 	<string>Mahalle</string>
 	<key>Yarattığı Fikirler</key>
 	<string>Yarattığı Fikirler</string>
@@ -86,7 +94,7 @@
 	<string>İptal</string>
 	<key>İnternet bağlantınızı kontrol ediniz</key>
 	<string>İnternet bağlantınızı kontrol ediniz</string>
-	<key>Tamam</key>
+	<key>ok</key>
 	<string>Tamam</string>
 	<key>Fikir</key>
 	<string>Fikir</string>

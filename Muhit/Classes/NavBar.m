@@ -23,9 +23,13 @@
                                                                 }];
         [self setTintColor:[UIColor whiteColor]];
         [self setTintAdjustmentMode:UIViewTintAdjustmentModeAutomatic];
-        [self setBackIndicatorImage:[UIImage imageNamed:@"back"]];
-        [self setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"back"]];
-
+        [self setBackIndicatorImage:[UIImage imageNamed:@"navigation-back"]];
+        [self setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"navigation-back"]];
+        [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage new]
+                                          forBarPosition:UIBarPositionAny
+                                              barMetrics:UIBarMetricsDefault];
+        
     }
     return self;
 }

@@ -21,7 +21,7 @@
 
 
 - (BOOL) enableInputClicksWhenVisible {
-	return YES;
+    return YES;
 }
 
 
@@ -53,7 +53,8 @@
             [self.rightArrowButton setEnabled:NO];
             [self setRightArrowButton:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:106 target:self action:@selector(selectNextField)]];
             
-        } else {
+        }
+        else {
             [self setBarStyle:UIBarStyleBlackTranslucent];
             
             [self setSegmentedControl:[[UISegmentedControl alloc] initWithItems:@[ LocalizedString(@"keyboard-previous"),
@@ -66,11 +67,11 @@
             [self setSegmentedControlItem:[[UIBarButtonItem alloc] initWithCustomView:self.segmentedControl]];
         }
         
-        [self setDoneButton:[[UIBarButtonItem alloc] initWithTitle:LocalizedString(@"keyboard-ok")
+        [self setDoneButton:[[UIBarButtonItem alloc] initWithTitle:LocalizedString(@"ok")
                                                              style:UIBarButtonItemStyleDone
                                                             target:self
                                                             action:@selector(doneButtonPressed:)]];
-
+        
         [self setVisibleControls:(KeyboardControlPreviousNext | KeyboardControlDone)];
         
         [self setFields:fields];
@@ -107,14 +108,14 @@
         if (!activeField || [self.fields containsObject:activeField])
         {
             _activeField = activeField;
-        
+            
             if (activeField)
             {
                 if (![activeField isFirstResponder])
                 {
                     [activeField becomeFirstResponder];
                 }
-            
+                
                 [self updatePrevoidNextEnabledStates];
             }
         }
@@ -156,7 +157,7 @@
     if (tintColor != _tintColor)
     {
         [self.toolbar setTintColor:tintColor];
-
+        
         _tintColor = tintColor;
         
         [self.doneButton setTitleTextAttributes:@{ NSFontAttributeName: [UIFont fontWithName:FONT_BOLD size:17],
@@ -167,7 +168,7 @@
 - (void)setBarTintColor:(UIColor *)barTintColor{
     if (barTintColor != _barTintColor){
         [self.toolbar setBarTintColor:barTintColor];
-
+        
         _barTintColor = barTintColor;
     }
 }
@@ -237,7 +238,7 @@
     if (visibleControls != _visibleControls)
     {
         _visibleControls = visibleControls;
-
+        
         [self.toolbar setItems:[self toolbarItems]];
     }
 }
@@ -247,8 +248,8 @@
 
 - (void)segmentedControlValueChanged:(id)sender
 {
-	[[UIDevice currentDevice] playInputClick];
-	
+    [[UIDevice currentDevice] playInputClick];
+    
     switch (self.segmentedControl.selectedSegmentIndex)
     {
         case BSKeyboardControlsDirectionPrevious:

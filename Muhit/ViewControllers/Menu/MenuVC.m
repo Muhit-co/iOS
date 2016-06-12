@@ -14,7 +14,7 @@
 @interface MenuVC (){
     
     IBOutlet UIImageView *imgBG,*imgProfile;
-    IBOutlet UIButton *btnLogout,*btnProfile,*btnLogin,*btnSignup;
+    IBOutlet UIButton *btnLogout,*btnProfile,*btnLogin,*btnSignup,*btnFacebook;
     IBOutlet UILabel *lblName;
     IBOutlet UITableView *tblMenu;
     IBOutlet UIView *viewLoggedIn,*viewLoggedOut;
@@ -39,10 +39,15 @@
     
     imgProfile.layer.cornerRadius = 20;
     imgProfile.layer.masksToBounds = YES;
-    
     [btnLogout setImage:[IonIcons imageWithIcon:ion_log_out size:30 color:[HXColor hx_colorWithHexRGBAString:@"FFFFFF" alpha:0.3]]];
-    [btnLogin setImage:[IonIcons imageWithIcon:ion_log_in size:30 color:[HXColor hx_colorWithHexRGBAString:@"FFFFFF" alpha:0.3]]];
-    [btnSignup setImage:[IonIcons imageWithIcon:ion_person_add size:30 color:[HXColor hx_colorWithHexRGBAString:@"FFFFFF" alpha:0.3]]];
+    
+    btnLogin.layer.cornerRadius = cornerRadius;
+    btnFacebook.layer.cornerRadius = cornerRadius;
+    btnSignup.layer.cornerRadius = cornerRadius;
+    
+    [btnLogin setImage:[IonIcons imageWithIcon:ion_log_in size:24 color:[HXColor hx_colorWithHexRGBAString:@"EEEEEE"]]];
+    [btnFacebook setImage:[IonIcons imageWithIcon:ion_social_facebook size:24 color:[HXColor hx_colorWithHexRGBAString:@"EEEEEE"]]];
+    [btnSignup setImage:[IonIcons imageWithIcon:ion_person_add size:24 color:[HXColor hx_colorWithHexRGBAString:@"EEEEEE"]]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -106,6 +111,10 @@
 
 - (IBAction)actLogin:(id)sender{
     [ScreenOperations openLogin];
+}
+
+- (IBAction)actFacebook:(id)sender{
+    [ScreenOperations openSignUp];
 }
 
 - (IBAction)actSignup:(id)sender{
@@ -190,9 +199,10 @@
 
 - (void) setLocalizedStrings{
     [self reloadMenu];
-    [btnSignup setTitle:[LocalizedString(@"Üye Ol") toUpper]];
-    [btnLogin setTitle:[LocalizedString(@"Giriş Yap") toUpper]];
-    [btnLogout setTitle:[LocalizedString(@"Çıkış Yap") toUpper]];
+    [btnSignup setTitle:[LocalizedString(@"signup") toUpper]];
+    [btnLogin setTitle:[LocalizedString(@"login") toUpper]];
+    [btnFacebook setTitle:[LocalizedString(@"connect") toUpper]];
+    [btnLogout setTitle:[LocalizedString(@"logout") toUpper]];
 }
 
 - (void)didReceiveMemoryWarning{

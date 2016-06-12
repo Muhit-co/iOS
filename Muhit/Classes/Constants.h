@@ -40,8 +40,8 @@ static const CGFloat cornerRadius = 6;
 #define isNotNull(variable) variable == [NSNull null] ? NO : (variable ? YES : NO)
 #define nilOrJson(VAL) [VAL isKindOfClass:[NSNull class]] ? nil : VAL
 
-#define CLR_LIGHT_BLUE [HXColor hx_colorWithHexRGBAString:@"44a2e0"]
-#define CLR_DARK_BLUE [HXColor hx_colorWithHexRGBAString:@"245573"]
+#define CLR_LIGHT_BLUE [HXColor hx_colorWithHexRGBAString:@"44A1E0"]
+#define CLR_DARK_BLUE [HXColor hx_colorWithHexRGBAString:@"245672"]
 #define CLR_DARK_PUPRPLE [HXColor hx_colorWithHexRGBAString:@"666677"]
 #define CLR_WHITE [HXColor hx_colorWithHexRGBAString:@"FFFFFF"]
 

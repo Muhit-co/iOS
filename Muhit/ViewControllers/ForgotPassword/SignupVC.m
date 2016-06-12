@@ -9,10 +9,11 @@
 #import "SignupVC.h"
 
 @interface SignupVC (){
-    IBOutlet MTTextField *txtFirstname,*txtSurname,*txtEmail,*txtPassword,*txtRePassword;
-    IBOutlet UILabel *lblFirstname,*lblSurname,*lblEmail,*lblPassword,*lblRePassword,*lblHood;
-    IBOutlet UIButton *btnSignup,*btnHood;
+    IBOutlet MTTextField *txtFirstname,*txtSurname,*txtEmail,*txtPassword;
+    IBOutlet UILabel *lblSignup,*lblFirstname,*lblSurname,*lblEmail,*lblPassword,*lblHood;
+    IBOutlet UIButton *btnSignup,*btnHood,*btnLogin,*btnReadAgreement,*btnCheck;
     IBOutlet UIImageView *imgDownIcon;
+    IBOutlet NSLayoutConstraint *constContainerHeight;
     KeyboardControls *keyboardControl;
     PlacesView *placeView;
     NSString *fullGeoCode;
@@ -24,17 +25,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self adjustUI];
-    
-    NSArray *txtFields = @[txtFirstname, txtSurname, txtEmail,txtPassword,txtRePassword];
-    keyboardControl = [[KeyboardControls alloc] initWithFields:txtFields];
+    keyboardControl = [[KeyboardControls alloc] initWithFields:@[txtFirstname, txtSurname, txtEmail,txtPassword]];
     [keyboardControl setDelegate:self];
     [NC addObserver:self selector:@selector(geoCodePicked:) name:NC_GEOCODE_PICKED object:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    constContainerHeight.constant = btnSignup.bottomPosition+15;
+    [scrollRoot setContentSize:CGSizeMake(self.view.bounds.size.width, btnSignup.bottomPosition+15)];
+    [self.view layoutIfNeeded];
 }
 
 - (void)geoCodePicked:(NSNotification*)notification{
@@ -48,11 +49,11 @@
     txtSurname.layer.cornerRadius = cornerRadius;
     txtEmail.layer.cornerRadius = cornerRadius;
     txtPassword.layer.cornerRadius = cornerRadius;
-    txtRePassword.layer.cornerRadius = cornerRadius;
     btnSignup.layer.cornerRadius = cornerRadius;
     btnHood.layer.cornerRadius = cornerRadius;
-    
+    btnLogin.layer.cornerRadius = cornerRadius;
     [imgDownIcon setImage:[IonIcons imageWithIcon:ion_chevron_down size:20 color:CLR_LIGHT_BLUE]];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnLogin];
 }
 
 -(IBAction)actSignup:(id)sender{
@@ -61,7 +62,6 @@
                                            surname:txtSurname.text
                                              email:txtEmail.text
                                           password:txtPassword.text
-                                        rePassword:txtRePassword.text
                                    isFacebookLogin:NO];
     
     if (isValid == NO){
@@ -90,6 +90,18 @@
     [ScreenOperations openPickFromMap];
 }
 
+-(IBAction)actLogin:(id)sender{
+    
+}
+
+-(IBAction)actCheck:(id)sender{
+    [btnCheck setSelected:![btnCheck isSelected]];
+}
+
+-(IBAction)actAgreement:(id)sender{
+    
+}
+
 #pragma mark -
 #pragma mark Keyboard Controls Delegate
 
@@ -114,14 +126,16 @@
 }
 
 - (void)setLocalizedStrings{
-    [self setTitle:LocalizedString(@"Üye Ol")];
-    [btnSignup setTitle:[LocalizedString(@"Üye Ol") toUpper]];
-    [lblFirstname setText:LocalizedString(@"Ad")];
-    [lblSurname setText:LocalizedString(@"Soyad")];
-    [lblEmail setText:LocalizedString(@"E-posta adresi")];
-    [lblPassword setText:LocalizedString(@"Şifre")];
-    [lblRePassword setText:LocalizedString(@"Şifre (tekrar)")];
-    [lblHood setText:LocalizedString(@"Mahalle")];
+    [self setTitle:nil];
+    [btnSignup setTitle:[LocalizedString(@"signup") toUpper]];
+    [btnLogin setTitle:[LocalizedString(@"login") toUpper]];
+    [btnReadAgreement setTitle:LocalizedString(@"read-agreement")];
+    [lblFirstname setText:LocalizedString(@"name")];
+    [lblSurname setText:LocalizedString(@"surname")];
+    [lblEmail setText:LocalizedString(@"email")];
+    [lblPassword setText:LocalizedString(@"password")];
+    [lblSignup setText:LocalizedString(@"signup")];
+    [lblHood setText:LocalizedString(@"hood")];
 }
 
 @end

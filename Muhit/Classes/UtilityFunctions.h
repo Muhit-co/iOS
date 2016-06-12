@@ -88,7 +88,6 @@ typedef enum{
                             surname:(NSString*)surname
                               email:(NSString*)email
                            password:(NSString*)password
-                         rePassword:(NSString*)rePassword
                     isFacebookLogin:(BOOL)isFacebookLogin;
 
 + (BOOL)validateLoginWithEmail:(NSString*)email password:(NSString*)password;
@@ -97,5 +96,8 @@ typedef enum{
 + (NSDictionary *)parsePlaces:(GMSAutocompletePrediction *)address;
 
 +(void)setUserDefaultsWithDetails:(NSDictionary*)details;
+
++(NSString*)urlEscapeString:(NSString *)unencodedString;
++(NSString*)addQueryStringToUrlString:(NSString *)urlString withDictionary:(NSDictionary *)dictionary;
 
 @end

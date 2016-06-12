@@ -10,8 +10,8 @@
 
 @interface ForgotPasswordVC (){
     IBOutlet MTTextField *txtEmail;
-    IBOutlet UILabel *lblEmail;
-    IBOutlet UIButton *btnSendPassword;
+    IBOutlet UILabel *lblForgotPassword,*lblDescription;
+    IBOutlet UIButton *btnSubmit,*btnSignup;
 }
 
 @end
@@ -21,21 +21,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     txtEmail.layer.cornerRadius = cornerRadius;
-    btnSendPassword.layer.cornerRadius = cornerRadius;
+    btnSubmit.layer.cornerRadius = cornerRadius;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnSignup];
 }
 
--(IBAction)actSendPassword:(id)sender{
+-(IBAction)actSubmit:(id)sender{
+    
+}
 
+-(IBAction)actSignup:(id)sender{
+    
+}
+
+- (void)setLocalizedStrings{
+    [self setTitle:nil];
+    [btnSubmit setTitle:[LocalizedString(@"submit") toUpper]];
+    [btnSignup setTitle:[LocalizedString(@"signup") toUpper]];
+    [txtEmail setPlaceholder:LocalizedString(@"email")];
+    [lblForgotPassword setText:LocalizedString(@"forgot-pass")];
+    [lblDescription setText:LocalizedString(@"forgot-pass-description")];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
-- (void)setLocalizedStrings{
-    [self setTitle:LocalizedString(@"Şifremi Unuttum")];
-    [btnSendPassword setTitle:[LocalizedString(@"Şifremi Gönder") toUpper]];
-    [lblEmail setText:LocalizedString(@"E-posta adresi")];
-}
-
 @end

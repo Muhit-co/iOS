@@ -32,6 +32,7 @@
     [self adjustUI];
     [self actPopular:nil];
     [NC addObserver:self selector:@selector(geoCodePicked:) name:NC_GEOCODE_PICKED object:nil];
+    [self getIssues];
 }
 
 - (void)geoCodePicked:(NSNotification*)notification{
@@ -44,7 +45,7 @@
     [[MT navCon] setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
     arrIssues = [[NSMutableArray alloc] init];
-    //    [self getIssues];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

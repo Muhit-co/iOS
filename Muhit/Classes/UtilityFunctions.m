@@ -234,9 +234,9 @@
     UIView *superview = [view superview];
     
     [view setFrame:CGRectMake(0,
-                             superview.frame.origin.y + superview.frame.size.height - view.frame.size.height,
-                             view.frame.size.width,
-                             view.frame.size.height)
+                              superview.frame.origin.y + superview.frame.size.height - view.frame.size.height,
+                              view.frame.size.width,
+                              view.frame.size.height)
      ];
 }
 
@@ -449,16 +449,16 @@
 }
 
 +(NSString*)getMeanTime:(NSString*)d {
-
+    
     NSDateFormatter *f = [[NSDateFormatter alloc] init];
     [f setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-
+    
     NSDate *date = [f dateFromString:d];
-
+    
     [f setLocale:[NSLocale localeWithLocaleIdentifier:@"tr"]];
     [f setDateStyle:NSDateFormatterMediumStyle];
     [f setTimeStyle:NSDateFormatterShortStyle];
-
+    
     return  [f stringFromDate:date];
 }
 
@@ -598,7 +598,7 @@
 }
 
 + (void)removeHudAfterDelay{
-	[[MT HUD] removeFromSuperview];
+    [[MT HUD] removeFromSuperview];
 }
 
 + (void)addHudTop{
@@ -609,18 +609,18 @@
     [[[UIAlertView alloc] initWithTitle: @""
                                 message: message
                                delegate: nil
-                      cancelButtonTitle: LocalizedString(@"Tamam")
+                      cancelButtonTitle: LocalizedString(@"ok")
                       otherButtonTitles: nil] show];
 }
 
 + (void)showAlertWithMessage: (NSString*)message
                          tag: (int)tag
                     delegate: (id)delegate {
-
+    
     UIAlertView *alert =  [[UIAlertView alloc] initWithTitle: @""
                                                      message: message
                                                     delegate: delegate
-                                           cancelButtonTitle: LocalizedString(@"Tamam")
+                                           cancelButtonTitle: LocalizedString(@"ok")
                                            otherButtonTitles: nil];
     [alert setTag: tag];
     [alert show];
@@ -701,7 +701,7 @@
 }
 
 + (UIImage *)croppIngimageByImageName:(UIImage *)imageToCrop toRect:(CGRect)rect{
-
+    
     CGImageRef imageRef = CGImageCreateWithImageInRect([imageToCrop CGImage], rect);
     UIImage *cropped = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
@@ -769,7 +769,6 @@
                             surname:(NSString*)surname
                               email:(NSString*)email
                            password:(NSString*)password
-                         rePassword:(NSString*)rePassword
                     isFacebookLogin:(BOOL)isFacebookLogin{
     
     NSMutableArray *messages = [NSMutableArray array];
@@ -792,7 +791,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                         message:[messages componentsJoinedByString:@"\n"]
                                                        delegate:nil
-                                              cancelButtonTitle:LocalizedString(@"Tamam")
+                                              cancelButtonTitle:LocalizedString(@"ok")
                                               otherButtonTitles:nil];
         [alert show];
         return NO;
@@ -804,7 +803,7 @@
 + (BOOL)validateLoginWithEmail:(NSString*)email password:(NSString*)password{
     
     NSMutableArray *messages = [NSMutableArray array];
-
+    
     if (password && [password length] < 4) {
         [messages addObject:LocalizedString(@"Şifreniz en az 4 haneli olmalıdır")];
     }
@@ -819,7 +818,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                         message:[messages componentsJoinedByString:@"\n"]
                                                        delegate:nil
-                                              cancelButtonTitle:LocalizedString(@"Tamam")
+                                              cancelButtonTitle:LocalizedString(@"ok")
                                               otherButtonTitles:nil];
         [alert show];
         return NO;
@@ -844,7 +843,7 @@
     
     NSArray * arrTexts = [address.attributedFullText.string componentsSeparatedByString:@", "];
     NSUInteger index = [address.types indexOfObject:@"administrative_area_level_4"];
-
+    
     NSString *detail=@"";
     for (NSString *str in arrTexts) {
         if (![str isEqualToString:arrTexts[index]]) {
@@ -875,10 +874,34 @@
         [UD setObject:nil forKey:UD_HOOD_ID];
     }
     else{
-    	[UD setObject:details[USER][@"active_hood"] forKey:UD_HOOD_ID];
+        [UD setObject:details[USER][@"active_hood"] forKey:UD_HOOD_ID];
     }
 }
 
++(NSString*)urlEscapeString:(NSString *)unencodedString
+{
+    CFStringRef originalStringRef = (__bridge_retained CFStringRef)unencodedString;
+    NSString *s = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,originalStringRef, NULL, NULL,kCFStringEncodingUTF8);
+    CFRelease(originalStringRef);
+    return s;
+}
 
+
++(NSString*)addQueryStringToUrlString:(NSString *)urlString withDictionary:(NSDictionary *)dictionary
+{
+    NSMutableString *urlWithQuerystring = [[NSMutableString alloc] initWithString:urlString];
+    
+    for (id key in dictionary) {
+        NSString *keyString = [key description];
+        NSString *valueString = [[dictionary objectForKey:key] description];
+        
+        if ([urlWithQuerystring rangeOfString:@"?"].location == NSNotFound) {
+            [urlWithQuerystring appendFormat:@"?%@=%@", [self urlEscapeString:keyString], [self urlEscapeString:valueString]];
+        } else {
+            [urlWithQuerystring appendFormat:@"&%@=%@", [self urlEscapeString:keyString], [self urlEscapeString:valueString]];
+        }
+    }
+    return urlWithQuerystring;
+}
 
 @end

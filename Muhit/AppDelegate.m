@@ -11,6 +11,7 @@
 #import "NavBar.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "FacebookManager.h"
 
 #define ALERT_PUSH_NOTIFICATION 10
 
@@ -18,7 +19,6 @@
     NSDictionary *pushNotification;
     BOOL isRegisteredPush;
 }
-
 @end
 
 @implementation AppDelegate
@@ -36,7 +36,7 @@
     [[UITextView appearance] setTintColor:CLR_DARK_BLUE];
     
     //    [MT setServiceURL:@"http://muhit.co"];//Production
-    [MT setServiceURL:@"http://muhit.co"];//Sandbox
+    [MT setServiceURL:@"http://stage.muhit.co"];//Sandbox
     
     if ([UD objectForKey:UD_ACCESS_TOKEN]) {
         [UF isAccessTokenValid];
@@ -52,6 +52,9 @@
         [self showPushNotificationPopup];
     }
     
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
+    
     return YES;
 }
 
@@ -64,7 +67,17 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    //Facebook
+    if([url.absoluteString rangeOfString:@"fb"].location != NSNotFound) {
+        return [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    }
+    return NO;
+}
+
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

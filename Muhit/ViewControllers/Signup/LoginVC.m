@@ -10,12 +10,10 @@
 
 @interface LoginVC (){
     IBOutlet MTTextField *txtEmail,*txtPassword;
-    IBOutlet UILabel *lblEmail,*lblPassword;
     IBOutlet UIButton *btnLogin,*btnSignup,*btnForgotPassword,*btnFacebook;
+    IBOutlet UILabel *lblOr;
     KeyboardControls *keyboardControl;
-    
 }
-
 @end
 
 @implementation LoginVC
@@ -24,18 +22,21 @@
     [super viewDidLoad];
     [self adjustUI];
     
-    NSArray *txtFields = @[txtEmail ,txtPassword];
-    keyboardControl = [[KeyboardControls alloc] initWithFields:txtFields];
+    keyboardControl = [[KeyboardControls alloc] initWithFields:@[txtEmail ,txtPassword]];
     [keyboardControl setDelegate:self];
 }
 
 -(void)adjustUI{
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnSignup];
+    
     txtEmail.layer.cornerRadius = cornerRadius;
     txtPassword.layer.cornerRadius = cornerRadius;
     btnLogin.layer.cornerRadius = cornerRadius;
     btnSignup.layer.cornerRadius = cornerRadius;
     btnForgotPassword.layer.cornerRadius = cornerRadius;
     btnFacebook.layer.cornerRadius = cornerRadius;
+    [btnFacebook setImage:[IonIcons imageWithIcon:ion_social_facebook size:30 color:CLR_WHITE]];
 }
 
 -(IBAction)actLogin:(id)sender{
@@ -103,7 +104,7 @@
     else{
         [self actFacebook:nil];
     }
-
+    
 }
 
 -(IBAction)actSignup:(id)sender{
@@ -138,11 +139,13 @@
 }
 
 - (void)setLocalizedStrings{
-    [self setTitle:LocalizedString(@"Giriş Yap")];
-    [btnLogin setTitle:[LocalizedString(@"Giriş Yap") toUpper]];
-    [btnSignup setTitle:[LocalizedString(@"Üye Ol") toUpper]];
-    [btnForgotPassword setTitle:[LocalizedString(@"Şifremi Unuttum") toUpper]];
-    [lblEmail setText:LocalizedString(@"E-posta adresi")];
-    [lblPassword setText:LocalizedString(@"Şifre")];
+    [self setTitle:nil];
+    [lblOr setText:LocalizedString(@"or")];
+    [btnLogin setTitle:[LocalizedString(@"login") toUpper]];
+    [btnSignup setTitle:[LocalizedString(@"signup") toUpper]];
+    [btnForgotPassword setTitle:[LocalizedString(@"forgot-pass") toUpper]];
+    [btnFacebook setTitle:[LocalizedString(@"login-with-facebook") toUpper]];
+    [txtEmail setPlaceholder:LocalizedString(@"email")];
+    [txtPassword setPlaceholder:LocalizedString(@"password")];
 }
 @end
