@@ -10,12 +10,11 @@
 #import "MainCell.h"
 
 @interface MainVC (){
-    IBOutlet UIButton *btnCreateIssue,*btnPopular,*btnNewest,*btnHood;
+    IBOutlet UIButton *btnCreateIssue,*btnPopular,*btnLatest,*btnMap,*btnMenu,*btnPickHood,*btnLocation;
     IBOutlet UITextField *txtSearch;
     IBOutlet UIImageView *imgLocation;
     IBOutlet NSLayoutConstraint *constActiveLine;
-    IBOutlet UIView *viewActiveLine,*viewSearch,*viewHood;
-    IBOutlet UIImageView *imgSearch,*imgDownIcon;
+    IBOutlet UIView *viewActiveLine,*viewHood;
     IBOutlet UITableView *tblIssues;
     NSMutableArray *arrIssues;
     NSString *fullGeoCode;
@@ -38,7 +37,7 @@
 - (void)geoCodePicked:(NSNotification*)notification{
     NSDictionary *dict = [notification object];
     fullGeoCode = dict[@"full"];
-    [btnHood setTitle:dict[@"hood"]];
+    [btnPickHood setTitle:dict[@"hood"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,18 +59,13 @@
 
 -(void)adjustUI{
     btnCreateIssue.layer.cornerRadius = cornerRadius;
-    btnCreateIssue.layer.borderColor = [CLR_WHITE CGColor];
-    btnCreateIssue.layer.borderWidth = 1;
-    
-    [btnCreateIssue setImage:[IonIcons imageWithIcon:ion_plus size:15 color:[HXColor hx_colorWithHexRGBAString:@"FFFFFF"]]];
-    
-    [imgLocation setImage:[IonIcons imageWithIcon:ion_location size:115 color:[HXColor hx_colorWithHexRGBAString:@"676778"]]];
-    
-    [imgDownIcon setImage:[IonIcons imageWithIcon:ion_android_locate size:20 color:CLR_LIGHT_BLUE]];
-    [imgSearch setImage:[IonIcons imageWithIcon:ion_search size:20 color:CLR_LIGHT_BLUE]];
-    
     viewHood.layer.cornerRadius = cornerRadius;
-    viewSearch.layer.cornerRadius = cornerRadius;
+    viewHood.layer.borderColor = [CLR_WHITE CGColor];
+    viewHood.layer.borderWidth = 1;
+    
+    [btnMenu setImage:[IonIcons imageWithIcon:ion_navicon size:36 color:CLR_WHITE]];
+    [btnCreateIssue setImage:[IonIcons imageWithIcon:ion_plus size:15 color:CLR_WHITE]];
+    [btnLocation setImage:[IonIcons imageWithIcon:ion_android_locate size:24 color:CLR_WHITE]];
 }
 
 - (void)getIssues{
@@ -99,11 +93,11 @@
     }];
 }
 
-
--(IBAction)actPopular:(id)sender{
-    if (![btnPopular isSelected]) {
-        [btnPopular setSelected:YES];
-        [btnNewest setSelected:NO];
+-(IBAction)actLatest:(id)sender{
+    if (![btnLatest isSelected]) {
+        [btnLatest setSelected:YES];
+        [btnPopular setSelected:NO];
+        [btnMap setSelected:NO];
         
         [UIView animateWithDuration:0.2 animations:^{
             constActiveLine.constant = 0;
@@ -112,9 +106,24 @@
     }
 }
 
--(IBAction)actNewest:(id)sender{
-    if (![btnNewest isSelected]) {
-        [btnNewest setSelected:YES];
+-(IBAction)actPopular:(id)sender{
+    if (![btnPopular isSelected]) {
+        [btnPopular setSelected:YES];
+        [btnLatest setSelected:NO];
+        [btnMap setSelected:NO];
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            constActiveLine.constant = [btnLatest rightPosition];
+            [self.view layoutIfNeeded];
+        }];
+        
+    }
+}
+
+-(IBAction)actMap:(id)sender{
+    if (![btnMap isSelected]) {
+        [btnMap setSelected:YES];
+        [btnLatest setSelected:NO];
         [btnPopular setSelected:NO];
         
         [UIView animateWithDuration:0.2 animations:^{
@@ -138,8 +147,12 @@
     [[MT drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
--(IBAction)actSearchHood:(id)sender{
+-(IBAction)actPickHood:(id)sender{
     [ScreenOperations openPickFromMap];
+}
+
+-(IBAction)actLocation:(id)sender{
+    
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -197,7 +210,7 @@
 
 - (void)setLocalizedStrings{
     [btnPopular setTitle:[LocalizedString(@"Popüler") toUpper]];
-    [btnNewest setTitle:[LocalizedString(@"En Son") toUpper]];
+    [btnLatest setTitle:[LocalizedString(@"En Son") toUpper]];
     [btnCreateIssue setTitle:[LocalizedString(@"Fikir") toUpper]];
 }
 @end

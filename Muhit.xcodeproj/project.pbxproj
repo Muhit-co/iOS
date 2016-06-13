@@ -79,6 +79,7 @@
 		4BD654E01B32035100343C16 /* PlacesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BD654DE1B32035100343C16 /* PlacesView.xib */; };
 		4BD654E41B32043700343C16 /* PlacesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD654E21B32043700343C16 /* PlacesCell.m */; };
 		4BD654E51B32043700343C16 /* PlacesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BD654E31B32043700343C16 /* PlacesCell.xib */; };
+		4BDE9F111D0E8F5F005431BA /* SourceSansPro-Semibold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4BDE9F101D0E8F5F005431BA /* SourceSansPro-Semibold-Italic.ttf */; };
 		4BE862881D0AD2CD00CF4013 /* KeyboardControls.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE862871D0AD2CD00CF4013 /* KeyboardControls.m */; };
 		4BE8628C1D0AD49C00CF4013 /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE8628B1D0AD49C00CF4013 /* FacebookManager.m */; };
 		4BF7F9051B1CF39D00A35FD1 /* MuhitServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7F9011B1CF39D00A35FD1 /* MuhitServices.m */; };
@@ -189,7 +190,7 @@
 		4BC583801B1C4D4800180B3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4BC583821B1C4D4800180B3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4BC583831B1C4D4800180B3D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4BC5838B1B1C4D4800180B3D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4BC5838B1B1C4D4800180B3D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Assets/Images.xcassets; sourceTree = "<group>"; };
 		4BC5838E1B1C4D4800180B3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4BC583991B1C4D4800180B3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BC5839A1B1C4D4800180B3D /* MuhitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MuhitTests.m; sourceTree = "<group>"; };
@@ -205,6 +206,7 @@
 		4BD654E11B32043700343C16 /* PlacesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesCell.h; sourceTree = "<group>"; };
 		4BD654E21B32043700343C16 /* PlacesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesCell.m; sourceTree = "<group>"; };
 		4BD654E31B32043700343C16 /* PlacesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacesCell.xib; sourceTree = "<group>"; };
+		4BDE9F101D0E8F5F005431BA /* SourceSansPro-Semibold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold-Italic.ttf"; sourceTree = "<group>"; };
 		4BE862861D0AD2CD00CF4013 /* KeyboardControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardControls.h; sourceTree = "<group>"; };
 		4BE862871D0AD2CD00CF4013 /* KeyboardControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardControls.m; sourceTree = "<group>"; };
 		4BE8628A1D0AD49C00CF4013 /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 		4B9F05411B1DE5A6009CB713 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				4BDE9F101D0E8F5F005431BA /* SourceSansPro-Semibold-Italic.ttf */,
 				4B9F05371B1DE38E009CB713 /* SourceSansPro-Black.ttf */,
 				4B9F05381B1DE38E009CB713 /* SourceSansPro-Bold.ttf */,
 				4B9F05391B1DE38E009CB713 /* SourceSansPro-Italic.ttf */,
@@ -419,6 +422,7 @@
 				4B9F053B1B1DE38E009CB713 /* SourceSansPro-Semibold.ttf */,
 			);
 			name = Fonts;
+			path = Assets/Fonts;
 			sourceTree = "<group>";
 		};
 		4BC583721B1C4D4800180B3D = {
@@ -443,6 +447,7 @@
 		4BC5837D1B1C4D4800180B3D /* Muhit */ = {
 			isa = PBXGroup;
 			children = (
+				4BC5838D1B1C4D4800180B3D /* LaunchScreen.xib */,
 				4BC583821B1C4D4800180B3D /* AppDelegate.h */,
 				4BC583831B1C4D4800180B3D /* AppDelegate.m */,
 				4BF7F8FB1B1CF31100A35FD1 /* ViewControllers */,
@@ -450,8 +455,7 @@
 				4BF7F8FD1B1CF33E00A35FD1 /* Managers */,
 				4B9F05131B1D9736009CB713 /* Categories */,
 				4BF7F9071B1CF3B700A35FD1 /* Networking */,
-				4BC5838B1B1C4D4800180B3D /* Images.xcassets */,
-				4BC5838D1B1C4D4800180B3D /* LaunchScreen.xib */,
+				4BDE9F0F1D0E8F00005431BA /* Assets */,
 				4BC5837E1B1C4D4800180B3D /* Supporting Files */,
 			);
 			path = Muhit;
@@ -460,7 +464,6 @@
 		4BC5837E1B1C4D4800180B3D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4B9F05411B1DE5A6009CB713 /* Fonts */,
 				4B9F04F01B1D9415009CB713 /* lang-en.plist */,
 				4B9F04F11B1D9415009CB713 /* lang-tr.plist */,
 				4B9F04F21B1D9415009CB713 /* Prefix-Header.pch */,
@@ -531,6 +534,15 @@
 				4BD654E31B32043700343C16 /* PlacesCell.xib */,
 			);
 			path = PlacesView;
+			sourceTree = "<group>";
+		};
+		4BDE9F0F1D0E8F00005431BA /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				4B9F05411B1DE5A6009CB713 /* Fonts */,
+				4BC5838B1B1C4D4800180B3D /* Images.xcassets */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 		4BE862891D0AD2F500CF4013 /* Keyboard */ = {
@@ -732,6 +744,7 @@
 				4BD654E01B32035100343C16 /* PlacesView.xib in Resources */,
 				4B6FF5AF1B3F0D5B00F3ED8A /* TagCell.xib in Resources */,
 				4B9F050F1B1D96D7009CB713 /* PresentedRootVC.xib in Resources */,
+				4BDE9F111D0E8F5F005431BA /* SourceSansPro-Semibold-Italic.ttf in Resources */,
 				4B9F053F1B1DE38E009CB713 /* SourceSansPro-Regular.ttf in Resources */,
 				4B21692F1B20798500DEBA01 /* MainCell.xib in Resources */,
 				4B21696F1B21D5C500DEBA01 /* SearchVC.xib in Resources */,
