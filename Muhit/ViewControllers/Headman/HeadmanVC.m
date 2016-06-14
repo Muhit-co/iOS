@@ -9,8 +9,8 @@
 #import "HeadmanVC.h"
 
 @interface HeadmanVC ()<CLLocationManagerDelegate>{
-
-    IBOutlet UILabel *lblHeadman,*lblName,*lblPhone,*lblCell,*lblMail,*lblAddress;
+    
+    IBOutlet UILabel *lblHood,*lblName,*lblCity,*lblPhone,*lblCell,*lblMail,*lblAddress;
     IBOutlet UIImageView *imgHeadman,*imgPhone,*imgCell,*imgMail,*imgAddress;
     IBOutlet UIView *viewPhone,*viewCell,*viewMail,*viewAddress;
     IBOutlet GMSMapView *map;
@@ -43,7 +43,7 @@
     [imgMail setImage:[IonIcons imageWithIcon:ion_email size:25 color:CLR_LIGHT_BLUE]];
     [imgAddress setImage:[IonIcons imageWithIcon:ion_location size:25 color:CLR_LIGHT_BLUE]];
     
-
+    
     locationManager = [[CLLocationManager alloc] init];
     if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [locationManager requestWhenInUseAuthorization];
@@ -52,15 +52,17 @@
 
 -(void)test{
     NSDictionary *dict =@{
-                            @"name":@"Kamil Can",
-                            @"image":@"http://themes.justgoodthemes.com/demo/getready/full-blue/images/John_Doe.jpg",
-                            @"phone":@"0212 221 23 23",
-                            @"cell":@"0535 533 23 03",
-                            @"email":@"kamil.can@kadikoy.gov.tr",
-//                            @"address":@"Şükrübey Mah. Can Sok. No:3",
-                            @"lat":@"40.990026",
-                            @"lon":@"29.024258"
-                            };
+                          @"name":@"Kamil Can",
+                          @"hood":@"Ömer Avni Mahallesi",
+                          @"city":@"Beyoğlu, İstanbul",
+                          @"image":@"http://themes.justgoodthemes.com/demo/getready/full-blue/images/John_Doe.jpg",
+                          @"phone":@"0212 221 23 23",
+                          @"cell":@"0535 533 23 03",
+                          @"email":@"kamil.can@kadikoy.gov.tr",
+                          //                            @"address":@"Şükrübey Mah. Can Sok. No:3",
+                          @"lat":@"40.990026",
+                          @"lon":@"29.024258"
+                          };
     
     [self setDetailsWithDictionary:dict];
 }
@@ -70,12 +72,14 @@
     float total = 20;
     
     [lblName setText:dict[@"name"]];
+    [lblHood setText:dict[@"hood"]];
+    [lblCity setText:dict[@"city"]];
     
     if (isNotNull(dict[@"phone"])) {
         [lblPhone setText:dict[@"phone"]];
         constPhoneTop.constant = total;
         total += 40;
-
+        
     }
     else{
         [viewPhone setHidden:YES];
@@ -137,7 +141,6 @@
 
 - (void)setLocalizedStrings{
     [self setTitle:LocalizedString(@"Muhtarım")];
-    [lblHeadman setText:LocalizedString(@"Muhtar")];
 }
 
 @end

@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4B21692A1B1F138500DEBA01 /* MTTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2169291B1F138500DEBA01 /* MTTextField.m */; };
-		4B21692E1B20798500DEBA01 /* MainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B21692C1B20798400DEBA01 /* MainCell.m */; };
-		4B21692F1B20798500DEBA01 /* MainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B21692D1B20798400DEBA01 /* MainCell.xib */; };
+		4B21692E1B20798500DEBA01 /* IssueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B21692C1B20798400DEBA01 /* IssueCell.m */; };
+		4B21692F1B20798500DEBA01 /* IssueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B21692D1B20798400DEBA01 /* IssueCell.xib */; };
 		4B2169391B218E3700DEBA01 /* AnnouncementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2169371B218E3700DEBA01 /* AnnouncementCell.m */; };
 		4B21693A1B218E3700DEBA01 /* AnnouncementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2169381B218E3700DEBA01 /* AnnouncementCell.xib */; };
-		4B21693E1B218E5700DEBA01 /* SupportedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B21693C1B218E5700DEBA01 /* SupportedCell.m */; };
-		4B21693F1B218E5700DEBA01 /* SupportedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B21693D1B218E5700DEBA01 /* SupportedCell.xib */; };
 		4B2169431B218E6F00DEBA01 /* SupportedsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2169411B218E6F00DEBA01 /* SupportedsVC.m */; };
 		4B2169441B218E6F00DEBA01 /* SupportedsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2169421B218E6F00DEBA01 /* SupportedsVC.xib */; };
 		4B2169481B218E8B00DEBA01 /* AnnouncementsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2169461B218E8B00DEBA01 /* AnnouncementsVC.m */; };
@@ -94,15 +92,12 @@
 		4A96C53F71E5C1549FCD3C74 /* Pods-Muhit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Muhit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Muhit/Pods-Muhit.release.xcconfig"; sourceTree = "<group>"; };
 		4B2169281B1F138500DEBA01 /* MTTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTextField.h; sourceTree = "<group>"; };
 		4B2169291B1F138500DEBA01 /* MTTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTextField.m; sourceTree = "<group>"; };
-		4B21692B1B20798400DEBA01 /* MainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCell.h; sourceTree = "<group>"; };
-		4B21692C1B20798400DEBA01 /* MainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainCell.m; sourceTree = "<group>"; };
-		4B21692D1B20798400DEBA01 /* MainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainCell.xib; sourceTree = "<group>"; };
+		4B21692B1B20798400DEBA01 /* IssueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueCell.h; sourceTree = "<group>"; };
+		4B21692C1B20798400DEBA01 /* IssueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueCell.m; sourceTree = "<group>"; };
+		4B21692D1B20798400DEBA01 /* IssueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueCell.xib; sourceTree = "<group>"; };
 		4B2169361B218E3700DEBA01 /* AnnouncementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementCell.h; sourceTree = "<group>"; };
 		4B2169371B218E3700DEBA01 /* AnnouncementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementCell.m; sourceTree = "<group>"; };
 		4B2169381B218E3700DEBA01 /* AnnouncementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnouncementCell.xib; sourceTree = "<group>"; };
-		4B21693B1B218E5700DEBA01 /* SupportedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportedCell.h; sourceTree = "<group>"; };
-		4B21693C1B218E5700DEBA01 /* SupportedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportedCell.m; sourceTree = "<group>"; };
-		4B21693D1B218E5700DEBA01 /* SupportedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SupportedCell.xib; sourceTree = "<group>"; };
 		4B2169401B218E6F00DEBA01 /* SupportedsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportedsVC.h; sourceTree = "<group>"; };
 		4B2169411B218E6F00DEBA01 /* SupportedsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportedsVC.m; sourceTree = "<group>"; };
 		4B2169421B218E6F00DEBA01 /* SupportedsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SupportedsVC.xib; sourceTree = "<group>"; };
@@ -256,9 +251,6 @@
 				4B2169401B218E6F00DEBA01 /* SupportedsVC.h */,
 				4B2169411B218E6F00DEBA01 /* SupportedsVC.m */,
 				4B2169421B218E6F00DEBA01 /* SupportedsVC.xib */,
-				4B21693B1B218E5700DEBA01 /* SupportedCell.h */,
-				4B21693C1B218E5700DEBA01 /* SupportedCell.m */,
-				4B21693D1B218E5700DEBA01 /* SupportedCell.xib */,
 			);
 			path = Supporteds;
 			sourceTree = "<group>";
@@ -393,9 +385,6 @@
 				4B9F052C1B1DBFE0009CB713 /* MainVC.h */,
 				4B9F052D1B1DBFE0009CB713 /* MainVC.m */,
 				4B9F052E1B1DBFE0009CB713 /* MainVC.xib */,
-				4B21692B1B20798400DEBA01 /* MainCell.h */,
-				4B21692C1B20798400DEBA01 /* MainCell.m */,
-				4B21692D1B20798400DEBA01 /* MainCell.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -491,6 +480,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4BC9BF191D1044B400707A4D /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				4BC9BF1A1D1044CE00707A4D /* IssueCell */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		4BC9BF1A1D1044CE00707A4D /* IssueCell */ = {
+			isa = PBXGroup;
+			children = (
+				4B21692B1B20798400DEBA01 /* IssueCell.h */,
+				4B21692C1B20798400DEBA01 /* IssueCell.m */,
+				4B21692D1B20798400DEBA01 /* IssueCell.xib */,
+			);
+			path = IssueCell;
+			sourceTree = "<group>";
+		};
 		4BC9EE931B1EF3F400441353 /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +565,7 @@
 		4BF7F8FB1B1CF31100A35FD1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4BC9BF191D1044B400707A4D /* Commons */,
 				4B70C8EF1B4BE001009BC526 /* PickFromMap */,
 				4B6FF5A51B3F0CBA00F3ED8A /* TagSelector */,
 				4BD654DB1B32032900343C16 /* PlacesView */,
@@ -746,11 +754,10 @@
 				4B9F050F1B1D96D7009CB713 /* PresentedRootVC.xib in Resources */,
 				4BDE9F111D0E8F5F005431BA /* SourceSansPro-Semibold-Italic.ttf in Resources */,
 				4B9F053F1B1DE38E009CB713 /* SourceSansPro-Regular.ttf in Resources */,
-				4B21692F1B20798500DEBA01 /* MainCell.xib in Resources */,
+				4B21692F1B20798500DEBA01 /* IssueCell.xib in Resources */,
 				4B21696F1B21D5C500DEBA01 /* SearchVC.xib in Resources */,
 				4BC9EE9E1B1EF43300441353 /* ForgotPasswordVC.xib in Resources */,
 				4B6FF5AA1B3F0D0500F3ED8A /* TagSelectorVC.xib in Resources */,
-				4B21693F1B218E5700DEBA01 /* SupportedCell.xib in Resources */,
 				4BC5838C1B1C4D4800180B3D /* Images.xcassets in Resources */,
 				4BD654E51B32043700343C16 /* PlacesCell.xib in Resources */,
 				4B21695D1B21D49B00DEBA01 /* EditProfileVC.xib in Resources */,
@@ -845,7 +852,6 @@
 				4BE8628C1D0AD49C00CF4013 /* FacebookManager.m in Sources */,
 				4BF7F90D1B1D882100A35FD1 /* LanguageManager.m in Sources */,
 				4B9F052F1B1DBFE0009CB713 /* MainVC.m in Sources */,
-				4B21693E1B218E5700DEBA01 /* SupportedCell.m in Sources */,
 				4BC583811B1C4D4800180B3D /* main.m in Sources */,
 				4BD654DF1B32035100343C16 /* PlacesView.m in Sources */,
 				4B9F05351B1DDA42009CB713 /* LoginVC.m in Sources */,
@@ -862,7 +868,7 @@
 				4BD654E41B32043700343C16 /* PlacesCell.m in Sources */,
 				4B70C8F31B4BE01E009BC526 /* PickFromMapVC.m in Sources */,
 				4B2169391B218E3700DEBA01 /* AnnouncementCell.m in Sources */,
-				4B21692E1B20798500DEBA01 /* MainCell.m in Sources */,
+				4B21692E1B20798500DEBA01 /* IssueCell.m in Sources */,
 				4B6FF5A91B3F0D0500F3ED8A /* TagSelectorVC.m in Sources */,
 				4B2169431B218E6F00DEBA01 /* SupportedsVC.m in Sources */,
 				4B21695C1B21D49B00DEBA01 /* EditProfileVC.m in Sources */,

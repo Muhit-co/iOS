@@ -7,7 +7,7 @@
 //
 
 #import "MainVC.h"
-#import "MainCell.h"
+#import "IssueCell.h"
 
 @interface MainVC (){
     IBOutlet UIButton *btnCreateIssue,*btnPopular,*btnLatest,*btnMap,*btnMenu,*btnPickHood,*btnLocation;
@@ -21,7 +21,6 @@
     int lastIndex;
     BOOL isEndOfList;
 }
-
 @end
 
 @implementation MainVC
@@ -29,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self adjustUI];
-    [self actPopular:nil];
+    [self actLatest:nil];
     [NC addObserver:self selector:@selector(geoCodePicked:) name:NC_GEOCODE_PICKED object:nil];
     [self getIssues];
 }
@@ -181,10 +180,10 @@
     
     NSDictionary *item = [arrIssues objectAtIndex:indexPath.row];
     
-    MainCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCell"];
+    IssueCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IssueCell"];
     
     if (!cell) {
-        cell = [[MainCell alloc] init];
+        cell = [[IssueCell alloc] init];
     }
     
     [cell setWithDictionary:item];
@@ -209,8 +208,10 @@
 }
 
 - (void)setLocalizedStrings{
-    [btnPopular setTitle:[LocalizedString(@"Popüler") toUpper]];
-    [btnLatest setTitle:[LocalizedString(@"En Son") toUpper]];
-    [btnCreateIssue setTitle:[LocalizedString(@"Fikir") toUpper]];
+    [btnPopular setTitle:[LocalizedString(@"popular") toUpper]];
+    [btnLatest setTitle:[LocalizedString(@"latest") toUpper]];
+    [btnMap setTitle:LocalizedString(@"map")];
+    [btnPickHood setTitle:[LocalizedString(@"choose-hood") toUpper]];
+    [btnCreateIssue setTitle:[LocalizedString(@"idea") toUpper]];
 }
 @end

@@ -38,10 +38,10 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cityShadow" translatesAutoresizingMaskIntoConstraints="NO" id="ndz-8b-mLf">
-                    <rect key="frame" x="0.0" y="77" width="600" height="226"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city-shadow-header" translatesAutoresizingMaskIntoConstraints="NO" id="ndz-8b-mLf">
+                    <rect key="frame" x="0.0" y="128" width="600" height="69"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="226" id="DVk-ae-vNu"/>
+                        <constraint firstAttribute="height" constant="69" id="DVk-ae-vNu"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lh-gw-6xO" userLabel="btnMenu">
@@ -231,6 +231,7 @@
                 <constraint firstItem="vT9-Rt-gdv" firstAttribute="top" secondItem="90P-85-Q9S" secondAttribute="bottom" constant="30" id="HSE-0Y-AJ1"/>
                 <constraint firstItem="jtT-bO-qp8" firstAttribute="top" secondItem="vT9-Rt-gdv" secondAttribute="bottom" constant="20" id="Jh4-sH-Ml2"/>
                 <constraint firstAttribute="trailing" secondItem="jtT-bO-qp8" secondAttribute="trailing" id="LeF-D5-1CP"/>
+                <constraint firstItem="ULs-uF-LuD" firstAttribute="top" secondItem="ndz-8b-mLf" secondAttribute="bottom" id="Lrg-AT-xvU"/>
                 <constraint firstAttribute="trailing" secondItem="ULs-uF-LuD" secondAttribute="trailing" id="VCT-jS-gRI"/>
                 <constraint firstItem="5lh-gw-6xO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="Vog-hM-ctd"/>
                 <constraint firstItem="90P-85-Q9S" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="27" id="YKa-PY-Fle"/>
@@ -243,10 +244,15 @@
                 <constraint firstAttribute="bottom" secondItem="ULs-uF-LuD" secondAttribute="bottom" id="u0f-3x-4uz"/>
                 <constraint firstItem="ndz-8b-mLf" firstAttribute="top" secondItem="90P-85-Q9S" secondAttribute="bottom" constant="10" id="u2R-GN-NT8"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="u2R-GN-NT8"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>
-        <image name="cityShadow" width="1242" height="701"/>
+        <image name="city-shadow-header" width="375" height="69"/>
         <image name="logo-medium" width="180" height="55"/>
         <image name="menu-active" width="40" height="40"/>
     </resources>

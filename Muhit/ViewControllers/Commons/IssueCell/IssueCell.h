@@ -1,5 +1,5 @@
 //
-//  MainCell.h
+//  IssueCell.h
 //  Muhit
 //
 //  Created by Emre YANIK on 04/06/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainCell : UITableViewCell
+@interface IssueCell : UITableViewCell
 
 - (void)setWithDictionary:(NSDictionary *)dict;
 

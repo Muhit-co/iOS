@@ -9,8 +9,8 @@
 #import "AnnouncementCell.h"
 
 @interface AnnouncementCell(){
-    IBOutlet UILabel *lblTitle,*lblDate,*lblDescription;
-    IBOutlet UIImageView *imgIcon;
+    IBOutlet UILabel *lblTitle,*lblDate,*lblDescription,*lblHeadmanName,*lblHood;
+    IBOutlet UIImageView *imgIcon,*imgHeadman;
 }
 @end
 
@@ -27,8 +27,12 @@
 - (void)setWithDictionary:(NSDictionary *)dict{
     [lblTitle setText:dict[@"title"]];
     [lblDate setText:[UF getDetailedDateString:dict[@"created_at"]]];
-	[lblDescription setText:dict[@"content"]];
-    [imgIcon setImage:[IonIcons imageWithIcon:ion_chatbox size:23 color:CLR_LIGHT_BLUE]];
+    [lblDescription setText:dict[@"content"]];
+    [lblHeadmanName setText:dict[@"b"]];
+    [lblHood setText:dict[@"a"]];
+    [imgHeadman sd_setImageWithURL:[NSURL URLWithString:dict[@"c"]] placeholderImage:PLACEHOLDER_IMAGE];
+    [imgIcon setImage:[IonIcons imageWithIcon:ion_speakerphone size:23 color:CLR_LIGHT_BLUE]];
+    imgHeadman.layer.cornerRadius = 15;
 }
 
 @end

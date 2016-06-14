@@ -18,6 +18,7 @@ static const CGFloat cornerRadius = 6;
 #define LM [LanguageManager instance]
 #define LocalizedString(key) [[LanguageManager instance] localizedStringForKey:key]
 #define TRACKER [TrackManager sharedManager]
+#define PLACEHOLDER_IMAGE [UIImage imageNamed:@"profile-placeholder"]
 
 #define UF UtilityFunctions
 #define ADD_HUD [UtilityFunctions addHud:[self view]];

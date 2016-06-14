@@ -30,9 +30,11 @@
 	<string>Çıkış Yap</string>
 	<key>connect</key>
 	<string>Bağlan</string>
-	<key>Popüler</key>
+	<key>popular</key>
 	<string>Popüler</string>
-	<key>En Son</key>
+	<key>map</key>
+	<string>Harita</string>
+	<key>latest</key>
 	<string>En Son</string>
 	<key>forgot-pass</key>
 	<string>Şifremi unuttum</string>
@@ -54,8 +56,10 @@
 	<string>Kullanıcı adı</string>
 	<key>hood</key>
 	<string>Mahalle</string>
-	<key>Yarattığı Fikirler</key>
+	<key>created-issues</key>
 	<string>Yarattığı Fikirler</string>
+	<key>supported-issues</key>
+	<string>Desteklediği Fikirler</string>
 	<key>Profili Düzenle</key>
 	<string>Profili Düzenle</string>
 	<key>Güncelle</key>
@@ -96,7 +100,7 @@
 	<string>İnternet bağlantınızı kontrol ediniz</string>
 	<key>ok</key>
 	<string>Tamam</string>
-	<key>Fikir</key>
+	<key>idea</key>
 	<string>Fikir</string>
 	<key>Değiştir</key>
 	<string>Değiştir</string>
@@ -104,5 +108,7 @@
 	<string>Facebook ile giriş yapabilmek için ayarlardan BiTaksi uygulamasına izin vermelisiniz.</string>
 	<key>Yeniden Dene</key>
 	<string>Yeniden Dene</string>
+	<key>choose-hood</key>
+	<string>Mahalleni seç...</string>
 </dict>
 </plist>

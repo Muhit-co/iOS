@@ -7,11 +7,11 @@
 //
 
 #import "ProfileVC.h"
-#import "SupportedCell.h"
+#import "IssueCell.h"
 
 @interface ProfileVC (){
-    IBOutlet UILabel *lblUsername,*lblName,*lblIdeasCount,*lblSupportsCount,*lblAddress,*lblMail,*lblIdeasTitle;
-    IBOutlet UIImageView *imgUser,*imgIdeas,*imgSupports,*imgAddress,*imgMail;
+    IBOutlet UILabel *lblName,*lblIdeasCount,*lblSupportsCount,*lblIdeasTitle,*lblSupportsTitle,*lblAddress,*lblMail,*lblUsername,*lblIssuesTitle;
+    IBOutlet UIImageView *imgUser,*imgIdeas,*imgSupports,*imgAddress,*imgMail,*imgUserName;
     IBOutlet UIView *viewIdeas,*viewSupports;
     IBOutlet UITableView *tblIdeas;
     NSArray *arrIdeas;
@@ -39,7 +39,7 @@
 
 -(void)getProfileInfo{
     ADD_HUD
-	[MuhitServices getProfile:profileId handler:^(NSDictionary *response, NSError *error) {
+    [MuhitServices getProfile:profileId handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
             REMOVE_HUD
@@ -73,21 +73,22 @@
 -(void)adjustUI{
     
     [[self view] setBackgroundColor:[UIColor whiteColor]];
-
-    [imgAddress setImage:[IonIcons imageWithIcon:ion_location size:22 color:[HXColor hx_colorWithHexRGBAString:@"dddddd"]]];
-    [imgMail setImage:[IonIcons imageWithIcon:ion_email size:22 color:[HXColor hx_colorWithHexRGBAString:@"dddddd"]]];
-    [imgIdeas setImage:[IonIcons imageWithIcon:ion_lightbulb size:24 color:CLR_LIGHT_BLUE]];
-    [imgSupports setImage:[IonIcons imageWithIcon:ion_thumbsup size:24 color:CLR_LIGHT_BLUE]];
+    
+    [imgAddress setImage:[IonIcons imageWithIcon:ion_location size:24 color:CLR_LIGHT_BLUE]];
+    [imgMail setImage:[IonIcons imageWithIcon:ion_email size:24 color:CLR_LIGHT_BLUE]];
+    [imgUserName setImage:[IonIcons imageWithIcon:ion_email size:24 color:CLR_LIGHT_BLUE]];
+    [imgIdeas setImage:[IonIcons imageWithIcon:ion_lightbulb size:18 color:CLR_LIGHT_BLUE]];
+    [imgSupports setImage:[IonIcons imageWithIcon:ion_thumbsup size:18 color:CLR_LIGHT_BLUE]];
     
     viewIdeas.layer.cornerRadius = cornerRadius;
-    viewIdeas.layer.borderColor = [[HXColor hx_colorWithHexRGBAString:@"dbdbdb"] CGColor];
+    viewIdeas.layer.borderColor = [[HXColor hx_colorWithHexRGBAString:@"CCCCDD"] CGColor];
     viewIdeas.layer.borderWidth = 1;
     
     viewSupports.layer.cornerRadius = cornerRadius;
-    viewSupports.layer.borderColor = [[HXColor hx_colorWithHexRGBAString:@"dbdbdb"] CGColor];
+    viewSupports.layer.borderColor = [[HXColor hx_colorWithHexRGBAString:@"CCCCDD"] CGColor];
     viewSupports.layer.borderWidth = 1;
     
-    imgUser.layer.cornerRadius = 35;
+    imgUser.layer.cornerRadius = 60;
     imgUser.layer.masksToBounds = YES;
     
     if (profileId.length==0) {
@@ -117,10 +118,10 @@
     
     NSDictionary *item = [arrIdeas objectAtIndex:indexPath.row];
     
-    SupportedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SupportedCell"];
+    IssueCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IssueCell"];
     
     if (!cell) {
-        cell = [[SupportedCell alloc] init];
+        cell = [[IssueCell alloc] init];
     }
     
     [cell setWithDictionary:item];
@@ -152,7 +153,9 @@
         [self setTitle:LocalizedString(@"Profil")];
     }
     
-    [lblIdeasTitle setText:LocalizedString(@"Yarattığı Fikirler")];
+    [lblIssuesTitle setText:LocalizedString(@"created-issues")];
+    [lblIdeasTitle setText:LocalizedString(@"created-issues")];
+    [lblSupportsTitle setText:LocalizedString(@"supported-issues")];
 }
 
 @end

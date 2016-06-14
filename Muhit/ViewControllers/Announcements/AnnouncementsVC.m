@@ -22,64 +22,66 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     arrAnnouncements = [[NSMutableArray alloc] init];
-    [self getAnnouncements];
+    //    [self getAnnouncements];
+    [arrAnnouncements addObjectsFromArray:[self arrTestData]];
+    [tblAnnouncements reloadData];
 }
 
 -(NSArray*)arrTestData{
-	
+    
     NSArray* arrSupporteds = @[
-                          @{
-                              @"title":@"Hola",
-                              @"created_at": @"2015-06-14 10:00:00",
-                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                              },
-                          @{
-                              @"title":@"Hola",
-                              @"created_at": @"2015-06-14 10:00:00",
-                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                              },
-                          
-                          @{
-                              @"title":@"Hola",
-                              @"created_at": @"2015-06-14 10:00:00",
-                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                              },
-                          @{
-                              @"title":@"Hola",
-                              @"created_at": @"2015-06-14 10:00:00",
-                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                              },
-                          @{
-                              @"title":@"Hola",
-                              @"created_at": @"2015-06-14 10:00:00",
-                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                              },
-                          @{
-                              @"title":@"Hola",
-                              @"created_at": @"2015-06-14 10:00:00",
-                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                              },
-                          @{
-                              @"title":@"Hola",
-                              @"created_at": @"2015-06-14 10:00:00",
-                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                              },
-                          
-                          @{
-                              @"title":@"Hola",
-                              @"created_at": @"2015-06-14 10:00:00",
-                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                              },
-                          @{
-                              @"title":@"Hola",
-                              @"created_at": @"2015-06-14 10:00:00",
-                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                              },
-                          @{
-                              @"title":@"Hola",
-                              @"created_at": @"2015-06-14 10:00:00",
-                              @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                              }];
+                               @{
+                                   @"title":@"Hola",
+                                   @"created_at": @"2015-06-14 10:00:00",
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   },
+                               @{
+                                   @"title":@"Hola",
+                                   @"created_at": @"2015-06-14 10:00:00",
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   },
+                               
+                               @{
+                                   @"title":@"Hola",
+                                   @"created_at": @"2015-06-14 10:00:00",
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   },
+                               @{
+                                   @"title":@"Hola",
+                                   @"created_at": @"2015-06-14 10:00:00",
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   },
+                               @{
+                                   @"title":@"Hola",
+                                   @"created_at": @"2015-06-14 10:00:00",
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   },
+                               @{
+                                   @"title":@"Hola",
+                                   @"created_at": @"2015-06-14 10:00:00",
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   },
+                               @{
+                                   @"title":@"Hola",
+                                   @"created_at": @"2015-06-14 10:00:00",
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   },
+                               
+                               @{
+                                   @"title":@"Hola",
+                                   @"created_at": @"2015-06-14 10:00:00",
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   },
+                               @{
+                                   @"title":@"Hola",
+                                   @"created_at": @"2015-06-14 10:00:00",
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   },
+                               @{
+                                   @"title":@"Hola",
+                                   @"created_at": @"2015-06-14 10:00:00",
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   }];
     
     return arrSupporteds;
 }
@@ -93,7 +95,7 @@
         }
         else{
             NSLog(@"getAnnouncementsResponse:%@",response);
-//            [arrAnnouncements addObjectsFromArray:response[@"data"]];
+            //            [arrAnnouncements addObjectsFromArray:response[@"data"]];
             [arrAnnouncements addObjectsFromArray:[self arrTestData]];
             [tblAnnouncements reloadData];
             REMOVE_HUD

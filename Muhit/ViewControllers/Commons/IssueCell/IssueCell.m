@@ -1,15 +1,15 @@
 //
-//  MainCell.m
+//  IssueCell.m
 //  Muhit
 //
 //  Created by Emre YANIK on 04/06/15.
 //  Copyright (c) 2015 Muhit. All rights reserved.
 //
 
-#import "MainCell.h"
+#import "IssueCell.h"
 #import "UIImageView+WebCache.h"
 
-@interface MainCell (){
+@interface IssueCell (){
     IBOutlet UILabel *lblTitle,*lblDate,*lblCount;
     IBOutlet UIImageView *imgIssue,*imgTypeIcon;
     IBOutlet UIView *viewType,*viewTags,*viewTag1,*viewTag2,*viewTag3;
@@ -19,12 +19,12 @@
 @end
 
 
-@implementation MainCell
+@implementation IssueCell
 
 - (id)init{
     
     if(self = [super init]){
-        self = [[[NSBundle mainBundle] loadNibNamed:@"MainCell" owner:self options:nil] lastObject];
+        self = [[[NSBundle mainBundle] loadNibNamed:@"IssueCell" owner:self options:nil] lastObject];
     }
     return self;
 }
