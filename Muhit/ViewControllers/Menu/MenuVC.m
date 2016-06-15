@@ -69,18 +69,18 @@
 - (void)createMenu{
     arrMenu = [[NSMutableArray alloc] init];
     
-    [arrMenu addObject:@{@"title":[LocalizedString(@"Tümü") toUpper],@"icon":ion_home,@"selector":SELECTOR_MAIN}];
+    [arrMenu addObject:@{@"title":[LocalizedString(@"all") toUpper],@"icon":ion_home,@"selector":SELECTOR_MAIN}];
     
     if ([MT isLoggedIn]) {
-        [arrMenu addObject:@{@"title":[LocalizedString(@"Desteklediklerim") toUpper],@"icon":ion_thumbsup,@"selector":SELECTOR_SUPPORTS}];
-        [arrMenu addObject:@{@"title":[LocalizedString(@"Fikirlerim") toUpper],@"icon":ion_lightbulb,@"selector":SELECTOR_IDEAS}];
+        [arrMenu addObject:@{@"title":[LocalizedString(@"my-supporteds") toUpper],@"icon":ion_thumbsup,@"selector":SELECTOR_SUPPORTS}];
+        [arrMenu addObject:@{@"title":[LocalizedString(@"my-ideas") toUpper],@"icon":ion_lightbulb,@"selector":SELECTOR_IDEAS}];
         
     }
     
-    [arrMenu addObject:@{@"title":[LocalizedString(@"Duyurular") toUpper],@"icon":ion_speakerphone,@"selector":SELECTOR_NOTIFICATIONS}];
+    [arrMenu addObject:@{@"title":[LocalizedString(@"announcements") toUpper],@"icon":ion_speakerphone,@"selector":SELECTOR_NOTIFICATIONS}];
     
     if ([MT isLoggedIn]) {
-        [arrMenu addObject:@{@"title":[LocalizedString(@"Muhtarım") toUpper],@"icon":ion_information_circled,@"selector":SELECTOR_HEADMAN}];
+        [arrMenu addObject:@{@"title":[LocalizedString(@"my-headman") toUpper],@"icon":ion_information_circled,@"selector":SELECTOR_HEADMAN}];
     }
 }
 -(void)reloadMenu{

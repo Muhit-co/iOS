@@ -140,7 +140,7 @@
 }
 
 - (void)setLocalizedStrings{
-    [self setTitle:LocalizedString(@"Muhtarım")];
+    [self setTitle:LocalizedString(@"my-headman")];
 }
 
 @end

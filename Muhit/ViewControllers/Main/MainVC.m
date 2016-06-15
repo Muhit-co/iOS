@@ -76,9 +76,9 @@
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
         }
         else{
-            if (response.count>0) {
+            if ([response[@"issues"] count]>0) {
                 DLog(@"getIssuesResponse:%@",response);
-                [arrIssues addObjectsFromArray:(NSArray*)response];
+                [arrIssues addObjectsFromArray:response[@"issues"]];
                 [tblIssues reloadData];
                 
                 [tblIssues scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:lastIndex inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
@@ -161,7 +161,7 @@
 #pragma mark - UITableView Delegates
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    return 80;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -211,7 +211,7 @@
     [btnPopular setTitle:[LocalizedString(@"popular") toUpper]];
     [btnLatest setTitle:[LocalizedString(@"latest") toUpper]];
     [btnMap setTitle:LocalizedString(@"map")];
-    [btnPickHood setTitle:[LocalizedString(@"choose-hood") toUpper]];
+    [btnPickHood setTitle:LocalizedString(@"choose-hood")];
     [btnCreateIssue setTitle:[LocalizedString(@"idea") toUpper]];
 }
 @end

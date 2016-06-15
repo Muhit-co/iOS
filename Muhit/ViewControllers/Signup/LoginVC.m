@@ -95,7 +95,7 @@
             DLog(@"User cancelled permission");
         }
         else if ([error.domain isEqualToString:FBSDKLoginErrorDomain] &&  error.code==FBSDKLoginSystemAccountAppDisabledErrorCode) {
-            SHOW_ALERT(LocalizedString(@"fbPermissionMessage"))
+            SHOW_ALERT(LocalizedString(@"facebook-permission"))
         }
         else{
             [self actFacebook:nil];

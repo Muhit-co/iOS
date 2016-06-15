@@ -501,20 +501,20 @@
         return @"2 gün önce";
     }
     else{
-        NSInteger year = [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:date] year];
-        NSInteger currentYear = [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:now] year];
-        
+        //        NSInteger year = [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:date] year];
+        //        NSInteger currentYear = [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:now] year];
+        //        
         [f setLocale:[NSLocale localeWithLocaleIdentifier:@"tr"]];
-        [f setDateStyle:NSDateFormatterMediumStyle];
+        [f setDateStyle:NSDateFormatterLongStyle];
         [f setTimeStyle:NSDateFormatterNoStyle];
         
-        if (year == currentYear) {
-            NSString *str = [f stringFromDate:date];
-            return [str substringToIndex:[str length] - 5];
-        }
-        else{
-            return  [f stringFromDate:date];
-        }
+        //        if (year == currentYear) {
+        //            NSString *str = [f stringFromDate:date];
+        //            return [str substringToIndex:[str length] - 5];
+        //        }
+        //        else{
+        return  [f stringFromDate:date];
+        //        }
     }
 }
 
@@ -861,20 +861,22 @@
 }
 
 +(void)setUserDefaultsWithDetails:(NSDictionary*)details{
-    [UD setObject:[NSDate date] forKey:UD_ACCESS_TOKEN_TAKEN_DATE];
-    [UD setObject:details[AUTH][@"access_token"] forKey:UD_ACCESS_TOKEN];
-    [UD setObject:details[AUTH][@"refresh_token"] forKey:UD_REFRESH_TOKEN];
-    [UD setObject:details[AUTH][@"expires_in"] forKey:UD_ACCESS_TOKEN_LIFETIME];
+    //    [UD setObject:[NSDate date] forKey:UD_ACCESS_TOKEN_TAKEN_DATE];
+    //    [UD setObject:details[AUTH][@"access_token"] forKey:UD_ACCESS_TOKEN];
+    //    [UD setObject:details[AUTH][@"refresh_token"] forKey:UD_REFRESH_TOKEN];
+    //    [UD setObject:details[AUTH][@"expires_in"] forKey:UD_ACCESS_TOKEN_LIFETIME];
     [UD setObject:details[USER][@"first_name"] forKey:UD_FIRSTNAME];
     [UD setObject:details[USER][@"last_name"] forKey:UD_SURNAME];
     [UD setObject:details[USER][@"id"] forKey:UD_USER_ID];
     [UD setObject:details[USER][@"picture"] forKey:UD_USER_PICTURE];
+    [UD setObject:details[USER][@"username"] forKey:UD_USERNAME];
     
-    if (details[USER][@"active_hood"] == [NSNull null]) {
-        [UD setObject:nil forKey:UD_HOOD_ID];
+    if (isNotNull(details[USER][@"hood_id"])) {
+        [UD setObject:details[USER][@"hood_id"] forKey:UD_HOOD_ID];
     }
     else{
-        [UD setObject:details[USER][@"active_hood"] forKey:UD_HOOD_ID];
+        [UD setObject:nil forKey:UD_HOOD_ID];
+        
     }
 }
 
@@ -902,6 +904,38 @@
         }
     }
     return urlWithQuerystring;
+}
+
++(NSString*)getDistrictFromAddress:(NSString *)address{
+    if ([address rangeOfString:@","].location != NSNotFound){
+        NSScanner *scanner = [NSScanner scannerWithString:address];
+        [scanner scanUpToString:@"," intoString:nil];
+        NSString *postMatch;
+        
+        if(address.length == scanner.scanLocation){
+            postMatch = [address substringFromIndex:scanner.scanLocation];
+        }
+        else{
+            postMatch = [address substringFromIndex:scanner.scanLocation + @",".length];
+        }
+        return postMatch;
+    }
+    else{
+        return address;
+    }
+}
+
++(NSString*)getHoodFromAddress:(NSString *)address{
+    if ([address rangeOfString:@","].location != NSNotFound){
+        NSString *preMatch;
+        
+        NSScanner *scanner = [NSScanner scannerWithString:address];
+        [scanner scanUpToString:@"," intoString:&preMatch];
+        return preMatch;
+    }
+    else{
+        return address;
+    }
 }
 
 @end

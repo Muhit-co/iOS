@@ -104,7 +104,7 @@
 }
 
 - (void)setLocalizedStrings{
-    [self setTitle:LocalizedString(@"Desteklediklerim")];
+    [self setTitle:LocalizedString(@"my-supporteds")];
 }
 
 @end

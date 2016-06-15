@@ -99,5 +99,6 @@ typedef enum{
 
 +(NSString*)urlEscapeString:(NSString *)unencodedString;
 +(NSString*)addQueryStringToUrlString:(NSString *)urlString withDictionary:(NSDictionary *)dictionary;
-
++(NSString*)getDistrictFromAddress:(NSString *)address;
++(NSString*)getHoodFromAddress:(NSString *)address;
 @end

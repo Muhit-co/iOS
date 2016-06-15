@@ -292,7 +292,8 @@
 				4B21696C1B21D5C500DEBA01 /* SearchVC.m */,
 				4B21696D1B21D5C500DEBA01 /* SearchVC.xib */,
 			);
-			path = Search;
+			name = Search;
+			path = ../Search;
 			sourceTree = "<group>";
 		};
 		4B21695F1B21D55B00DEBA01 /* Issue */ = {
@@ -453,8 +454,8 @@
 		4BC5837E1B1C4D4800180B3D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4B9F04F01B1D9415009CB713 /* lang-en.plist */,
 				4B9F04F11B1D9415009CB713 /* lang-tr.plist */,
+				4B9F04F01B1D9415009CB713 /* lang-en.plist */,
 				4B9F04F21B1D9415009CB713 /* Prefix-Header.pch */,
 				4B9F04EE1B1D8A6C009CB713 /* Podfile */,
 				4BC5837F1B1C4D4800180B3D /* Info.plist */,
@@ -483,6 +484,8 @@
 		4BC9BF191D1044B400707A4D /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				4B21695E1B21D55400DEBA01 /* Search */,
+				4BD654DB1B32032900343C16 /* PlacesView */,
 				4BC9BF1A1D1044CE00707A4D /* IssueCell */,
 			);
 			path = Commons;
@@ -540,7 +543,8 @@
 				4BD654E21B32043700343C16 /* PlacesCell.m */,
 				4BD654E31B32043700343C16 /* PlacesCell.xib */,
 			);
-			path = PlacesView;
+			name = PlacesView;
+			path = ../PlacesView;
 			sourceTree = "<group>";
 		};
 		4BDE9F0F1D0E8F00005431BA /* Assets */ = {
@@ -565,24 +569,22 @@
 		4BF7F8FB1B1CF31100A35FD1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4BC9BF191D1044B400707A4D /* Commons */,
-				4B70C8EF1B4BE001009BC526 /* PickFromMap */,
-				4B6FF5A51B3F0CBA00F3ED8A /* TagSelector */,
-				4BD654DB1B32032900343C16 /* PlacesView */,
 				4B2169601B21D56300DEBA01 /* AddEditIssue */,
-				4B21695F1B21D55B00DEBA01 /* Issue */,
-				4B21695E1B21D55400DEBA01 /* Search */,
-				4B21694E1B21D46300DEBA01 /* EditProfile */,
-				4B21694D1B21D45D00DEBA01 /* Profile */,
-				4B21694C1B21D45600DEBA01 /* Headman */,
-				4B2169351B218DCD00DEBA01 /* Supporteds */,
 				4B2169341B218DBF00DEBA01 /* Announcements */,
-				4BC9EE941B1EF3FB00441353 /* Signup */,
+				4BC9BF191D1044B400707A4D /* Commons */,
+				4B21694E1B21D46300DEBA01 /* EditProfile */,
 				4BC9EE931B1EF3F400441353 /* ForgotPassword */,
+				4B21694C1B21D45600DEBA01 /* Headman */,
+				4B21695F1B21D55B00DEBA01 /* Issue */,
 				4B9F05311B1DDA24009CB713 /* Login */,
 				4B9F052B1B1DBFAB009CB713 /* Main */,
 				4B9F052A1B1DBE1F009CB713 /* Menu */,
+				4B70C8EF1B4BE001009BC526 /* PickFromMap */,
+				4B21694D1B21D45D00DEBA01 /* Profile */,
 				4B9F05121B1D96E1009CB713 /* Root */,
+				4BC9EE941B1EF3FB00441353 /* Signup */,
+				4B2169351B218DCD00DEBA01 /* Supporteds */,
+				4B6FF5A51B3F0CBA00F3ED8A /* TagSelector */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

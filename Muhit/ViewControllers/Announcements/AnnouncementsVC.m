@@ -154,7 +154,7 @@
 }
 
 - (void)setLocalizedStrings{
-    [self setTitle:LocalizedString(@"Duyurular")];
+    [self setTitle:LocalizedString(@"announcements")];
 }
 
 @end

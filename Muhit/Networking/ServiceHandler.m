@@ -64,7 +64,7 @@
              
              DLog(@"url: %@ : %@",[url lastPathComponent], responseObject);
              NSDictionary *responseDict = (NSDictionary*)responseObject;
-             responseHandler(responseDict[@"data"],nil);
+             responseHandler(responseDict[@"content"],nil);
          }
          failure: ^(NSURLSessionDataTask *operation, NSError *error){
              NSLog(@"errorDesc:%@",error.description);
@@ -73,10 +73,10 @@
              if(error && (error.code == -1001 || error.code == -1009 || error.code == -1004)){
                  if (!backgroundCall && !alertActive) {
                      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                                     message:LocalizedString(@"İnternet bağlantınızı kontrol ediniz")
+                                                                     message:LocalizedString(@"check-connection")
                                                                     delegate:self
-                                                           cancelButtonTitle:LocalizedString(@"İptal")
-                                                           otherButtonTitles:LocalizedString(@"Yeniden Dene"),nil];
+                                                           cancelButtonTitle:LocalizedString(@"cancel")
+                                                           otherButtonTitles:LocalizedString(@"try-again"),nil];
                      alert.tag = ALERT_TRY_GET_TAG;
                      lastRequestURL = url;
                      lastRequestBackgroundCall = backgroundCall;
@@ -115,7 +115,7 @@
               
               DLog(@"url: %@ : %@",[url lastPathComponent], responseObject);
               NSDictionary *responseDict = (NSDictionary*)responseObject;
-              responseHandler(responseDict[@"data"],nil);
+              responseHandler(responseDict[@"content"],nil);
           }
           failure: ^(NSURLSessionDataTask *operation, NSError *error){
               
@@ -126,10 +126,10 @@
               if(error && (error.code == -1001 || error.code == -1009 || error.code == -1004)){
                   if (!backgroundCall && !alertActive) {
                       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                                      message:@"İnternet bağlantınızı kontrol ediniz"
+                                                                      message:@"check-connection"
                                                                      delegate:self
-                                                            cancelButtonTitle:@"İptal"
-                                                            otherButtonTitles:@"Yeniden Dene",nil];
+                                                            cancelButtonTitle:@"cancel"
+                                                            otherButtonTitles:@"try-again",nil];
                       alert.tag = ALERT_TRY_POST_TAG;
                       lastRequestURL = url;
                       lastRequestDict = requestDict;

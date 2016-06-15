@@ -2,17 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Tümü</key>
-	<string>TÜMÜ</string>
-	<key>Desteklediklerim</key>
+	<key>all</key>
+	<string>Tümü</string>
+	<key>my-supporteds</key>
 	<string>Desteklediklerim</string>
-	<key>Fikirlerim</key>
+	<key>my-ideas</key>
 	<string>Fikirlerim</string>
-	<key>Duyurular</key>
+	<key>announcements</key>
 	<string>Duyurular</string>
-	<key>Muhtarım</key>
+	<key>my-headman</key>
 	<string>Muhtarım</string>
-	<key>Muhtar</key>
+	<key>headman</key>
 	<string>Muhtar</string>
 	<key>signup</key>
 	<string>Kayıt Ol</string>
@@ -22,9 +22,9 @@
 	<string>Facebook ile Bağlan</string>
 	<key>or</key>
 	<string>veya</string>
-	<key>Profilim</key>
+	<key>my-profile</key>
 	<string>Profilim</string>
-	<key>Profil</key>
+	<key>profile</key>
 	<string>Profil</string>
 	<key>logout</key>
 	<string>Çıkış Yap</string>
@@ -60,29 +60,27 @@
 	<string>Yarattığı Fikirler</string>
 	<key>supported-issues</key>
 	<string>Desteklediği Fikirler</string>
-	<key>Profili Düzenle</key>
+	<key>edit-profile</key>
 	<string>Profili Düzenle</string>
-	<key>Güncelle</key>
+	<key>update</key>
 	<string>Güncelle</string>
-	<key>Arama Sonuçları</key>
-	<string>Arama Sonuçları</string>
-	<key>Başvuruldu</key>
+	<key>status-start</key>
 	<string>Başvuruldu</string>
-	<key>Gelişmekte</key>
+	<key>status-developing</key>
 	<string>Gelişmekte</string>
-	<key>Çözüldü</key>
+	<key>status-resolved</key>
 	<string>Çözüldü</string>
-	<key>Yorumlar</key>
+	<key>comments</key>
 	<string>Yorumlar</string>
-	<key>Destekçi</key>
+	<key>supporter</key>
 	<string>Destekçi</string>
-	<key>Düzenle</key>
+	<key>edit</key>
 	<string>Düzenle</string>
-	<key>Ekle</key>
+	<key>add</key>
 	<string>Ekle</string>
-	<key>Başlık</key>
+	<key>title</key>
 	<string>Başlık</string>
-	<key>Açıklama</key>
+	<key>description</key>
 	<string>Açıklama</string>
 	<key>Etiketler (max 3)</key>
 	<string>Etiketler  (max 3)</string>
@@ -90,25 +88,35 @@
 	<string>Resimler  (max 3)</string>
 	<key>Anonim olarak başvuru yap</key>
 	<string>Anonim olarak başvuru yap</string>
-	<key>Kaydet</key>
+	<key>save</key>
 	<string>Kaydet</string>
-	<key>Fotoğraf Çek</key>
+	<key>take-photo</key>
 	<string>Fotoğraf Çek</string>
-	<key>İptal</key>
+	<key>cancel</key>
 	<string>İptal</string>
-	<key>İnternet bağlantınızı kontrol ediniz</key>
+	<key>check-connection</key>
 	<string>İnternet bağlantınızı kontrol ediniz</string>
 	<key>ok</key>
 	<string>Tamam</string>
 	<key>idea</key>
 	<string>Fikir</string>
-	<key>Değiştir</key>
+	<key>change</key>
 	<string>Değiştir</string>
-	<key>fbPermissionMessage</key>
+	<key>facebook-permission</key>
 	<string>Facebook ile giriş yapabilmek için ayarlardan BiTaksi uygulamasına izin vermelisiniz.</string>
-	<key>Yeniden Dene</key>
+	<key>try-again</key>
 	<string>Yeniden Dene</string>
 	<key>choose-hood</key>
 	<string>Mahalleni seç...</string>
+	<key>profile-photo</key>
+	<string>Profil resmi</string>
+	<key>support</key>
+	<string>Destekle</string>
+	<key>unsupport</key>
+	<string>Destekledim</string>
+	<key>problem</key>
+	<string>Sorun</string>
+	<key>solution</key>
+	<string>Çözüm</string>
 </dict>
 </plist>

@@ -147,10 +147,10 @@
 
 - (void)setLocalizedStrings{
     if (profileId.length==0) {
-        [self setTitle:LocalizedString(@"Profilim")];
+        [self setTitle:LocalizedString(@"my-profile")];
     }
     else{
-        [self setTitle:LocalizedString(@"Profil")];
+        [self setTitle:LocalizedString(@"profile")];
     }
     
     [lblIssuesTitle setText:LocalizedString(@"created-issues")];

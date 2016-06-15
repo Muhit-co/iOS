@@ -9,9 +9,9 @@
 #import "EditProfileVC.h"
 
 @interface EditProfileVC (){
-    IBOutlet MTTextField *txtName,*txtSurname,*txtEmail,*txtUsername,*txtPassword;
-    IBOutlet UILabel *lblName,*lblSurname,*lblEmail,*lblUsername,*lblPassword,*lblHood,*lblPicture;
-    IBOutlet UIButton *btnSave,*btnChangePicture,*btnHood;
+    IBOutlet MTTextField *txtName,*txtSurname,*txtEmail,*txtPassword;
+    IBOutlet UILabel *lblName,*lblSurname,*lblEmail,*lblPassword,*lblHood,*lblPhoto;
+    IBOutlet UIButton *btnSave,*btnEditPhoto,*btnRemovePhoto,*btnHood;
     IBOutlet UIPickerView *pickerHood;
     IBOutlet UIImageView *imgDownIcon,*imgProfile;
     IBOutlet UIView *viewHood;
@@ -39,8 +39,7 @@
     [super viewDidLoad];
     [self adjustUI];
     
-    NSArray *txtFields = @[txtName, txtSurname, txtEmail,txtUsername,txtPassword];
-    keyboardControl = [[KeyboardControls alloc] initWithFields:txtFields];
+    keyboardControl = [[KeyboardControls alloc] initWithFields:@[txtName, txtSurname, txtEmail,txtPassword]];
     [keyboardControl setDelegate:self];
     
     [self setDetailsWithDictionary:profileDict];
@@ -60,7 +59,6 @@
 
 -(void)setDetailsWithDictionary:(NSDictionary*)dict{
     
-    [txtUsername setText:dict[@"username"]];
     [txtName setText:dict[@"first_name"]];
     [txtSurname setText:dict[@"last_name"]];
     [txtEmail setText:dict[@"email"]];
@@ -78,33 +76,18 @@
 }
 
 -(void)adjustUI{
-    [[self view] setBackgroundColor:[UIColor whiteColor]];
-    
-    CGFloat borderWidth = 1;
-    
     txtName.layer.cornerRadius = cornerRadius;
-    txtName.layer.borderWidth = borderWidth;
-    txtName.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
     txtSurname.layer.cornerRadius = cornerRadius;
-    txtSurname.layer.borderWidth = borderWidth;
-    txtSurname.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
     txtEmail.layer.cornerRadius = cornerRadius;
-    txtEmail.layer.borderWidth = borderWidth;
-    txtEmail.layer.borderColor = [[HXColor hx_colorWithHexRGBAString:@"eeeeee"] CGColor];
-    txtUsername.layer.cornerRadius = cornerRadius;
-    txtUsername.layer.borderWidth = borderWidth;
-    txtUsername.layer.borderColor = [[HXColor hx_colorWithHexRGBAString:@"eeeeee"] CGColor];
     txtPassword.layer.cornerRadius = cornerRadius;
-    txtPassword.layer.borderWidth = borderWidth;
-    txtPassword.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
     viewHood.layer.cornerRadius = cornerRadius;
-    viewHood.layer.borderWidth = borderWidth;
-    viewHood.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
-    btnSave.layer.cornerRadius = cornerRadius;
-    imgProfile.layer.cornerRadius = 45;
-    imgProfile.layer.masksToBounds = YES;
     
-    [imgDownIcon setImage:[IonIcons imageWithIcon:ion_chevron_down size:26 color:CLR_LIGHT_BLUE]];
+    btnSave.layer.cornerRadius = cornerRadius;
+    btnRemovePhoto.layer.cornerRadius = cornerRadius;
+    btnEditPhoto.layer.cornerRadius = cornerRadius;
+    
+    imgProfile.layer.cornerRadius = 30;
+    imgProfile.layer.masksToBounds = YES;
 }
 
 -(IBAction)actSave:(id)sender{
@@ -125,7 +108,16 @@
     [ScreenOperations openPickFromMap];
 }
 
--(IBAction)actChangePicture:(id)sender{
+-(IBAction)actEditPhoto:(id)sender{
+    if (!actionSheet) {
+        actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:LocalizedString(@"İptal") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"Fotoğraf Çek"),LocalizedString(@"Kütüphaneden Seç"),nil];
+    }
+    
+    [actionSheet showInView:self.view];
+    [actionSheet reloadInputViews];
+}
+
+-(IBAction)actRemovePhoto:(id)sender{
     if (!actionSheet) {
         actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:LocalizedString(@"İptal") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"Fotoğraf Çek"),LocalizedString(@"Kütüphaneden Seç"),nil];
     }
@@ -196,15 +188,14 @@
 }
 
 - (void)setLocalizedStrings{
-    [self setTitle:LocalizedString(@"Profili Düzenle")];
-    [btnSave setTitle:LocalizedString(@"Kaydet")];
-    [lblName setText:LocalizedString(@"Ad")];
-    [lblSurname setText:LocalizedString(@"Soyad")];
-    [lblEmail setText:LocalizedString(@"E-posta adresi")];
-    [lblUsername setText:LocalizedString(@"Kullanıcı adı")];
-    [lblPassword setText:LocalizedString(@"Şifre")];
-    [lblHood setText:LocalizedString(@"Mahalle")];
-    [lblPicture setText:LocalizedString(@"Değiştir")];
+    [self setTitle:LocalizedString(@"edit-profile")];
+    [btnSave setTitle:LocalizedString(@"save")];
+    [lblName setText:LocalizedString(@"name")];
+    [lblSurname setText:LocalizedString(@"surname")];
+    [lblEmail setText:LocalizedString(@"email")];
+    [lblPassword setText:LocalizedString(@"password")];
+    [lblHood setText:LocalizedString(@"hood")];
+    [lblPhoto setText:LocalizedString(@"profile-photo")];
 }
 
 @end

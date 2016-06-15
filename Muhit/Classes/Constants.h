@@ -60,6 +60,7 @@ static const CGFloat cornerRadius = 6;
 #define UD_ACCESS_TOKEN_TAKEN_DATE @"UD_ACCESS_TOKEN_TAKEN_DATE"
 #define UD_HOOD_ID @"UD_HOOD_ID"
 #define UD_USER_ID @"UD_USER_ID"
+#define UD_USERNAME @"UD_USERNAME"
 #define UD_USER_PICTURE @"UD_USER_PICTURE"
 
 #define FONT_BLACK @"SourceSansPro-Black"

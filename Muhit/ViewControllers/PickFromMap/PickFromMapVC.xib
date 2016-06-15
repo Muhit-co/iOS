@@ -105,7 +105,6 @@
                         <constraint firstAttribute="width" constant="135" id="AhD-dL-ScR"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="19"/>
-                    <size key="titleShadowOffset" width="0.0" height="0.0"/>
                     <state key="normal" title="Tamam">
                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -125,7 +124,6 @@
                         <constraint firstAttribute="height" constant="40" id="waE-vS-8Ch"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="19"/>
-                    <size key="titleShadowOffset" width="0.0" height="0.0"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>

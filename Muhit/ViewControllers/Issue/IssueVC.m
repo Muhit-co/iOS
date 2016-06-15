@@ -10,7 +10,7 @@
 #import "AnnouncementCell.h"
 
 @interface IssueVC (){
-    IBOutlet UILabel *lblSupportTitle,*lblSupportCount,*lblHood,*lblDate,*lblType,*lblIssueTitle,*lblIssueDescription,*lblCommentTitle,*lblCreatorName;
+    IBOutlet UILabel *lblSupportTitle,*lblSupportCount,*lblHood,*lblDistrict,*lblDate,*lblType,*lblIssueTitle,*lblProblemTitle,*lblProblemDescription,*lblSolutionTitle,*lblSolutionDescription,*lblCommentTitle,*lblCreatorName;
     IBOutlet UIButton *btnBack,*btnSupport,*btnEdit,*btnShare;
     IBOutlet UIImageView *imgLocationIcon,*imgTypeIcon,*imgCreator;
     IBOutlet UIView *viewSupport,*viewType,*viewTagsContainer,*viewCommentsHolder;
@@ -79,39 +79,43 @@
         [btnSupport setHidden:NO];
         if ([dict[@"is_supported"] boolValue]) {
             isSupported = YES;
-            [btnSupport setTitle:[LocalizedString(@"Destekledim") toUpper]];
+            [btnSupport setTitle:[LocalizedString(@"unsupport") toUpper]];
         }
         else{
-            [btnSupport setTitle:[LocalizedString(@"Destekle") toUpper]];
+            [btnSupport setTitle:[LocalizedString(@"support") toUpper]];
         }
     }
     
-    arrComments = [NSArray arrayWithArray:dict[@"comments"]];
-    [tblComments reloadData];
-    [imgCreator sd_setImageWithURL:[NSURL URLWithString:dict[@"user"][@"picture"]] placeholderImage:[UIImage imageNamed:@"userPlaceholder"]];
+    if (dict[@"comments"]) {
+        arrComments = [NSArray arrayWithArray:dict[@"comments"]];
+        [tblComments reloadData];
+    }
     
-    [lblCreatorName setText:[NSString stringWithFormat:@"%@ %@",dict[@"user"][@"first_name"],dict[@"user"][@"last_name"]]];
-    [lblSupportCount setText:[dict[@"supporter_counter"] stringValue]];
+    [imgCreator sd_setImageWithURL:[NSURL URLWithString:dict[USER][@"picture"]] placeholderImage:PLACEHOLDER_IMAGE];
+    [lblCreatorName setText:dict[@"user"][@"full_name"]];
+    [lblSupportCount setText:[dict[@"supporter_count"] stringValue]];
     
-    [lblHood setText:dict[@"location"]];
+    [lblHood setText:[UF getHoodFromAddress:dict[@"location"]]];
+    [lblDistrict setText:[UF getDistrictFromAddress:dict[@"location"]]];
     [lblDate setText:[UF getDetailedDateString:dict[@"created_at"]]];
     [lblIssueTitle setText:dict[@"title"]];
-    [lblIssueDescription setText:dict[@"desc"]];
+    [lblProblemDescription setText:dict[@"problem"]];
+    [lblSolutionDescription setText:dict[@"solution"]];
     
     issueCoordinate = nilOrJson(dict[@"coordinates"]);
     
     if ([dict[@"status"] isEqualToString:@"new"]) {
-        [lblType setText:LocalizedString(@"Başvuruldu")];
+        [lblType setText:LocalizedString(@"status-start")];
         [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"44a2e0"]];
         [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_lightbulb size:20 color:CLR_WHITE]];
     }
-    else if ([dict[@"status"] isEqualToString:@"developing"]){
+    else if ([dict[@"status"] isEqualToString:@"status-developing"]){
         [lblType setText:LocalizedString(@"Gelişmekte")];
         [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"c677ea"]];
         [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_wrench size:20 color:CLR_WHITE]];
     }
     else{
-        [lblType setText:LocalizedString(@"Çözüldü")];
+        [lblType setText:LocalizedString(@"status-resolved")];
         [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"27ae61"]];
         [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_checkmark_circled size:20 color:CLR_WHITE]];
     }
@@ -126,7 +130,7 @@
     
     if (arrImages.count==0) {
         UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        [img setImage:[UIImage imageNamed:@"issuePlaceholder"]];
+        [img setImage:[UIImage imageNamed:@"issue-placeholder"]];
         [scrollImages addSubview:img];
         [img centerInSuperView];
     }
@@ -141,7 +145,7 @@
             NSString *imgUrl = [NSString stringWithFormat:@"%@/%dx%d/%@",IMAGE_PROXY,2*(int)frame.size.width,2*(int)frame.size.height,arrImages[i][@"image"]];
             
             [UF logFrame:img identifier:@"imageView"];
-            [img sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"issuePlaceholder"]];
+            [img sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"issue-placeholder"]];
             [scrollImages addSubview:img];
         }
         
@@ -233,15 +237,15 @@
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    viewSupport.layer.cornerRadius = 30;
-    [imgLocationIcon setImage:[IonIcons imageWithIcon:ion_location size:20 color:[UIColor whiteColor]]];
+    viewSupport.layer.cornerRadius = 35;
     viewType.layer.cornerRadius = cornerRadius;
-    imgCreator.layer.cornerRadius = 15;
+    imgCreator.layer.cornerRadius = 20;
     imgCreator.layer.masksToBounds = YES;
     btnSupport.layer.cornerRadius = cornerRadius;
     btnEdit.layer.cornerRadius = cornerRadius;
     btnShare.layer.cornerRadius = cornerRadius;
-    [btnShare setImage:[IonIcons imageWithIcon:ion_share size:20 color:[UIColor whiteColor]]];
+    [btnShare setImage:[IonIcons imageWithIcon:ion_share size:24 color:[UIColor whiteColor]]];
+    [imgLocationIcon setImage:[IonIcons imageWithIcon:ion_location size:24 color:[UIColor whiteColor]]];
 }
 
 -(IBAction)actBack:(id)sender{
@@ -373,15 +377,18 @@
 }
 
 - (void)setLocalizedStrings{
-    [lblCommentTitle setText:LocalizedString(@"Yorumlar")];
-    [lblSupportTitle setText:[LocalizedString(@"Destekçi") toUpper]];
-    [btnEdit setTitle:[LocalizedString(@"Düzenle") toUpper]];
+    [lblCommentTitle setText:LocalizedString(@"comments")];
+    [lblSupportTitle setText:[LocalizedString(@"supporter") toUpper]];
+    [btnEdit setTitle:[LocalizedString(@"edit") toUpper]];
+    
+    [lblProblemTitle setText:LocalizedString(@"problem")];
+    [lblSolutionTitle setText:LocalizedString(@"solution")];
     
     if (isSupported) {
-        [btnSupport setTitle:[LocalizedString(@"Destekledim") toUpper]];
+        [btnSupport setTitle:[LocalizedString(@"unsupport") toUpper]];
     }
     else{
-        [btnSupport setTitle:[LocalizedString(@"Destekle") toUpper]];
+        [btnSupport setTitle:[LocalizedString(@"support") toUpper]];
     }
 }
 
