@@ -70,10 +70,11 @@ const int itemPerPage = 10;
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
-+ (void)addOrUpdateIssue:(NSString*)title description:(NSString*)description location:(NSString*)location tags:(NSArray*)tags images:(NSArray*)images isAnonymous:(BOOL)isAnonymous coordinate:(NSString *)coordinate issueId:(NSString *)issueId handler:(GeneralResponseHandler)handler{
++ (void)addOrUpdateIssue:(NSString*)title problem:(NSString*)problem solution:(NSString*)solution location:(NSString*)location tags:(NSArray*)tags images:(NSArray*)images isAnonymous:(BOOL)isAnonymous coordinate:(NSString *)coordinate issueId:(NSString *)issueId handler:(GeneralResponseHandler)handler{
     NSDictionary *requestDict = @{
                                   KEY_ISSUE_TITLE : title,
-                                  KEY_ISSUE_DESC : description,
+                                  KEY_ISSUE_PROBLEM : problem,
+                                  KEY_ISSUE_SOLUTION : solution,
                                   KEY_ISSUE_LOCATION : location,
                                   KEY_ISSUE_TAGS : tags,
                                   KEY_ISSUE_IMAGES : images,
@@ -124,10 +125,10 @@ const int itemPerPage = 10;
 + (BOOL)refreshAccessTokenSync{
     
     NSMutableDictionary *jsonRequest = [NSMutableDictionary dictionaryWithDictionary:@{
-                                       		KEY_REFRESH_TOKEN : [UD objectForKey:UD_REFRESH_TOKEN],
-                                           	KEY_CLIENT_ID : VAL_CLIENT_ID,
-                               				KEY_CLIENT_SECRET : VAL_CLIENT_SECRET}];
-
+                                                                                       KEY_REFRESH_TOKEN : [UD objectForKey:UD_REFRESH_TOKEN],
+                                                                                       KEY_CLIENT_ID : VAL_CLIENT_ID,
+                                                                                       KEY_CLIENT_SECRET : VAL_CLIENT_SECRET}];
+    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/api/%@",[MT serviceURL],SERVICE_REFRESH_ACCESS_TOKEN]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
@@ -206,7 +207,7 @@ const int itemPerPage = 10;
             }
         }
     }
-
+    
     [SERVICE_HANDLER getRequest: url
                  backgroundCall: backgroundCall
                      repeatCall: repeatCall

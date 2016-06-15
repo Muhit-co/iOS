@@ -51,29 +51,7 @@
     }];
 }
 
--(void)setDetailsWithDictionary:(NSDictionary*)dict{
-    
-    dictProfile = dict;
-    arrIdeas = [NSArray arrayWithArray:dict[@"ideas"]];
-    
-    [lblUsername setText:dict[@"username"]];
-    [lblName setText:[NSString stringWithFormat:@"%@ %@",dict[@"first_name"],dict[@"last_name"]]];
-    [lblAddress setText:dict[@"address"]];
-    [lblMail setText:dict[@"email"]];
-    [lblSupportsCount setText:[dict[@"supported_issue_counter"] stringValue]];
-    [lblIdeasCount setText:STRING_W_INT((int)[arrIdeas count])];
-    
-    NSString *imgUrl = [NSString stringWithFormat:@"%@/140x140/%@",IMAGE_PROXY,dict[@"picture"]];
-    [imgUser sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"userPlaceholder"]];
-    
-    [tblIdeas reloadData];
-    REMOVE_HUD
-}
-
 -(void)adjustUI{
-    
-    [[self view] setBackgroundColor:[UIColor whiteColor]];
-    
     [imgAddress setImage:[IonIcons imageWithIcon:ion_location size:24 color:CLR_LIGHT_BLUE]];
     [imgMail setImage:[IonIcons imageWithIcon:ion_email size:24 color:CLR_LIGHT_BLUE]];
     [imgUserName setImage:[IonIcons imageWithIcon:ion_email size:24 color:CLR_LIGHT_BLUE]];
@@ -97,6 +75,26 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnEdit];
         [btnEdit addTarget:self action:@selector(editProfile) forControlEvents:UIControlEventTouchUpInside];
     }
+}
+
+
+-(void)setDetailsWithDictionary:(NSDictionary*)dict{
+    
+    dictProfile = dict;
+    arrIdeas = [NSArray arrayWithArray:dict[@"ideas"]];
+    
+    [lblUsername setText:dict[@"username"]];
+    [lblName setText:dict[@"full_name"]];
+    [lblAddress setText:dict[@"address"]];
+    [lblMail setText:dict[@"email"]];
+    [lblSupportsCount setText:[dict[@"supported_issue_counter"] stringValue]];
+    [lblIdeasCount setText:STRING_W_INT((int)[arrIdeas count])];
+    
+    NSString *imgUrl = [NSString stringWithFormat:@"%@/240x240/%@",IMAGE_PROXY,dict[@"picture"]];
+    [imgUser sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:PLACEHOLDER_IMAGE];
+    
+    [tblIdeas reloadData];
+    REMOVE_HUD
 }
 
 -(void)editProfile{

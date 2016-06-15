@@ -101,4 +101,6 @@ typedef enum{
 +(NSString*)addQueryStringToUrlString:(NSString *)urlString withDictionary:(NSDictionary *)dictionary;
 +(NSString*)getDistrictFromAddress:(NSString *)address;
 +(NSString*)getHoodFromAddress:(NSString *)address;
+
++(CGSize)screenSize;
 @end

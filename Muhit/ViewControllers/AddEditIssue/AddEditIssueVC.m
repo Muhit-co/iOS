@@ -11,10 +11,10 @@
 
 @interface AddEditIssueVC (){
     NSDictionary *issueDict;
-    IBOutlet UILabel *lblTitle,*lblDescription,*lblHood,*lblTags,*lblPhotos,*lblAnonim,*lblAddTag;
+    IBOutlet UILabel *lblTitle,*lblProblem,*lblSolution,*lblHood,*lblTags,*lblPhotos,*lblAnonim,*lblAddTag;
     IBOutlet UITextField *txtTitle;
-    IBOutlet UITextView *txtDescription;
-    IBOutlet UIView *viewHood,*viewDescription,*viewTags,*viewPhotos,*viewAddTag,*viewAnonim;
+    IBOutlet UITextView *txtProblem,*txtSolution;
+    IBOutlet UIView *viewHood,*viewProblem,*viewSolution,*viewTags,*viewPhotos,*viewAddTag,*viewAnonim;
     IBOutlet UIButton *btnSave,*btnAnonim,*btnAddTag,*btnAddPhoto,*btnHood;
     IBOutlet UIImageView *imgDownIconHood,*imgAnonim,*imgLocation,*imgAnonimTick,*imgLocationTick,*imgAddTag;
     IBOutlet NSLayoutConstraint *constPhotosViewWidth,*constBtnAddImageLeft,*constTagsViewHeight,*constBtnAddTagLeft,*constBtnAddTagTop,*constContainerHeight;
@@ -88,30 +88,19 @@
 }
 
 -(void)adjustUI{
-    [[self view] setBackgroundColor:[UIColor whiteColor]];
-    
-    CGFloat borderWidth = 1;
+    [[self view] setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"EEEEEE"]];
     
     txtTitle.layer.cornerRadius = cornerRadius;
-    txtTitle.layer.borderWidth = borderWidth;
-    txtTitle.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
-    viewDescription.layer.cornerRadius = cornerRadius;
-    viewDescription.layer.borderWidth = borderWidth;
-    viewDescription.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
+    viewProblem.layer.cornerRadius = cornerRadius;
+    viewSolution.layer.cornerRadius = cornerRadius;
     viewHood.layer.cornerRadius = cornerRadius;
-    viewHood.layer.borderWidth = borderWidth;
-    viewHood.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
     btnSave.layer.cornerRadius = cornerRadius;
     btnAddPhoto.layer.cornerRadius = cornerRadius;
     viewAddTag.layer.cornerRadius = cornerRadius;
     
-    imgAnonimTick.layer.borderWidth = borderWidth;
-    imgAnonimTick.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
     imgAnonimTick.layer.cornerRadius = cornerRadius;
     imgAnonimTick.layer.masksToBounds = YES;
     
-    imgLocationTick.layer.borderWidth = borderWidth;
-    imgLocationTick.layer.borderColor = [CLR_LIGHT_BLUE CGColor];
     imgLocationTick.layer.cornerRadius = cornerRadius;
     imgLocationTick.layer.masksToBounds = YES;
     
@@ -131,7 +120,8 @@
     issueGeoCode = nilOrJson(issueDict[@"location"]);
     [btnHood setTitle:issueDict[@"location"]];
     [txtTitle setText:issueDict[@"title"]];
-    [txtDescription setText:issueDict[@"desc"]];
+    [txtProblem setText:issueDict[@"problem"]];
+    [txtSolution setText:issueDict[@"solution"]];
     
     isAnonim = ![issueDict[@"is_anonymous"] boolValue];
     [self actAnonim:nil];
@@ -231,7 +221,7 @@
     }
     
     ADD_HUD
-    [MuhitServices addOrUpdateIssue:txtTitle.text description:txtDescription.text location:issueGeoCode tags:arrTagIds images:arrBase64Photos isAnonymous:isAnonim coordinate:issueCoordinate issueId:issueId handler:^(NSDictionary *response, NSError *error) {
+    [MuhitServices addOrUpdateIssue:txtTitle.text problem:txtProblem.text solution:txtSolution.text location:issueGeoCode tags:arrTagIds images:arrBase64Photos isAnonymous:isAnonim coordinate:issueCoordinate issueId:issueId handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
         }
@@ -468,23 +458,22 @@
 }
 
 - (void)setLocalizedStrings{
-    
-    [lblTitle setText:LocalizedString(@"Başlık")];
-    [lblDescription setText:LocalizedString(@"Açıklama")];
-    [lblHood setText:LocalizedString(@"Mahalle")];
-    [lblTags setText:LocalizedString(@"Etiketler (max 3)")];
-    [lblPhotos setText:LocalizedString(@"Resimler (max 3)")];
-    [lblAnonim setText:LocalizedString(@"Anonim olarak başvuru yap")];
-    [lblAddTag setText:[LocalizedString(@"Ekle") toUpper]];
+    [lblTitle setText:LocalizedString(@"title")];
+    [lblProblem setText:LocalizedString(@"problem")];
+    [lblSolution setText:LocalizedString(@"solution")];
+    [lblHood setText:LocalizedString(@"hood")];
+    [lblTags setText:LocalizedString(@"tags-max-3")];
+    [lblPhotos setText:LocalizedString(@"photos-max-3")];
+    [lblAnonim setText:LocalizedString(@"anonymus-issue")];
+    [lblAddTag setText:[LocalizedString(@"add") toUpper]];
     if (issueDict) {
-        [self setTitle:LocalizedString(@"Düzenle")];
-        [btnSave setTitle:LocalizedString(@"Kaydet")];
+        [self setTitle:LocalizedString(@"edit")];
+        [btnSave setTitle:LocalizedString(@"save")];
     }
     else{
-        [self setTitle:LocalizedString(@"Ekle")];
-        [btnSave setTitle:LocalizedString(@"Ekle")];
+        [self setTitle:LocalizedString(@"add")];
+        [btnSave setTitle:LocalizedString(@"add")];
     }
-    
 }
 
 @end

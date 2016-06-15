@@ -58,6 +58,7 @@
                 <outlet property="tblComments" destination="tSH-U8-TEI" id="eHA-hf-g7F"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewCommentsHolder" destination="QRz-AG-3Pf" id="TO6-HH-K5z"/>
+                <outlet property="viewProfile" destination="Aer-PR-reE" id="pnC-eE-COF"/>
                 <outlet property="viewSupport" destination="0mh-uj-uhZ" id="ZTo-14-wIG"/>
                 <outlet property="viewTagsContainer" destination="fAB-wq-X3t" id="lqr-DH-sh5"/>
                 <outlet property="viewType" destination="ePf-QZ-uyu" id="xrw-hj-vM1"/>
@@ -186,7 +187,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Çözüldü" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0v-8q-pqC" userLabel="lblType">
-                                            <rect key="frame" x="35" y="0.0" width="80" height="30"/>
+                                            <rect key="frame" x="30" y="0.0" width="85" height="30"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -200,7 +201,7 @@
                                         <constraint firstItem="eUy-XG-gOc" firstAttribute="leading" secondItem="ePf-QZ-uyu" secondAttribute="leading" id="cMx-qU-ITf"/>
                                         <constraint firstAttribute="trailing" secondItem="q0v-8q-pqC" secondAttribute="trailing" constant="5" id="hT8-LM-lxD"/>
                                         <constraint firstAttribute="width" constant="120" id="ldG-gH-J0K"/>
-                                        <constraint firstItem="q0v-8q-pqC" firstAttribute="leading" secondItem="eUy-XG-gOc" secondAttribute="trailing" constant="5" id="mPq-qU-WF8"/>
+                                        <constraint firstItem="q0v-8q-pqC" firstAttribute="leading" secondItem="eUy-XG-gOc" secondAttribute="trailing" id="mPq-qU-WF8"/>
                                         <constraint firstAttribute="bottom" secondItem="eUy-XG-gOc" secondAttribute="bottom" id="rgU-HE-X7R"/>
                                         <constraint firstAttribute="height" constant="30" id="x9B-Pt-rc6"/>
                                     </constraints>
@@ -223,7 +224,7 @@
                                     <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aliquam ut tellus sit amet nulla porta congue vitae vel leo. Pellentesque ac accumsan felis. " lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oY-eo-ioi" userLabel="lblProblem">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aliquam ut tellus sit amet nulla porta congue vitae vel leo. Pellentesque ac accumsan felis. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oY-eo-ioi" userLabel="lblProblem">
                                     <rect key="frame" x="15" y="381" width="570" height="41"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="coc-Dh-22T"/>
@@ -244,7 +245,7 @@
                                     <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aliquam ut tellus sit amet nulla porta congue vitae vel leo. Pellentesque ac accumsan felis. " lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Hr-bX-KIf" userLabel="lblSolution">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aliquam ut tellus sit amet nulla porta congue vitae vel leo. Pellentesque ac accumsan felis. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Hr-bX-KIf" userLabel="lblSolution">
                                     <rect key="frame" x="15" y="457" width="570" height="41"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="osp-kp-Wh4"/>

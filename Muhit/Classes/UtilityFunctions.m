@@ -938,4 +938,11 @@
     }
 }
 
++(CGSize)screenSize{
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    
+    return CGSizeMake(screenWidth, screenHeight);
+}
+
 @end

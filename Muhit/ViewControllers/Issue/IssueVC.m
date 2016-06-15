@@ -13,7 +13,7 @@
     IBOutlet UILabel *lblSupportTitle,*lblSupportCount,*lblHood,*lblDistrict,*lblDate,*lblType,*lblIssueTitle,*lblProblemTitle,*lblProblemDescription,*lblSolutionTitle,*lblSolutionDescription,*lblCommentTitle,*lblCreatorName;
     IBOutlet UIButton *btnBack,*btnSupport,*btnEdit,*btnShare;
     IBOutlet UIImageView *imgLocationIcon,*imgTypeIcon,*imgCreator;
-    IBOutlet UIView *viewSupport,*viewType,*viewTagsContainer,*viewCommentsHolder;
+    IBOutlet UIView *viewSupport,*viewType,*viewTagsContainer,*viewCommentsHolder,*viewProfile;
     IBOutlet UIScrollView *scrollImages;
     IBOutlet UITableView *tblComments;
     IBOutlet UIPageControl *pageControl;
@@ -45,16 +45,14 @@
     [scrollRoot setHidden:YES];
     [self adjustUI];
     self.automaticallyAdjustsScrollViewInsets=NO;
+    [self setDetailsWithDictionary:detail];
 }
 
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
+    [scrollRoot setContentSize:CGSizeMake([UF screenSize].width, viewProfile.bottomPosition + 10)];
+    constContainerHeight.constant = viewProfile.bottomPosition + 10;
     [self.view layoutIfNeeded];
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [self setDetailsWithDictionary:detail];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -65,6 +63,21 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [[MT navCon] setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
+}
+
+-(void)adjustUI{
+    
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    
+    viewSupport.layer.cornerRadius = 35;
+    viewType.layer.cornerRadius = cornerRadius;
+    imgCreator.layer.cornerRadius = 20;
+    imgCreator.layer.masksToBounds = YES;
+    btnSupport.layer.cornerRadius = cornerRadius;
+    btnEdit.layer.cornerRadius = cornerRadius;
+    btnShare.layer.cornerRadius = cornerRadius;
+    [btnShare setImage:[IonIcons imageWithIcon:ion_share size:24 color:[UIColor whiteColor]]];
+    [imgLocationIcon setImage:[IonIcons imageWithIcon:ion_location size:24 color:[UIColor whiteColor]]];
 }
 
 -(void)setDetailsWithDictionary:(NSDictionary*)dict{
@@ -101,79 +114,85 @@
     [lblIssueTitle setText:dict[@"title"]];
     [lblProblemDescription setText:dict[@"problem"]];
     [lblSolutionDescription setText:dict[@"solution"]];
+    [self.view layoutIfNeeded];
     
-    issueCoordinate = nilOrJson(dict[@"coordinates"]);
+    if (isNotNull(dict[@"coordinates"]) && [dict[@"coordinates"] length]>0) {
+        issueCoordinate = dict[@"coordinates"];
+    }
     
     if ([dict[@"status"] isEqualToString:@"new"]) {
+        
+        if ([lblSupportCount.text isEqualToString:@"0"]) {
+            [viewType setBackgroundColor:CLR_WHITE];
+            viewType.layer.borderWidth = 1;
+            viewType.layer.borderColor = [[HXColor hx_colorWithHexRGBAString:@"CCCCDD"] CGColor];
+            [lblType setTextColor:CLR_LIGHT_BLUE];
+            [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_lightbulb size:16 color:CLR_LIGHT_BLUE]];
+        }
+        else{
+            [viewType setBackgroundColor:CLR_LIGHT_BLUE];
+            [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_lightbulb size:16 color:CLR_WHITE]];
+        }
         [lblType setText:LocalizedString(@"status-start")];
-        [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"44a2e0"]];
-        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_lightbulb size:20 color:CLR_WHITE]];
     }
     else if ([dict[@"status"] isEqualToString:@"status-developing"]){
         [lblType setText:LocalizedString(@"Gelişmekte")];
-        [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"c677ea"]];
-        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_wrench size:20 color:CLR_WHITE]];
+        [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"C678EA"]];
+        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_wrench size:16 color:CLR_WHITE]];
     }
     else{
         [lblType setText:LocalizedString(@"status-resolved")];
-        [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"27ae61"]];
-        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_checkmark_circled size:20 color:CLR_WHITE]];
+        [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"27AE60"]];
+        [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_checkmark_circled size:16 color:CLR_WHITE]];
     }
     
     CGSize textSize = [[lblType text] sizeWithAttributes:@{NSFontAttributeName:[lblType font]}];
-    constViewTypeWidth.constant = 40 + textSize.width;
+    constViewTypeWidth.constant = 45 + textSize.width;
     
     /************ Images Area ************/
     NSArray * arrImages = [NSArray arrayWithArray:dict[@"images"]];
     [scrollImages removeSubviews];
     [pageControl setNumberOfPages:arrImages.count];
     
-    if (arrImages.count==0) {
-        UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        [img setImage:[UIImage imageNamed:@"issue-placeholder"]];
-        [scrollImages addSubview:img];
-        [img centerInSuperView];
-    }
-    else{
+    if (arrImages.count>0) {
         for (int i = 0; i < arrImages.count; i++) {
-            CGRect frame;
-            frame.origin.x = scrollImages.width * i;
-            frame.origin.y = 0;
-            frame.size = scrollImages.frame.size;
-            
+            CGRect frame = CGRectMake([UF screenSize].width * i, 0, [UF screenSize].width, scrollImages.height);
             UIImageView *img = [[UIImageView alloc] initWithFrame:frame];
             NSString *imgUrl = [NSString stringWithFormat:@"%@/%dx%d/%@",IMAGE_PROXY,2*(int)frame.size.width,2*(int)frame.size.height,arrImages[i][@"image"]];
-            
-            [UF logFrame:img identifier:@"imageView"];
             [img sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"issue-placeholder"]];
+            [img setContentMode:UIViewContentModeScaleToFill];
             [scrollImages addSubview:img];
         }
         
         if (issueCoordinate) {
             [pageControl setNumberOfPages:arrImages.count + 1];
-            [scrollImages setContentSize:CGSizeMake(scrollImages.frame.size.width * (arrImages.count+1), scrollImages.frame.size.height)];
+            [scrollImages setContentSize:CGSizeMake([UF screenSize].width * (arrImages.count+1), scrollImages.height)];
         }
         else{
             [pageControl setNumberOfPages:arrImages.count];
-            [scrollImages setContentSize:CGSizeMake(scrollImages.frame.size.width * arrImages.count, scrollImages.frame.size.height)];
+            [scrollImages setContentSize:CGSizeMake([UF screenSize].width * arrImages.count, scrollImages.height)];
         }
-        
+    }
+    else{
+        if (issueCoordinate) {
+            [pageControl setHidden:YES];
+            [scrollImages setContentSize:CGSizeMake([UF screenSize].width, scrollImages.height)];
+        }
+        else{
+            [pageControl setHidden:YES];
+            [scrollImages setHidden:YES];
+        }
     }
     /**************************************/
-    
     /************ Map Area ************/
-    
     
     if (issueCoordinate) {
         
-        CGRect frame = scrollImages.frame;
-        frame.origin.x = scrollImages.contentSize.width - scrollImages.width;
-        
+        CGRect mapFrame = CGRectMake(scrollImages.contentSize.width - [UF screenSize].width, 0, [UF screenSize].width, scrollImages.height);
         NSArray *points = [issueCoordinate componentsSeparatedByString:@", "];
         
         GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:[points[0] floatValue] longitude:[points[1] floatValue] zoom:15];
-        
-        map = [GMSMapView mapWithFrame:frame camera:camera];;
+        map = [GMSMapView mapWithFrame:mapFrame camera:camera];
         map.settings.rotateGestures = NO;
         map.settings.tiltGestures = NO;
         
@@ -186,12 +205,11 @@
         
         [scrollImages addSubview:map];
     }
-    
     /**************************************/
     
     /************ Tags Area ************/
     float totalTagsWidth = 0,lastTagsY = 0;
-    UIFont *tagFont = [UIFont fontWithName:@"SourceSansPro-Bold" size:16.0];
+    UIFont *tagFont = [UIFont fontWithName:FONT_BOLD size:16.0];
     [viewTagsContainer removeSubviews];
     
     for (NSDictionary* tag in dict[@"tags"]) {
@@ -199,10 +217,11 @@
         float lblWidth = [[tag[@"name"] toUpper] sizeWithAttributes:@{NSFontAttributeName:tagFont}].width;
         float viewItemWidth = lblWidth + 10;
         
-        if ((totalTagsWidth + viewItemWidth)>viewTagsContainer.width) {
+        if ((totalTagsWidth + viewItemWidth)>[UF screenSize].width-30) {
             totalTagsWidth = 0;
             lastTagsY += 40;
             constTagsViewHeight.constant = 30 + lastTagsY;
+            [self.view layoutIfNeeded];
         }
         
         UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, lblWidth, 30)];
@@ -223,9 +242,8 @@
         [viewTagsContainer addSubview:viewItem];
     }
     /**************************************/
-    [scrollRoot setContentSize:CGSizeMake(scrollRoot.width, viewTagsContainer.bottomPosition + 10)];
-    
-    constContainerHeight.constant = viewTagsContainer.bottomPosition +10;
+    [scrollRoot setContentSize:CGSizeMake(scrollRoot.width, viewProfile.bottomPosition + 10)];
+    constContainerHeight.constant = viewProfile.bottomPosition + 10;
     [self.view layoutIfNeeded];
     //todo comments
     
@@ -233,20 +251,7 @@
     REMOVE_HUD
 }
 
--(void)adjustUI{
-    
-    [self.view setBackgroundColor:[UIColor whiteColor]];
-    
-    viewSupport.layer.cornerRadius = 35;
-    viewType.layer.cornerRadius = cornerRadius;
-    imgCreator.layer.cornerRadius = 20;
-    imgCreator.layer.masksToBounds = YES;
-    btnSupport.layer.cornerRadius = cornerRadius;
-    btnEdit.layer.cornerRadius = cornerRadius;
-    btnShare.layer.cornerRadius = cornerRadius;
-    [btnShare setImage:[IonIcons imageWithIcon:ion_share size:24 color:[UIColor whiteColor]]];
-    [imgLocationIcon setImage:[IonIcons imageWithIcon:ion_location size:24 color:[UIColor whiteColor]]];
-}
+
 
 -(IBAction)actBack:(id)sender{
     [self back];

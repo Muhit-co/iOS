@@ -2,121 +2,121 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>add</key>
+	<string>Ekle</string>
 	<key>all</key>
 	<string>Tümü</string>
-	<key>my-supporteds</key>
-	<string>Desteklediklerim</string>
-	<key>my-ideas</key>
-	<string>Fikirlerim</string>
 	<key>announcements</key>
 	<string>Duyurular</string>
-	<key>my-headman</key>
-	<string>Muhtarım</string>
+	<key>anonymus-issue</key>
+	<string>Anonim olarak başvuru yap</string>
+	<key>cancel</key>
+	<string>İptal</string>
+	<key>change</key>
+	<string>Değiştir</string>
+	<key>check-connection</key>
+	<string>İnternet bağlantınızı kontrol ediniz</string>
+	<key>choose-hood</key>
+	<string>Mahalleni seç...</string>
+	<key>comments</key>
+	<string>Yorumlar</string>
+	<key>connect</key>
+	<string>Bağlan</string>
+	<key>created-issues</key>
+	<string>Yarattığı Fikirler</string>
+	<key>description</key>
+	<string>Açıklama</string>
+	<key>edit</key>
+	<string>Düzenle</string>
+	<key>edit-profile</key>
+	<string>Profili Düzenle</string>
+	<key>email</key>
+	<string>E-posta adresi</string>
+	<key>facebook-permission</key>
+	<string>Facebook ile giriş yapabilmek için ayarlardan BiTaksi uygulamasına izin vermelisiniz.</string>
+	<key>forgot-pass</key>
+	<string>Şifremi unuttum</string>
+	<key>forgot-pass-description</key>
+	<string>Eğer şifreni unuttuysan aşağıya e-posta adresini yazarak gönderdiğimiz link ile yeni bir şifre oluşturabilirsin.</string>
 	<key>headman</key>
 	<string>Muhtar</string>
-	<key>signup</key>
-	<string>Kayıt Ol</string>
+	<key>hood</key>
+	<string>Mahalle</string>
+	<key>idea</key>
+	<string>Fikir</string>
+	<key>latest</key>
+	<string>En Son</string>
 	<key>login</key>
 	<string>Giriş Yap</string>
 	<key>login-with-facebook</key>
 	<string>Facebook ile Bağlan</string>
-	<key>or</key>
-	<string>veya</string>
-	<key>my-profile</key>
-	<string>Profilim</string>
-	<key>profile</key>
-	<string>Profil</string>
 	<key>logout</key>
 	<string>Çıkış Yap</string>
-	<key>connect</key>
-	<string>Bağlan</string>
-	<key>popular</key>
-	<string>Popüler</string>
 	<key>map</key>
 	<string>Harita</string>
-	<key>latest</key>
-	<string>En Son</string>
-	<key>forgot-pass</key>
-	<string>Şifremi unuttum</string>
-	<key>submit</key>
-	<string>Gönder</string>
-	<key>forgot-pass-description</key>
-	<string>Eğer şifreni unuttuysan aşağıya e-posta adresini yazarak gönderdiğimiz link ile yeni bir şifre oluşturabilirsin.</string>
-	<key>password</key>
-	<string>Şifre</string>
-	<key>email</key>
-	<string>E-posta adresi</string>
-	<key>read-agreement</key>
-	<string>Kullanım koşullarını kabul ediyorum</string>
+	<key>my-headman</key>
+	<string>Muhtarım</string>
+	<key>my-ideas</key>
+	<string>Fikirlerim</string>
+	<key>my-profile</key>
+	<string>Profilim</string>
+	<key>my-supporteds</key>
+	<string>Desteklediklerim</string>
 	<key>name</key>
 	<string>Ad</string>
-	<key>surname</key>
-	<string>Soyad</string>
-	<key>username</key>
-	<string>Kullanıcı adı</string>
-	<key>hood</key>
-	<string>Mahalle</string>
-	<key>created-issues</key>
-	<string>Yarattığı Fikirler</string>
-	<key>supported-issues</key>
-	<string>Desteklediği Fikirler</string>
-	<key>edit-profile</key>
-	<string>Profili Düzenle</string>
-	<key>update</key>
-	<string>Güncelle</string>
-	<key>status-start</key>
-	<string>Başvuruldu</string>
+	<key>ok</key>
+	<string>Tamam</string>
+	<key>or</key>
+	<string>veya</string>
+	<key>password</key>
+	<string>Şifre</string>
+	<key>photos-max-3</key>
+	<string>Resimler  (max 3)</string>
+	<key>popular</key>
+	<string>Popüler</string>
+	<key>problem</key>
+	<string>Sorun</string>
+	<key>profile</key>
+	<string>Profil</string>
+	<key>profile-photo</key>
+	<string>Profil resmi</string>
+	<key>read-agreement</key>
+	<string>Kullanım koşullarını kabul ediyorum</string>
+	<key>save</key>
+	<string>Kaydet</string>
+	<key>signup</key>
+	<string>Kayıt Ol</string>
+	<key>solution</key>
+	<string>Çözüm</string>
 	<key>status-developing</key>
 	<string>Gelişmekte</string>
 	<key>status-resolved</key>
 	<string>Çözüldü</string>
-	<key>comments</key>
-	<string>Yorumlar</string>
-	<key>supporter</key>
-	<string>Destekçi</string>
-	<key>edit</key>
-	<string>Düzenle</string>
-	<key>add</key>
-	<string>Ekle</string>
-	<key>title</key>
-	<string>Başlık</string>
-	<key>description</key>
-	<string>Açıklama</string>
-	<key>Etiketler (max 3)</key>
-	<string>Etiketler  (max 3)</string>
-	<key>Resimler  (max 3)</key>
-	<string>Resimler  (max 3)</string>
-	<key>Anonim olarak başvuru yap</key>
-	<string>Anonim olarak başvuru yap</string>
-	<key>save</key>
-	<string>Kaydet</string>
-	<key>take-photo</key>
-	<string>Fotoğraf Çek</string>
-	<key>cancel</key>
-	<string>İptal</string>
-	<key>check-connection</key>
-	<string>İnternet bağlantınızı kontrol ediniz</string>
-	<key>ok</key>
-	<string>Tamam</string>
-	<key>idea</key>
-	<string>Fikir</string>
-	<key>change</key>
-	<string>Değiştir</string>
-	<key>facebook-permission</key>
-	<string>Facebook ile giriş yapabilmek için ayarlardan BiTaksi uygulamasına izin vermelisiniz.</string>
-	<key>try-again</key>
-	<string>Yeniden Dene</string>
-	<key>choose-hood</key>
-	<string>Mahalleni seç...</string>
-	<key>profile-photo</key>
-	<string>Profil resmi</string>
+	<key>status-start</key>
+	<string>Başvuruldu</string>
+	<key>submit</key>
+	<string>Gönder</string>
 	<key>support</key>
 	<string>Destekle</string>
+	<key>supported-issues</key>
+	<string>Desteklediği Fikirler</string>
+	<key>supporter</key>
+	<string>Destekçi</string>
+	<key>surname</key>
+	<string>Soyad</string>
+	<key>tags-max-3</key>
+	<string>Etiketler  (max 3)</string>
+	<key>take-photo</key>
+	<string>Fotoğraf Çek</string>
+	<key>title</key>
+	<string>Başlık</string>
+	<key>try-again</key>
+	<string>Yeniden Dene</string>
 	<key>unsupport</key>
 	<string>Destekledim</string>
-	<key>problem</key>
-	<string>Sorun</string>
-	<key>solution</key>
-	<string>Çözüm</string>
+	<key>update</key>
+	<string>Güncelle</string>
+	<key>username</key>
+	<string>Kullanıcı adı</string>
 </dict>
 </plist>

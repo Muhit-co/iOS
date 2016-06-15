@@ -29,7 +29,7 @@
 
 + (void)getAnnouncements:(int)from handler:(GeneralResponseHandler)handler;
 
-+ (void)addOrUpdateIssue:(NSString*)title description:(NSString*)description location:(NSString*)location tags:(NSArray*)tags images:(NSArray*)images isAnonymous:(BOOL)isAnonymous coordinate:(NSString *)coordinate issueId:(NSString *)issueId handler:(GeneralResponseHandler)handler;
++ (void)addOrUpdateIssue:(NSString*)title problem:(NSString*)problem solution:(NSString*)solution location:(NSString*)location tags:(NSArray*)tags images:(NSArray*)images isAnonymous:(BOOL)isAnonymous coordinate:(NSString *)coordinate issueId:(NSString *)issueId handler:(GeneralResponseHandler)handler;
 
 + (void)getTags:(NSString*)query handler:(GeneralResponseHandler)handler;
 

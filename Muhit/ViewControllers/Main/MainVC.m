@@ -30,6 +30,7 @@
     [self adjustUI];
     [self actLatest:nil];
     [NC addObserver:self selector:@selector(geoCodePicked:) name:NC_GEOCODE_PICKED object:nil];
+    arrIssues = [[NSMutableArray alloc] init];
     [self getIssues];
 }
 
@@ -42,7 +43,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [[MT navCon] setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
-    arrIssues = [[NSMutableArray alloc] init];
+    //    arrIssues = [[NSMutableArray alloc] init];
     
 }
 
