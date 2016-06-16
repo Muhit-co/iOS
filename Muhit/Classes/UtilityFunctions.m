@@ -945,4 +945,24 @@
     return CGSizeMake(screenWidth, screenHeight);
 }
 
++(UIView*)titleViewWithTitle:(NSString*)title{
+    
+    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 2, 17, 18)];
+    [img setImage:[UIImage imageNamed:@"muhit-tea-glass"]];
+    
+    UILabel *lblTitle = [[UILabel alloc] init];
+    [lblTitle setFont:[UIFont fontWithName:FONT_SEMI_BOLD size:20]];
+    [lblTitle setTextAlignment:NSTextAlignmentLeft];
+    [lblTitle setTextColor:CLR_WHITE];
+    [lblTitle setText:title];
+    
+    CGSize textSize = [[lblTitle text] sizeWithAttributes:@{NSFontAttributeName:[lblTitle font]}];
+    [lblTitle setFrame:CGRectMake(22, 0, textSize.width+2, 22)];
+    
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, img.width+lblTitle.width, 22)];
+    [titleView addSubview:img];
+    [titleView addSubview:lblTitle];
+    return titleView;
+}
+
 @end

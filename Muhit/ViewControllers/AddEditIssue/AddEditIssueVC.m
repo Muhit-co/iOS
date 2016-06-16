@@ -16,8 +16,8 @@
     IBOutlet UITextView *txtProblem,*txtSolution;
     IBOutlet UIView *viewHood,*viewProblem,*viewSolution,*viewTags,*viewPhotos,*viewAddTag,*viewAnonim;
     IBOutlet UIButton *btnSave,*btnAnonim,*btnAddTag,*btnAddPhoto,*btnHood;
-    IBOutlet UIImageView *imgDownIconHood,*imgAnonim,*imgLocation,*imgAnonimTick,*imgLocationTick,*imgAddTag;
-    IBOutlet NSLayoutConstraint *constPhotosViewWidth,*constBtnAddImageLeft,*constTagsViewHeight,*constBtnAddTagLeft,*constBtnAddTagTop,*constContainerHeight;
+    IBOutlet UIImageView *imgDownIconHood,*imgAddTag;
+    IBOutlet NSLayoutConstraint *constBtnAddImageTop,*constTagsViewHeight,*constBtnAddTagLeft,*constBtnAddTagTop,*constContainerHeight;
     BOOL isAnonim,displayOnce;
     float totalPhotosWidth,totalTagsWidth,lastTagsY;
     UIActionSheet *actionSheet;
@@ -98,20 +98,9 @@
     btnAddPhoto.layer.cornerRadius = cornerRadius;
     viewAddTag.layer.cornerRadius = cornerRadius;
     
-    imgAnonimTick.layer.cornerRadius = cornerRadius;
-    imgAnonimTick.layer.masksToBounds = YES;
-    
-    imgLocationTick.layer.cornerRadius = cornerRadius;
-    imgLocationTick.layer.masksToBounds = YES;
-    
-    [imgDownIconHood setImage:[IonIcons imageWithIcon:ion_android_locate size:20 color:CLR_LIGHT_BLUE]];
-    [imgAnonim setImage:[IonIcons imageWithIcon:ion_eye_disabled size:26 color:CLR_LIGHT_BLUE]];
-    [imgLocation setImage:[IonIcons imageWithIcon:ion_location size:26 color:CLR_LIGHT_BLUE]];
-    [btnAddPhoto setImage:[IonIcons imageWithIcon:ion_plus size:26 color:[UIColor whiteColor]]];
-    [imgAddTag setImage:[IonIcons imageWithIcon:ion_plus size:15 color:[UIColor whiteColor]]];
-    
-    [imgAnonimTick setImage:[IonIcons imageWithIcon:ion_checkmark size:20 color:[UIColor whiteColor]]];
-    [imgLocationTick setImage:[IonIcons imageWithIcon:ion_checkmark size:20 color:[UIColor whiteColor]]];
+    [imgDownIconHood setImage:[IonIcons imageWithIcon:ion_chevron_down size:18 color:[HXColor hx_colorWithHexRGBAString:@"9999AA"]]];
+    [btnAddPhoto setImage:[IonIcons imageWithIcon:ion_camera size:16 color:CLR_WHITE]];
+    [imgAddTag setImage:[IonIcons imageWithIcon:ion_chevron_down size:18 color:[HXColor hx_colorWithHexRGBAString:@"9999AA"]]];
 }
 
 -(void)setForEdit{
@@ -198,12 +187,6 @@
 }
 
 -(IBAction)actAnonim:(id)sender{
-    if (isAnonim) {
-        [imgAnonimTick setBackgroundColor:[UIColor whiteColor]];
-    }
-    else{
-        [imgAnonimTick setBackgroundColor:CLR_LIGHT_BLUE];
-    }
     isAnonim = !isAnonim;
 }
 
@@ -339,8 +322,7 @@
     }
     
     if ([arrPhotos count] == 0) {
-        constPhotosViewWidth.constant = 0;
-        constBtnAddImageLeft.constant = 0;
+        constBtnAddImageTop.constant = 5;
     }
     else{
         totalPhotosWidth = 0;
@@ -360,8 +342,7 @@
             [viewPhotos addSubview:imgView];
             [viewPhotos addSubview:btn];
             totalPhotosWidth+= 55;
-            constPhotosViewWidth.constant = totalPhotosWidth-10;
-            constBtnAddImageLeft.constant = 10;
+            constBtnAddImageTop.constant = 70;
             [self.view layoutIfNeeded];
         }
     }

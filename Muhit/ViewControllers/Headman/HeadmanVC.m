@@ -13,18 +13,38 @@
     IBOutlet UILabel *lblHood,*lblName,*lblCity,*lblPhone,*lblCell,*lblMail,*lblAddress;
     IBOutlet UIImageView *imgHeadman,*imgPhone,*imgCell,*imgMail,*imgAddress;
     IBOutlet UIView *viewPhone,*viewCell,*viewMail,*viewAddress;
+    IBOutlet UIButton *btnMenu;
     IBOutlet GMSMapView *map;
     CLLocationManager *locationManager;
     CLLocationCoordinate2D coordHeadman,coordUser;
     IBOutlet NSLayoutConstraint *constPhoneTop,*constCellTop,*constMailTop,*constAddressTop,*constMapTop;
+    BOOL fromMenu;
 }
-
 @end
 
 @implementation HeadmanVC
 
+- (id)initFromMenu{
+    self = [super init];
+    if (self){
+        fromMenu = YES;
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (fromMenu) {
+        [btnMenu setSize:CGSizeMake(40, 36)];
+        [btnMenu setImage:[IonIcons imageWithIcon:ion_navicon size:36 color:CLR_WHITE]];
+        UIBarButtonItem *barBtnMenu = [[UIBarButtonItem alloc] initWithCustomView:btnMenu];
+        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        negativeSpacer.width = -12;
+        [[self navigationItem] setLeftBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, barBtnMenu, nil] animated:NO];
+    }
+    
     [self adjustUI];
     [self test];
 }
@@ -48,6 +68,11 @@
     if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [locationManager requestWhenInUseAuthorization];
     }
+}
+
+-(IBAction)actMenu:(id)sender{
+    [self.view endEditing:YES];
+    [[MT drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 -(void)test{
@@ -140,7 +165,7 @@
 }
 
 - (void)setLocalizedStrings{
-    [self setTitle:LocalizedString(@"my-headman")];
+    [[self navigationItem] setTitleView:[UF titleViewWithTitle:LocalizedString(@"my-headman")]];
 }
 
 @end

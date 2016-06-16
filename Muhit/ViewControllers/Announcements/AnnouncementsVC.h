@@ -8,4 +8,6 @@
 
 @interface AnnouncementsVC : RootVC <UITableViewDelegate,UITableViewDataSource>
 
+- (id)initFromMenu;
+
 @end

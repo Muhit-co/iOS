@@ -8,4 +8,6 @@
 
 @interface SupportedsVC : RootVC <UITableViewDelegate,UITableViewDataSource>
 
+- (id)initFromMenu;
+
 @end

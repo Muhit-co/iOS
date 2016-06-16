@@ -11,7 +11,7 @@
 #define MENU_ITEM_SELECTED @"MenuItemSelected"
 
 #define SELECTOR_MAIN @"openMain:"
-#define SELECTOR_SUPPORTS @"openSupports:"
+#define SELECTOR_SUPPORTS @"openSupporteds:"
 #define SELECTOR_IDEAS @"openIdeas:"
 #define SELECTOR_NOTIFICATIONS @"openAnnouncements:"
 #define SELECTOR_HEADMAN @"openHeadman:"

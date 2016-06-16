@@ -15,6 +15,5 @@
 - (void) setMuhitLogo;
 - (void) back;
 - (void) setLocalizedStrings;
-- (void)resetScrollOffset;
-
+- (void) resetScrollOffset;
 @end

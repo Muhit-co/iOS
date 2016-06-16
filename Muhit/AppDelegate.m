@@ -12,6 +12,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "FacebookManager.h"
+#import "MMDrawerVisualState.h"
 
 #define ALERT_PUSH_NOTIFICATION 10
 
@@ -132,6 +133,7 @@
     [MT setDrawerController:[[MMDrawerController alloc] initWithCenterViewController: [MT navCon]
                                                             leftDrawerViewController: [[MenuVC alloc] init]]];
     
+    [[MT drawerController] setDrawerVisualStateBlock:[MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:2.0]];
     [[MT drawerController] setMaximumLeftDrawerWidth:240.0];
     [[MT drawerController] setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [[MT drawerController] setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];

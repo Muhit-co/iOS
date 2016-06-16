@@ -38,6 +38,8 @@
 		4B70C8F41B4BE01E009BC526 /* PickFromMapVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B70C8F21B4BE01E009BC526 /* PickFromMapVC.xib */; };
 		4B70C8FE1B51A093009BC526 /* NSString+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B70C8FD1B51A093009BC526 /* NSString+Extended.m */; };
 		4B7688A71B2B181500B2B6EF /* MTTagLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7688A61B2B181500B2B6EF /* MTTagLabel.m */; };
+		4B80C41C1D12D53500D39F02 /* IdeasVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B80C41A1D12D53500D39F02 /* IdeasVC.m */; };
+		4B80C41D1D12D53500D39F02 /* IdeasVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B80C41B1D12D53500D39F02 /* IdeasVC.xib */; };
 		4B9F04EF1B1D8A6C009CB713 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F04EE1B1D8A6C009CB713 /* Podfile */; };
 		4B9F04F31B1D9415009CB713 /* lang-en.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F04F01B1D9415009CB713 /* lang-en.plist */; };
 		4B9F04F41B1D9415009CB713 /* lang-tr.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F04F11B1D9415009CB713 /* lang-tr.plist */; };
@@ -138,6 +140,9 @@
 		4B70C8FF1B51A0A7009BC526 /* NSString+Extended.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extended.h"; sourceTree = "<group>"; };
 		4B7688A51B2B181500B2B6EF /* MTTagLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTagLabel.h; sourceTree = "<group>"; };
 		4B7688A61B2B181500B2B6EF /* MTTagLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTagLabel.m; sourceTree = "<group>"; };
+		4B80C4191D12D53500D39F02 /* IdeasVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeasVC.h; sourceTree = "<group>"; };
+		4B80C41A1D12D53500D39F02 /* IdeasVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdeasVC.m; sourceTree = "<group>"; };
+		4B80C41B1D12D53500D39F02 /* IdeasVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IdeasVC.xib; sourceTree = "<group>"; };
 		4B9F04EE1B1D8A6C009CB713 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = ../../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4B9F04F01B1D9415009CB713 /* lang-en.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "lang-en.plist"; sourceTree = "<group>"; };
 		4B9F04F11B1D9415009CB713 /* lang-tr.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "lang-tr.plist"; sourceTree = "<group>"; };
@@ -339,6 +344,26 @@
 			path = PickFromMap;
 			sourceTree = "<group>";
 		};
+		4B80C4171D1293BB00D39F02 /* Membering */ = {
+			isa = PBXGroup;
+			children = (
+				4BC9EE931B1EF3F400441353 /* ForgotPassword */,
+				4B9F05311B1DDA24009CB713 /* Login */,
+				4BC9EE941B1EF3FB00441353 /* Signup */,
+			);
+			path = Membering;
+			sourceTree = "<group>";
+		};
+		4B80C4181D12D4E600D39F02 /* Ideas */ = {
+			isa = PBXGroup;
+			children = (
+				4B80C4191D12D53500D39F02 /* IdeasVC.h */,
+				4B80C41A1D12D53500D39F02 /* IdeasVC.m */,
+				4B80C41B1D12D53500D39F02 /* IdeasVC.xib */,
+			);
+			path = Ideas;
+			sourceTree = "<group>";
+		};
 		4B9F05121B1D96E1009CB713 /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,8 +422,7 @@
 				4B9F05331B1DDA42009CB713 /* LoginVC.m */,
 				4B9F05341B1DDA42009CB713 /* LoginVC.xib */,
 			);
-			name = Login;
-			path = Signup;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		4B9F05411B1DE5A6009CB713 /* Fonts */ = {
@@ -508,8 +532,7 @@
 				4BC9EE9B1B1EF43300441353 /* ForgotPasswordVC.m */,
 				4BC9EE9C1B1EF43300441353 /* ForgotPasswordVC.xib */,
 			);
-			name = ForgotPassword;
-			path = Login;
+			path = ForgotPassword;
 			sourceTree = "<group>";
 		};
 		4BC9EE941B1EF3FB00441353 /* Signup */ = {
@@ -519,8 +542,7 @@
 				4BC9EE961B1EF41800441353 /* SignupVC.m */,
 				4BC9EE971B1EF41800441353 /* SignupVC.xib */,
 			);
-			name = Signup;
-			path = ForgotPassword;
+			path = Signup;
 			sourceTree = "<group>";
 		};
 		4BD0A3B91B2EAF12008ECD02 /* Facebook */ = {
@@ -573,16 +595,15 @@
 				4B2169341B218DBF00DEBA01 /* Announcements */,
 				4BC9BF191D1044B400707A4D /* Commons */,
 				4B21694E1B21D46300DEBA01 /* EditProfile */,
-				4BC9EE931B1EF3F400441353 /* ForgotPassword */,
 				4B21694C1B21D45600DEBA01 /* Headman */,
+				4B80C4181D12D4E600D39F02 /* Ideas */,
 				4B21695F1B21D55B00DEBA01 /* Issue */,
-				4B9F05311B1DDA24009CB713 /* Login */,
 				4B9F052B1B1DBFAB009CB713 /* Main */,
+				4B80C4171D1293BB00D39F02 /* Membering */,
 				4B9F052A1B1DBE1F009CB713 /* Menu */,
 				4B70C8EF1B4BE001009BC526 /* PickFromMap */,
 				4B21694D1B21D45D00DEBA01 /* Profile */,
 				4B9F05121B1D96E1009CB713 /* Root */,
-				4BC9EE941B1EF3FB00441353 /* Signup */,
 				4B2169351B218DCD00DEBA01 /* Supporteds */,
 				4B6FF5A51B3F0CBA00F3ED8A /* TagSelector */,
 			);
@@ -733,6 +754,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B80C41D1D12D53500D39F02 /* IdeasVC.xib in Resources */,
 				4B2169441B218E6F00DEBA01 /* SupportedsVC.xib in Resources */,
 				4B70C8F41B4BE01E009BC526 /* PickFromMapVC.xib in Resources */,
 				4B9F04F31B1D9415009CB713 /* lang-en.plist in Resources */,
@@ -847,6 +869,7 @@
 				4B9F04FA1B1D950D009CB713 /* Muhit.m in Sources */,
 				4B9F05051B1D9524009CB713 /* UIView+CustomNib.m in Sources */,
 				4BF7F9061B1CF39D00A35FD1 /* ServiceHandler.m in Sources */,
+				4B80C41C1D12D53500D39F02 /* IdeasVC.m in Sources */,
 				4B2169691B21D5B500DEBA01 /* IssueVC.m in Sources */,
 				4B21696E1B21D5C500DEBA01 /* SearchVC.m in Sources */,
 				4B9F05161B1DBD04009CB713 /* NavBar.m in Sources */,

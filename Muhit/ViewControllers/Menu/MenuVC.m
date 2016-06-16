@@ -90,23 +90,22 @@
 
 - (void)openMain:(id)sender{
     [ScreenOperations openMain];
-    [[MT drawerController] closeDrawerAnimated:YES completion:nil];
 }
 
-- (void)openSupports:(id)sender{
-    [ScreenOperations openSupports];
+- (void)openSupporteds:(id)sender{
+    [ScreenOperations openSupporteds:YES];
 }
 
 - (void)openIdeas:(id)sender{
-    [ScreenOperations openIdeas];
+    [ScreenOperations openIdeas:YES];
 }
 
 - (void)openAnnouncements:(id)sender{
-    [ScreenOperations openAnnouncements];
+    [ScreenOperations openAnnouncements:YES];
 }
 
 - (void)openHeadman:(id)sender{
-    [ScreenOperations openHeadman];
+    [ScreenOperations openHeadman:YES];
 }
 
 - (IBAction)actLogin:(id)sender{

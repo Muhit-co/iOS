@@ -20,6 +20,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeadmanVC">
             <connections>
+                <outlet property="btnMenu" destination="1np-vq-4u4" id="PFq-xv-qBh"/>
                 <outlet property="imgAddress" destination="MRd-cd-s5Y" id="sxN-mL-thl"/>
                 <outlet property="imgCell" destination="iOU-C8-ctQ" id="tZY-Cc-ULV"/>
                 <outlet property="imgHeadman" destination="3aE-Wk-Udr" id="1Yt-CR-iM2"/>
@@ -295,9 +296,22 @@
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
         </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1np-vq-4u4" userLabel="btnMenu">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <state key="normal">
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="highlighted" image="menu-active"/>
+            <connections>
+                <action selector="actMenu:" destination="-1" eventType="touchUpInside" id="ftJ-E4-gej"/>
+            </connections>
+        </button>
     </objects>
     <resources>
         <image name="city-shadow-header" width="375" height="69"/>
+        <image name="menu-active" width="40" height="40"/>
         <image name="profile-placeholder" width="100" height="100"/>
     </resources>
 </document>

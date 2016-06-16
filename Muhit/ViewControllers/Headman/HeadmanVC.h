@@ -8,4 +8,6 @@
 
 @interface HeadmanVC : RootVC
 
+- (id)initFromMenu;
+
 @end

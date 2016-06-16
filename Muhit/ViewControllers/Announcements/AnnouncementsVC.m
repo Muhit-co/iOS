@@ -11,20 +11,49 @@
 
 @interface AnnouncementsVC (){
     IBOutlet UITableView *tblAnnouncements;
+    IBOutlet UIButton *btnMenu;
     NSMutableArray *arrAnnouncements;
     int lastIndex;
+    BOOL fromMenu;
 }
-
 @end
 
 @implementation AnnouncementsVC
 
+- (id)initFromMenu{
+    self = [super init];
+    if (self){
+        fromMenu = YES;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (fromMenu) {
+        [btnMenu setSize:CGSizeMake(40, 36)];
+        [btnMenu setImage:[IonIcons imageWithIcon:ion_navicon size:36 color:CLR_WHITE]];
+        UIBarButtonItem *barBtnMenu = [[UIBarButtonItem alloc] initWithCustomView:btnMenu];
+        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        negativeSpacer.width = -12;
+        [[self navigationItem] setLeftBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, barBtnMenu, nil] animated:NO];
+    }
+    
     arrAnnouncements = [[NSMutableArray alloc] init];
     //    [self getAnnouncements];
     [arrAnnouncements addObjectsFromArray:[self arrTestData]];
     [tblAnnouncements reloadData];
+}
+
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    [self.view layoutIfNeeded];
+}
+
+-(IBAction)actMenu:(id)sender{
+    [self.view endEditing:YES];
+    [[MT drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 -(NSArray*)arrTestData{
@@ -154,7 +183,7 @@
 }
 
 - (void)setLocalizedStrings{
-    [self setTitle:LocalizedString(@"announcements")];
+    [[self navigationItem] setTitleView:[UF titleViewWithTitle:LocalizedString(@"announcements")]];
 }
 
 @end

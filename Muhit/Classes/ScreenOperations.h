@@ -18,10 +18,10 @@
 + (void)openCreateIssue;
 + (void)openEditIssueWithInfo:(NSDictionary *)info;
 + (void)openMain;
-+ (void)openSupports;
-+ (void)openIdeas;
-+ (void)openAnnouncements;
-+ (void)openHeadman;
++ (void)openSupporteds:(BOOL)fromMenu;
++ (void)openHeadman:(BOOL)fromMenu;
++ (void)openIdeas:(BOOL)fromMenu;
++ (void)openAnnouncements:(BOOL)fromMenu;
 + (void)openPickFromMap;
 
 @end

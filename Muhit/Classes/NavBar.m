@@ -19,7 +19,7 @@
         [self setBarTintColor:CLR_LIGHT_BLUE];
         [[UINavigationBar appearance] setTitleTextAttributes: @{
                                                                 NSForegroundColorAttributeName:[UIColor whiteColor],
-                                                                NSFontAttributeName: [UIFont fontWithName:@"SourceSansPro-Semibold" size:19.0f]
+                                                                NSFontAttributeName: [UIFont fontWithName:FONT_SEMI_BOLD size:20.0f]
                                                                 }];
         [self setTintColor:[UIColor whiteColor]];
         [self setTintAdjustmentMode:UIViewTintAdjustmentModeAutomatic];

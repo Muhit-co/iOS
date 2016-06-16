@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SupportedsVC">
             <connections>
                 <outlet property="btnCreateIssue" destination="d6h-MU-9B7" id="tct-wY-LXg"/>
+                <outlet property="btnMenu" destination="cHZ-eq-rxz" id="eJB-R8-wkW"/>
                 <outlet property="tblSupporteds" destination="s7J-c7-bY4" id="H2P-2M-OHV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -50,6 +51,18 @@
             <state key="highlighted" image="menu-active"/>
             <connections>
                 <action selector="actCreateIssue:" destination="-1" eventType="touchUpInside" id="25B-hF-Guz"/>
+            </connections>
+        </button>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cHZ-eq-rxz" userLabel="btnMenu">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <state key="normal">
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="highlighted" image="menu-active"/>
+            <connections>
+                <action selector="actMenu:" destination="-1" eventType="touchUpInside" id="A4v-4v-Q0z"/>
             </connections>
         </button>
     </objects>
