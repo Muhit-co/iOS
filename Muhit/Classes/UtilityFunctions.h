@@ -104,4 +104,7 @@ typedef enum{
 
 +(CGSize)screenSize;
 +(UIView*)titleViewWithTitle:(NSString*)title;
+
++(NSString*)getHoodFromGMSAddress:(NSDictionary *)address;
++(NSString*)getDistrictCityFromGMSAddress:(NSDictionary *)address;
 @end

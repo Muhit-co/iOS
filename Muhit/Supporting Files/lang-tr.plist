@@ -4,6 +4,8 @@
 <dict>
 	<key>add</key>
 	<string>Ekle</string>
+	<key>add-photo</key>
+	<string>Fotoğraf Ekle</string>
 	<key>all</key>
 	<string>Tümü</string>
 	<key>announcements</key>
@@ -18,6 +20,8 @@
 	<string>İnternet bağlantınızı kontrol ediniz</string>
 	<key>choose-hood</key>
 	<string>Mahalleni seç...</string>
+	<key>choose-tag</key>
+	<string>Etiketi seç...</string>
 	<key>comments</key>
 	<string>Yorumlar</string>
 	<key>connect</key>
@@ -38,6 +42,8 @@
 	<string>Şifremi unuttum</string>
 	<key>forgot-pass-description</key>
 	<string>Eğer şifreni unuttuysan aşağıya e-posta adresini yazarak gönderdiğimiz link ile yeni bir şifre oluşturabilirsin.</string>
+	<key>go-ideas</key>
+	<string>Fikirlere Git</string>
 	<key>headman</key>
 	<string>Muhtar</string>
 	<key>hood</key>

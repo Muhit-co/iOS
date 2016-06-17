@@ -39,10 +39,10 @@
     //    [MT setServiceURL:@"http://muhit.co"];//Production
     [MT setServiceURL:@"http://stage.muhit.co"];//Sandbox
     
-    if ([UD objectForKey:UD_ACCESS_TOKEN]) {
-        [UF isAccessTokenValid];
-        [MT setIsLoggedIn:YES];
-    }
+    //    if ([UD objectForKey:UD_ACCESS_TOKEN]) {
+    //        [UF isAccessTokenValid];
+    [MT setIsLoggedIn:YES];
+    //    }
     
     [self initNavigationBar];
     [self initThirdPartyServices];

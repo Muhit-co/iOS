@@ -57,6 +57,10 @@
     [self.view layoutIfNeeded];
 }
 
+-(void)dealloc{
+    [NC removeObserver:self name:NC_GEOCODE_PICKED object:nil];
+}
+
 -(void)setDetailsWithDictionary:(NSDictionary*)dict{
     
     [txtName setText:dict[@"first_name"]];

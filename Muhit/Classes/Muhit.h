@@ -21,5 +21,6 @@
 @property (nonatomic, retain) MBProgressHUD *HUD;
 
 @property (nonatomic) BOOL isLoggedIn;
+@property (nonatomic) BOOL isPresentingVC;
 @property (nonatomic, retain) MenuVC *menuVC;
 @end

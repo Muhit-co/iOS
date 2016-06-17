@@ -10,10 +10,10 @@
 
 @interface HeadmanVC ()<CLLocationManagerDelegate>{
     
-    IBOutlet UILabel *lblHood,*lblName,*lblCity,*lblPhone,*lblCell,*lblMail,*lblAddress;
-    IBOutlet UIImageView *imgHeadman,*imgPhone,*imgCell,*imgMail,*imgAddress;
+    IBOutlet UILabel *lblHood,*lblName,*lblCity,*lblPhone,*lblCell,*lblMail,*lblAddress,*lblHoodIdeas;
+    IBOutlet UIImageView *imgHeadman,*imgPhone,*imgCell,*imgMail,*imgAddress,*imgIdeas;
     IBOutlet UIView *viewPhone,*viewCell,*viewMail,*viewAddress;
-    IBOutlet UIButton *btnMenu;
+    IBOutlet UIButton *btnMenu,*btnHoodIdeas;
     IBOutlet GMSMapView *map;
     CLLocationManager *locationManager;
     CLLocationCoordinate2D coordHeadman,coordUser;
@@ -55,13 +55,16 @@
 }
 
 -(void)adjustUI{
-    imgHeadman.layer.cornerRadius = 85/2;
+    imgHeadman.layer.cornerRadius = 50;
     imgHeadman.layer.masksToBounds = YES;
     
-    [imgPhone setImage:[IonIcons imageWithIcon:ion_android_call size:25 color:CLR_LIGHT_BLUE]];
-    [imgCell setImage:[IonIcons imageWithIcon:ion_iphone size:25 color:CLR_LIGHT_BLUE]];
-    [imgMail setImage:[IonIcons imageWithIcon:ion_email size:25 color:CLR_LIGHT_BLUE]];
-    [imgAddress setImage:[IonIcons imageWithIcon:ion_location size:25 color:CLR_LIGHT_BLUE]];
+    btnHoodIdeas.layer.cornerRadius = cornerRadius;
+    
+    [imgIdeas setImage:[IonIcons imageWithIcon:ion_chevron_down size:16 color:CLR_WHITE]];
+    [imgPhone setImage:[IonIcons imageWithIcon:ion_android_call size:24 color:CLR_LIGHT_BLUE]];
+    [imgCell setImage:[IonIcons imageWithIcon:ion_iphone size:24 color:CLR_LIGHT_BLUE]];
+    [imgMail setImage:[IonIcons imageWithIcon:ion_email size:24 color:CLR_LIGHT_BLUE]];
+    [imgAddress setImage:[IonIcons imageWithIcon:ion_location size:24 color:CLR_LIGHT_BLUE]];
     
     
     locationManager = [[CLLocationManager alloc] init];
@@ -94,11 +97,12 @@
 
 -(void)setDetailsWithDictionary:(NSDictionary*)dict{
     
-    float total = 20;
+    float total = 0;
     
     [lblName setText:dict[@"name"]];
     [lblHood setText:dict[@"hood"]];
     [lblCity setText:dict[@"city"]];
+    [lblHoodIdeas setText:dict[@"hood"]];
     
     if (isNotNull(dict[@"phone"])) {
         [lblPhone setText:dict[@"phone"]];
@@ -136,13 +140,12 @@
     else{
         [viewAddress setHidden:YES];
     }
-    
     constMapTop.constant = total;
     
     [self.view layoutIfNeeded];
     
-    NSString *imgUrl = [NSString stringWithFormat:@"%@/170x170/%@",IMAGE_PROXY,dict[@"picture"]];
-    [imgHeadman sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"userPlaceholder"]];
+    NSString *imgUrl = [NSString stringWithFormat:@"%@/200x200/%@",IMAGE_PROXY,dict[@"picture"]];
+    [imgHeadman sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:PLACEHOLDER_IMAGE];
     
     coordHeadman = CLLocationCoordinate2DMake([dict[@"lat"] floatValue], [dict[@"lon"] floatValue]);
     coordUser = locationManager.location.coordinate;
@@ -150,7 +153,7 @@
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = coordHeadman;
     marker.appearAnimation = kGMSMarkerAnimationPop;
-    marker.icon = [IonIcons imageWithIcon:ion_location size:60 color:CLR_LIGHT_BLUE];
+    marker.icon = [IonIcons imageWithIcon:ion_location size:75 color:CLR_DARK_PUPRPLE];
     marker.title = LocalizedString(@"Muhtar");
     marker.snippet = dict[@"name"];
     marker.map = map;
@@ -159,6 +162,9 @@
     [map animateWithCameraUpdate:[GMSCameraUpdate fitBounds:[[GMSCoordinateBounds alloc] initWithCoordinate:coordHeadman coordinate:coordUser] withPadding:100]];
 }
 
+-(IBAction)actGoIdeas:(id)sender{
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -166,6 +172,7 @@
 
 - (void)setLocalizedStrings{
     [[self navigationItem] setTitleView:[UF titleViewWithTitle:LocalizedString(@"my-headman")]];
+    [btnHoodIdeas setTitle:[LocalizedString(@"go-ideas") toUpper]];
 }
 
 @end

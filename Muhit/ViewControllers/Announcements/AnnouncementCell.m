@@ -28,8 +28,8 @@
     [lblTitle setText:dict[@"title"]];
     [lblDate setText:[UF getDetailedDateString:dict[@"created_at"]]];
     [lblDescription setText:dict[@"content"]];
-    [lblHeadmanName setText:dict[@"b"]];
-    [lblHood setText:dict[@"a"]];
+    [lblHeadmanName setText:dict[@"headman"]];
+    [lblHood setText:dict[@"hood"]];
     [imgHeadman sd_setImageWithURL:[NSURL URLWithString:dict[@"c"]] placeholderImage:PLACEHOLDER_IMAGE];
     [imgIcon setImage:[IonIcons imageWithIcon:ion_speakerphone size:23 color:CLR_LIGHT_BLUE]];
     imgHeadman.layer.cornerRadius = 15;

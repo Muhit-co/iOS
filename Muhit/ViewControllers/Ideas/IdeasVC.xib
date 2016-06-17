@@ -4,9 +4,15 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SourceSansPro-Semibold.ttf">
+            <string>SourceSansPro-Semibold</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IdeasVC">
             <connections>
+                <outlet property="btnCreateIssue" destination="eUk-mP-VbO" id="Ghi-A5-a6v"/>
                 <outlet property="btnMenu" destination="aoE-dV-yFb" id="rKH-ds-Z8P"/>
                 <outlet property="tblIdeas" destination="1x8-9m-jqv" id="NIg-3i-xtj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -42,13 +48,21 @@
             <state key="normal">
                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
             </state>
-            <state key="highlighted" image="menu-active"/>
             <connections>
                 <action selector="actMenu:" destination="-1" eventType="touchUpInside" id="hsj-nZ-NaB"/>
             </connections>
         </button>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eUk-mP-VbO" userLabel="btnCreate">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" red="0.59607843140000005" green="0.79215686269999996" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+            <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
+            <state key="normal" title="FİKİR">
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <connections>
+                <action selector="actCreateIssue:" destination="-1" eventType="touchUpInside" id="i6K-yT-htF"/>
+            </connections>
+        </button>
     </objects>
-    <resources>
-        <image name="menu-active" width="40" height="40"/>
-    </resources>
 </document>

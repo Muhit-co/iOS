@@ -54,7 +54,6 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted" image="menu-active"/>
                     <connections>
                         <action selector="actMenu:" destination="-1" eventType="touchUpInside" id="faV-kh-2Cn"/>
                     </connections>
@@ -77,7 +76,6 @@
                     <state key="normal" title="FİKİR">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted" image="menu-active"/>
                     <connections>
                         <action selector="actCreateIssue:" destination="-1" eventType="touchUpInside" id="LXA-b9-IVR"/>
                     </connections>
@@ -254,6 +252,5 @@
     <resources>
         <image name="city-shadow-header" width="375" height="69"/>
         <image name="logo-medium" width="180" height="55"/>
-        <image name="menu-active" width="40" height="40"/>
     </resources>
 </document>

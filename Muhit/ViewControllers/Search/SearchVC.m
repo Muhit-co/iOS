@@ -37,6 +37,10 @@
     [super viewWillDisappear:animated];
 }
 
+-(void)dealloc{
+    [NC removeObserver:self name:NC_GEOCODE_PICKED object:nil];
+}
+
 - (void)geoCodePicked:(NSNotification*)notification{
     NSDictionary *dict = [notification object];
     fullGeoCode = dict[@"full"];

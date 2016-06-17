@@ -112,10 +112,6 @@
     [ScreenOperations openLogin];
 }
 
-- (IBAction)actFacebook:(id)sender{
-    [ScreenOperations openSignUp];
-}
-
 - (IBAction)actSignup:(id)sender{
     [ScreenOperations openSignUp];
 }
@@ -132,6 +128,44 @@
     [NC postNotificationName:NC_LOGGED_OUT object:nil];
     [UF setUserDefaultsWithDetails:nil];
     [[MT navCon] popToRootViewControllerAnimated:YES];
+}
+
+- (IBAction)actFacebook:(id)sender{
+    [FACEBOOK loginWithDelegate:self fromViewController:self];
+}
+
+- (void) fetchedFacebookUserInfo:(NSDictionary*)userInfo error:(NSError *)error{
+    DLog(@"user: %@",userInfo);
+    if (userInfo) {
+        [MuhitServices loginWithFacebook:[FACEBOOK accessToken] handler:^(NSDictionary *response, NSError *error) {
+            if (error) {
+                SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
+            }
+            else{
+                NSLog(@"loginFacebookResponse:%@",response);
+                [UF setUserDefaultsWithDetails:response];
+                [[MT navCon] popToRootViewControllerAnimated:YES];
+                [MT setIsLoggedIn:YES];
+                [[MT menuVC] viewWillAppear:NO];
+            }
+            REMOVE_HUD
+        }];
+    }
+    else if(error){
+        REMOVE_HUD
+        if ([error.domain isEqualToString:@"bitaksi"] && error.code==ERROR_FB_LOGIN_CANCELLED){
+            DLog(@"User cancelled permission");
+        }
+        else if ([error.domain isEqualToString:FBSDKLoginErrorDomain] &&  error.code==FBSDKLoginSystemAccountAppDisabledErrorCode) {
+            SHOW_ALERT(LocalizedString(@"facebook-permission"))
+        }
+        else{
+            [self actFacebook:nil];
+        }
+    }
+    else{
+        [self actFacebook:nil];
+    }
 }
 
 #pragma mark - UITableView Delegates

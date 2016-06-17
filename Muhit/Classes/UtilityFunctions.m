@@ -965,4 +965,53 @@
     return titleView;
 }
 
++(NSString*)getHoodFromGMSAddress:(NSDictionary *)response{
+    NSString *hood;
+    if (response[@"results"] && [response[@"results"] count]>0) {
+        NSDictionary *address = response[@"results"][0];
+        if (address[@"address_components"]) {
+            for (NSDictionary *dict in address[@"address_components"]) {
+                if (dict[@"types"][0]) {
+                    if ([dict[@"types"][0] isEqualToString:@"administrative_area_level_4"]) {
+                        hood = dict[@"long_name"];
+                    }
+                }
+            }
+        }
+    }
+    
+    if (hood) {
+        return hood;
+    }
+    else{
+        return @"";
+    }
+}
+
++(NSString*)getDistrictCityFromGMSAddress:(NSDictionary *)response{
+    NSString *city,*district;
+    if (response[@"results"] && [response[@"results"] count]>0) {
+        NSDictionary *address = response[@"results"][0];
+        if (address[@"address_components"]) {
+            for (NSDictionary *dict in address[@"address_components"]) {
+                if (dict[@"types"][0]) {
+                    if ([dict[@"types"][0] isEqualToString:@"administrative_area_level_1"]) {
+                        city = dict[@"long_name"];
+                    }
+                    if ([dict[@"types"][0] isEqualToString:@"administrative_area_level_2"]) {
+                        district = dict[@"long_name"];
+                    }
+                }
+            }
+        }
+    }
+    
+    if (city && district) {
+        return [NSString stringWithFormat:@"%@, %@",district,city];
+    }
+    else{
+        return @"";
+    }
+}
+
 @end

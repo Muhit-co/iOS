@@ -48,7 +48,6 @@
             <state key="normal" title="FİKİR">
                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
             </state>
-            <state key="highlighted" image="menu-active"/>
             <connections>
                 <action selector="actCreateIssue:" destination="-1" eventType="touchUpInside" id="25B-hF-Guz"/>
             </connections>
@@ -60,13 +59,9 @@
             <state key="normal">
                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
             </state>
-            <state key="highlighted" image="menu-active"/>
             <connections>
                 <action selector="actMenu:" destination="-1" eventType="touchUpInside" id="A4v-4v-Q0z"/>
             </connections>
         </button>
     </objects>
-    <resources>
-        <image name="menu-active" width="40" height="40"/>
-    </resources>
 </document>

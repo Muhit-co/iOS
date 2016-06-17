@@ -62,22 +62,13 @@
 
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    
-    [btnSave setSize:CGSizeMake(70, 36)];
-    UIBarButtonItem *barBtnSave = [[UIBarButtonItem alloc] initWithCustomView:btnSave];
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    negativeSpacer.width = -12;
-    [[self navigationItem] setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, barBtnSave, nil] animated:NO];
-    
-    
+    [scrollRoot setContentSize:CGSizeMake([UF screenSize].width, viewAnonim.bottomPosition + 10)];
+    constContainerHeight.constant = viewAnonim.bottomPosition + 10;
     [self.view layoutIfNeeded];
 }
--(void)updateViewConstraints{
-    [super updateViewConstraints];
-}
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+-(void)dealloc{
+    [NC removeObserver:self name:NC_GEOCODE_PICKED object:nil];
 }
 
 - (void)geoCodePicked:(NSNotification*)notification{
@@ -89,6 +80,13 @@
 
 -(void)adjustUI{
     [[self view] setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"EEEEEE"]];
+    
+    [btnSave setSize:CGSizeMake(70, 34)];
+    UIBarButtonItem *barBtnSave = [[UIBarButtonItem alloc] initWithCustomView:btnSave];
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    negativeSpacer.width = -12;
+    [[self navigationItem] setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, barBtnSave, nil] animated:NO];
+    
     
     txtTitle.layer.cornerRadius = cornerRadius;
     viewProblem.layer.cornerRadius = cornerRadius;
@@ -158,6 +156,7 @@
     [SERVICES getTags:@"" handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
+            REMOVE_HUD
         }
         else{
             if (!issueDict) {
@@ -168,6 +167,8 @@
         }
     }];
 }
+
+#pragma mark - IBActions
 
 -(IBAction)actSearchHood:(id)sender{
     [ScreenOperations openPickFromMap];
@@ -187,7 +188,7 @@
 }
 
 -(IBAction)actAnonim:(id)sender{
-    isAnonim = !isAnonim;
+    [btnAnonim setSelected:![btnAnonim isSelected]];
 }
 
 -(IBAction)actSave:(id)sender{
@@ -446,14 +447,16 @@
     [lblTags setText:LocalizedString(@"tags-max-3")];
     [lblPhotos setText:LocalizedString(@"photos-max-3")];
     [lblAnonim setText:LocalizedString(@"anonymus-issue")];
-    [lblAddTag setText:[LocalizedString(@"add") toUpper]];
+    [lblAddTag setText:LocalizedString(@"choose-tag")];
+    [btnAddPhoto setTitle:[LocalizedString(@"add-photo") toUpper]];
+    
     if (issueDict) {
         [self setTitle:LocalizedString(@"edit")];
-        [btnSave setTitle:LocalizedString(@"save")];
+        [btnSave setTitle:[LocalizedString(@"save") toUpper]];
     }
     else{
         [self setTitle:LocalizedString(@"add")];
-        [btnSave setTitle:LocalizedString(@"add")];
+        [btnSave setTitle:[LocalizedString(@"save") toUpper]];
     }
 }
 

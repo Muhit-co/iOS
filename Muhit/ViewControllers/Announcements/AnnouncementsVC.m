@@ -62,54 +62,52 @@
                                @{
                                    @"title":@"Hola",
                                    @"created_at": @"2015-06-14 10:00:00",
-                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir.",
+                                   @"headman":@"Ali Kemal",
+                                   @"hood":@"Altunizade Mahallesi"
                                    },
                                @{
                                    @"title":@"Hola",
                                    @"created_at": @"2015-06-14 10:00:00",
-                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                                   },
-                               
-                               @{
-                                   @"title":@"Hola",
-                                   @"created_at": @"2015-06-14 10:00:00",
-                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                                   },
-                               @{
-                                   @"title":@"Hola",
-                                   @"created_at": @"2015-06-14 10:00:00",
-                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                                   },
-                               @{
-                                   @"title":@"Hola",
-                                   @"created_at": @"2015-06-14 10:00:00",
-                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                                   },
-                               @{
-                                   @"title":@"Hola",
-                                   @"created_at": @"2015-06-14 10:00:00",
-                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
-                                   },
-                               @{
-                                   @"title":@"Hola",
-                                   @"created_at": @"2015-06-14 10:00:00",
-                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir.",
+                                   @"headman":@"Ali Kemal",
+                                   @"hood":@"Altunizade Mahallesi"
                                    },
                                
                                @{
                                    @"title":@"Hola",
                                    @"created_at": @"2015-06-14 10:00:00",
-                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir.",
+                                   @"headman":@"Ali Kemal",
+                                   @"hood":@"Altunizade Mahallesi"
                                    },
                                @{
                                    @"title":@"Hola",
                                    @"created_at": @"2015-06-14 10:00:00",
-                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir.",
+                                   @"headman":@"Ali Kemal",
+                                   @"hood":@"Altunizade Mahallesi"
                                    },
                                @{
                                    @"title":@"Hola",
                                    @"created_at": @"2015-06-14 10:00:00",
-                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir."
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir.",
+                                   @"headman":@"Ali Kemal",
+                                   @"hood":@"Altunizade Mahallesi"
+                                   },
+                               @{
+                                   @"title":@"Hola",
+                                   @"created_at": @"2015-06-14 10:00:00",
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir.",
+                                   @"headman":@"Ali Kemal",
+                                   @"hood":@"Altunizade Mahallesi"
+                                   },
+                               @{
+                                   @"title":@"Hola",
+                                   @"created_at": @"2015-06-14 10:00:00",
+                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir.",
+                                   @"headman":@"Ali Kemal",
+                                   @"hood":@"Altunizade Mahallesi"
                                    }];
     
     return arrSupporteds;

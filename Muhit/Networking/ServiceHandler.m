@@ -87,8 +87,13 @@
                  }
              }
              else{
-                 NSDictionary *dictError = @{@"error":[NSJSONSerialization JSONObjectWithData: error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil]};
-                 responseHandler(dictError,error);
+                 if ([NSJSONSerialization JSONObjectWithData: error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil]) {
+                     NSDictionary *dictError = @{@"error":[NSJSONSerialization JSONObjectWithData: error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil]};
+                     responseHandler(dictError,error);
+                 }
+                 else{
+                     responseHandler(@{KEY_ERROR:@{KEY_MESSAGE:error.localizedDescription}},error);
+                 }
              }
          }];
     
@@ -141,8 +146,13 @@
                   }
               }
               else{
-                  NSDictionary *dictError = @{@"error":[NSJSONSerialization JSONObjectWithData: error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil]};
-                  responseHandler(dictError,error);
+                  if ([NSJSONSerialization JSONObjectWithData: error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil]) {
+                      NSDictionary *dictError = @{@"error":[NSJSONSerialization JSONObjectWithData: error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil]};
+                      responseHandler(dictError,error);
+                  }
+                  else{
+                      responseHandler(@{KEY_ERROR:@{KEY_MESSAGE:error.localizedDescription}},error);
+                  }
               }
           }];
 }

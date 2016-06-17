@@ -121,7 +121,10 @@
 
 + (void)openPickFromMap{
     PickFromMapVC * vc = [[PickFromMapVC alloc] init];
-    [[MT navCon] presentViewController:vc animated:YES completion:nil];
+    [MT setIsPresentingVC:YES];
+    [[MT navCon] presentViewController:vc animated:YES completion:^{
+        [MT setIsPresentingVC:NO];
+    }];
 }
 
 + (void)setCenterVC:(UIViewController*)vc{

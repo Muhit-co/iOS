@@ -7,6 +7,7 @@
 //
 
 #import "MenuCell.h"
+#import "FacebookManager.h"
 
 #define MENU_ITEM_SELECTED @"MenuItemSelected"
 
@@ -16,6 +17,6 @@
 #define SELECTOR_NOTIFICATIONS @"openAnnouncements:"
 #define SELECTOR_HEADMAN @"openHeadman:"
 
-@interface MenuVC : RootVC<UITableViewDelegate,UITableViewDataSource>
+@interface MenuVC : RootVC<UITableViewDelegate,UITableViewDataSource,FacebookDelegate>
 
 @end

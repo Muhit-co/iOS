@@ -16,8 +16,10 @@
     IBOutlet NSLayoutConstraint *constActiveLine;
     IBOutlet UIView *viewActiveLine,*viewHood;
     IBOutlet UITableView *tblIssues;
+    CLLocationCoordinate2D pointedCoordinate;
+    CLLocationManager *locationManager;
     NSMutableArray *arrIssues;
-    NSString *fullGeoCode;
+    NSString *coordinates;
     int lastIndex;
     BOOL isEndOfList;
 }
@@ -36,25 +38,29 @@
 
 - (void)geoCodePicked:(NSNotification*)notification{
     NSDictionary *dict = [notification object];
-    fullGeoCode = dict[@"full"];
+    coordinates = dict[@"coordinates"];
     [btnPickHood setTitle:dict[@"hood"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [[MT navCon] setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
-    //    arrIssues = [[NSMutableArray alloc] init];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [[MT navCon] setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
+    if (![MT isPresentingVC]) {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    }
 }
 
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     [self.view layoutIfNeeded];
+}
+
+-(void)dealloc{
+    [NC removeObserver:self name:NC_GEOCODE_PICKED object:nil];
 }
 
 -(void)adjustUI{
@@ -153,6 +159,22 @@
 
 -(IBAction)actLocation:(id)sender{
     
+    if (!locationManager) {
+        locationManager = [[CLLocationManager alloc] init];
+        if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [locationManager requestWhenInUseAuthorization];
+        }
+    }
+    
+    [MuhitServices getAddressesWithLocation:locationManager.location.coordinate handler:^(NSDictionary *response, NSError *error) {
+        if (!error) {
+            @try {
+                coordinates = [NSString stringWithFormat:@"%f, %f",locationManager.location.coordinate.latitude,locationManager.location.coordinate.longitude];
+                [btnPickHood setTitle:[UF getHoodFromGMSAddress:response]];
+            }
+            @catch (NSException *exception) {} @finally {}
+        }
+    }];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -212,7 +234,8 @@
     [btnPopular setTitle:[LocalizedString(@"popular") toUpper]];
     [btnLatest setTitle:[LocalizedString(@"latest") toUpper]];
     [btnMap setTitle:LocalizedString(@"map")];
-    [btnPickHood setTitle:LocalizedString(@"choose-hood")];
+    if(!coordinates)
+       	[btnPickHood setTitle:LocalizedString(@"choose-hood")];
     [btnCreateIssue setTitle:[LocalizedString(@"idea") toUpper]];
 }
 @end

@@ -38,6 +38,10 @@
     [self.view layoutIfNeeded];
 }
 
+-(void)dealloc{
+    [NC removeObserver:self name:NC_GEOCODE_PICKED object:nil];
+}
+
 - (void)geoCodePicked:(NSNotification*)notification{
     NSDictionary *dict = [notification object];
     fullGeoCode = dict[@"full"];
@@ -91,7 +95,7 @@
 }
 
 -(IBAction)actLogin:(id)sender{
-    
+    [ScreenOperations openLogin];
 }
 
 -(IBAction)actCheck:(id)sender{
