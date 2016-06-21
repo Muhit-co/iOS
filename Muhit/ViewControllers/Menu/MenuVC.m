@@ -117,7 +117,7 @@
 }
 
 - (IBAction)actProfile:(id)sender{
-    [ScreenOperations openProfileWithId:@""];
+    [ScreenOperations openProfileWithId:[UD objectForKey:UD_USER_ID]];
 }
 
 - (IBAction)actLogout:(id)sender{

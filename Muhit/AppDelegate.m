@@ -37,12 +37,12 @@
     [[UITextView appearance] setTintColor:CLR_DARK_BLUE];
     
     //    [MT setServiceURL:@"http://muhit.co"];//Production
-    [MT setServiceURL:@"http://stage.muhit.co"];//Sandbox
+    //    [MT setServiceURL:@"http://stage.muhit.co"];//Sandbox
+    [MT setServiceURL:@"http://api.ersoypembe.com"];
     
-    //    if ([UD objectForKey:UD_ACCESS_TOKEN]) {
-    //        [UF isAccessTokenValid];
-    [MT setIsLoggedIn:YES];
-    //    }
+    if ([UD objectForKey:UD_API_TOKEN]) {
+        [MT setIsLoggedIn:YES];
+    }
     
     [self initNavigationBar];
     [self initThirdPartyServices];

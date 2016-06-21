@@ -21,16 +21,13 @@
 #define SERVICE_SIGNUP @"register"
 #define SERVICE_LOGIN @"login"
 #define SERVICE_LOGIN_WITH_FACEBOOK @"login-with-facebook"
-#define SERVICE_REFRESH_ACCESS_TOKEN @"auth/refresh-token"
-#define SERVICE_GET_PROFILE @"members/profile"
-#define SERVICE_UPDATE_PROFILE @"members/update-profile"
+#define SERVICE_GET_PROFILE @"profile"
+#define SERVICE_UPDATE_PROFILE @"update-profile"
 #define SERVICE_GET_TAGS @"tags"
 #define SERVICE_GET_ISSUES @"issues/list"
 #define SERVICE_ADD_ISSUE @"issues/create"
 #define SERVICE_DELETE_ISSUE @"issues/delete"
 #define SERVICE_GET_ANNOUNCEMENTS @"announcements"
-#define SERVICE_SUPPORT @"support"
-#define SERVICE_UNSUPPORT @"un-support"
 
 /*********************************************************/
 /*********************************************************/
@@ -64,6 +61,8 @@
 #define KEY_ACCESS_TOKEN @"access_token"
 #define KEY_REFRESH_TOKEN @"refresh_token"
 #define KEY_ID @"id"
+#define KEY_API_TOKEN @"api_token"
+#define KEY_USER_ID @"user_id"
 
 #define KEY_ERROR @"error"
 #define KEY_MESSAGE @"msg"

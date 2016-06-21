@@ -92,7 +92,6 @@ typedef enum{
 
 + (BOOL)validateLoginWithEmail:(NSString*)email password:(NSString*)password;
 
-+ (BOOL)isAccessTokenValid;
 + (NSDictionary *)parsePlaces:(GMSAutocompletePrediction *)address;
 
 +(void)setUserDefaultsWithDetails:(NSDictionary*)details;

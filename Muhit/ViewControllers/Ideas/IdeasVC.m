@@ -44,31 +44,23 @@
     [btnCreateIssue setImage:[IonIcons imageWithIcon:ion_plus size:15 color:CLR_WHITE]];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnCreateIssue];
     
-    [self test];
+    [self getCreateds];
 }
 
--(void)test{
-    arrIdeas = @[
-                 @{
-                     @"title":@"Lorem ipsum dolor sit amet, consectetur adipiscing",
-                     @"date":@"10.11.2015",
-                     @"imageUrl":@"http://cdn.gottabemobile.com/wp-content/uploads/2012/02/nikon-d800-sample-library-photo-620x413.jpg"
-                     },
-                 @{
-                     @"title":@"Lorem ipsum dolor sit amet, consectetur adipiscing",
-                     @"date":@"12.11.2015",
-                     @"imageUrl":@"http://farm5.staticflickr.com/4044/5163861339_10d4ba7d4d_z.jpg"
-                     },
-                 
-                 @{
-                     @"title":@"Lorem ipsum dolor sit amet, consectetur adipiscing",
-                     @"date":@"08.11.2015",
-                     @"imageUrl":@"http://www.canon.com.tr/Images/PowerShot%20G1%20X%20Mark%20II%20sample%20Z2%20med_tcm123-1139968.jpg"
-                     }];
-    
-    [tblIdeas reloadData];
+-(void)getCreateds{
+    ADD_HUD
+    [SERVICES getCreateds:[UD objectForKey:UD_USER_ID] handler:^(NSDictionary *response, NSError *error) {
+        if (error) {
+            REMOVE_HUD
+            SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
+        }
+        else{
+            arrIdeas = response[@"issues"];
+            [tblIdeas reloadData];
+            REMOVE_HUD
+        }
+    }];
 }
-
 
 -(IBAction)actMenu:(id)sender{
     [self.view endEditing:YES];

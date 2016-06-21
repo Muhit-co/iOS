@@ -24,6 +24,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileVC">
             <connections>
+                <outlet property="constCreatedIssuesWidth" destination="9BS-86-cfP" id="utU-R6-fik"/>
+                <outlet property="constSupportedIssuesWidth" destination="0PF-hd-A5P" id="rmE-Ab-yv6"/>
                 <outlet property="imgAddress" destination="EXp-mw-6Y9" id="5x9-PF-brk"/>
                 <outlet property="imgIdeas" destination="DaE-5U-z8v" id="4TD-6I-8Sy"/>
                 <outlet property="imgMail" destination="5ua-qf-gF2" id="LWz-8e-hMK"/>
@@ -68,8 +70,8 @@
                                                         <constraint firstAttribute="width" constant="28" id="u9R-Ee-696"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nG5-kJ-4Ay" userLabel="lblIdeasCount">
-                                                    <rect key="frame" x="33" y="0.0" width="32" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nG5-kJ-4Ay" userLabel="lblIdeasCount">
+                                                    <rect key="frame" x="28" y="0.0" width="37" height="28"/>
                                                     <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="18"/>
                                                     <color key="textColor" red="0.2666666667" green="0.63137254899999995" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -87,7 +89,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="DaE-5U-z8v" secondAttribute="bottom" id="Lkp-4i-Hwl"/>
                                                 <constraint firstAttribute="trailing" secondItem="nG5-kJ-4Ay" secondAttribute="trailing" constant="5" id="URj-9h-06u"/>
                                                 <constraint firstAttribute="height" constant="28" id="Wme-s4-v5e"/>
-                                                <constraint firstItem="nG5-kJ-4Ay" firstAttribute="leading" secondItem="DaE-5U-z8v" secondAttribute="trailing" constant="5" id="xEV-Qm-xpR"/>
+                                                <constraint firstItem="nG5-kJ-4Ay" firstAttribute="leading" secondItem="DaE-5U-z8v" secondAttribute="trailing" id="xEV-Qm-xpR"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eklediği fikirler" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNh-H7-CsW" userLabel="lblIdeasTitle">
@@ -114,7 +116,7 @@
                                     <rect key="frame" x="360" y="0.0" width="240" height="70"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jrk-hz-8w5" userLabel="viewSupports">
-                                            <rect key="frame" x="85" y="10" width="70" height="28"/>
+                                            <rect key="frame" x="98" y="10" width="45" height="28"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FKn-Xd-Ibc" userLabel="iconSupports">
                                                     <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
@@ -122,8 +124,8 @@
                                                         <constraint firstAttribute="width" constant="28" id="bUx-UI-KOE"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="132" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjh-YT-5hz" userLabel="lblSupports">
-                                                    <rect key="frame" x="33" y="0.0" width="32" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjh-YT-5hz" userLabel="lblSupports">
+                                                    <rect key="frame" x="28" y="0.0" width="12" height="28"/>
                                                     <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="18"/>
                                                     <color key="textColor" red="0.2666666667" green="0.63137254899999995" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -131,28 +133,18 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="70" id="0PF-hd-A5P">
+                                                <constraint firstAttribute="width" constant="45" id="0PF-hd-A5P">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="70"/>
                                                 </constraint>
                                                 <constraint firstItem="FKn-Xd-Ibc" firstAttribute="top" secondItem="Jrk-hz-8w5" secondAttribute="top" id="4CQ-Fc-ufH"/>
                                                 <constraint firstAttribute="bottom" secondItem="FKn-Xd-Ibc" secondAttribute="bottom" id="93d-XS-wdT"/>
-                                                <constraint firstItem="tjh-YT-5hz" firstAttribute="top" secondItem="Jrk-hz-8w5" secondAttribute="top" constant="6" id="Orv-tP-JDN"/>
                                                 <constraint firstItem="FKn-Xd-Ibc" firstAttribute="leading" secondItem="Jrk-hz-8w5" secondAttribute="leading" id="Qmu-sg-bzT"/>
                                                 <constraint firstAttribute="bottom" secondItem="tjh-YT-5hz" secondAttribute="bottom" id="Rh6-y8-Tyh"/>
                                                 <constraint firstItem="tjh-YT-5hz" firstAttribute="top" secondItem="Jrk-hz-8w5" secondAttribute="top" id="VLe-su-AcX"/>
-                                                <constraint firstItem="FKn-Xd-Ibc" firstAttribute="top" secondItem="Jrk-hz-8w5" secondAttribute="top" constant="4" id="b0F-K2-hvu"/>
-                                                <constraint firstItem="tjh-YT-5hz" firstAttribute="leading" secondItem="FKn-Xd-Ibc" secondAttribute="trailing" constant="5" id="bRi-fs-YFL"/>
+                                                <constraint firstItem="tjh-YT-5hz" firstAttribute="leading" secondItem="FKn-Xd-Ibc" secondAttribute="trailing" id="bRi-fs-YFL"/>
                                                 <constraint firstAttribute="height" constant="28" id="toS-aH-vox"/>
                                                 <constraint firstAttribute="trailing" secondItem="tjh-YT-5hz" secondAttribute="trailing" constant="5" id="xHI-WA-L56"/>
-                                                <constraint firstItem="FKn-Xd-Ibc" firstAttribute="leading" secondItem="Jrk-hz-8w5" secondAttribute="leading" constant="4" id="xng-Pm-YUz"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="b0F-K2-hvu"/>
-                                                    <exclude reference="xng-Pm-YUz"/>
-                                                    <exclude reference="Orv-tP-JDN"/>
-                                                </mask>
-                                            </variation>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desteklediği fikirler" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0D-zT-OZR" userLabel="lblSupportTitle">
                                             <rect key="frame" x="0.0" y="40" width="240" height="15"/>
@@ -181,7 +173,7 @@
                                         <constraint firstAttribute="height" constant="1" id="hlQ-QZ-4sc"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ahmet Hasan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEh-WS-juq" userLabel="lblName">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEh-WS-juq" userLabel="lblName">
                                     <rect key="frame" x="20" y="75" width="560" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="f5K-1U-boW"/>
@@ -216,7 +208,7 @@
                                         <constraint firstAttribute="width" constant="22" id="uXd-oa-MYx"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ömer Avni Mahallesi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mn-oZ-a4v" userLabel="lblAddress">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mn-oZ-a4v" userLabel="lblAddress">
                                     <rect key="frame" x="50" y="10" width="535" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="K0Y-Du-8lw"/>
@@ -238,7 +230,7 @@
                                         <constraint firstAttribute="width" constant="22" id="W0W-L6-Rcx"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ahmet@ornek.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xg-3p-bBA" userLabel="lblMail">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xg-3p-bBA" userLabel="lblMail">
                                     <rect key="frame" x="50" y="55" width="535" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="Ni5-x1-kf5"/>
@@ -260,7 +252,7 @@
                                         <constraint firstAttribute="height" constant="22" id="hQb-c0-ON1"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ahmet-username-1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2i-W0-fWl" userLabel="lblUsername">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2i-W0-fWl" userLabel="lblUsername">
                                     <rect key="frame" x="50" y="100" width="535" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="MgO-0t-Rd8"/>

@@ -85,7 +85,7 @@ const int itemPerPage = 10;
         [SERVICES postRequestWithMethod:SERVICE_ADD_ISSUE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
     }
     else{
-        NSString *url = [NSString stringWithFormat:@"%@/%@",SERVICE_DELETE_ISSUE,issueId];
+        NSString *url = [NSString stringWithFormat:@"%@/%@/%@",SERVICE_DELETE_ISSUE,[UD objectForKey:UD_USER_ID],issueId];
         [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:^(NSDictionary *response, NSError *error) {
             if(!error){
                 [SERVICES postRequestWithMethod:SERVICE_ADD_ISSUE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
@@ -101,67 +101,35 @@ const int itemPerPage = 10;
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
-+(void)getTags:(NSString*)query handler:(GeneralResponseHandler)handler{
++(void)getTagsWithhandler:(GeneralResponseHandler)handler{
     
-    NSString *url = [NSString stringWithFormat:@"%@/%@",SERVICE_GET_TAGS,query];
-    
-    [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
+    [SERVICES getRequestWithMethod:SERVICE_GET_TAGS backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
 +(void)support:(NSString *)issueId handler:(GeneralResponseHandler)handler{
     
-    NSString *url = [NSString stringWithFormat:@"%@/%@",SERVICE_SUPPORT,issueId];
-    
+    NSString *url = [NSString stringWithFormat:@"issues/%@/support",issueId];
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
 +(void)unSupport:(NSString *)issueId handler:(GeneralResponseHandler)handler{
     
-    NSString *url = [NSString stringWithFormat:@"%@/%@",SERVICE_UNSUPPORT,issueId];
+    NSString *url = [NSString stringWithFormat:@"issues/%@/unsupport",issueId];
+    [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
+}
+
++ (void)getSupporteds:(NSString *)userId handler:(GeneralResponseHandler)handler{
+    NSString *url = [NSString stringWithFormat:@"user/%@/supported",userId];
     
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
-+ (BOOL)refreshAccessTokenSync{
++ (void)getCreateds:(NSString *)userId handler:(GeneralResponseHandler)handler{
+    NSString *url = [NSString stringWithFormat:@"user/%@/created",userId];
     
-    NSMutableDictionary *jsonRequest = [NSMutableDictionary dictionaryWithDictionary:@{
-                                                                                       KEY_REFRESH_TOKEN : [UD objectForKey:UD_REFRESH_TOKEN],
-                                                                                       KEY_CLIENT_ID : VAL_CLIENT_ID,
-                                                                                       KEY_CLIENT_SECRET : VAL_CLIENT_SECRET}];
-    
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/api/%@",[MT serviceURL],SERVICE_REFRESH_ACCESS_TOKEN]];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    NSData *requestData = [NSJSONSerialization dataWithJSONObject:jsonRequest options:NSJSONWritingPrettyPrinted error:nil];
-    
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[requestData length]] forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody: requestData];
-    
-    NSError *requestError;
-    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
-    if (!requestError) {
-        NSError* dataError;
-        NSDictionary* response = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&dataError];
-        if (!dataError) {
-            NSLog(@"refreshTokenResponse: %@",response);
-            [UD setObject:response[AUTH][@"access_token"] forKey:UD_ACCESS_TOKEN];
-            [UD setObject:response[AUTH][@"refresh_token"] forKey:UD_REFRESH_TOKEN];
-            [UD setObject:response[AUTH][@"expires"] forKey:UD_ACCESS_TOKEN_LIFETIME];
-            [UD setObject:[NSDate date] forKey:UD_ACCESS_TOKEN_TAKEN_DATE];
-            return YES;
-        }
-        else{
-            return NO;
-        }
-    }
-    else{
-        return NO;
-    }
+    [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
+
 
 /*********************************************************/
 /*********************************************************/
@@ -199,13 +167,8 @@ const int itemPerPage = 10;
     
     NSString *url = [NSString stringWithFormat:@"%@/api/%@",[MT serviceURL],method];
     
-    if ([UD objectForKey:UD_ACCESS_TOKEN]) { //refresh access_token if is it expire
-        if (![UF isAccessTokenValid]) {
-            BOOL isRefreshedAccessToken = [self refreshAccessTokenSync];
-            if (!isRefreshedAccessToken) {
-                responseHandler(nil,[NSError errorWithDomain:@"muhit" code:1 userInfo:nil]);
-            }
-        }
+    if([UD objectForKey:UD_API_TOKEN] && [UD objectForKey:UD_USER_ID]){
+        url = [NSString stringWithFormat:@"%@?api_token=%@&user_id=%@",url,[UD objectForKey:UD_API_TOKEN],[UD objectForKey:UD_USER_ID]];
     }
     
     [SERVICE_HANDLER getRequest: url
@@ -227,7 +190,10 @@ const int itemPerPage = 10;
     [reqDict setObject:VAL_CLIENT_ID forKey: KEY_CLIENT_ID];
     [reqDict setObject:VAL_CLIENT_SECRET forKey: KEY_CLIENT_SECRET];
     
-    NSLog(@"%@ : %@",method,reqDict);
+    if([UD objectForKey:UD_API_TOKEN] && [UD objectForKey:UD_USER_ID]){
+        [reqDict setObject:[UD objectForKey:UD_API_TOKEN] forKey: KEY_API_TOKEN];
+        [reqDict setObject:[UD objectForKey:UD_USER_ID] forKey: KEY_USER_ID];
+    }
     
     [SERVICE_HANDLER postRequest: url
                      requestDict: reqDict

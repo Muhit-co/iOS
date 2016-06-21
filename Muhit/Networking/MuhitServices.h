@@ -31,12 +31,16 @@
 
 + (void)addOrUpdateIssue:(NSString*)title problem:(NSString*)problem solution:(NSString*)solution location:(NSString*)location tags:(NSArray*)tags images:(NSArray*)images isAnonymous:(BOOL)isAnonymous coordinate:(NSString *)coordinate issueId:(NSString *)issueId handler:(GeneralResponseHandler)handler;
 
-+ (void)getTags:(NSString*)query handler:(GeneralResponseHandler)handler;
++ (void)getTagsWithhandler:(GeneralResponseHandler)handler;
 
 + (void)support:(NSString*)issueId handler:(GeneralResponseHandler)handler;
 
 + (void)unSupport:(NSString*)issueId handler:(GeneralResponseHandler)handler;
 
 + (void)getAddressesWithLocation:(CLLocationCoordinate2D)coord handler:(GeneralResponseHandler)handler;
+
++ (void)getSupporteds:(NSString *)userId handler:(GeneralResponseHandler)handler;
+
++ (void)getCreateds:(NSString *)userId handler:(GeneralResponseHandler)handler;
 
 @end

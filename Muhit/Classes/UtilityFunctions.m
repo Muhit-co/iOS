@@ -827,18 +827,6 @@
     return YES;
 }
 
-+ (BOOL)isAccessTokenValid{
-    NSLog(@"token expire:%f",[UD doubleForKey:UD_ACCESS_TOKEN_LIFETIME]);
-    double interval = [[NSDate date] timeIntervalSinceDate:[UD objectForKey:UD_ACCESS_TOKEN_TAKEN_DATE]];
-    NSLog(@"token interval:%f",interval);
-    if (ABS(interval)+10 > [UD doubleForKey:UD_ACCESS_TOKEN_LIFETIME]){
-        return NO;
-    }
-    else{
-        return YES;
-    }
-}
-
 + (NSDictionary *)parsePlaces:(GMSAutocompletePrediction *)address{
     
     NSArray * arrTexts = [address.attributedFullText.string componentsSeparatedByString:@", "];
@@ -861,10 +849,7 @@
 }
 
 +(void)setUserDefaultsWithDetails:(NSDictionary*)details{
-    //    [UD setObject:[NSDate date] forKey:UD_ACCESS_TOKEN_TAKEN_DATE];
-    //    [UD setObject:details[AUTH][@"access_token"] forKey:UD_ACCESS_TOKEN];
-    //    [UD setObject:details[AUTH][@"refresh_token"] forKey:UD_REFRESH_TOKEN];
-    //    [UD setObject:details[AUTH][@"expires_in"] forKey:UD_ACCESS_TOKEN_LIFETIME];
+    [UD setObject:details[USER][KEY_API_TOKEN] forKey:UD_API_TOKEN];
     [UD setObject:details[USER][@"first_name"] forKey:UD_FIRSTNAME];
     [UD setObject:details[USER][@"last_name"] forKey:UD_SURNAME];
     [UD setObject:details[USER][@"id"] forKey:UD_USER_ID];
@@ -876,7 +861,6 @@
     }
     else{
         [UD setObject:nil forKey:UD_HOOD_ID];
-        
     }
 }
 

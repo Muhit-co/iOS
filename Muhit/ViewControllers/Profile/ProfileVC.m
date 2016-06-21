@@ -14,6 +14,7 @@
     IBOutlet UIImageView *imgUser,*imgIdeas,*imgSupports,*imgAddress,*imgMail,*imgUserName;
     IBOutlet UIView *viewIdeas,*viewSupports;
     IBOutlet UITableView *tblIdeas;
+    IBOutlet NSLayoutConstraint *constCreatedIssuesWidth,*constSupportedIssuesWidth;
     NSArray *arrIdeas;
     NSString *profileId;
     NSDictionary *dictProfile;
@@ -45,7 +46,6 @@
             REMOVE_HUD
         }
         else{
-            NSLog(@"getProfileResponse:%@",response);
             [self setDetailsWithDictionary:response[USER]];
         }
     }];
@@ -81,17 +81,24 @@
 -(void)setDetailsWithDictionary:(NSDictionary*)dict{
     
     dictProfile = dict;
-    arrIdeas = [NSArray arrayWithArray:dict[@"ideas"]];
+    arrIdeas = [NSArray arrayWithArray:dict[@"issues"]];
     
     [lblUsername setText:dict[@"username"]];
     [lblName setText:dict[@"full_name"]];
     [lblAddress setText:dict[@"address"]];
     [lblMail setText:dict[@"email"]];
     [lblSupportsCount setText:[dict[@"supported_issue_counter"] stringValue]];
-    [lblIdeasCount setText:STRING_W_INT((int)[arrIdeas count])];
+    [lblIdeasCount setText:[dict[@"opened_issue_counter"] stringValue]];
     
     NSString *imgUrl = [NSString stringWithFormat:@"%@/240x240/%@",IMAGE_PROXY,dict[@"picture"]];
     [imgUser sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:PLACEHOLDER_IMAGE];
+    
+    CGSize textSize = [[lblIdeasCount text] sizeWithAttributes:@{NSFontAttributeName:[lblIdeasCount font]}];
+    constCreatedIssuesWidth.constant = 36 + textSize.width;
+    
+    textSize = [[lblSupportsCount text] sizeWithAttributes:@{NSFontAttributeName:[lblSupportsCount font]}];
+    constSupportedIssuesWidth.constant = 36 + textSize.width;
+    [self.view layoutIfNeeded];
     
     [tblIdeas reloadData];
     REMOVE_HUD

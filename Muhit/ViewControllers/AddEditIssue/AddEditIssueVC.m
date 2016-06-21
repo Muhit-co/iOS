@@ -23,7 +23,7 @@
     UIActionSheet *actionSheet;
     UIImagePickerController * imgPicker;
     NSMutableArray *arrPhotos,*arrTagIds,*arrTags;
-    NSArray *dictTags;
+    NSArray *arrAllTags;
     NSString *issueGeoCode,*issueCoordinate;
     TagSelectorVC *tagSelector;
 }
@@ -44,8 +44,7 @@
     [super viewDidLoad];
     
     totalPhotosWidth = 0,totalTagsWidth = 0,lastTagsY = 0;
-    tagSelector = [[TagSelectorVC alloc] init];
-    [tagSelector setDelegate:self];
+    tagSelector = [[TagSelectorVC alloc] initWithDelegate:self];
     [self getTags];
     [self adjustUI];
     
@@ -153,7 +152,7 @@
 
 -(void)getTags{
     ADD_HUD
-    [SERVICES getTags:@"" handler:^(NSDictionary *response, NSError *error) {
+    [SERVICES getTagsWithhandler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
             REMOVE_HUD
@@ -162,8 +161,8 @@
             if (!issueDict) {
                 REMOVE_HUD
             }
-            dictTags = (NSArray *)response;
-            [tagSelector setItems:(NSArray *)response];
+            arrAllTags = response[@"tags"];
+            [tagSelector setItems:arrAllTags];
         }
     }];
 }
@@ -360,13 +359,13 @@
         arrTagIds = [[NSMutableArray alloc] init];
     }
     for (NSString *tag in arrTagIds) {
-        if ([tag isEqualToString:STRING_W_INT([dictTags[index][@"id"] intValue])]) {
+        if ([tag isEqualToString:STRING_W_INT([arrAllTags[index][@"id"] intValue])]) {
             return;
         }
     }
     
-    [arrTags addObject:dictTags[index]];
-    [arrTagIds addObject: STRING_W_INT([dictTags[index][@"id"] intValue])];
+    [arrTags addObject:arrAllTags[index]];
+    [arrTagIds addObject: STRING_W_INT([arrAllTags[index][@"id"] intValue])];
     
     [self refreshTagsView];
 }

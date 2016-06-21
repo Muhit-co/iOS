@@ -10,34 +10,24 @@
 #import "TagCell.h"
 
 @interface TagSelectorVC (){
-    IBOutlet NSLayoutConstraint *containerViewHeightConst;
+    IBOutlet NSLayoutConstraint *constContainerHeight;
     IBOutlet UIView *viewContainer;
     IBOutlet UITableView *tblTags;
+    id<TagSelectorDelegate> delegate;
     NSArray *arrItems;
 }
-
 @end
 
 @implementation TagSelectorVC
 
-- (id)init
-{
-    self = [super initWithNibName:@"TagSelectorVC" bundle:nil];
-    if (self) {
+- (id)initWithDelegate:(id<TagSelectorDelegate>)_delegate{
+    
+    if(self = [super init]){
+        self = [[[NSBundle mainBundle] loadNibNamed:@"TagSelectorVC" owner:self options:nil] lastObject];
+        delegate = _delegate;
+        viewContainer.layer.cornerRadius = cornerRadius;
     }
     return self;
-}
-
-#pragma mark Life Cycle
-- (void) viewDidLoad{
-    [super viewDidLoad];
-    viewContainer.layer.cornerRadius = cornerRadius;
-    [tblTags reloadData];
-}
-
--(void)viewDidLayoutSubviews{
-    [super viewDidLayoutSubviews];
-    [self.view layoutIfNeeded];
 }
 
 - (void) setItems:(NSArray*)_items{
@@ -51,12 +41,12 @@
 
 #pragma mark Interface
 - (void) show{
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:self.view];
-    [self.view setFrame:[[[UIApplication sharedApplication] delegate] window].bounds];
+    [self setFrame:[APPDELEGATE window].bounds];
+    [[APPDELEGATE window].rootViewController.view addSubview:self];
 }
 
 - (void) dismiss{
-    [self.view removeFromSuperview];
+    [self removeFromSuperview];
 }
 
 #pragma mark TableView
@@ -86,8 +76,8 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if([self.delegate respondsToSelector:@selector(selectedTagIndex:)]) {
-        [self.delegate selectedTagIndex:(int)indexPath.row];
+    if([delegate respondsToSelector:@selector(selectedTagIndex:)]) {
+        [delegate selectedTagIndex:(int)indexPath.row];
     }
     [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.1f];
 }

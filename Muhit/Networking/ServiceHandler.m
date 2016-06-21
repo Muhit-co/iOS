@@ -49,12 +49,12 @@
     
     [manager setResponseSerializer:[AFJSONResponseSerializer serializer]];
     [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
-    [[manager requestSerializer] setValue:[NSString stringWithFormat:@"Bearer %@",[UD objectForKey:UD_ACCESS_TOKEN]] forHTTPHeaderField:@"Authorization"];
+    //    [[manager requestSerializer] setValue:[UD objectForKey:UD_API_TOKEN] forHTTPHeaderField:KEY_API_TOKEN];
     [[manager responseSerializer] setAcceptableContentTypes:[NSSet setWithObjects:@"text/plain",@"application/json", nil]];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    NSLog(@"%@",url);
+    NSLog(@"GET URL: %@",url);
     
     [manager GET: url
       parameters: nil
@@ -105,12 +105,12 @@
     
     [manager setResponseSerializer:[AFJSONResponseSerializer serializer]];
     [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
-    [[manager requestSerializer] setValue:[NSString stringWithFormat:@"Bearer %@",[UD objectForKey:UD_ACCESS_TOKEN]] forHTTPHeaderField:@"Authorization"];
+    //    [[manager requestSerializer] setValue:[UD objectForKey:UD_API_TOKEN] forHTTPHeaderField:KEY_API_TOKEN];
     [[manager responseSerializer] setAcceptableContentTypes:[NSSet setWithObjects:@"application/json", nil]];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    NSLog(@"%@",[UF addQueryStringToUrlString:url withDictionary:requestDict]);
+    NSLog(@"POST URL: %@",[UF addQueryStringToUrlString:url withDictionary:requestDict]);
     
     [manager POST: url
        parameters: requestDict

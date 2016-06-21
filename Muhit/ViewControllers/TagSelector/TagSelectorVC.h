@@ -16,9 +16,9 @@
 
 @end
 
-@interface TagSelectorVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface TagSelectorVC : UIView<UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) id<TagSelectorDelegate> delegate;
+- (id)initWithDelegate:(id<TagSelectorDelegate>)_delegate;
 - (void) setItems:(NSArray*)_items;
 - (void) show;
 - (void) dismiss;
