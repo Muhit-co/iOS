@@ -72,6 +72,7 @@ typedef enum{
 + (void)addHudTop;
 + (void)showAlertWithMessageOnly:(NSString *)message;
 + (void)showAlertWithMessage:(NSString *)message tag:(int)tag delegate:(id)delegate;
++ (void)showAlertWithMessage:(NSString *)message tag:(int)tag delegate:(id)delegate first:(NSString *)first second:(NSString *)second;
 
 +(NSString *)urlencodeWithString:(NSString *)str;
 +(CGFloat)heightOfTextForString:(NSString *)aString andFont:(UIFont *)aFont maxSize:(CGSize)aSize;
@@ -91,6 +92,8 @@ typedef enum{
                     isFacebookLogin:(BOOL)isFacebookLogin;
 
 + (BOOL)validateLoginWithEmail:(NSString*)email password:(NSString*)password;
+
++ (BOOL)validateIssue:(NSString*)title problem:(NSString*)problem solution:(NSString*)solution;
 
 + (NSDictionary *)parsePlaces:(GMSAutocompletePrediction *)address;
 

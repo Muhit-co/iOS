@@ -26,6 +26,7 @@
         self = [[[NSBundle mainBundle] loadNibNamed:@"TagSelectorVC" owner:self options:nil] lastObject];
         delegate = _delegate;
         viewContainer.layer.cornerRadius = cornerRadius;
+        self.translatesAutoresizingMaskIntoConstraints = YES;
     }
     return self;
 }
@@ -41,6 +42,7 @@
 
 #pragma mark Interface
 - (void) show{
+    [self setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
     [self setFrame:[APPDELEGATE window].bounds];
     [[APPDELEGATE window].rootViewController.view addSubview:self];
 }
@@ -80,6 +82,10 @@
         [delegate selectedTagIndex:(int)indexPath.row];
     }
     [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.1f];
+}
+
+-(void)layoutSubviews{
+    [super layoutSubviews];
 }
 
 #pragma mark -

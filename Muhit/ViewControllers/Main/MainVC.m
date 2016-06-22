@@ -8,16 +8,17 @@
 
 #import "MainVC.h"
 #import "IssueCell.h"
+#import "LocationManager.h"
 
-@interface MainVC (){
+@interface MainVC ()<LocationManagerDelegate>{
     IBOutlet UIButton *btnCreateIssue,*btnPopular,*btnLatest,*btnMap,*btnMenu,*btnPickHood,*btnLocation;
     IBOutlet UITextField *txtSearch;
     IBOutlet UIImageView *imgLocation;
     IBOutlet NSLayoutConstraint *constActiveLine;
     IBOutlet UIView *viewActiveLine,*viewHood;
     IBOutlet UITableView *tblIssues;
+    IBOutlet GMSMapView *map;
     CLLocationCoordinate2D pointedCoordinate;
-    CLLocationManager *locationManager;
     NSMutableArray *arrIssues;
     NSString *coordinates;
     int lastIndex;
@@ -104,10 +105,17 @@
         [btnLatest setSelected:YES];
         [btnPopular setSelected:NO];
         [btnMap setSelected:NO];
+        [tblIssues setHidden:NO];
         
         [UIView animateWithDuration:0.2 animations:^{
             constActiveLine.constant = 0;
             [self.view layoutIfNeeded];
+            map.alpha = 0;
+            tblIssues.alpha = 1;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                [map setHidden:YES];
+            }
         }];
     }
 }
@@ -117,10 +125,17 @@
         [btnPopular setSelected:YES];
         [btnLatest setSelected:NO];
         [btnMap setSelected:NO];
+        [tblIssues setHidden:NO];
         
         [UIView animateWithDuration:0.2 animations:^{
             constActiveLine.constant = [btnLatest rightPosition];
             [self.view layoutIfNeeded];
+            map.alpha = 0;
+            tblIssues.alpha = 1;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                [map setHidden:YES];
+            }
         }];
         
     }
@@ -131,10 +146,17 @@
         [btnMap setSelected:YES];
         [btnLatest setSelected:NO];
         [btnPopular setSelected:NO];
+        [map setHidden:NO];
         
         [UIView animateWithDuration:0.2 animations:^{
             constActiveLine.constant = [btnPopular rightPosition];
             [self.view layoutIfNeeded];
+            map.alpha = 1;
+            tblIssues.alpha = 0;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                [tblIssues setHidden:YES];
+            }
         }];
     }
 }
@@ -158,23 +180,9 @@
 }
 
 -(IBAction)actLocation:(id)sender{
-    
-    if (!locationManager) {
-        locationManager = [[CLLocationManager alloc] init];
-        if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-            [locationManager requestWhenInUseAuthorization];
-        }
-    }
-    
-    [MuhitServices getAddressesWithLocation:locationManager.location.coordinate handler:^(NSDictionary *response, NSError *error) {
-        if (!error) {
-            @try {
-                coordinates = [NSString stringWithFormat:@"%f, %f",locationManager.location.coordinate.latitude,locationManager.location.coordinate.longitude];
-                [btnPickHood setTitle:[UF getHoodFromGMSAddress:response]];
-            }
-            @catch (NSException *exception) {} @finally {}
-        }
-    }];
+    [LOCATION setDelegate:self];
+    [LOCATION startUpdatingLocation];
+    ADD_HUD
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -225,6 +233,26 @@
     return NO;
 }
 #pragma mark -
+
+-(void)locationManager:(LocationManager *)locationManager didUpdateToLocation:(CLLocation *)newLocation{
+    if (newLocation) {
+        REMOVE_HUD
+        [locationManager stopUpdatingLocation];
+        [MuhitServices getAddressesWithLocation:CURRENT_LOCATION handler:^(NSDictionary *response, NSError *error) {
+            if (!error) {
+                @try {
+                    coordinates = [NSString stringWithFormat:@"%f, %f",CURRENT_LOCATION.latitude,CURRENT_LOCATION.longitude];
+                    [btnPickHood setTitle:[UF getHoodFromGMSAddress:response]];
+                }
+                @catch (NSException *exception) {} @finally {}
+            }
+            REMOVE_HUD
+        }];
+    }
+    else{
+        REMOVE_HUD
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

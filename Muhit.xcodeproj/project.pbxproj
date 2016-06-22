@@ -38,6 +38,7 @@
 		4B70C8F41B4BE01E009BC526 /* PickFromMapVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B70C8F21B4BE01E009BC526 /* PickFromMapVC.xib */; };
 		4B70C8FE1B51A093009BC526 /* NSString+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B70C8FD1B51A093009BC526 /* NSString+Extended.m */; };
 		4B7688A71B2B181500B2B6EF /* MTTagLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7688A61B2B181500B2B6EF /* MTTagLabel.m */; };
+		4B77A5741D1AC87F00F5B6B2 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B77A5731D1AC87F00F5B6B2 /* LocationManager.m */; };
 		4B80C41C1D12D53500D39F02 /* IdeasVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B80C41A1D12D53500D39F02 /* IdeasVC.m */; };
 		4B80C41D1D12D53500D39F02 /* IdeasVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B80C41B1D12D53500D39F02 /* IdeasVC.xib */; };
 		4B9F04EF1B1D8A6C009CB713 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F04EE1B1D8A6C009CB713 /* Podfile */; };
@@ -140,6 +141,8 @@
 		4B70C8FF1B51A0A7009BC526 /* NSString+Extended.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extended.h"; sourceTree = "<group>"; };
 		4B7688A51B2B181500B2B6EF /* MTTagLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTagLabel.h; sourceTree = "<group>"; };
 		4B7688A61B2B181500B2B6EF /* MTTagLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTagLabel.m; sourceTree = "<group>"; };
+		4B77A5721D1AC87F00F5B6B2 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		4B77A5731D1AC87F00F5B6B2 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		4B80C4191D12D53500D39F02 /* IdeasVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeasVC.h; sourceTree = "<group>"; };
 		4B80C41A1D12D53500D39F02 /* IdeasVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdeasVC.m; sourceTree = "<group>"; };
 		4B80C41B1D12D53500D39F02 /* IdeasVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IdeasVC.xib; sourceTree = "<group>"; };
@@ -342,6 +345,15 @@
 				4B70C8F21B4BE01E009BC526 /* PickFromMapVC.xib */,
 			);
 			path = PickFromMap;
+			sourceTree = "<group>";
+		};
+		4B77A5711D1AC87F00F5B6B2 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				4B77A5721D1AC87F00F5B6B2 /* LocationManager.h */,
+				4B77A5731D1AC87F00F5B6B2 /* LocationManager.m */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		4B80C4171D1293BB00D39F02 /* Membering */ = {
@@ -633,6 +645,7 @@
 		4BF7F8FD1B1CF33E00A35FD1 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				4B77A5711D1AC87F00F5B6B2 /* Location */,
 				4BE862891D0AD2F500CF4013 /* Keyboard */,
 				4BD0A3B91B2EAF12008ECD02 /* Facebook */,
 				4BF7F9131B1D888E00A35FD1 /* Language */,
@@ -875,6 +888,7 @@
 				4B9F05161B1DBD04009CB713 /* NavBar.m in Sources */,
 				4B7688A71B2B181500B2B6EF /* MTTagLabel.m in Sources */,
 				4BE8628C1D0AD49C00CF4013 /* FacebookManager.m in Sources */,
+				4B77A5741D1AC87F00F5B6B2 /* LocationManager.m in Sources */,
 				4BF7F90D1B1D882100A35FD1 /* LanguageManager.m in Sources */,
 				4B9F052F1B1DBFE0009CB713 /* MainVC.m in Sources */,
 				4BC583811B1C4D4800180B3D /* main.m in Sources */,

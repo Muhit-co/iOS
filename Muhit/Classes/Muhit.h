@@ -19,6 +19,7 @@
 @property (nonatomic, retain) MMDrawerController *drawerController;
 @property (nonatomic, retain) NSString *tokenCode;
 @property (nonatomic, retain) MBProgressHUD *HUD;
+@property (nonatomic, retain) NSArray *arrIssueTags;
 
 @property (nonatomic) BOOL isLoggedIn;
 @property (nonatomic) BOOL isPresentingVC;

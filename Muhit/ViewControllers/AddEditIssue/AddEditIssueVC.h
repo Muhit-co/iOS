@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 Muhit. All rights reserved.
 //
 #import "TagSelectorVC.h"
+#import "KeyboardControls.h"
 
-@interface AddEditIssueVC : RootVC <UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,TagSelectorDelegate>
+@interface AddEditIssueVC : RootVC <KeyboardControlsDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,TagSelectorDelegate>
 
 - (id)initWithInfo:(NSDictionary *)_info;
 

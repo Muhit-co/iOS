@@ -52,6 +52,12 @@
 	<string>Fikir</string>
 	<key>latest</key>
 	<string>En Son</string>
+	<key>location-services-must-enabled</key>
+	<string>Mahalle bilginizi bulabilmek için konum servislerin aktif olmalı.</string>
+	<key>location-calibration</key>
+	<string>Konum alınıyor, lütfen bekleyin</string>
+	<key>location-error</key>
+	<string>Konumunu alırken bir hata oluştu</string>
 	<key>login</key>
 	<string>Giriş Yap</string>
 	<key>login-with-facebook</key>
@@ -86,10 +92,14 @@
 	<string>Profil</string>
 	<key>profile-photo</key>
 	<string>Profil resmi</string>
+	<key>pick-from-library</key>
+	<string>Kütüphaneden Seç</string>
 	<key>read-agreement</key>
 	<string>Kullanım koşullarını kabul ediyorum</string>
 	<key>save</key>
 	<string>Kaydet</string>
+	<key>settings</key>
+	<string>Ayarlar</string>
 	<key>signup</key>
 	<string>Kayıt Ol</string>
 	<key>solution</key>
@@ -124,5 +134,17 @@
 	<string>Güncelle</string>
 	<key>username</key>
 	<string>Kullanıcı adı</string>
+	<key>validation-title</key>
+	<string>Lütfen geçerli bir başlık giriniz.</string>
+	<key>validation-problem</key>
+	<string>Lütfen geçerli bir problem giriniz.</string>
+	<key>validation-solution</key>
+	<string>Lütfen geçerli bir çözüm giriniz.</string>
+	<key>validation-email</key>
+	<string>Geçerli bir e-posta adresi giriniz.</string>
+	<key>validation-name</key>
+	<string>Geçerli bir ad-soyad giriniz.</string>
+	<key>validation-password</key>
+	<string>Şifreniz en az 4 haneli olmalıdır.</string>
 </dict>
 </plist>

@@ -71,16 +71,28 @@ const int itemPerPage = 10;
 }
 
 + (void)addOrUpdateIssue:(NSString*)title problem:(NSString*)problem solution:(NSString*)solution location:(NSString*)location tags:(NSArray*)tags images:(NSArray*)images isAnonymous:(BOOL)isAnonymous coordinate:(NSString *)coordinate issueId:(NSString *)issueId handler:(GeneralResponseHandler)handler{
-    NSDictionary *requestDict = @{
-                                  KEY_ISSUE_TITLE : title,
-                                  KEY_ISSUE_PROBLEM : problem,
-                                  KEY_ISSUE_SOLUTION : solution,
-                                  KEY_ISSUE_LOCATION : location,
-                                  KEY_ISSUE_TAGS : tags,
-                                  KEY_ISSUE_IMAGES : images,
-                                  KEY_IS_ANONYMOUS: NUMBER_BOOL(isAnonymous),
-                                  KEY_COORDINATE: coordinate
-                                  };
+    NSMutableDictionary *requestDict = [NSMutableDictionary dictionaryWithDictionary:
+                                        @{
+                                          KEY_ISSUE_TITLE : title,
+                                          KEY_ISSUE_PROBLEM : problem,
+                                          KEY_ISSUE_SOLUTION : solution,
+                                          KEY_IS_ANONYMOUS: NUMBER_BOOL(isAnonymous)
+                                          }];
+    
+    
+    if (tags && tags.count>0) {
+        [requestDict setObject:tags forKey:KEY_ISSUE_TAGS];
+    }
+    if (images && images.count>0) {
+        [requestDict setObject:images forKey:KEY_ISSUE_IMAGES];
+    }
+    if (location) {
+        [requestDict setObject:location forKey:KEY_ISSUE_LOCATION];
+    }
+    if (coordinate) {
+        [requestDict setObject:coordinate forKey:KEY_COORDINATE];
+    }
+    
     if(!issueId){
         [SERVICES postRequestWithMethod:SERVICE_ADD_ISSUE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
     }

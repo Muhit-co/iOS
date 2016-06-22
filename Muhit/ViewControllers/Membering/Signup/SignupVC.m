@@ -55,7 +55,7 @@
     txtPassword.layer.cornerRadius = cornerRadius;
     btnSignup.layer.cornerRadius = cornerRadius;
     btnHood.layer.cornerRadius = cornerRadius;
-    btnLogin.layer.cornerRadius = cornerRadius;
+    btnLogin.layer.cornerRadius = 4;
     [imgDownIcon setImage:[IonIcons imageWithIcon:ion_chevron_down size:20 color:CLR_LIGHT_BLUE]];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnLogin];
 }

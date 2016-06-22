@@ -1,9 +1,9 @@
 //
-//  BSKeyboardControls.m
-//  Example
+//  KeyboardControls.m
+//  Muhit
 //
-//  Created by Simon B. Støvring on 11/01/13.
-//  Copyright (c) 2013 simonbs. All rights reserved.
+//  Created by Emre YANIK on 05/06/15.
+//  Copyright (c) 2015 Muhit. All rights reserved.
 //
 
 #import "KeyboardControls.h"
@@ -72,6 +72,7 @@
                                                             target:self
                                                             action:@selector(doneButtonPressed:)]];
         
+        [self setTintColor:CLR_DARK_PUPRPLE];
         [self setVisibleControls:(KeyboardControlPreviousNext | KeyboardControlDone)];
         
         [self setFields:fields];
@@ -80,13 +81,9 @@
     return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc{
     [self setFields:nil];
-    [self setSegmentedControlTintControl:nil];
-    [self setPreviousTitle:nil];
     [self setBarTintColor:nil];
-    [self setNextTitle:nil];
     [self setDoneTitle:nil];
     [self setDoneTintColor:nil];
     [self setActiveField:nil];
@@ -98,8 +95,7 @@
     [self setDoneButton:nil];
 }
 
-#pragma mark -
-#pragma mark Public Methods
+#pragma mark - Public Methods
 
 - (void)setActiveField:(id)activeField
 {
@@ -180,36 +176,6 @@
         [self.toolbar setBackgroundColor:barBackgroundColor];
         
         _barBackgroundColor = barBackgroundColor;
-    }
-}
-
-- (void)setSegmentedControlTintControl:(UIColor *)segmentedControlTintControl
-{
-    if (segmentedControlTintControl != _segmentedControlTintControl)
-    {
-        [self.segmentedControl setTintColor:segmentedControlTintControl];
-        
-        _segmentedControlTintControl = segmentedControlTintControl;
-    }
-}
-
-- (void)setPreviousTitle:(NSString *)previousTitle
-{
-    if (![previousTitle isEqualToString:_previousTitle])
-    {
-        [self.segmentedControl setTitle:previousTitle forSegmentAtIndex:BSKeyboardControlsDirectionPrevious];
-        
-        _previousTitle = previousTitle;
-    }
-}
-
-- (void)setNextTitle:(NSString *)nextTitle
-{
-    if (![nextTitle isEqualToString:_nextTitle])
-    {
-        [self.segmentedControl setTitle:nextTitle forSegmentAtIndex:BSKeyboardControlsDirectionNext];
-        
-        _nextTitle = nextTitle;
     }
 }
 

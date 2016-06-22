@@ -34,4 +34,16 @@
     return self;
 }
 
+
+//- (void)layoutSubviews {
+//    [super layoutSubviews];
+//    UINavigationItem *navigationItem = [self topItem];
+//    
+//    for (UIView *subview in [self subviews]) {
+//        if (subview == [[navigationItem rightBarButtonItem] customView]) {
+//            [subview setFrame:CGRectMake([UF screenSize].width-80, 4, 70, 36)];
+//        }
+//    }
+//}
+
 @end

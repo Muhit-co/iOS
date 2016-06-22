@@ -55,6 +55,8 @@
                 <constraint firstItem="IR4-02-LDT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xLq-v6-JDc"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="constContainerHeight" destination="ewA-D7-DbY" id="9Bb-Q0-KBj"/>

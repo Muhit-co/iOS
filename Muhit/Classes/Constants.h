@@ -19,6 +19,8 @@ static const CGFloat cornerRadius = 6;
 #define LocalizedString(key) [[LanguageManager instance] localizedStringForKey:key]
 #define TRACKER [TrackManager sharedManager]
 #define PLACEHOLDER_IMAGE [UIImage imageNamed:@"profile-placeholder"]
+#define LOCATION [LocationManager sharedManager]
+#define CURRENT_LOCATION [LocationManager sharedManager].currentLocation.coordinate
 
 #define UF UtilityFunctions
 #define ADD_HUD [UtilityFunctions addHud:[self view]];
@@ -26,6 +28,7 @@ static const CGFloat cornerRadius = 6;
 #define ADD_HUD_TOP [UtilityFunctions addHudTop];
 #define SHOW_ALERT(MESSAGE) [UtilityFunctions showAlertWithMessageOnly:(MESSAGE)];
 #define SHOW_ALERT_WITH_TAG_AND_DELEGATE(MESSAGE, TAG, DELEGATE) [UtilityFunctions showAlertWithMessage:(MESSAGE) tag:(TAG) delegate:(DELEGATE)];
+#define SHOW_ALERT_WITH_TAG_DELEGATE_FIRST_SECOND(MESSAGE, TAG, DELEGATE,FIRST,SECOND) [UtilityFunctions showAlertWithMessage:(MESSAGE) tag:(TAG) delegate:(DELEGATE) first:(FIRST) second:(SECOND)];
 
 #define NUMBER_INT(val) [NSNumber numberWithInt:val]
 #define NUMBER_DOUBLE(val) [NSNumber numberWithDouble:val]

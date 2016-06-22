@@ -1,9 +1,9 @@
 //
 //  FacebookManager.h
-//  BiTaksi Client
+//  Muhit
 //
-//  Created by Emre YANIK on 23/01/15.
-//  Copyright (c) 2015 BiTaksi. All rights reserved.
+//  Created by Emre YANIK on 05/06/15.
+//  Copyright (c) 2015 Muhit. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

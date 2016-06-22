@@ -20,20 +20,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self adjustUI];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnSignup];
     
     keyboardControl = [[KeyboardControls alloc] initWithFields:@[txtEmail ,txtPassword]];
     [keyboardControl setDelegate:self];
+    
+    [self adjustUI];
 }
 
 -(void)adjustUI{
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnSignup];
-    
     txtEmail.layer.cornerRadius = cornerRadius;
     txtPassword.layer.cornerRadius = cornerRadius;
     btnLogin.layer.cornerRadius = cornerRadius;
-    btnSignup.layer.cornerRadius = cornerRadius;
+    btnSignup.layer.cornerRadius = 4;
     btnForgotPassword.layer.cornerRadius = cornerRadius;
     btnFacebook.layer.cornerRadius = cornerRadius;
     [btnFacebook setImage:[IonIcons imageWithIcon:ion_social_facebook size:30 color:CLR_WHITE]];
@@ -115,8 +116,7 @@
     [ScreenOperations openForgotPassword];
 }
 
-#pragma mark -
-#pragma mark Keyboard Controls Delegate
+#pragma mark - Keyboard Controls Delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     [scrollRoot setContentOffset:CGPointMake(0,textField.frame.origin.y - 35 ) animated:YES];

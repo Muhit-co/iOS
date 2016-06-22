@@ -613,15 +613,24 @@
                       otherButtonTitles: nil] show];
 }
 
-+ (void)showAlertWithMessage: (NSString*)message
-                         tag: (int)tag
-                    delegate: (id)delegate {
++ (void)showAlertWithMessage: (NSString*)message tag: (int)tag delegate: (id)delegate {
     
     UIAlertView *alert =  [[UIAlertView alloc] initWithTitle: @""
                                                      message: message
                                                     delegate: delegate
                                            cancelButtonTitle: LocalizedString(@"ok")
                                            otherButtonTitles: nil];
+    [alert setTag: tag];
+    [alert show];
+}
+
++ (void)showAlertWithMessage:(NSString *)message tag:(int)tag delegate:(id)delegate first:(NSString *)first second:(NSString *)second{
+    
+    UIAlertView *alert =  [[UIAlertView alloc] initWithTitle: @""
+                                                     message: message
+                                                    delegate: delegate
+                                           cancelButtonTitle: nil
+                                           otherButtonTitles: first,second,nil];
     [alert setTag: tag];
     [alert show];
 }
@@ -765,6 +774,8 @@
     }
 }
 
+#pragma mark - Validation
+
 + (BOOL)validateSignUpInputWithName:(NSString*)name
                             surname:(NSString*)surname
                               email:(NSString*)email
@@ -774,26 +785,21 @@
     NSMutableArray *messages = [NSMutableArray array];
     
     if (name && surname && ([name length] == 0 || [surname length] == 0)) {
-        [messages addObject:LocalizedString(@"Geçerli bir ad-soyad girmelisiniz")];
+        [messages addObject:LocalizedString(@"validation-name")];
     }
     
     if (!isFacebookLogin && password && [password length] < 4) {
-        [messages addObject:LocalizedString(@"Şifreniz en az 4 haneli olmalıdır")];
+        [messages addObject:LocalizedString(@"validation-password")];
     }
     
     if (email.length>0) {
         if([self validateEmail:email] == false) {
-            [messages addObject:LocalizedString(@"Geçerli bir e-posta adresi girmelisiniz")];
+            [messages addObject:LocalizedString(@"validation-email")];
         }
     }
     
     if ([messages count] > 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                        message:[messages componentsJoinedByString:@"\n"]
-                                                       delegate:nil
-                                              cancelButtonTitle:LocalizedString(@"ok")
-                                              otherButtonTitles:nil];
-        [alert show];
+        SHOW_ALERT([messages componentsJoinedByString:@"\n"])
         return NO;
     }
     
@@ -805,27 +811,45 @@
     NSMutableArray *messages = [NSMutableArray array];
     
     if (password && [password length] < 4) {
-        [messages addObject:LocalizedString(@"Şifreniz en az 4 haneli olmalıdır")];
+        [messages addObject:LocalizedString(@"validation-password")];
     }
-    
     if (email.length>0) {
         if([self validateEmail:email] == false) {
-            [messages addObject:LocalizedString(@"Geçerli bir e-posta adresi girmelisiniz")];
+            [messages addObject:LocalizedString(@"validation-email")];
         }
     }
     
     if ([messages count] > 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                        message:[messages componentsJoinedByString:@"\n"]
-                                                       delegate:nil
-                                              cancelButtonTitle:LocalizedString(@"ok")
-                                              otherButtonTitles:nil];
-        [alert show];
+        SHOW_ALERT([messages componentsJoinedByString:@"\n"])
         return NO;
     }
     
     return YES;
 }
+
++ (BOOL)validateIssue:(NSString*)title problem:(NSString*)problem solution:(NSString*)solution{
+    
+    NSMutableArray *messages = [NSMutableArray array];
+    
+    if ([title length] < 4) {
+        [messages addObject:LocalizedString(@"validation-title")];
+    }
+    if ([problem length] < 4) {
+        [messages addObject:LocalizedString(@"validation-problem")];
+    }
+    if (solution.length < 4) {
+        [messages addObject:LocalizedString(@"validation-solution")];
+    }
+    
+    if ([messages count] > 0) {
+        SHOW_ALERT([messages componentsJoinedByString:@"\n"])
+        return NO;
+    }
+    
+    return YES;
+}
+
+#pragma mark -
 
 + (NSDictionary *)parsePlaces:(GMSAutocompletePrediction *)address{
     

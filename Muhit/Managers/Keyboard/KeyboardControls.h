@@ -1,28 +1,19 @@
 //
-//  BSKeyboardControls.h
-//  Example
+//  KeyboardControls.h
+//  Muhit
 //
-//  Created by Simon B. Støvring on 11/01/13.
-//  Copyright (c) 2013 simonbs. All rights reserved.
+//  Created by Emre YANIK on 05/06/15.
+//  Copyright (c) 2015 Muhit. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-/**
- *  Available controls.
- */
-typedef enum
-{
+typedef enum{
     KeyboardControlPreviousNext = 1 << 0,
     KeyboardControlDone = 1 << 1
 } KeyboardControl;
 
-/**
- *  Directions in which the fields can be selected.
- *  These are relative to the active field.
- */
-typedef enum
-{
+typedef enum{
     BSKeyboardControlsDirectionPrevious = 0,
     BSKeyboardControlsDirectionNext
 } KeyboardControlsDirection;
@@ -76,21 +67,6 @@ typedef enum
  *  Tint color of the toolbar.
  */
 @property (nonatomic, strong) UIColor *barBackgroundColor;
-
-/**
- *  Tint color of the segmented control. iOS 6 Only.
- */
-@property (nonatomic, strong) UIColor *segmentedControlTintControl;
-
-/**
- *  Title of the previous button. If this is not set, a default localized title will be used. iOS 6 Only.
- */
-@property (nonatomic, strong) NSString *previousTitle;
-
-/**
- *  Title of the next button. If this is not set, a default localized title will be used. iOS 6 Only.
- */
-@property (nonatomic, strong) NSString *nextTitle;
 
 /**
  *  Title of the done button. If this is not set, a default localized title will be used.

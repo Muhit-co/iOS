@@ -39,7 +39,7 @@
         [[self navigationItem] setLeftBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, barBtnMenu, nil] animated:NO];
     }
     
-    btnCreateIssue.layer.cornerRadius = cornerRadius;
+    btnCreateIssue.layer.cornerRadius = 4;
     [btnCreateIssue setSize:CGSizeMake(70, 30)];
     [btnCreateIssue setImage:[IonIcons imageWithIcon:ion_plus size:15 color:CLR_WHITE]];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnCreateIssue];

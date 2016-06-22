@@ -29,7 +29,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
-    [[self window] setBackgroundColor:[UIColor whiteColor]];
+    [[self window] setBackgroundColor:CLR_LIGHT_BLUE];
+    [[self window] setRootViewController:[UIViewController new]];
     [[self window] makeKeyAndVisible];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
@@ -141,6 +142,7 @@
     [[MT drawerController] setShouldStretchDrawer:NO];
     
     [[self window] setRootViewController:[MT drawerController]];
+    [self.window makeKeyAndVisible];
 }
 
 -(void)initThirdPartyServices{

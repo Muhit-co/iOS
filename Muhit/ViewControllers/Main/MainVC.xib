@@ -27,6 +27,7 @@
                 <outlet property="btnPickHood" destination="Alm-u3-R33" id="rgH-pP-2ja"/>
                 <outlet property="btnPopular" destination="anY-Ei-VsQ" id="Jmz-ZX-117"/>
                 <outlet property="constActiveLine" destination="OZZ-3p-IjL" id="I2J-Gp-vhc"/>
+                <outlet property="map" destination="V3e-fl-UMk" id="9Io-lW-byN"/>
                 <outlet property="tblIssues" destination="ULs-uF-LuD" id="d6W-A1-wBF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewActiveLine" destination="slC-aF-cku" id="vX8-Ru-eRX"/>
@@ -45,12 +46,13 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lh-gw-6xO" userLabel="btnMenu">
-                    <rect key="frame" x="15" y="27" width="40" height="40"/>
+                    <rect key="frame" x="0.0" y="27" width="40" height="40"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="nug-iK-aJF"/>
                         <constraint firstAttribute="width" constant="40" id="uwZ-ER-A2Y"/>
                     </constraints>
+                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -59,7 +61,7 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-medium" translatesAutoresizingMaskIntoConstraints="NO" id="awp-2l-YYA">
-                    <rect key="frame" x="70" y="35" width="83" height="25"/>
+                    <rect key="frame" x="55" y="35" width="83" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="h8b-2o-Qbj"/>
                         <constraint firstAttribute="width" constant="83" id="jtY-RC-ip1"/>
@@ -216,9 +218,14 @@
                         <outlet property="delegate" destination="-1" id="isd-b0-Zbc"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V3e-fl-UMk" customClass="GMSMapView">
+                    <rect key="frame" x="0.0" y="197" width="600" height="403"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.2666666667" green="0.63529411759999999" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="V3e-fl-UMk" secondAttribute="trailing" id="2gb-qF-UYb"/>
                 <constraint firstItem="awp-2l-YYA" firstAttribute="leading" secondItem="5lh-gw-6xO" secondAttribute="trailing" constant="15" id="4mu-IJ-fSD"/>
                 <constraint firstItem="jtT-bO-qp8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5iM-bz-7Ja"/>
                 <constraint firstAttribute="trailing" secondItem="90P-85-Q9S" secondAttribute="trailing" constant="15" id="6k5-Zd-b43"/>
@@ -227,11 +234,12 @@
                 <constraint firstAttribute="trailing" secondItem="JaW-8x-FWP" secondAttribute="trailing" constant="15" id="Ajh-Pr-Guj"/>
                 <constraint firstItem="ULs-uF-LuD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GJN-h7-ZwU"/>
                 <constraint firstItem="vT9-Rt-gdv" firstAttribute="top" secondItem="90P-85-Q9S" secondAttribute="bottom" constant="30" id="HSE-0Y-AJ1"/>
+                <constraint firstItem="V3e-fl-UMk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HYZ-1W-Fep"/>
                 <constraint firstItem="jtT-bO-qp8" firstAttribute="top" secondItem="vT9-Rt-gdv" secondAttribute="bottom" constant="20" id="Jh4-sH-Ml2"/>
                 <constraint firstAttribute="trailing" secondItem="jtT-bO-qp8" secondAttribute="trailing" id="LeF-D5-1CP"/>
                 <constraint firstItem="ULs-uF-LuD" firstAttribute="top" secondItem="ndz-8b-mLf" secondAttribute="bottom" id="Lrg-AT-xvU"/>
                 <constraint firstAttribute="trailing" secondItem="ULs-uF-LuD" secondAttribute="trailing" id="VCT-jS-gRI"/>
-                <constraint firstItem="5lh-gw-6xO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="Vog-hM-ctd"/>
+                <constraint firstItem="5lh-gw-6xO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Vog-hM-ctd"/>
                 <constraint firstItem="90P-85-Q9S" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="27" id="YKa-PY-Fle"/>
                 <constraint firstItem="JaW-8x-FWP" firstAttribute="top" secondItem="vT9-Rt-gdv" secondAttribute="top" id="bFO-oa-p9k"/>
                 <constraint firstItem="awp-2l-YYA" firstAttribute="centerY" secondItem="5lh-gw-6xO" secondAttribute="centerY" id="f7H-Bo-gSX"/>
@@ -239,8 +247,10 @@
                 <constraint firstItem="ndz-8b-mLf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gCM-W2-Jyf"/>
                 <constraint firstAttribute="trailing" secondItem="ndz-8b-mLf" secondAttribute="trailing" id="jhv-vJ-bsi"/>
                 <constraint firstItem="JaW-8x-FWP" firstAttribute="leading" secondItem="vT9-Rt-gdv" secondAttribute="trailing" constant="15" id="n3O-nX-LyT"/>
+                <constraint firstItem="V3e-fl-UMk" firstAttribute="top" secondItem="jtT-bO-qp8" secondAttribute="bottom" id="sIM-gD-yc4"/>
                 <constraint firstAttribute="bottom" secondItem="ULs-uF-LuD" secondAttribute="bottom" id="u0f-3x-4uz"/>
                 <constraint firstItem="ndz-8b-mLf" firstAttribute="top" secondItem="90P-85-Q9S" secondAttribute="bottom" constant="10" id="u2R-GN-NT8"/>
+                <constraint firstAttribute="bottom" secondItem="V3e-fl-UMk" secondAttribute="bottom" id="yGS-U5-2XL"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
