@@ -261,7 +261,7 @@
 - (void)setLocalizedStrings{
     [btnPopular setTitle:[LocalizedString(@"popular") toUpper]];
     [btnLatest setTitle:[LocalizedString(@"latest") toUpper]];
-    [btnMap setTitle:LocalizedString(@"map")];
+    [btnMap setTitle:[LocalizedString(@"map") toUpper]];
     if(!coordinates)
        	[btnPickHood setTitle:LocalizedString(@"choose-hood")];
     [btnCreateIssue setTitle:[LocalizedString(@"idea") toUpper]];
