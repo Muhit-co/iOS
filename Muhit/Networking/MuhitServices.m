@@ -35,9 +35,10 @@ const int itemPerPage = 10;
     [SERVICES postRequestWithMethod:SERVICE_LOGIN requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
-+ (void)loginWithFacebook:(NSString*)accessToken handler:(GeneralResponseHandler)handler{
++ (void)loginWithFacebook:(NSString*)accessToken fbId:(NSString*)fbId handler:(GeneralResponseHandler)handler{
     NSDictionary *requestDict = @{
-                                  KEY_ACCESS_TOKEN : accessToken
+                                  KEY_FB_ACCESS_TOKEN : accessToken,
+                                  KEY_FB_ID:fbId
                                   };
     
     [SERVICES postRequestWithMethod:SERVICE_LOGIN_WITH_FACEBOOK requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
@@ -50,15 +51,19 @@ const int itemPerPage = 10;
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
-+ (void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName password:(NSString *)password activeHood:(NSString *)activeHood picture:(NSString *)picture handler:(GeneralResponseHandler)handler{
++ (void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName password:(NSString *)password activeHood:(NSString *)activeHood photo:(NSString *)photo handler:(GeneralResponseHandler)handler{
     
-    NSDictionary *requestDict = @{
-                                  KEY_FIRSTNAME : firstName,
-                                  KEY_LASTNAME : lastName,
-                                  KEY_PASSWORD : password,
-                                  KEY_ACTIVE_HOOD : activeHood,
-                                  KEY_PICTURE : picture,
-                                  };
+    NSMutableDictionary *requestDict = [NSMutableDictionary dictionaryWithDictionary:
+                                        @{
+                                          KEY_FIRSTNAME : firstName,
+                                          KEY_LASTNAME : lastName,
+                                          KEY_PASSWORD : password,
+                                          KEY_ACTIVE_HOOD : activeHood
+                                          }];
+    
+    if (photo) {
+        [requestDict setObject:photo forKey:KEY_PICTURE];
+    }
     
     [SERVICES postRequestWithMethod:SERVICE_UPDATE_PROFILE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
@@ -71,6 +76,7 @@ const int itemPerPage = 10;
 }
 
 + (void)addOrUpdateIssue:(NSString*)title problem:(NSString*)problem solution:(NSString*)solution location:(NSString*)location tags:(NSArray*)tags images:(NSArray*)images isAnonymous:(BOOL)isAnonymous coordinate:(NSString *)coordinate issueId:(NSString *)issueId handler:(GeneralResponseHandler)handler{
+    
     NSMutableDictionary *requestDict = [NSMutableDictionary dictionaryWithDictionary:
                                         @{
                                           KEY_ISSUE_TITLE : title,
@@ -97,7 +103,7 @@ const int itemPerPage = 10;
         [SERVICES postRequestWithMethod:SERVICE_ADD_ISSUE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
     }
     else{
-        NSString *url = [NSString stringWithFormat:@"%@/%@/%@",SERVICE_DELETE_ISSUE,[UD objectForKey:UD_USER_ID],issueId];
+        NSString *url = [NSString stringWithFormat:@"%@/%@/%@",SERVICE_DELETE_ISSUE,[MT userId],issueId];
         [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:^(NSDictionary *response, NSError *error) {
             if(!error){
                 [SERVICES postRequestWithMethod:SERVICE_ADD_ISSUE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
@@ -106,9 +112,9 @@ const int itemPerPage = 10;
     }
 }
 
-+(void)getAnnouncements:(int)from handler:(GeneralResponseHandler)handler{
++(void)getAnnouncements:(NSString *)userId handler:(GeneralResponseHandler)handler{
     
-    NSString *url = [NSString stringWithFormat:@"%@/%@/%d/%d",SERVICE_GET_ANNOUNCEMENTS,[UD objectForKey:UD_HOOD_ID],from,itemPerPage];
+    NSString *url = [NSString stringWithFormat:@"user/%@/announcements",userId];
     
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
@@ -141,6 +147,13 @@ const int itemPerPage = 10;
     
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
+
++ (void)getHeadman:(NSString *)userId handler:(GeneralResponseHandler)handler{
+    NSString *url = [NSString stringWithFormat:@"user/%@/headman",userId];
+    
+    [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
+}
+
 
 
 /*********************************************************/
@@ -179,8 +192,8 @@ const int itemPerPage = 10;
     
     NSString *url = [NSString stringWithFormat:@"%@/api/%@",[MT serviceURL],method];
     
-    if([UD objectForKey:UD_API_TOKEN] && [UD objectForKey:UD_USER_ID]){
-        url = [NSString stringWithFormat:@"%@?api_token=%@&user_id=%@",url,[UD objectForKey:UD_API_TOKEN],[UD objectForKey:UD_USER_ID]];
+    if([UD objectForKey:UD_API_TOKEN] && [MT userId]){
+        url = [NSString stringWithFormat:@"%@?api_token=%@&user_id=%@",url,[UD objectForKey:UD_API_TOKEN],[MT userId]];
     }
     
     [SERVICE_HANDLER getRequest: url
@@ -202,9 +215,9 @@ const int itemPerPage = 10;
     [reqDict setObject:VAL_CLIENT_ID forKey: KEY_CLIENT_ID];
     [reqDict setObject:VAL_CLIENT_SECRET forKey: KEY_CLIENT_SECRET];
     
-    if([UD objectForKey:UD_API_TOKEN] && [UD objectForKey:UD_USER_ID]){
+    if([UD objectForKey:UD_API_TOKEN] && [MT userId]){
         [reqDict setObject:[UD objectForKey:UD_API_TOKEN] forKey: KEY_API_TOKEN];
-        [reqDict setObject:[UD objectForKey:UD_USER_ID] forKey: KEY_USER_ID];
+        [reqDict setObject:[MT userId] forKey: KEY_USER_ID];
     }
     
     [SERVICE_HANDLER postRequest: url

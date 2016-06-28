@@ -13,7 +13,6 @@
     IBOutlet UITableView *tblAnnouncements;
     IBOutlet UIButton *btnMenu;
     NSMutableArray *arrAnnouncements;
-    int lastIndex;
     BOOL fromMenu;
 }
 @end
@@ -39,11 +38,7 @@
         negativeSpacer.width = -12;
         [[self navigationItem] setLeftBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, barBtnMenu, nil] animated:NO];
     }
-    
-    arrAnnouncements = [[NSMutableArray alloc] init];
-    //    [self getAnnouncements];
-    [arrAnnouncements addObjectsFromArray:[self arrTestData]];
-    [tblAnnouncements reloadData];
+    [self getAnnouncements];
 }
 
 -(void)viewDidLayoutSubviews{
@@ -80,34 +75,6 @@
                                    @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir.",
                                    @"headman":@"Ali Kemal",
                                    @"hood":@"Altunizade Mahallesi"
-                                   },
-                               @{
-                                   @"title":@"Hola",
-                                   @"created_at": @"2015-06-14 10:00:00",
-                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir.",
-                                   @"headman":@"Ali Kemal",
-                                   @"hood":@"Altunizade Mahallesi"
-                                   },
-                               @{
-                                   @"title":@"Hola",
-                                   @"created_at": @"2015-06-14 10:00:00",
-                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir.",
-                                   @"headman":@"Ali Kemal",
-                                   @"hood":@"Altunizade Mahallesi"
-                                   },
-                               @{
-                                   @"title":@"Hola",
-                                   @"created_at": @"2015-06-14 10:00:00",
-                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir.",
-                                   @"headman":@"Ali Kemal",
-                                   @"hood":@"Altunizade Mahallesi"
-                                   },
-                               @{
-                                   @"title":@"Hola",
-                                   @"created_at": @"2015-06-14 10:00:00",
-                                   @"content":@"Sevgili Fenerbahçeliler, 16.04.2015 tarihinde Saat 09.00-14.00 saatleri arasında Kılıç Sokak'ta elektrik kesilecektir.",
-                                   @"headman":@"Ali Kemal",
-                                   @"hood":@"Altunizade Mahallesi"
                                    }];
     
     return arrSupporteds;
@@ -115,34 +82,21 @@
 
 - (void)getAnnouncements{
     ADD_HUD
-    lastIndex = (int)arrAnnouncements.count;
-    [SERVICES getAnnouncements:lastIndex handler:^(NSDictionary *response, NSError *error) {
+    [SERVICES getAnnouncements:[MT userId] handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
+            REMOVE_HUD
         }
         else{
             NSLog(@"getAnnouncementsResponse:%@",response);
-            //            [arrAnnouncements addObjectsFromArray:response[@"data"]];
-            [arrAnnouncements addObjectsFromArray:[self arrTestData]];
+            arrAnnouncements = response[@"announcements"];
             [tblAnnouncements reloadData];
             REMOVE_HUD
-            
-            [tblAnnouncements scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:lastIndex inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-            
         }
-        REMOVE_HUD
     }];
 }
 
 #pragma mark - UITableView Delegates
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    [cell setBackgroundColor:[UIColor clearColor]];
-    
-    if ([indexPath isEqual:[NSIndexPath indexPathForRow:[self tableView:tblAnnouncements numberOfRowsInSection:0]-1 inSection:0]]){
-        [self getAnnouncements];
-    }
-}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     float textHeight = [UF heightOfTextForString:arrAnnouncements[indexPath.row][@"content"] andFont:[UIFont fontWithName:@"SourceSansPro-It" size:17.0] maxSize:CGSizeMake(self.view.width-100, 200)];

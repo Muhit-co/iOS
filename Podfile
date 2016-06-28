@@ -11,10 +11,9 @@ target 'Muhit' do
     pod 'AFNetworking', '~> 3.1'
     pod 'SDWebImage', '~> 3.8'
     pod 'ionicons', '~> 2.0'
-    pod 'FBSDKCoreKit', '~> 4.12'
-    pod 'FBSDKLoginKit', '~> 4.12'
+    pod 'FBSDKCoreKit', '~> 4.13'
+    pod 'FBSDKLoginKit', '~> 4.13'
     pod 'GoogleMaps'
-    pod 'Raven'
     pod 'Fabric', '~> 1.6'
     pod 'Crashlytics', '~> 3.7'
 end

@@ -15,12 +15,14 @@
     IBOutlet UIPickerView *pickerHood;
     IBOutlet UIImageView *imgDownIcon,*imgProfile;
     IBOutlet UIView *viewHood;
+    IBOutlet NSLayoutConstraint *constContainerHeight;
     NSArray *arrHoods;
     NSString *fullGeoCode;
     KeyboardControls *keyboardControl;
     UIActionSheet *actionSheet;
     UIImagePickerController * imgPicker;
     NSDictionary *profileDict;
+    UIImage *imageForProfile;
 }
 
 @end
@@ -37,23 +39,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [btnSave setSize:CGSizeMake(70, 36)];
+    UIBarButtonItem *barBtnSave = [[UIBarButtonItem alloc] initWithCustomView:btnSave];
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    negativeSpacer.width = -12;
+    [[self navigationItem] setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, barBtnSave, nil] animated:NO];
+    
     [self adjustUI];
     
     keyboardControl = [[KeyboardControls alloc] initWithFields:@[txtName, txtSurname, txtEmail,txtPassword]];
     [keyboardControl setDelegate:self];
     
     [self setDetailsWithDictionary:profileDict];
-    
     [NC addObserver:self selector:@selector(geoCodePicked:) name:NC_GEOCODE_PICKED object:nil];
 }
 
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    [btnSave setSize:CGSizeMake(70, 36)];
-    UIBarButtonItem *barBtnSave = [[UIBarButtonItem alloc] initWithCustomView:btnSave];
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    negativeSpacer.width = -12;
-    [[self navigationItem] setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, barBtnSave, nil] animated:NO];
+    constContainerHeight.constant =  self.view.bounds.size.height;
     [self.view layoutIfNeeded];
 }
 
@@ -96,8 +100,8 @@
 
 -(IBAction)actSave:(id)sender{
     ADD_HUD
-    NSString * picture = [UIImagePNGRepresentation(imgProfile.image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    [MuhitServices updateProfile:txtName.text lastName:txtSurname.text password:txtPassword.text activeHood:fullGeoCode picture:picture handler:^(NSDictionary *response, NSError *error) {
+    NSString * base64Photo = [UIImagePNGRepresentation(imageForProfile) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    [SERVICES updateProfile:txtName.text lastName:txtSurname.text password:txtPassword.text activeHood:fullGeoCode photo:base64Photo handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
             REMOVE_HUD
@@ -114,7 +118,7 @@
 
 -(IBAction)actEditPhoto:(id)sender{
     if (!actionSheet) {
-        actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:LocalizedString(@"İptal") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"Fotoğraf Çek"),LocalizedString(@"Kütüphaneden Seç"),nil];
+        actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:LocalizedString(@"cancel") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"take-photo"),LocalizedString(@"pick-from-library"),nil];
     }
     
     [actionSheet showInView:self.view];
@@ -122,12 +126,8 @@
 }
 
 -(IBAction)actRemovePhoto:(id)sender{
-    if (!actionSheet) {
-        actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:LocalizedString(@"İptal") destructiveButtonTitle:nil otherButtonTitles:LocalizedString(@"Fotoğraf Çek"),LocalizedString(@"Kütüphaneden Seç"),nil];
-    }
-    
-    [actionSheet showInView:self.view];
-    [actionSheet reloadInputViews];
+    [imgProfile setImage:PLACEHOLDER_IMAGE];
+    imageForProfile = nil;
 }
 
 #pragma mark - UIImagePickerViewController
@@ -136,6 +136,7 @@
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [imgProfile setImage:image];
+    imageForProfile = image;
     [imgPicker dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -167,8 +168,7 @@
     
 }
 
-#pragma mark -
-#pragma mark Keyboard Controls Delegate
+#pragma mark - Keyboard Controls Delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     
@@ -193,7 +193,7 @@
 
 - (void)setLocalizedStrings{
     [self setTitle:LocalizedString(@"edit-profile")];
-    [btnSave setTitle:LocalizedString(@"save")];
+    [btnSave setTitle:[LocalizedString(@"save") toUpper]];
     [lblName setText:LocalizedString(@"name")];
     [lblSurname setText:LocalizedString(@"surname")];
     [lblEmail setText:LocalizedString(@"email")];

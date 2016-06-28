@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -31,6 +31,7 @@
                 <outlet property="btnHood" destination="wDz-LY-zAy" id="DCJ-dr-Nmk"/>
                 <outlet property="btnRemovePhoto" destination="hFw-Lq-xIv" id="Hl6-jh-Lc3"/>
                 <outlet property="btnSave" destination="WzQ-7s-0fh" id="03E-Xn-pvb"/>
+                <outlet property="constContainerHeight" destination="QVp-go-lel" id="eon-ir-yf7"/>
                 <outlet property="imgProfile" destination="7wl-EY-cxj" id="Csn-JJ-EoW"/>
                 <outlet property="lblEmail" destination="AiS-HH-c1Z" id="tqO-cI-HMc"/>
                 <outlet property="lblHood" destination="Glv-UX-ih7" id="5iW-9p-shc"/>
@@ -56,10 +57,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KjY-FY-oes">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="660"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="390"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ad" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpU-bU-CSe" userLabel="lblName">
-                                    <rect key="frame" x="20" y="20" width="270" height="18"/>
+                                    <rect key="frame" x="20" y="10" width="270" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="18" id="6xW-Mi-LGJ">
                                             <variation key="heightClass=regular-widthClass=compact" constant="25"/>
@@ -69,8 +70,8 @@
                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Yazın.." minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5gZ-Ff-CFr" userLabel="txtName" customClass="MTTextField">
-                                    <rect key="frame" x="20" y="43" width="270" height="40"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5gZ-Ff-CFr" userLabel="txtName" customClass="MTTextField">
+                                    <rect key="frame" x="20" y="33" width="270" height="40"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="zam-H2-JQ9">
@@ -85,7 +86,7 @@
                                     </connections>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soyad" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyf-Wh-7NG" userLabel="lblSurname">
-                                    <rect key="frame" x="310" y="20" width="270" height="18"/>
+                                    <rect key="frame" x="310" y="10" width="270" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="18" id="sDM-rc-RNH">
                                             <variation key="heightClass=regular-widthClass=compact" constant="25"/>
@@ -95,8 +96,8 @@
                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Yazın.." minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="M6b-JT-iAB" userLabel="txtSurname" customClass="MTTextField">
-                                    <rect key="frame" x="310" y="43" width="270" height="40"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="M6b-JT-iAB" userLabel="txtSurname" customClass="MTTextField">
+                                    <rect key="frame" x="310" y="33" width="270" height="40"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="e45-1t-ISV">
@@ -111,7 +112,7 @@
                                     </connections>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-posta adresi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AiS-HH-c1Z" userLabel="lblEmail">
-                                    <rect key="frame" x="20" y="88" width="560" height="18"/>
+                                    <rect key="frame" x="20" y="78" width="560" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="18" id="i8J-1s-QbW">
                                             <variation key="heightClass=regular-widthClass=compact" constant="25"/>
@@ -121,8 +122,8 @@
                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Yazın.." minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xP8-N2-eQn" userLabel="txtEmail" customClass="MTTextField">
-                                    <rect key="frame" x="20" y="111" width="560" height="40"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xP8-N2-eQn" userLabel="txtEmail" customClass="MTTextField">
+                                    <rect key="frame" x="20" y="101" width="560" height="40"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="8i8-p5-mfZ">
@@ -137,7 +138,7 @@
                                     </connections>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Şifre" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cub-Kt-vdA" userLabel="lblPass">
-                                    <rect key="frame" x="20" y="156" width="560" height="18"/>
+                                    <rect key="frame" x="20" y="146" width="560" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="18" id="89l-vS-b5b">
                                             <variation key="heightClass=regular-widthClass=compact" constant="25"/>
@@ -147,8 +148,8 @@
                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Yazın.." minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JKL-8c-FQO" userLabel="txtPass" customClass="MTTextField">
-                                    <rect key="frame" x="20" y="179" width="560" height="40"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JKL-8c-FQO" userLabel="txtPass" customClass="MTTextField">
+                                    <rect key="frame" x="20" y="169" width="560" height="40"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="6lg-LW-ziI">
@@ -163,7 +164,7 @@
                                     </connections>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mahalle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Glv-UX-ih7" userLabel="lblStreet">
-                                    <rect key="frame" x="20" y="224" width="560" height="18"/>
+                                    <rect key="frame" x="20" y="214" width="560" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="18" id="e8S-TL-ND9">
                                             <variation key="heightClass=regular-widthClass=compact" constant="25"/>
@@ -174,7 +175,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJ7-o9-uOs" userLabel="viewHood">
-                                    <rect key="frame" x="20" y="247" width="560" height="40"/>
+                                    <rect key="frame" x="20" y="237" width="560" height="40"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDz-LY-zAy" userLabel="btnHood">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
@@ -199,7 +200,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gmj-Iy-cUk" userLabel="viewProfile">
-                                    <rect key="frame" x="20" y="297" width="560" height="85"/>
+                                    <rect key="frame" x="20" y="287" width="560" height="85"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Değiştir" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAg-AF-cBq" userLabel="lblPicture">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="20"/>
@@ -213,20 +214,16 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7wl-EY-cxj" userLabel="imgProfile">
                                             <rect key="frame" x="0.0" y="25" width="60" height="60"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="60" id="Ic2-qp-BaR">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="90"/>
-                                                </constraint>
-                                                <constraint firstAttribute="width" constant="60" id="f2G-IJ-jiu">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="90"/>
-                                                </constraint>
+                                                <constraint firstAttribute="height" constant="60" id="Ic2-qp-BaR"/>
+                                                <constraint firstAttribute="width" constant="60" id="f2G-IJ-jiu"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8MU-YP-sgK" userLabel="btnEditPhoto">
-                                            <rect key="frame" x="80" y="40" width="100" height="30"/>
+                                            <rect key="frame" x="75" y="40" width="85" height="30"/>
                                             <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="0ex-Xl-hXA"/>
-                                                <constraint firstAttribute="width" constant="100" id="tne-Da-3Wo"/>
+                                                <constraint firstAttribute="width" constant="85" id="tne-Da-3Wo"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
                                             <state key="normal" title="DÜZENLE">
@@ -237,10 +234,10 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFw-Lq-xIv" userLabel="btnRemovePhoto">
-                                            <rect key="frame" x="200" y="40" width="100" height="30"/>
+                                            <rect key="frame" x="175" y="40" width="85" height="30"/>
                                             <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="2nB-vn-est"/>
+                                                <constraint firstAttribute="width" constant="85" id="2nB-vn-est"/>
                                                 <constraint firstAttribute="height" constant="30" id="bmB-7p-ykn"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
@@ -261,9 +258,9 @@
                                         <constraint firstItem="ZAg-AF-cBq" firstAttribute="top" secondItem="Gmj-Iy-cUk" secondAttribute="top" id="a69-nE-t5J"/>
                                         <constraint firstAttribute="bottom" secondItem="7wl-EY-cxj" secondAttribute="bottom" id="b6z-T7-7uK"/>
                                         <constraint firstAttribute="height" constant="85" id="cFl-P2-pkK"/>
-                                        <constraint firstItem="8MU-YP-sgK" firstAttribute="leading" secondItem="7wl-EY-cxj" secondAttribute="trailing" constant="20" id="ivX-H8-avC"/>
+                                        <constraint firstItem="8MU-YP-sgK" firstAttribute="leading" secondItem="7wl-EY-cxj" secondAttribute="trailing" constant="15" id="ivX-H8-avC"/>
                                         <constraint firstItem="hFw-Lq-xIv" firstAttribute="top" secondItem="8MU-YP-sgK" secondAttribute="top" id="rkR-Kz-lZo"/>
-                                        <constraint firstItem="hFw-Lq-xIv" firstAttribute="leading" secondItem="8MU-YP-sgK" secondAttribute="trailing" constant="20" id="tcI-rl-LBl"/>
+                                        <constraint firstItem="hFw-Lq-xIv" firstAttribute="leading" secondItem="8MU-YP-sgK" secondAttribute="trailing" constant="15" id="tcI-rl-LBl"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -281,14 +278,14 @@
                                 <constraint firstItem="5gZ-Ff-CFr" firstAttribute="top" secondItem="zpU-bU-CSe" secondAttribute="bottom" constant="5" id="One-WU-tcj"/>
                                 <constraint firstAttribute="trailing" secondItem="JKL-8c-FQO" secondAttribute="trailing" constant="20" id="Ors-Rs-qPa"/>
                                 <constraint firstItem="Glv-UX-ih7" firstAttribute="leading" secondItem="KjY-FY-oes" secondAttribute="leading" constant="20" id="Pqa-se-ycI"/>
-                                <constraint firstAttribute="height" constant="660" id="QVp-go-lel">
+                                <constraint firstAttribute="height" constant="390" id="QVp-go-lel">
                                     <variation key="heightClass=regular-widthClass=compact" constant="635"/>
                                 </constraint>
                                 <constraint firstItem="kyf-Wh-7NG" firstAttribute="width" secondItem="zpU-bU-CSe" secondAttribute="width" id="TEX-s1-iBa"/>
                                 <constraint firstItem="xP8-N2-eQn" firstAttribute="leading" secondItem="KjY-FY-oes" secondAttribute="leading" constant="20" id="TGs-mW-sWZ"/>
                                 <constraint firstAttribute="trailing" secondItem="RJ7-o9-uOs" secondAttribute="trailing" constant="20" id="UaT-gi-JfK"/>
                                 <constraint firstAttribute="trailing" secondItem="Gmj-Iy-cUk" secondAttribute="trailing" constant="20" id="Xjg-Y6-scc"/>
-                                <constraint firstItem="zpU-bU-CSe" firstAttribute="top" secondItem="KjY-FY-oes" secondAttribute="top" constant="20" id="Y8b-YH-Xlu"/>
+                                <constraint firstItem="zpU-bU-CSe" firstAttribute="top" secondItem="KjY-FY-oes" secondAttribute="top" constant="10" id="Y8b-YH-Xlu"/>
                                 <constraint firstAttribute="trailing" secondItem="kyf-Wh-7NG" secondAttribute="trailing" constant="20" id="aB2-ht-jWy"/>
                                 <constraint firstItem="cub-Kt-vdA" firstAttribute="top" secondItem="xP8-N2-eQn" secondAttribute="bottom" constant="5" id="aGv-j4-moI"/>
                                 <constraint firstAttribute="trailing" secondItem="cub-Kt-vdA" secondAttribute="trailing" constant="20" id="cBn-LY-YMz"/>
@@ -301,7 +298,7 @@
                                 <constraint firstItem="M6b-JT-iAB" firstAttribute="width" secondItem="kyf-Wh-7NG" secondAttribute="width" id="mqU-fd-zGx"/>
                                 <constraint firstItem="5gZ-Ff-CFr" firstAttribute="leading" secondItem="KjY-FY-oes" secondAttribute="leading" constant="20" id="nIX-bm-Xjt"/>
                                 <constraint firstItem="M6b-JT-iAB" firstAttribute="top" secondItem="kyf-Wh-7NG" secondAttribute="bottom" constant="5" id="rUl-0y-17X"/>
-                                <constraint firstItem="kyf-Wh-7NG" firstAttribute="top" secondItem="KjY-FY-oes" secondAttribute="top" constant="20" id="rmL-eI-2DL"/>
+                                <constraint firstItem="kyf-Wh-7NG" firstAttribute="top" secondItem="KjY-FY-oes" secondAttribute="top" constant="10" id="rmL-eI-2DL"/>
                                 <constraint firstItem="JKL-8c-FQO" firstAttribute="leading" secondItem="KjY-FY-oes" secondAttribute="leading" constant="20" id="vC5-fb-mGR"/>
                                 <constraint firstItem="xP8-N2-eQn" firstAttribute="top" secondItem="AiS-HH-c1Z" secondAttribute="bottom" constant="5" id="vhj-JA-6wj"/>
                                 <constraint firstAttribute="trailing" secondItem="M6b-JT-iAB" secondAttribute="trailing" constant="20" id="zQs-Kg-67W"/>
@@ -333,7 +330,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <color key="backgroundColor" red="0.14117647059999999" green="0.33725490200000002" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
-            <state key="normal" title="KAYIT OL">
+            <state key="normal" title="KAYDET">
                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
             </state>

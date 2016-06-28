@@ -41,6 +41,7 @@
 		4B77A5741D1AC87F00F5B6B2 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B77A5731D1AC87F00F5B6B2 /* LocationManager.m */; };
 		4B80C41C1D12D53500D39F02 /* IdeasVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B80C41A1D12D53500D39F02 /* IdeasVC.m */; };
 		4B80C41D1D12D53500D39F02 /* IdeasVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B80C41B1D12D53500D39F02 /* IdeasVC.xib */; };
+		4B8A073D1D229C7700C1470C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B8A073C1D229C7700C1470C /* LaunchScreen.storyboard */; };
 		4B9F04EF1B1D8A6C009CB713 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F04EE1B1D8A6C009CB713 /* Podfile */; };
 		4B9F04F31B1D9415009CB713 /* lang-en.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F04F01B1D9415009CB713 /* lang-en.plist */; };
 		4B9F04F41B1D9415009CB713 /* lang-tr.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F04F11B1D9415009CB713 /* lang-tr.plist */; };
@@ -71,7 +72,6 @@
 		4BC583811B1C4D4800180B3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC583801B1C4D4800180B3D /* main.m */; };
 		4BC583841B1C4D4800180B3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC583831B1C4D4800180B3D /* AppDelegate.m */; };
 		4BC5838C1B1C4D4800180B3D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BC5838B1B1C4D4800180B3D /* Images.xcassets */; };
-		4BC5838F1B1C4D4800180B3D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BC5838D1B1C4D4800180B3D /* LaunchScreen.xib */; };
 		4BC9EE981B1EF41800441353 /* SignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC9EE961B1EF41800441353 /* SignupVC.m */; };
 		4BC9EE991B1EF41800441353 /* SignupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BC9EE971B1EF41800441353 /* SignupVC.xib */; };
 		4BC9EE9D1B1EF43300441353 /* ForgotPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC9EE9B1B1EF43300441353 /* ForgotPasswordVC.m */; };
@@ -127,7 +127,6 @@
 		4B21696D1B21D5C500DEBA01 /* SearchVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchVC.xib; sourceTree = "<group>"; };
 		4B2169701B247C1700DEBA01 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4B2169721B24830600DEBA01 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		4B5D1CB61B666FDE007ED35B /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4B6FF5A61B3F0D0500F3ED8A /* TagSelectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagSelectorVC.h; sourceTree = "<group>"; };
 		4B6FF5A71B3F0D0500F3ED8A /* TagSelectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagSelectorVC.m; sourceTree = "<group>"; };
 		4B6FF5A81B3F0D0500F3ED8A /* TagSelectorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagSelectorVC.xib; sourceTree = "<group>"; };
@@ -146,6 +145,7 @@
 		4B80C4191D12D53500D39F02 /* IdeasVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeasVC.h; sourceTree = "<group>"; };
 		4B80C41A1D12D53500D39F02 /* IdeasVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdeasVC.m; sourceTree = "<group>"; };
 		4B80C41B1D12D53500D39F02 /* IdeasVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IdeasVC.xib; sourceTree = "<group>"; };
+		4B8A073C1D229C7700C1470C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B9F04EE1B1D8A6C009CB713 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = ../../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4B9F04F01B1D9415009CB713 /* lang-en.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "lang-en.plist"; sourceTree = "<group>"; };
 		4B9F04F11B1D9415009CB713 /* lang-tr.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "lang-tr.plist"; sourceTree = "<group>"; };
@@ -194,7 +194,6 @@
 		4BC583821B1C4D4800180B3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4BC583831B1C4D4800180B3D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4BC5838B1B1C4D4800180B3D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Assets/Images.xcassets; sourceTree = "<group>"; };
-		4BC5838E1B1C4D4800180B3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4BC583991B1C4D4800180B3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BC5839A1B1C4D4800180B3D /* MuhitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MuhitTests.m; sourceTree = "<group>"; };
 		4BC9EE951B1EF41800441353 /* SignupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupVC.h; sourceTree = "<group>"; };
@@ -473,7 +472,6 @@
 		4BC5837D1B1C4D4800180B3D /* Muhit */ = {
 			isa = PBXGroup;
 			children = (
-				4BC5838D1B1C4D4800180B3D /* LaunchScreen.xib */,
 				4BC583821B1C4D4800180B3D /* AppDelegate.h */,
 				4BC583831B1C4D4800180B3D /* AppDelegate.m */,
 				4BF7F8FB1B1CF31100A35FD1 /* ViewControllers */,
@@ -483,6 +481,7 @@
 				4BF7F9071B1CF3B700A35FD1 /* Networking */,
 				4BDE9F0F1D0E8F00005431BA /* Assets */,
 				4BC5837E1B1C4D4800180B3D /* Supporting Files */,
+				4B8A073C1D229C7700C1470C /* LaunchScreen.storyboard */,
 			);
 			path = Muhit;
 			sourceTree = "<group>";
@@ -785,9 +784,9 @@
 				4B2169581B21D48C00DEBA01 /* ProfileVC.xib in Resources */,
 				4BC9EE991B1EF41800441353 /* SignupVC.xib in Resources */,
 				4B21693A1B218E3700DEBA01 /* AnnouncementCell.xib in Resources */,
-				4BC5838F1B1C4D4800180B3D /* LaunchScreen.xib in Resources */,
 				4BD654E01B32035100343C16 /* PlacesView.xib in Resources */,
 				4B6FF5AF1B3F0D5B00F3ED8A /* TagCell.xib in Resources */,
+				4B8A073D1D229C7700C1470C /* LaunchScreen.storyboard in Resources */,
 				4B9F050F1B1D96D7009CB713 /* PresentedRootVC.xib in Resources */,
 				4BDE9F111D0E8F5F005431BA /* SourceSansPro-Semibold-Italic.ttf in Resources */,
 				4B9F053F1B1DE38E009CB713 /* SourceSansPro-Regular.ttf in Resources */,
@@ -921,18 +920,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		4BC5838D1B1C4D4800180B3D /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4BC5838E1B1C4D4800180B3D /* Base */,
-				4B5D1CB61B666FDE007ED35B /* tr */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		4BC5839C1B1C4D4800180B3D /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1020,7 +1007,6 @@
 			baseConfigurationReference = 337E1D8B8459AB7B86DF7213 /* Pods-Muhit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: L Daniel Swakman (5Z7AABK87Z)";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1039,7 +1025,6 @@
 			baseConfigurationReference = 4A96C53F71E5C1549FCD3C74 /* Pods-Muhit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: L Daniel Swakman (5EVA6K9E87)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: L Daniel Swakman (5EVA6K9E87)";
 				ENABLE_BITCODE = NO;
@@ -1096,7 +1081,6 @@
 			baseConfigurationReference = 4A96C53F71E5C1549FCD3C74 /* Pods-Muhit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: L Daniel Swakman (5EVA6K9E87)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: L Daniel Swakman (5EVA6K9E87)";
 				ENABLE_BITCODE = NO;

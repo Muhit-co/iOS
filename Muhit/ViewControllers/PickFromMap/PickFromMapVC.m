@@ -66,7 +66,7 @@
 -(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position{
     pointedCoordinate = position.target;
     
-    [MuhitServices getAddressesWithLocation:pointedCoordinate handler:^(NSDictionary *response, NSError *error) {
+    [SERVICES getAddressesWithLocation:pointedCoordinate handler:^(NSDictionary *response, NSError *error) {
         if (!error) {
             @try {
                 [lblGeoCode1 setText:[UF getHoodFromGMSAddress:response]];

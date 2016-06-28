@@ -46,12 +46,8 @@
     }
     
     [self adjustUI];
-    [self test];
-}
-
--(void)viewDidLayoutSubviews{
-    [super viewDidLayoutSubviews];
-    
+    //    [self test];
+    [self getHeadman];
 }
 
 -(void)adjustUI{
@@ -93,6 +89,20 @@
                           };
     
     [self setDetailsWithDictionary:dict];
+}
+
+-(void)getHeadman{
+    ADD_HUD
+    [SERVICES getHeadman:[MT userId] handler:^(NSDictionary *response, NSError *error) {
+        if (error) {
+            REMOVE_HUD
+            SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
+        }
+        else{
+            [self setDetailsWithDictionary:response];
+            REMOVE_HUD
+        }
+    }];
 }
 
 -(void)setDetailsWithDictionary:(NSDictionary*)dict{

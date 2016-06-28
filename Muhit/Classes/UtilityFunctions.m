@@ -886,6 +886,8 @@
     else{
         [UD setObject:nil forKey:UD_HOOD_ID];
     }
+    
+    [MT setUserId: details[USER][@"id"]];
 }
 
 +(NSString*)urlEscapeString:(NSString *)unencodedString

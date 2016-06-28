@@ -204,7 +204,7 @@
     }
     
     ADD_HUD
-    [MuhitServices addOrUpdateIssue:txtTitle.text problem:txtProblem.text solution:txtSolution.text location:issueGeoCode tags:arrTagIds images:arrBase64Photos isAnonymous:btnAnonim.isSelected coordinate:issueCoordinate issueId:issueId handler:^(NSDictionary *response, NSError *error) {
+    [SERVICES addOrUpdateIssue:txtTitle.text problem:txtProblem.text solution:txtSolution.text location:issueGeoCode tags:arrTagIds images:arrBase64Photos isAnonymous:btnAnonim.isSelected coordinate:issueCoordinate issueId:issueId handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
         }

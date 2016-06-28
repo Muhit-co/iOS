@@ -238,7 +238,7 @@
     if (newLocation) {
         REMOVE_HUD
         [locationManager stopUpdatingLocation];
-        [MuhitServices getAddressesWithLocation:CURRENT_LOCATION handler:^(NSDictionary *response, NSError *error) {
+        [SERVICES getAddressesWithLocation:CURRENT_LOCATION handler:^(NSDictionary *response, NSError *error) {
             if (!error) {
                 @try {
                     coordinates = [NSString stringWithFormat:@"%f, %f",CURRENT_LOCATION.latitude,CURRENT_LOCATION.longitude];

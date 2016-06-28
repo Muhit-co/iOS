@@ -64,10 +64,10 @@
              
              DLog(@"url: %@ : %@",[url lastPathComponent], responseObject);
              NSDictionary *responseDict = (NSDictionary*)responseObject;
-             responseHandler(responseDict[@"content"],nil);
+             responseHandler(responseDict[KEY_CONTENT],nil);
          }
          failure: ^(NSURLSessionDataTask *operation, NSError *error){
-             NSLog(@"errorDesc:%@",error.description);
+             NSLog(@"ERROR DESCRIPTION:%@",error.description);
              [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
              
              if(error && (error.code == -1001 || error.code == -1009 || error.code == -1004)){
@@ -88,8 +88,9 @@
              }
              else{
                  if ([NSJSONSerialization JSONObjectWithData: error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil]) {
-                     NSDictionary *dictError = @{@"error":[NSJSONSerialization JSONObjectWithData: error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil]};
-                     responseHandler(dictError,error);
+                     NSDictionary *dictError = [NSJSONSerialization JSONObjectWithData: error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil];
+                     NSLog(@"ERROR BODY:%@",dictError);
+                     responseHandler(@{KEY_ERROR:@{KEY_MESSAGE:dictError[KEY_CONTENT][KEY_MESSAGE]}},error);
                  }
                  else{
                      responseHandler(@{KEY_ERROR:@{KEY_MESSAGE:error.localizedDescription}},error);
@@ -120,12 +121,11 @@
               
               DLog(@"url: %@ : %@",[url lastPathComponent], responseObject);
               NSDictionary *responseDict = (NSDictionary*)responseObject;
-              responseHandler(responseDict[@"content"],nil);
+              responseHandler(responseDict[KEY_CONTENT],nil);
           }
           failure: ^(NSURLSessionDataTask *operation, NSError *error){
               
-              NSLog(@"errorCode:%@",error.description);
-              
+              NSLog(@"ERROR DESCRIPTION:%@",error.description);
               [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
               
               if(error && (error.code == -1001 || error.code == -1009 || error.code == -1004)){
@@ -147,8 +147,9 @@
               }
               else{
                   if ([NSJSONSerialization JSONObjectWithData: error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil]) {
-                      NSDictionary *dictError = @{@"error":[NSJSONSerialization JSONObjectWithData: error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil]};
-                      responseHandler(dictError,error);
+                      NSDictionary *dictError = [NSJSONSerialization JSONObjectWithData: error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil];
+                      NSLog(@"ERROR BODY:%@",dictError);
+                      responseHandler(@{KEY_ERROR:@{KEY_MESSAGE:dictError[KEY_CONTENT][KEY_MESSAGE]}},error);
                   }
                   else{
                       responseHandler(@{KEY_ERROR:@{KEY_MESSAGE:error.localizedDescription}},error);

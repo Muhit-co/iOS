@@ -58,14 +58,15 @@
 #define KEY_IS_ANONYMOUS @"is_anonymous"
 #define KEY_CLIENT_ID @"client_id"
 #define KEY_CLIENT_SECRET @"client_secret"
-#define KEY_ACCESS_TOKEN @"access_token"
-#define KEY_REFRESH_TOKEN @"refresh_token"
+#define KEY_FB_ACCESS_TOKEN @"fb_access_token"
+#define KEY_FB_ID @"fb_id"
 #define KEY_ID @"id"
 #define KEY_API_TOKEN @"api_token"
 #define KEY_USER_ID @"user_id"
 
 #define KEY_ERROR @"error"
-#define KEY_MESSAGE @"msg"
+#define KEY_MESSAGE @"message"
+#define KEY_CONTENT @"content"
 
 typedef enum{
     BOOL_FALSE,

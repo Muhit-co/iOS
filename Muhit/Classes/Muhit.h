@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSString *tokenCode;
 @property (nonatomic, retain) MBProgressHUD *HUD;
 @property (nonatomic, retain) NSArray *arrIssueTags;
+@property (nonatomic, retain) NSString *userId;
 
 @property (nonatomic) BOOL isLoggedIn;
 @property (nonatomic) BOOL isPresentingVC;

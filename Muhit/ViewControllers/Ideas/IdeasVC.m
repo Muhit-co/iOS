@@ -49,7 +49,7 @@
 
 -(void)getCreateds{
     ADD_HUD
-    [SERVICES getCreateds:[UD objectForKey:UD_USER_ID] handler:^(NSDictionary *response, NSError *error) {
+    [SERVICES getCreateds:[MT userId] handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             REMOVE_HUD
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);

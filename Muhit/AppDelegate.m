@@ -43,6 +43,7 @@
     
     if ([UD objectForKey:UD_API_TOKEN]) {
         [MT setIsLoggedIn:YES];
+        [MT setUserId: [UD objectForKey:UD_USER_ID]];
     }
     
     [self initNavigationBar];
@@ -118,7 +119,6 @@
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
 }
-#pragma mark -
 
 #pragma mark - Initialize Methods
 
@@ -162,15 +162,7 @@
 }
 
 - (void)showPushNotificationPopup{
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:pushNotification[@"t"]
-                                                    message:pushNotification[@"M"]
-                                                   delegate:self
-                                          cancelButtonTitle:@"İptal"
-                                          otherButtonTitles:@"Detay",nil];
-    [alert setTag:ALERT_PUSH_NOTIFICATION];
-    [alert show];
+    SHOW_ALERT_WITH_TAG_DELEGATE_FIRST_SECOND(pushNotification[@"M"], ALERT_PUSH_NOTIFICATION, self, LocalizedString(@"cancel"),  LocalizedString(@"ok"))
 }
-
 
 @end

@@ -40,7 +40,7 @@
 
 -(void)getProfileInfo{
     ADD_HUD
-    [MuhitServices getProfile:profileId handler:^(NSDictionary *response, NSError *error) {
+    [SERVICES getProfile:profileId handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
             REMOVE_HUD
@@ -69,9 +69,9 @@
     imgUser.layer.cornerRadius = 60;
     imgUser.layer.masksToBounds = YES;
     
-    if (profileId.length==0) {
+    if ([profileId isEqualToString:[MT userId]]) {
         UIButton *btnEdit = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-        [btnEdit setImage:[IonIcons imageWithIcon:ion_edit size:20 color:[UIColor whiteColor]]];
+        [btnEdit setImage:[IonIcons imageWithIcon:ion_edit size:20 color:CLR_WHITE]];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnEdit];
         [btnEdit addTarget:self action:@selector(editProfile) forControlEvents:UIControlEventTouchUpInside];
     }

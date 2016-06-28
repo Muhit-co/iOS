@@ -117,7 +117,7 @@
 }
 
 - (IBAction)actProfile:(id)sender{
-    [ScreenOperations openProfileWithId:[UD objectForKey:UD_USER_ID]];
+    [ScreenOperations openProfileWithId:[MT userId]];
 }
 
 - (IBAction)actLogout:(id)sender{
@@ -137,7 +137,7 @@
 - (void) fetchedFacebookUserInfo:(NSDictionary*)userInfo error:(NSError *)error{
     DLog(@"user: %@",userInfo);
     if (userInfo) {
-        [MuhitServices loginWithFacebook:[FACEBOOK accessToken] handler:^(NSDictionary *response, NSError *error) {
+        [SERVICES loginWithFacebook:[FACEBOOK accessToken] fbId:userInfo[FB_ID] handler:^(NSDictionary *response, NSError *error) {
             if (error) {
                 SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
             }

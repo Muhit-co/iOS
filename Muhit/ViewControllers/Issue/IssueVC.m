@@ -262,7 +262,7 @@
         ADD_HUD
         
         if (isSupported) {
-            [MuhitServices unSupport:STRING_W_INT([detail[@"id"] intValue]) handler:^(NSDictionary *response, NSError *error) {
+            [SERVICES unSupport:STRING_W_INT([detail[@"id"] intValue]) handler:^(NSDictionary *response, NSError *error) {
                 if (error) {
                     SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
                 }
@@ -276,7 +276,7 @@
             }];
         }
         else{
-            [MuhitServices support:STRING_W_INT([detail[@"id"] intValue]) handler:^(NSDictionary *response, NSError *error) {
+            [SERVICES support:STRING_W_INT([detail[@"id"] intValue]) handler:^(NSDictionary *response, NSError *error) {
                 if (error) {
                     SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
                 }
