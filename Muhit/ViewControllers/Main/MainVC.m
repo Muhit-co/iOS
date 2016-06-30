@@ -10,7 +10,7 @@
 #import "IssueCell.h"
 #import "LocationManager.h"
 
-@interface MainVC ()<LocationManagerDelegate>{
+@interface MainVC ()<LocationManagerDelegate,GMSMapViewDelegate>{
     IBOutlet UIButton *btnCreateIssue,*btnPopular,*btnLatest,*btnMap,*btnMenu,*btnPickHood,*btnLocation;
     IBOutlet UITextField *txtSearch;
     IBOutlet UIImageView *imgLocation;
@@ -30,11 +30,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [map setDelegate:self];
     [self adjustUI];
     [self actLatest:nil];
     [NC addObserver:self selector:@selector(geoCodePicked:) name:NC_GEOCODE_PICKED object:nil];
     arrIssues = [[NSMutableArray alloc] init];
     [self getIssues];
+    [self setMarkers];
 }
 
 - (void)geoCodePicked:(NSNotification*)notification{
@@ -232,7 +234,8 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return NO;
 }
-#pragma mark -
+
+#pragma mark - Location Manager
 
 -(void)locationManager:(LocationManager *)locationManager didUpdateToLocation:(CLLocation *)newLocation{
     if (newLocation) {
@@ -252,6 +255,61 @@
     else{
         REMOVE_HUD
     }
+}
+
+#pragma mark - Map Deletates
+
+-(void)setMarkers{
+    
+    NSArray *arrMarkers = @[
+                            @{
+                                @"lat":@"41.028148",
+                                @"lon":@"29.040775",
+                                @"name":@"Kamil Can",
+                                @"issueId":@"12342"
+                                },
+                            @{
+                                @"lat":@"441.023906",
+                                @"lon":@"29.032921",
+                                @"name":@"Emre Can",
+                                @"issueId":@"12343"
+                                },
+                            @{
+                                @"lat":@"41.023518",
+                                @"lon":@"29.036526",
+                                @"name":@"Hasan Can",
+                                @"issueId":@"12344"
+                                },
+                            @{
+                                @"lat":@"41.016395",
+                                @"lon":@"29.043435",
+                                @"name":@"Can Can",
+                                @"issueId":@"12345"
+                                },
+                            
+                            ];
+    
+    for (NSDictionary *dict in arrMarkers) {
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        [marker setPosition:CLLocationCoordinate2DMake([dict[@"lat"] doubleValue], [dict[@"lon"] doubleValue])];
+        [marker setAppearAnimation:kGMSMarkerAnimationPop];
+        [marker setIcon:[IonIcons imageWithIcon:ion_location size:45 color:CLR_DARK_PUPRPLE]];
+        [marker setTitle:dict[@"name"]];
+        [marker setMap:map];
+        [marker setUserData:dict[@"issueId"]];
+    }
+    
+    map.myLocationEnabled = YES;
+}
+
+-(BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker{
+    
+    NSLog(@"marker tapped:%@",[marker userData]);
+    return NO;
+}
+
+- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker{
+    NSLog(@"overlay tapped:%@",[marker userData]);
 }
 
 - (void)didReceiveMemoryWarning {
