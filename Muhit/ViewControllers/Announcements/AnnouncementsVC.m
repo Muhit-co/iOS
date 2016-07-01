@@ -99,9 +99,12 @@
 #pragma mark - UITableView Delegates
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    float textHeight = [UF heightOfTextForString:arrAnnouncements[indexPath.row][@"content"] andFont:[UIFont fontWithName:@"SourceSansPro-It" size:17.0] maxSize:CGSizeMake(self.view.width-100, 200)];
     
-    return textHeight + 81;
+    float titleHeight = [UF heightOfTextForString:arrAnnouncements[indexPath.row][@"title"] andFont:[UIFont fontWithName:FONT_BOLD size:16.0] maxSize:CGSizeMake([UF screenSize].width-78, MAXFLOAT)];
+    
+    float contentHeight = [UF heightOfTextForString:arrAnnouncements[indexPath.row][@"content"] andFont:[UIFont fontWithName:FONT_REGULAR size:16.0] maxSize:CGSizeMake([UF screenSize].width-78, MAXFLOAT)];
+    
+    return 20 + titleHeight + 20 + contentHeight + 55;
 }
 
 

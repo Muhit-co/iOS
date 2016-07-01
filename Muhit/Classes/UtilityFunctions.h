@@ -109,4 +109,5 @@ typedef enum{
 
 +(NSString*)getHoodFromGMSAddress:(NSDictionary *)address;
 +(NSString*)getDistrictCityFromGMSAddress:(NSDictionary *)address;
++(NSDictionary*)getLocationFromGMSResult:(NSDictionary *)response;
 @end

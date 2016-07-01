@@ -52,7 +52,7 @@
 
 - (IBAction)actPicked:(id)sender{
     
-    NSDictionary *ntf = @{@"hood":lblGeoCode1.text,@"coordinates": [NSString stringWithFormat:@"%f, %f",pointedCoordinate.latitude,pointedCoordinate.longitude]};
+    NSDictionary *ntf = @{@"hood":lblGeoCode1.text,@"coordinates": [NSString stringWithFormat:@"%f, %f",pointedCoordinate.latitude,pointedCoordinate.longitude],@"full":[NSString stringWithFormat:@"%@, %@",lblGeoCode1.text,lblGeoCode2.text]};
     [NC postNotificationName:NC_GEOCODE_PICKED object:ntf];
     [self actCancel:nil];
 }

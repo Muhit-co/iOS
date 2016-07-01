@@ -87,7 +87,7 @@ const int itemPerPage = 10;
     
     
     if (tags && tags.count>0) {
-        [requestDict setObject:tags forKey:KEY_ISSUE_TAGS];
+        [requestDict setObject:[tags componentsJoinedByString:@","] forKey:KEY_ISSUE_TAGS];
     }
     if (images && images.count>0) {
         [requestDict setObject:images forKey:KEY_ISSUE_IMAGES];
@@ -174,6 +174,14 @@ const int itemPerPage = 10;
 
 + (void)getAddressesWithLocation:(CLLocationCoordinate2D)coord handler:(GeneralResponseHandler)handler{
     NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?latlng=%.6f,%.6f&language=tr",coord.latitude,coord.longitude];
+    
+    [SERVICE_HANDLER getRequestWithURL:url responseHandler:^(NSDictionary *response, NSError *error) {
+        handler(response,error);
+    }];
+}
+
++ (void)getLocationWithAddress:(NSString*)address handler:(GeneralResponseHandler)handler{
+    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&language=tr",address];
     
     [SERVICE_HANDLER getRequestWithURL:url responseHandler:^(NSDictionary *response, NSError *error) {
         handler(response,error);

@@ -42,7 +42,7 @@
     
     [lblTitle setAttributedText:[[NSAttributedString alloc] initWithString:dict[@"title"] attributes:attribs]];
     [lblDate setText:[UF getDetailedDateString:dict[@"created_at"]]];
-    [lblCount setText:[dict[@"supporter_count"] stringValue]];
+    [lblCount setText:dict[@"supporter_count"]];
     if (dict[@"images"] && [dict[@"images"] count]>0) {
         NSString *imgUrl = [NSString stringWithFormat:@"%@/100x100/%@",IMAGE_PROXY,dict[@"images"][0][@"image"]];
         [imgIssue sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"issue-placeholder"]];

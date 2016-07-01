@@ -20,7 +20,7 @@
 
 #define SERVICE_SIGNUP @"register"
 #define SERVICE_LOGIN @"login"
-#define SERVICE_LOGIN_WITH_FACEBOOK @"login-with-facebook"
+#define SERVICE_LOGIN_WITH_FACEBOOK @"facebookLogin"
 #define SERVICE_GET_PROFILE @"profile"
 #define SERVICE_UPDATE_PROFILE @"update-profile"
 #define SERVICE_GET_TAGS @"tags"
@@ -58,7 +58,7 @@
 #define KEY_IS_ANONYMOUS @"is_anonymous"
 #define KEY_CLIENT_ID @"client_id"
 #define KEY_CLIENT_SECRET @"client_secret"
-#define KEY_FB_ACCESS_TOKEN @"fb_access_token"
+#define KEY_FB_ACCESS_TOKEN @"access_token"
 #define KEY_FB_ID @"fb_id"
 #define KEY_ID @"id"
 #define KEY_API_TOKEN @"api_token"

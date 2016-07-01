@@ -16,9 +16,9 @@
     IBOutlet UIButton *btnMenu,*btnHoodIdeas;
     IBOutlet GMSMapView *map;
     CLLocationManager *locationManager;
-    CLLocationCoordinate2D coordHeadman,coordUser;
     IBOutlet NSLayoutConstraint *constPhoneTop,*constCellTop,*constMailTop,*constAddressTop,*constMapTop;
     BOOL fromMenu;
+    NSDictionary *dictHeadman;
 }
 @end
 
@@ -46,7 +46,7 @@
     }
     
     [self adjustUI];
-    //    [self test];
+    [self.view setHidden:YES];
     [self getHeadman];
 }
 
@@ -62,7 +62,6 @@
     [imgMail setImage:[IonIcons imageWithIcon:ion_email size:24 color:CLR_LIGHT_BLUE]];
     [imgAddress setImage:[IonIcons imageWithIcon:ion_location size:24 color:CLR_LIGHT_BLUE]];
     
-    
     locationManager = [[CLLocationManager alloc] init];
     if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [locationManager requestWhenInUseAuthorization];
@@ -74,23 +73,6 @@
     [[MT drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
--(void)test{
-    NSDictionary *dict =@{
-                          @"name":@"Kamil Can",
-                          @"hood":@"Ömer Avni Mahallesi",
-                          @"city":@"Beyoğlu, İstanbul",
-                          @"image":@"http://themes.justgoodthemes.com/demo/getready/full-blue/images/John_Doe.jpg",
-                          @"phone":@"0212 221 23 23",
-                          @"cell":@"0535 533 23 03",
-                          @"email":@"kamil.can@kadikoy.gov.tr",
-                          //                            @"address":@"Şükrübey Mah. Can Sok. No:3",
-                          @"lat":@"40.990026",
-                          @"lon":@"29.024258"
-                          };
-    
-    [self setDetailsWithDictionary:dict];
-}
-
 -(void)getHeadman{
     ADD_HUD
     [SERVICES getHeadman:[MT userId] handler:^(NSDictionary *response, NSError *error) {
@@ -99,17 +81,18 @@
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
         }
         else{
-            [self setDetailsWithDictionary:response];
-            REMOVE_HUD
+            [self setDetailsWithDictionary:response[@"headMan"]];
         }
     }];
 }
 
 -(void)setDetailsWithDictionary:(NSDictionary*)dict{
     
+    dictHeadman = dict;
+    
     float total = 0;
     
-    [lblName setText:dict[@"name"]];
+    [lblName setText:dict[@"full_name"]];
     [lblHood setText:dict[@"hood"]];
     [lblCity setText:dict[@"city"]];
     [lblHoodIdeas setText:dict[@"hood"]];
@@ -142,8 +125,8 @@
         [viewMail setHidden:YES];
     }
     
-    if (isNotNull(dict[@"address"])) {
-        [lblAddress setText:dict[@"address"]];
+    if (isNotNull(dict[@"location"])) {
+        [lblAddress setText:dict[@"location"]];
         constAddressTop.constant = total;
         total += 40;
     }
@@ -157,19 +140,34 @@
     NSString *imgUrl = [NSString stringWithFormat:@"%@/200x200/%@",IMAGE_PROXY,dict[@"picture"]];
     [imgHeadman sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:PLACEHOLDER_IMAGE];
     
-    coordHeadman = CLLocationCoordinate2DMake([dict[@"lat"] floatValue], [dict[@"lon"] floatValue]);
-    coordUser = locationManager.location.coordinate;
-    
+    if (dict[@"coordinates"]) {
+        [self setMarkerWithLocation:CLLocationCoordinate2DMake([dict[@"coordinates"][@"lat"] doubleValue], [dict[@"coordinates"][@"lon"] doubleValue])];
+    }
+    else{
+        [SERVICES getLocationWithAddress:dict[@"location"] handler:^(NSDictionary *response, NSError *error) {
+            if (response) {
+                NSDictionary *location = [UF getLocationFromGMSResult:response];
+                if (location) {
+                    [self setMarkerWithLocation:CLLocationCoordinate2DMake([location[@"lat"] doubleValue], [location[@"lon"] doubleValue])];
+                }
+            }
+        }];
+    }
+}
+
+-(void)setMarkerWithLocation:(CLLocationCoordinate2D)coordHeadman{
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = coordHeadman;
     marker.appearAnimation = kGMSMarkerAnimationPop;
     marker.icon = [IonIcons imageWithIcon:ion_location size:75 color:CLR_DARK_PUPRPLE];
     marker.title = LocalizedString(@"Muhtar");
-    marker.snippet = dict[@"name"];
+    marker.snippet = dictHeadman[@"full_name"];
     marker.map = map;
-    map.myLocationEnabled = YES;
     
-    [map animateWithCameraUpdate:[GMSCameraUpdate fitBounds:[[GMSCoordinateBounds alloc] initWithCoordinate:coordHeadman coordinate:coordUser] withPadding:100]];
+    [map setCamera:[GMSCameraPosition cameraWithLatitude:coordHeadman.latitude longitude:coordHeadman.longitude zoom:9]];
+    
+    REMOVE_HUD
+    [self.view setHidden:NO];
 }
 
 -(IBAction)actGoIdeas:(id)sender{

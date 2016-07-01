@@ -37,12 +37,14 @@
 
 + (void)unSupport:(NSString*)issueId handler:(GeneralResponseHandler)handler;
 
-+ (void)getAddressesWithLocation:(CLLocationCoordinate2D)coord handler:(GeneralResponseHandler)handler;
-
 + (void)getSupporteds:(NSString *)userId handler:(GeneralResponseHandler)handler;
 
 + (void)getCreateds:(NSString *)userId handler:(GeneralResponseHandler)handler;
 
 + (void)getHeadman:(NSString *)userId handler:(GeneralResponseHandler)handler;
+
++ (void)getAddressesWithLocation:(CLLocationCoordinate2D)coord handler:(GeneralResponseHandler)handler;
+
++ (void)getLocationWithAddress:(NSString*)address handler:(GeneralResponseHandler)handler;
 
 @end

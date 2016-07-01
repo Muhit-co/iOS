@@ -9,7 +9,7 @@
 #import "AddEditIssueVC.h"
 #import "PickFromMapVC.h"
 
-@interface AddEditIssueVC (){
+@interface AddEditIssueVC ()<UIAlertViewDelegate>{
     NSDictionary *issueDict;
     IBOutlet UILabel *lblTitle,*lblProblem,*lblSolution,*lblHood,*lblTags,*lblPhotos,*lblAnonim,*lblAddTag;
     IBOutlet UITextField *txtTitle;
@@ -206,16 +206,18 @@
     ADD_HUD
     [SERVICES addOrUpdateIssue:txtTitle.text problem:txtProblem.text solution:txtSolution.text location:issueGeoCode tags:arrTagIds images:arrBase64Photos isAnonymous:btnAnonim.isSelected coordinate:issueCoordinate issueId:issueId handler:^(NSDictionary *response, NSError *error) {
         if (error) {
+            REMOVE_HUD
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
         }
         else{
-            if(response[@"id"]){
-                [self back];
+            REMOVE_HUD
+            if(response[@"issue"]){
+                SHOW_ALERT_WITH_TAG_AND_DELEGATE(LocalizedString(@"issue-added"), 1, self);
             }
             
             NSLog(@"addIssueResponse:%@",response);
         }
-        REMOVE_HUD
+        
     }];
 }
 
@@ -447,6 +449,12 @@
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
         }
             break;
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag == 1) {
+        [self back];
     }
 }
 

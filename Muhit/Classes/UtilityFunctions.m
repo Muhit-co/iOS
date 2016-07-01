@@ -834,10 +834,10 @@
     if ([title length] < 4) {
         [messages addObject:LocalizedString(@"validation-title")];
     }
-    if ([problem length] < 4) {
+    if ([problem length] < 20) {
         [messages addObject:LocalizedString(@"validation-problem")];
     }
-    if (solution.length < 4) {
+    if (solution.length < 20) {
         [messages addObject:LocalizedString(@"validation-solution")];
     }
     
@@ -1023,5 +1023,22 @@
         return @"";
     }
 }
+
++(NSDictionary*)getLocationFromGMSResult:(NSDictionary *)response{
+    
+    if (response[@"results"] && [response[@"results"] count]>0) {
+        NSDictionary *address = response[@"results"][0];
+        if (address[@"geometry"][@"location"]) {
+            return @{@"lat":address[@"geometry"][@"location"][@"lat"],@"lon":address[@"geometry"][@"location"][@"lng"]};
+        }
+        else{
+            return nil;
+        }
+    }
+    else{
+        return nil;
+    }
+}
+
 
 @end

@@ -106,7 +106,7 @@
     
     [imgCreator sd_setImageWithURL:[NSURL URLWithString:dict[USER][@"picture"]] placeholderImage:PLACEHOLDER_IMAGE];
     [lblCreatorName setText:dict[@"user"][@"full_name"]];
-    [lblSupportCount setText:[dict[@"supporter_count"] stringValue]];
+    [lblSupportCount setText:dict[@"supporter_count"]];
     
     [lblHood setText:[UF getHoodFromAddress:dict[@"location"]]];
     [lblDistrict setText:[UF getDistrictFromAddress:dict[@"location"]]];
