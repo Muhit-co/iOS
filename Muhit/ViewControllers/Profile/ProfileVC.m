@@ -54,7 +54,7 @@
 -(void)adjustUI{
     [imgAddress setImage:[IonIcons imageWithIcon:ion_location size:24 color:CLR_LIGHT_BLUE]];
     [imgMail setImage:[IonIcons imageWithIcon:ion_email size:24 color:CLR_LIGHT_BLUE]];
-    [imgUserName setImage:[IonIcons imageWithIcon:ion_email size:24 color:CLR_LIGHT_BLUE]];
+    [imgUserName setImage:[IonIcons imageWithIcon:ion_person size:24 color:CLR_LIGHT_BLUE]];
     [imgIdeas setImage:[IonIcons imageWithIcon:ion_lightbulb size:18 color:CLR_LIGHT_BLUE]];
     [imgSupports setImage:[IonIcons imageWithIcon:ion_thumbsup size:18 color:CLR_LIGHT_BLUE]];
     
@@ -113,7 +113,6 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 70;
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [arrIdeas count];

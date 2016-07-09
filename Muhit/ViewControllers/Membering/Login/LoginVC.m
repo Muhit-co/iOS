@@ -61,9 +61,8 @@
         else{
             NSLog(@"loginResponse:%@",response);
             [UF setUserDefaultsWithDetails:response];
-            [[MT navCon] popToRootViewControllerAnimated:YES];
+            [self.view endEditing:YES];
             [MT setIsLoggedIn:YES];
-            [[MT menuVC] viewWillAppear:NO];
         }
         REMOVE_HUD
     }];
@@ -83,9 +82,8 @@
             else{
                 NSLog(@"loginFacebookResponse:%@",response);
                 [UF setUserDefaultsWithDetails:response];
-                [[MT navCon] popToRootViewControllerAnimated:YES];
+                [self.view endEditing:YES];
                 [MT setIsLoggedIn:YES];
-                [[MT menuVC] viewWillAppear:NO];
             }
             REMOVE_HUD
         }];

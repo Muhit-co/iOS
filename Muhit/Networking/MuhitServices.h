@@ -23,7 +23,7 @@
 
 + (void)getProfile:(NSString*)profileId handler:(GeneralResponseHandler)handler;
 
-+ (void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName password:(NSString *)password activeHood:(NSString *)activeHood photo:(NSString *)photo handler:(GeneralResponseHandler)handler;
++ (void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName password:(NSString *)password activeHood:(NSString *)activeHood photo:(NSString *)photo email:(NSString *)email username:(NSString *)username handler:(GeneralResponseHandler)handler;
 
 + (void)getIssues:(int)from handler:(GeneralResponseHandler)handler;
 

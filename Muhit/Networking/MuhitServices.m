@@ -46,26 +46,30 @@ const int itemPerPage = 10;
 
 +(void)getProfile:(NSString *)profileId handler:(GeneralResponseHandler)handler{
     
-    NSString *url = [NSString stringWithFormat:@"%@/%@",SERVICE_GET_PROFILE,profileId];
+    NSString *url = [NSString stringWithFormat:@"%@/%@",SERVICE_PROFILE,profileId];
     
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
-+ (void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName password:(NSString *)password activeHood:(NSString *)activeHood photo:(NSString *)photo handler:(GeneralResponseHandler)handler{
++ (void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName password:(NSString *)password activeHood:(NSString *)activeHood photo:(NSString *)photo email:(NSString *)email username:(NSString *)username handler:(GeneralResponseHandler)handler{
     
     NSMutableDictionary *requestDict = [NSMutableDictionary dictionaryWithDictionary:
                                         @{
                                           KEY_FIRSTNAME : firstName,
                                           KEY_LASTNAME : lastName,
                                           KEY_PASSWORD : password,
-                                          KEY_ACTIVE_HOOD : activeHood
+                                          KEY_ACTIVE_HOOD : activeHood,
+                                          KEY_USERNAME : username,
+                                          KEY_EMAIL : email
                                           }];
     
     if (photo) {
         [requestDict setObject:photo forKey:KEY_PICTURE];
     }
     
-    [SERVICES postRequestWithMethod:SERVICE_UPDATE_PROFILE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
+    NSString *url = [NSString stringWithFormat:@"%@/%@/update",SERVICE_PROFILE,[MT userId]];
+    
+    [SERVICES postRequestWithMethod:url requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
 +(void)getIssues:(int)from handler:(GeneralResponseHandler)handler{
@@ -181,7 +185,7 @@ const int itemPerPage = 10;
 }
 
 + (void)getLocationWithAddress:(NSString*)address handler:(GeneralResponseHandler)handler{
-    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&language=tr",address];
+    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&language=tr",[UF urlencodeWithString:address]];
     
     [SERVICE_HANDLER getRequestWithURL:url responseHandler:^(NSDictionary *response, NSError *error) {
         handler(response,error);

@@ -82,9 +82,8 @@
         else{
             NSLog(@"signUpResponse:%@",response);
             [UF setUserDefaultsWithDetails:response];
-            [[MT navCon] popToRootViewControllerAnimated:YES];
+            [self.view endEditing:YES];
             [MT setIsLoggedIn:YES];
-            [[MT menuVC] viewWillAppear:NO];
         }
         REMOVE_HUD
     }];

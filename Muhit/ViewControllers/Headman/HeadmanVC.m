@@ -12,7 +12,7 @@
     
     IBOutlet UILabel *lblHood,*lblName,*lblCity,*lblPhone,*lblCell,*lblMail,*lblAddress,*lblHoodIdeas;
     IBOutlet UIImageView *imgHeadman,*imgPhone,*imgCell,*imgMail,*imgAddress,*imgIdeas;
-    IBOutlet UIView *viewPhone,*viewCell,*viewMail,*viewAddress;
+    IBOutlet UIView *viewPhone,*viewCell,*viewMail,*viewAddress,*viewFront;
     IBOutlet UIButton *btnMenu,*btnHoodIdeas;
     IBOutlet GMSMapView *map;
     CLLocationManager *locationManager;
@@ -46,7 +46,7 @@
     }
     
     [self adjustUI];
-    [self.view setHidden:YES];
+    [viewFront setHidden:NO];
     [self getHeadman];
 }
 
@@ -93,9 +93,9 @@
     float total = 0;
     
     [lblName setText:dict[@"full_name"]];
-    [lblHood setText:dict[@"hood"]];
-    [lblCity setText:dict[@"city"]];
-    [lblHoodIdeas setText:dict[@"hood"]];
+    [lblHood setText:[UF getHoodFromAddress:dict[@"location"]]];
+    [lblCity setText:[UF getDistrictFromAddress:dict[@"location"]]];
+    [lblHoodIdeas setText:lblHood.text];
     
     if (isNotNull(dict[@"phone"])) {
         [lblPhone setText:dict[@"phone"]];
@@ -140,7 +140,7 @@
     NSString *imgUrl = [NSString stringWithFormat:@"%@/200x200/%@",IMAGE_PROXY,dict[@"picture"]];
     [imgHeadman sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:PLACEHOLDER_IMAGE];
     
-    if (dict[@"coordinates"]) {
+    if (isNotNull(dict[@"coordinates"])) {
         [self setMarkerWithLocation:CLLocationCoordinate2DMake([dict[@"coordinates"][@"lat"] doubleValue], [dict[@"coordinates"][@"lon"] doubleValue])];
     }
     else{
@@ -167,7 +167,7 @@
     [map setCamera:[GMSCameraPosition cameraWithLatitude:coordHeadman.latitude longitude:coordHeadman.longitude zoom:9]];
     
     REMOVE_HUD
-    [self.view setHidden:NO];
+    [viewFront setHidden:YES];
 }
 
 -(IBAction)actGoIdeas:(id)sender{

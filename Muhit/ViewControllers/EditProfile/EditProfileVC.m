@@ -100,14 +100,15 @@
 
 -(IBAction)actSave:(id)sender{
     ADD_HUD
-    NSString * base64Photo = [UIImagePNGRepresentation(imageForProfile) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    [SERVICES updateProfile:txtName.text lastName:txtSurname.text password:txtPassword.text activeHood:fullGeoCode photo:base64Photo handler:^(NSDictionary *response, NSError *error) {
+    NSString * base64Photo = [UIImageJPEGRepresentation(imageForProfile, 0.7) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    [SERVICES updateProfile:txtName.text lastName:txtSurname.text password:txtPassword.text activeHood:fullGeoCode photo:base64Photo email:profileDict[KEY_EMAIL] username:profileDict[KEY_USERNAME] handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
             REMOVE_HUD
         }
         else{
-            NSLog(@"updateProfileResponse:%@",response);
+            SHOW_ALERT(response[KEY_MESSAGE]);
+            REMOVE_HUD
         }
     }];
 }
@@ -134,9 +135,10 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [imgProfile setImage:image];
     imageForProfile = image;
+    
     [imgPicker dismissViewControllerAnimated:YES completion:nil];
 }
 

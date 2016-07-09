@@ -123,11 +123,11 @@
 - (IBAction)actLogout:(id)sender{
     
     [FACEBOOK logout];
-    [MT setIsLoggedIn:NO];
     [self viewWillAppear:NO];
     [NC postNotificationName:NC_LOGGED_OUT object:nil];
     [UF setUserDefaultsWithDetails:nil];
-    [[MT navCon] popToRootViewControllerAnimated:YES];
+    [self.view endEditing:YES];
+    [MT setIsLoggedIn:NO];
 }
 
 - (IBAction)actFacebook:(id)sender{
@@ -144,9 +144,8 @@
             else{
                 NSLog(@"loginFacebookResponse:%@",response);
                 [UF setUserDefaultsWithDetails:response];
-                [[MT navCon] popToRootViewControllerAnimated:YES];
+                [self.view endEditing:YES];
                 [MT setIsLoggedIn:YES];
-                [[MT menuVC] viewWillAppear:NO];
             }
             REMOVE_HUD
         }];
