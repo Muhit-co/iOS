@@ -14,7 +14,7 @@
     IBOutlet UILabel *lblTitle,*lblProblem,*lblSolution,*lblHood,*lblTags,*lblPhotos,*lblAnonim,*lblAddTag;
     IBOutlet UITextField *txtTitle;
     IBOutlet UITextView *txtProblem,*txtSolution;
-    IBOutlet UIView *viewHood,*viewProblem,*viewSolution,*viewTags,*viewPhotos,*viewAddTag,*viewAnonim;
+    IBOutlet UIView *viewHood,*viewProblem,*viewSolution,*viewTags,*viewPhotos,*viewAddTag;
     IBOutlet UIButton *btnSave,*btnAnonim,*btnAddTag,*btnAddPhoto,*btnHood;
     IBOutlet UIImageView *imgDownIconHood,*imgAddTag;
     IBOutlet NSLayoutConstraint *constBtnAddImageTop,*constTagsViewHeight,*constBtnAddTagLeft,*constBtnAddTagTop,*constContainerHeight;
@@ -50,8 +50,6 @@
     keyboardControl = [[KeyboardControls alloc] initWithFields:@[txtTitle ,txtProblem,txtSolution]];
     [keyboardControl setDelegate:self];
     
-    barBtnSave = [[UIBarButtonItem alloc] initWithCustomView:btnSave];
-    [self.navigationItem setRightBarButtonItem:barBtnSave];
     [NC addObserver:self selector:@selector(geoCodePicked:) name:NC_GEOCODE_PICKED object:nil];
     
     [self getTags];
@@ -74,7 +72,7 @@
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     
-    float totalHeight = 453 + constTagsViewHeight.constant + constBtnAddImageTop.constant+80;
+    float totalHeight = 453 + constTagsViewHeight.constant + constBtnAddImageTop.constant+130;
     [scrollRoot setContentSize:CGSizeMake([UF screenSize].width, totalHeight)];
     constContainerHeight.constant = totalHeight;
     [self.view layoutIfNeeded];
@@ -88,7 +86,6 @@
 -(void)adjustUI{
     [[self view] setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"EEEEEE"]];
     
-    [btnSave setSize:CGSizeMake(70, 35)];
     txtTitle.layer.cornerRadius = cornerRadius;
     viewProblem.layer.cornerRadius = cornerRadius;
     viewSolution.layer.cornerRadius = cornerRadius;
@@ -195,7 +192,7 @@
     NSMutableArray *arrBase64Photos = [[NSMutableArray alloc] init];
     
     for (UIImage *image in arrPhotos) {
-        [arrBase64Photos addObject:[UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
+        [arrBase64Photos addObject:[UIImageJPEGRepresentation(image, 0.7) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
     }
     
     NSString *issueId = nil;
@@ -274,7 +271,7 @@
     
     constTagsViewHeight.constant = 30;
     [self.view layoutIfNeeded];
-    constContainerHeight.constant = [viewAnonim bottomPosition] + 10;
+    constContainerHeight.constant = [btnSave bottomPosition] + 10;
     totalTagsWidth = 0;
     lastTagsY = 0;
     
@@ -288,7 +285,7 @@
             lastTagsY += 40;
             constTagsViewHeight.constant = 30 + lastTagsY;
             [self.view layoutIfNeeded];
-            constContainerHeight.constant = [viewAnonim bottomPosition] + 10;
+            constContainerHeight.constant = [btnSave bottomPosition] + 10;
             [self.view layoutIfNeeded];
         }
         
@@ -317,7 +314,7 @@
             lastTagsY += 40;
             constTagsViewHeight.constant = 30 + lastTagsY;
             [self.view layoutIfNeeded];
-            constContainerHeight.constant = [viewAnonim bottomPosition] + 10;
+            constContainerHeight.constant = [btnSave bottomPosition] + 10;
             [self.view layoutIfNeeded];
         }
         
@@ -414,12 +411,10 @@
     
     [self refreshPhotosView];
     [imgPicker dismissViewControllerAnimated:YES completion:nil];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [imgPicker dismissViewControllerAnimated:YES completion:nil];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -431,7 +426,7 @@
             [imgPicker setSourceType:UIImagePickerControllerSourceTypeCamera];
             [imgPicker setDelegate:self];
             imgPicker.navigationBar.titleTextAttributes = @{
-                                                            NSForegroundColorAttributeName:[UIColor whiteColor],
+                                                            NSForegroundColorAttributeName:CLR_WHITE,
                                                             NSFontAttributeName: [UIFont fontWithName:FONT_SEMI_BOLD size:19.0f]
                                                             };
             [self presentViewController:imgPicker animated:YES completion:nil];
@@ -442,11 +437,13 @@
             [imgPicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
             [imgPicker setDelegate:self];
             imgPicker.navigationBar.titleTextAttributes = @{
-                                                            NSForegroundColorAttributeName:CLR_LIGHT_BLUE,
+                                                            NSForegroundColorAttributeName:CLR_WHITE,
                                                             NSFontAttributeName: [UIFont fontWithName:FONT_SEMI_BOLD size:19.0f]
                                                             };
+            imgPicker.navigationBar.translucent = NO;
+            imgPicker.navigationBar.tintColor = CLR_WHITE;
+            imgPicker.navigationBar.barTintColor = CLR_LIGHT_BLUE;
             [self presentViewController:imgPicker animated:YES completion:nil];
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
         }
             break;
     }

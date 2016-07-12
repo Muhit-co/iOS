@@ -40,12 +40,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [btnSave setSize:CGSizeMake(70, 36)];
-    UIBarButtonItem *barBtnSave = [[UIBarButtonItem alloc] initWithCustomView:btnSave];
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    negativeSpacer.width = -12;
-    [[self navigationItem] setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, barBtnSave, nil] animated:NO];
-    
     [self adjustUI];
     
     keyboardControl = [[KeyboardControls alloc] initWithFields:@[txtName, txtSurname, txtEmail,txtPassword]];
@@ -155,6 +149,10 @@
             [imgPicker setSourceType:UIImagePickerControllerSourceTypeCamera];
             [imgPicker setDelegate:self];
             [imgPicker setAllowsEditing:YES];
+            imgPicker.navigationBar.titleTextAttributes = @{
+                                                            NSForegroundColorAttributeName:CLR_WHITE,
+                                                            NSFontAttributeName: [UIFont fontWithName:FONT_SEMI_BOLD size:19.0f]
+                                                            };
             [self presentViewController:imgPicker animated:YES completion:nil];
         }
             break;
@@ -162,6 +160,13 @@
             imgPicker = [[UIImagePickerController alloc] init];
             [imgPicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
             [imgPicker setDelegate:self];
+            imgPicker.navigationBar.titleTextAttributes = @{
+                                                            NSForegroundColorAttributeName:CLR_WHITE,
+                                                            NSFontAttributeName: [UIFont fontWithName:FONT_SEMI_BOLD size:19.0f]
+                                                            };
+            imgPicker.navigationBar.translucent = NO;
+            imgPicker.navigationBar.tintColor = CLR_WHITE;
+            imgPicker.navigationBar.barTintColor = CLR_LIGHT_BLUE;
             [imgPicker setAllowsEditing:YES];
             [self presentViewController:imgPicker animated:YES completion:nil];
         }

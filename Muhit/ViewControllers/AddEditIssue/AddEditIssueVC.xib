@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -56,7 +56,6 @@
                 <outlet property="txtTitle" destination="wyD-aI-1rA" id="XE9-7S-Yq3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewAddTag" destination="y7c-g2-hR0" id="hXL-qO-n91"/>
-                <outlet property="viewAnonim" destination="74A-Dr-0ih" id="8yc-v7-03l"/>
                 <outlet property="viewHood" destination="a9y-67-xYJ" id="9ej-a1-fPB"/>
                 <outlet property="viewPhotos" destination="OJ7-HD-rlY" id="O6Z-g8-Y4s"/>
                 <outlet property="viewProblem" destination="cRK-uW-4E6" id="vT2-FN-BFv"/>
@@ -335,6 +334,21 @@
                                         <constraint firstAttribute="bottom" secondItem="32V-Nn-acB" secondAttribute="bottom" id="mru-kb-SLZ"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVJ-wJ-5Jz" userLabel="btnSave">
+                                    <rect key="frame" x="20" y="568" width="560" height="40"/>
+                                    <color key="backgroundColor" red="0.14117647058823529" green="0.33725490196078434" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="7G4-0g-dex"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
+                                    <state key="normal" title="KAYDET">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actSave:" destination="-1" eventType="touchUpInside" id="aim-pN-7rp"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -353,10 +367,12 @@
                                 <constraint firstItem="wyD-aI-1rA" firstAttribute="top" secondItem="51u-lE-lH5" secondAttribute="bottom" constant="5" id="GUh-DH-XNs"/>
                                 <constraint firstAttribute="height" constant="536" id="Gpu-WX-HYt"/>
                                 <constraint firstAttribute="trailing" secondItem="1Bm-iB-pDR" secondAttribute="trailing" constant="20" id="HOw-Kg-gum"/>
+                                <constraint firstItem="jVJ-wJ-5Jz" firstAttribute="leading" secondItem="LyT-en-oH6" secondAttribute="leading" constant="20" id="LvT-UN-O9t"/>
                                 <constraint firstAttribute="trailing" secondItem="74A-Dr-0ih" secondAttribute="trailing" constant="20" id="NiN-1e-GCo"/>
                                 <constraint firstItem="jiE-2F-XrH" firstAttribute="top" secondItem="1Bm-iB-pDR" secondAttribute="bottom" constant="5" id="QIU-Qu-YdT"/>
                                 <constraint firstAttribute="trailing" secondItem="uNo-tA-snf" secondAttribute="trailing" constant="20" id="V9x-LA-PIQ"/>
                                 <constraint firstItem="1Bm-iB-pDR" firstAttribute="leading" secondItem="LyT-en-oH6" secondAttribute="leading" constant="20" id="Wbr-03-1lm"/>
+                                <constraint firstItem="jVJ-wJ-5Jz" firstAttribute="top" secondItem="74A-Dr-0ih" secondAttribute="bottom" constant="10" id="XJu-jG-5ZF"/>
                                 <constraint firstItem="cRK-uW-4E6" firstAttribute="leading" secondItem="LyT-en-oH6" secondAttribute="leading" constant="20" id="YAg-xZ-T0J"/>
                                 <constraint firstAttribute="trailing" secondItem="cRK-uW-4E6" secondAttribute="trailing" constant="20" id="YJi-U3-ey2"/>
                                 <constraint firstItem="cRK-uW-4E6" firstAttribute="top" secondItem="P0e-zD-e2l" secondAttribute="bottom" constant="5" id="ZFM-G9-Xmf"/>
@@ -369,6 +385,7 @@
                                 <constraint firstItem="uNo-tA-snf" firstAttribute="leading" secondItem="LyT-en-oH6" secondAttribute="leading" constant="20" id="j7n-5l-H1K"/>
                                 <constraint firstItem="laf-UK-a8i" firstAttribute="leading" secondItem="LyT-en-oH6" secondAttribute="leading" constant="20" id="jLN-Lz-mTY"/>
                                 <constraint firstItem="6XK-Lr-FFk" firstAttribute="top" secondItem="zMa-Eq-NcE" secondAttribute="bottom" constant="5" id="k7I-UR-N5a"/>
+                                <constraint firstAttribute="trailing" secondItem="jVJ-wJ-5Jz" secondAttribute="trailing" constant="20" id="lja-nr-McC"/>
                                 <constraint firstItem="6XK-Lr-FFk" firstAttribute="leading" secondItem="LyT-en-oH6" secondAttribute="leading" constant="20" id="m5v-UO-pnT"/>
                                 <constraint firstItem="9c0-S5-Gim" firstAttribute="top" secondItem="laf-UK-a8i" secondAttribute="bottom" constant="5" id="pwm-7F-qjR"/>
                                 <constraint firstAttribute="trailing" secondItem="laf-UK-a8i" secondAttribute="trailing" constant="20" id="q5V-tR-IOX"/>
@@ -402,19 +419,6 @@
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
         </view>
-        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVJ-wJ-5Jz" userLabel="btnSave">
-            <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
-            <color key="backgroundColor" red="0.14117647058823529" green="0.33725490196078434" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
-            <state key="normal" title="KAYDET">
-                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            </state>
-            <connections>
-                <action selector="actSave:" destination="-1" eventType="touchUpInside" id="aim-pN-7rp"/>
-            </connections>
-            <point key="canvasLocation" x="525" y="799"/>
-        </button>
     </objects>
     <resources>
         <image name="checkbox-dark-off" width="18" height="18"/>
