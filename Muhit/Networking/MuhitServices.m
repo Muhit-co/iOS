@@ -94,7 +94,7 @@ const int itemPerPage = 10;
         [requestDict setObject:[tags componentsJoinedByString:@","] forKey:KEY_ISSUE_TAGS];
     }
     if (images && images.count>0) {
-        [requestDict setObject:images forKey:KEY_ISSUE_IMAGES];
+        [requestDict setObject:[images componentsJoinedByString:@","] forKey:KEY_ISSUE_IMAGES];
     }
     if (location) {
         [requestDict setObject:location forKey:KEY_ISSUE_LOCATION];

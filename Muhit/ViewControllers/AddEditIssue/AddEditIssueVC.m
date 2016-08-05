@@ -190,7 +190,6 @@
     }
     
     NSMutableArray *arrBase64Photos = [[NSMutableArray alloc] init];
-    
     for (UIImage *image in arrPhotos) {
         [arrBase64Photos addObject:[UIImageJPEGRepresentation(image, 0.7) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]];
     }
