@@ -12,7 +12,6 @@
 @interface PickFromMapVC ()<CLLocationManagerDelegate> {
     
     IBOutlet GMSMapView *map;
-    IBOutlet UIImageView *imgPoint;
     IBOutlet UIButton *btnCancel,*btnPick,*btnLocation;
     IBOutlet UILabel *lblGeoCode1,*lblGeoCode2;
     CLLocationCoordinate2D pointedCoordinate;
@@ -25,12 +24,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [btnLocation setImage:[IonIcons imageWithIcon:ion_android_locate size:24 color:CLR_LIGHT_BLUE]];
     
-    [imgPoint setImage:[IonIcons imageWithIcon:ion_location size:75 color:CLR_DARK_PUPRPLE]];
-    [btnCancel setImage:[IonIcons imageWithIcon:ion_close size:20 color:CLR_WHITE]];
-    [btnLocation setImage:[IonIcons imageWithIcon:ion_navigate size:15 color:CLR_WHITE]];
     btnPick.layer.cornerRadius = cornerRadius;
     btnLocation.layer.cornerRadius = cornerRadius;
+    btnCancel.layer.cornerRadius = cornerRadius;
     
     locationManager = [[CLLocationManager alloc] init];
     if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
@@ -79,7 +78,8 @@
 
 #pragma mark Localization
 - (void) setLocalizedStrings {
-    [btnPick setTitle:LocalizedString(@"ok")];
+    [btnCancel setTitle:[LocalizedString(@"dismiss") toUpper]];
+    [btnPick setTitle:[LocalizedString(@"ok") toUpper]];
 }
 #pragma mark -
 @end

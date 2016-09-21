@@ -30,6 +30,8 @@
 	<string>Yarattığı Fikirler</string>
 	<key>description</key>
 	<string>Açıklama</string>
+	<key>dismiss</key>
+	<string>Vazgeç</string>
 	<key>edit</key>
 	<string>Düzenle</string>
 	<key>edit-profile</key>

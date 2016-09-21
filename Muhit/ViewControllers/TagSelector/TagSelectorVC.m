@@ -13,6 +13,7 @@
     IBOutlet NSLayoutConstraint *constContainerHeight;
     IBOutlet UIView *viewContainer;
     IBOutlet UITableView *tblTags;
+    IBOutlet UIButton *btnCancel,*btnOk;
     id<TagSelectorDelegate> delegate;
     NSArray *arrItems;
 }
@@ -26,7 +27,11 @@
         self = [[[NSBundle mainBundle] loadNibNamed:@"TagSelectorVC" owner:self options:nil] lastObject];
         delegate = _delegate;
         viewContainer.layer.cornerRadius = cornerRadius;
+        btnCancel.layer.cornerRadius = cornerRadius;
+        btnOk.layer.cornerRadius = cornerRadius;
         self.translatesAutoresizingMaskIntoConstraints = YES;
+        [btnCancel setTitle:[LocalizedString(@"dismiss") toUpper]];
+        [btnOk setTitle:[LocalizedString(@"ok") toUpper]];
     }
     return self;
 }
@@ -37,6 +42,10 @@
 }
 
 -(IBAction)actClose:(id)sender{
+    [self dismiss];
+}
+
+-(IBAction)actOk:(id)sender{
     [self dismiss];
 }
 
@@ -58,7 +67,7 @@
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 45;
+    return 50;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -78,10 +87,14 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if([delegate respondsToSelector:@selector(selectedTagIndex:)]) {
-        [delegate selectedTagIndex:(int)indexPath.row];
-    }
-    [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.1f];
+    //[[tableView cellForRowAtIndexPath:indexPath] setSelected:YES animated:NO];
+//    if([delegate respondsToSelector:@selector(selectedTagIndex:)]) {
+//        [delegate selectedTagIndex:(int)indexPath.row];
+//    }
+//    [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.1f];
+}
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+   // [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:NO];
 }
 
 -(void)layoutSubviews{
