@@ -12,7 +12,7 @@
 
 @protocol TagSelectorDelegate <NSObject>
 
-- (void) selectedTagIndex:(int)index;
+- (void) selectedTags:(NSArray*)tags;
 
 @end
 

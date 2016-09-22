@@ -239,16 +239,6 @@
     [btnAnonim setSelected:![btnAnonim isSelected]];
 }
 
-
--(void)actRemoveTag:(UIButton*)sender{
-    NSString* tag = STRING_W_INT((int)sender.tag);
-    
-    NSUInteger index = [arrTagIds indexOfObject:tag];
-    [arrTagIds removeObjectAtIndex:index];
-   	[arrTags removeObjectAtIndex:index];
-    [self refreshTagsView];
-}
-
 - (void)refreshTagsView{
     
     UIFont *tagFont = [UIFont fontWithName:FONT_BOLD size:16.0];
@@ -259,12 +249,6 @@
         }
     }
     
-    if ([arrTags count] == 3) {
-        [viewAddTag setHidden:YES];
-    }
-    else{
-        [viewAddTag setHidden:NO];
-    }
     constBtnAddTagTop.constant = 0;
     constBtnAddTagLeft.constant = 0;
     
@@ -277,7 +261,7 @@
     for (NSDictionary* tag in arrTags) {
         
         float lblWidth = [[tag[@"name"] toUpper] sizeWithAttributes:@{NSFontAttributeName:tagFont}].width;
-        float viewItemWidth = lblWidth + 35;
+        float viewItemWidth = lblWidth + 10;
         
         if ((totalTagsWidth + viewItemWidth)>lblTags.width) {
             totalTagsWidth = 0;
@@ -294,37 +278,29 @@
         [lbl setTextAlignment:NSTextAlignmentCenter];
         [lbl setTextColor:[UIColor whiteColor]];
         
-        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(viewItemWidth-30, 0, 30, 30)];
-        btn.tag = [tag[@"id"] intValue];
-        [btn addTarget:self action:@selector(actRemoveTag:) forControlEvents:UIControlEventTouchUpInside];
-        [btn setImage:[IonIcons imageWithIcon:ion_close size:15 color:[UIColor whiteColor]]];
-        
         UIView *viewItem = [[UIView alloc] initWithFrame:CGRectMake(totalTagsWidth, lastTagsY, viewItemWidth, 30)];
         viewItem.layer.cornerRadius = cornerRadius;
         [viewItem setClipsToBounds:YES];
         [viewItem setBackgroundColor:[HXColor hx_colorWithHexRGBAString:tag[@"background"]]];
         [viewItem addSubview:lbl];
-        [viewItem addSubview:btn];
         
         totalTagsWidth += viewItemWidth + 10;
-        
-        if (totalTagsWidth+80>lblTags.width && [arrTags count] != 3) {
-            totalTagsWidth = 0;
-            lastTagsY += 40;
-            constTagsViewHeight.constant = 30 + lastTagsY;
-            [self.view layoutIfNeeded];
-            constContainerHeight.constant = [btnSave bottomPosition] + 10;
-            [self.view layoutIfNeeded];
-        }
-        
-        constBtnAddTagTop.constant = lastTagsY;
-        constBtnAddTagLeft.constant = totalTagsWidth;
-        
         [viewTags addSubview:viewItem];
-        [viewTags addSubview:viewAddTag];
         
         [self.view layoutIfNeeded];
     }
+    
+    if (totalTagsWidth-10+130>lblTags.width) {
+        totalTagsWidth = 0;
+        lastTagsY += 40;
+        constTagsViewHeight.constant = 30 + lastTagsY;
+        [self.view layoutIfNeeded];
+        constContainerHeight.constant = [btnSave bottomPosition] + 10;
+        [self.view layoutIfNeeded];
+    }
+    
+    constBtnAddTagTop.constant = lastTagsY;
+    constBtnAddTagLeft.constant = totalTagsWidth;
 }
 
 -(void)actRemovePhoto:(UIButton*)sender{
@@ -376,23 +352,16 @@
 
 #pragma mark - TagSelector
 
-- (void)selectedTagIndex:(int)index{
+- (void)selectedTags:(NSArray *)tags{
     
-    if (!arrTags) {
-        arrTags = [[NSMutableArray alloc] init];
-    }
-    if (!arrTagIds) {
-        arrTagIds = [[NSMutableArray alloc] init];
-    }
-    for (NSString *tag in arrTagIds) {
-        if ([tag isEqualToString:STRING_W_INT([[MT arrIssueTags][index][@"id"] intValue])]) {
-            return;
-        }
-    }
+    arrTags = [[NSMutableArray alloc] init];
+    arrTagIds = [[NSMutableArray alloc] init];
     
-    [arrTags addObject:[MT arrIssueTags][index]];
-    [arrTagIds addObject: STRING_W_INT([[MT arrIssueTags][index][@"id"] intValue])];
-    
+    for (NSNumber *tag in tags) {
+        [arrTags addObject:[MT arrIssueTags][tag.integerValue]];
+        [arrTagIds addObject: STRING_W_INT([[MT arrIssueTags][tag.integerValue][@"id"] intValue])];
+    }
+
     [self refreshTagsView];
 }
 

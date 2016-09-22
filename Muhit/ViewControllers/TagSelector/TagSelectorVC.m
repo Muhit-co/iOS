@@ -46,7 +46,25 @@
 }
 
 -(IBAction)actOk:(id)sender{
-    [self dismiss];
+    
+    NSArray *selectedIndexPaths =  [tblTags indexPathsForSelectedRows];
+    
+    if (selectedIndexPaths && selectedIndexPaths.count > 0) {
+        
+        NSMutableArray *selectedRows = [[NSMutableArray alloc] initWithCapacity:selectedIndexPaths.count];
+        
+        for (NSIndexPath *indexPath in selectedIndexPaths) {
+            [selectedRows addObject:[NSNumber numberWithInteger:indexPath.row]];
+        }
+        
+        if([delegate respondsToSelector:@selector(selectedTags:)]) {
+            [delegate selectedTags:selectedRows];
+        }
+        [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.1f];
+    }
+    else{
+    	[self performSelector:@selector(dismiss) withObject:nil afterDelay:0.1f];
+    }
 }
 
 #pragma mark Interface
@@ -87,14 +105,10 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    //[[tableView cellForRowAtIndexPath:indexPath] setSelected:YES animated:NO];
-//    if([delegate respondsToSelector:@selector(selectedTagIndex:)]) {
-//        [delegate selectedTagIndex:(int)indexPath.row];
-//    }
-//    [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.1f];
-}
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-   // [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:NO];
+    NSArray *selectedIndexPaths =  [tblTags indexPathsForSelectedRows];
+    if (selectedIndexPaths.count > 5) {
+        [tblTags deselectRowAtIndexPath:indexPath animated:NO];
+    }
 }
 
 -(void)layoutSubviews{
