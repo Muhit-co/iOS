@@ -37,6 +37,12 @@
     arrIssues = [[NSMutableArray alloc] init];
     [self getIssues];
     [self setMarkers];
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse){
+        [self actLocation:nil];
+    }
+    else{
+        [map setCamera:[GMSCameraPosition cameraWithTarget:CLLocationCoordinate2DMake(41.0671234,28.989452) zoom:10]];
+    }
 }
 
 - (void)geoCodePicked:(NSNotification*)notification{
@@ -241,6 +247,8 @@
     if (newLocation) {
         REMOVE_HUD
         [locationManager stopUpdatingLocation];
+        [map setCamera:[GMSCameraPosition cameraWithTarget:CURRENT_LOCATION zoom:12]];
+        
         [SERVICES getAddressesWithLocation:CURRENT_LOCATION handler:^(NSDictionary *response, NSError *error) {
             if (!error) {
                 @try {
@@ -257,7 +265,7 @@
     }
 }
 
-#pragma mark - Map Deletates
+#pragma mark - Map Delegates
 
 -(void)setMarkers{
     
@@ -293,7 +301,7 @@
         GMSMarker *marker = [[GMSMarker alloc] init];
         [marker setPosition:CLLocationCoordinate2DMake([dict[@"lat"] doubleValue], [dict[@"lon"] doubleValue])];
         [marker setAppearAnimation:kGMSMarkerAnimationPop];
-        [marker setIcon:[IonIcons imageWithIcon:ion_location size:45 color:CLR_DARK_PUPRPLE]];
+        [marker setIcon:[UIImage imageNamed:@"map-issue-pin"]];
         [marker setTitle:dict[@"name"]];
         [marker setMap:map];
         [marker setUserData:dict[@"issueId"]];

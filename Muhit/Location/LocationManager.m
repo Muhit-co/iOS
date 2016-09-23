@@ -40,8 +40,8 @@ static LocationManager *sharedManager;
     if(self) {
         locationManager = [[CLLocationManager alloc] init];
         [locationManager setDelegate:self];
-        if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]){
-            [locationManager requestAlwaysAuthorization];
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
+            [locationManager requestWhenInUseAuthorization];
         }
     }
     return self;
