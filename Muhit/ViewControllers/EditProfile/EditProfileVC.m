@@ -67,7 +67,7 @@
     [btnHood setTitle:dict[@"address"]];
     fullGeoCode = dict[@"address"];
     
-    NSString *imgUrl = [NSString stringWithFormat:@"%@/180x180/%@",IMAGE_PROXY,dict[@"picture"]];
+    NSString *imgUrl = [NSString stringWithFormat:@"%@/180x180/users/%@",IMAGE_PROXY,dict[@"picture"]];
     [imgProfile sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"userPlaceholder"]];
 }
 
@@ -95,7 +95,7 @@
 -(IBAction)actSave:(id)sender{
     ADD_HUD
     NSString * base64Photo = [UIImageJPEGRepresentation(imageForProfile, 0.7) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    [SERVICES updateProfile:txtName.text lastName:txtSurname.text password:txtPassword.text activeHood:fullGeoCode photo:base64Photo email:profileDict[KEY_EMAIL] username:profileDict[KEY_USERNAME] handler:^(NSDictionary *response, NSError *error) {
+    [SERVICES updateProfile:txtName.text lastName:txtSurname.text password:txtPassword.text location:fullGeoCode photo:base64Photo email:profileDict[KEY_EMAIL] username:profileDict[KEY_USERNAME] handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
             REMOVE_HUD

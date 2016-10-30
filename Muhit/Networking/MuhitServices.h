@@ -15,7 +15,7 @@
 
 @interface MuhitServices : NSObject
 
-+ (void)signUp:(NSString*)firstName lastName:(NSString*)lastName email:(NSString*)email password:(NSString*)password activeHood:(NSString *)activeHood handler:(GeneralResponseHandler)handler;
++ (void)signUp:(NSString*)firstName lastName:(NSString*)lastName email:(NSString*)email password:(NSString*)password location:(NSString *)location handler:(GeneralResponseHandler)handler;
 
 + (void)login:(NSString*)email password:(NSString*)password handler:(GeneralResponseHandler)handler;
 
@@ -23,13 +23,15 @@
 
 + (void)getProfile:(NSString*)profileId handler:(GeneralResponseHandler)handler;
 
-+ (void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName password:(NSString *)password activeHood:(NSString *)activeHood photo:(NSString *)photo email:(NSString *)email username:(NSString *)username handler:(GeneralResponseHandler)handler;
++ (void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName password:(NSString *)password location:(NSString *)location photo:(NSString *)photo email:(NSString *)email username:(NSString *)username handler:(GeneralResponseHandler)handler;
 
-+ (void)getIssues:(int)from handler:(GeneralResponseHandler)handler;
++ (void)getIssues:(int)from type:(NSString*)type handler:(GeneralResponseHandler)handler;
 
 +(void)getAnnouncements:(NSString *)userId handler:(GeneralResponseHandler)handler;
 
 + (void)addOrUpdateIssue:(NSString*)title problem:(NSString*)problem solution:(NSString*)solution location:(NSString*)location tags:(NSArray*)tags images:(NSArray*)images isAnonymous:(BOOL)isAnonymous coordinate:(NSString *)coordinate issueId:(NSString *)issueId handler:(GeneralResponseHandler)handler;
+
++ (void)deleteIssue:(NSString *)issueId handler:(GeneralResponseHandler)handler;
 
 + (void)getTagsWithhandler:(GeneralResponseHandler)handler;
 

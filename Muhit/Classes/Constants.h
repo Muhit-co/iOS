@@ -58,7 +58,7 @@ static const CGFloat cornerRadius = 6;
 #define UD_HOOD_LAT @"UD_HOOD_LAT"
 #define UD_HOOD_LON @"UD_HOOD_LON"
 #define UD_API_TOKEN @"UD_API_TOKEN"
-#define UD_HOOD_ID @"UD_HOOD_ID"
+#define UD_LOCATION @"UD_LOCATION"
 #define UD_USER_ID @"UD_USER_ID"
 #define UD_USERNAME @"UD_USERNAME"
 #define UD_USER_PICTURE @"UD_USER_PICTURE"

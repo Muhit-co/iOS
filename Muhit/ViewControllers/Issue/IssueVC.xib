@@ -1,37 +1,25 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="SourceSansPro-Bold.ttf">
+        <array key="SourceSansPro-Bold.ttf">
             <string>SourceSansPro-Bold</string>
-            <string>SourceSansPro-Bold</string>
-        </mutableArray>
-        <mutableArray key="SourceSansPro-Regular.ttf">
+        </array>
+        <array key="SourceSansPro-Regular.ttf">
             <string>SourceSansPro-Regular</string>
-            <string>SourceSansPro-Regular</string>
-            <string>SourceSansPro-Regular</string>
-        </mutableArray>
-        <mutableArray key="SourceSansPro-Semibold.ttf">
+        </array>
+        <array key="SourceSansPro-Semibold.ttf">
             <string>SourceSansPro-Semibold</string>
-            <string>SourceSansPro-Semibold</string>
-            <string>SourceSansPro-Semibold</string>
-            <string>SourceSansPro-Semibold</string>
-            <string>SourceSansPro-Semibold</string>
-            <string>SourceSansPro-Semibold</string>
-            <string>SourceSansPro-Semibold</string>
-            <string>SourceSansPro-Semibold</string>
-            <string>SourceSansPro-Semibold</string>
-            <string>SourceSansPro-Semibold</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IssueVC">
             <connections>
                 <outlet property="btnBack" destination="QbO-ZG-Fh5" id="OOB-RK-aSg"/>
-                <outlet property="btnEdit" destination="V1p-RA-9nD" id="nqI-QM-Ui5"/>
                 <outlet property="btnShare" destination="KAk-ml-Lvu" id="lni-oi-2Qf"/>
                 <outlet property="btnSupport" destination="p15-OV-Q25" id="0jZ-8s-YOj"/>
                 <outlet property="constContainerHeight" destination="k8Y-4I-Zky" id="8H9-6q-6lu"/>
@@ -66,18 +54,15 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ak-aK-0d4">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ak-aK-0d4">
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNN-6b-Hif">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             <subviews>
                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRH-bD-gAh" userLabel="scrollImages">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
-                                    <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="YG6-3c-8D1"/>
                                     </constraints>
@@ -86,42 +71,37 @@
                                     </connections>
                                 </scrollView>
                                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="tVd-hQ-ms7">
-                                    <rect key="frame" x="300" y="200" width="0.0" height="0.0"/>
-                                    <color key="currentPageIndicatorTintColor" red="0.2666666667" green="0.63529411759999999" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="currentPageIndicatorTintColor" red="0.21831074357032776" green="0.56181812286376953" blue="0.84826898574829102" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <connections>
                                         <action selector="changePage" destination="-1" eventType="valueChanged" id="qzG-VY-5yG"/>
                                     </connections>
                                 </pageControl>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DB8-Sy-co6" userLabel="viewLocation">
-                                    <rect key="frame" x="0.0" y="200" width="600" height="50"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bM6-Wj-zb6" userLabel="iconLocation">
-                                            <rect key="frame" x="10" y="11" width="28" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="48e-2b-AUp"/>
                                                 <constraint firstAttribute="width" constant="28" id="OXr-CY-i81"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cihangir Mahallesi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dfv-PW-v6m" userLabel="lblHood">
-                                            <rect key="frame" x="48" y="8" width="467" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="3xB-5X-eRW"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Beyoğlu Caddesi, İstanbul" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eml-Zm-u04" userLabel="lblDistrict">
-                                            <rect key="frame" x="48" y="27" width="467" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="JnS-gs-0TF"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="12"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.2666666667" green="0.63137254899999995" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.21805909276008606" green="0.55724543333053589" blue="0.84826415777206421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="bM6-Wj-zb6" firstAttribute="leading" secondItem="DB8-Sy-co6" secondAttribute="leading" constant="10" id="0HF-my-2Gn"/>
                                         <constraint firstItem="Dfv-PW-v6m" firstAttribute="top" secondItem="DB8-Sy-co6" secondAttribute="top" constant="8" id="EsO-jL-o1G"/>
@@ -135,28 +115,25 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mh-uj-uhZ" userLabel="viewSupports">
-                                    <rect key="frame" x="515" y="164" width="70" height="70"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8S-fc-k6a" userLabel="lblSupportsCount">
-                                            <rect key="frame" x="5" y="7" width="60" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="g4W-qb-YDh"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="30"/>
-                                            <color key="textColor" red="0.2666666667" green="0.63137254899999995" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.21805909276008606" green="0.55724543333053589" blue="0.84826415777206421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESTEKÇİ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f38-wt-8j9" userLabel="lblSupportsTitle">
-                                            <rect key="frame" x="5" y="38" width="60" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="EPx-XX-q12"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="12"/>
-                                            <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.75541263818740845" green="0.75272738933563232" blue="0.83488970994949341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="N8S-fc-k6a" secondAttribute="trailing" constant="5" id="C9e-bX-c2T"/>
                                         <constraint firstItem="N8S-fc-k6a" firstAttribute="leading" secondItem="0mh-uj-uhZ" secondAttribute="leading" constant="5" id="NIw-sP-em2"/>
@@ -168,32 +145,28 @@
                                         <constraint firstAttribute="width" constant="70" id="ydH-JD-Bk9"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Olay var" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJC-Fj-Ygr" userLabel="lblIssueTitle">
-                                    <rect key="frame" x="15" y="265" width="570" height="31"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Olay var" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJC-Fj-Ygr" userLabel="lblIssueTitle">
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="kFq-d8-TjX"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="24"/>
-                                    <color key="textColor" red="0.2666666667" green="0.63529411759999999" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.21831074357032776" green="0.56181812286376953" blue="0.84826898574829102" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ePf-QZ-uyu" userLabel="viewType">
-                                    <rect key="frame" x="465" y="311" width="120" height="30"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePf-QZ-uyu" userLabel="viewType">
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eUy-XG-gOc" userLabel="imgTypeIcon">
-                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="ey5-ZG-nR7"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Çözüldü" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0v-8q-pqC" userLabel="lblType">
-                                            <rect key="frame" x="30" y="0.0" width="85" height="30"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.99607843139999996" green="0.70196078429999997" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.99607843139999996" green="0.70196078429999997" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="eUy-XG-gOc" firstAttribute="top" secondItem="ePf-QZ-uyu" secondAttribute="top" id="2dJ-bu-aYi"/>
                                         <constraint firstItem="q0v-8q-pqC" firstAttribute="top" secondItem="ePf-QZ-uyu" secondAttribute="top" id="3Mo-Aw-cD5"/>
@@ -206,93 +179,74 @@
                                         <constraint firstAttribute="height" constant="30" id="x9B-Pt-rc6"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="12 Ağustos 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Csk-nH-u8C" userLabel="lblDate">
-                                    <rect key="frame" x="15" y="316" width="435" height="20"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Ağustos 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Csk-nH-u8C" userLabel="lblDate">
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="8Sc-XG-owl"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="16"/>
-                                    <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.75541263818740845" green="0.75272738933563232" blue="0.83488970994949341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sorun" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3R-M3-O6a" userLabel="lblProblemTitle">
-                                    <rect key="frame" x="15" y="356" width="570" height="20"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorun" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3R-M3-O6a" userLabel="lblProblemTitle">
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="iuc-Jc-eMp"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="16"/>
-                                    <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.75541263818740845" green="0.75272738933563232" blue="0.83488970994949341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Aliquam ut tellus sit amet nulla porta congue vitae vel leo. Pellentesque ac accumsan felis. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oY-eo-ioi" userLabel="lblProblem">
-                                    <rect key="frame" x="15" y="381" width="570" height="41"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aliquam ut tellus sit amet nulla porta congue vitae vel leo. Pellentesque ac accumsan felis. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oY-eo-ioi" userLabel="lblProblem">
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="coc-Dh-22T"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
-                                    <color key="textColor" red="0.14117647058823529" green="0.33725490196078434" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.11181522905826569" green="0.26564440131187439" blue="0.37107929587364197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="15" y="368" width="370" height="100"/>
-                                    </variation>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Çözüm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRn-Bh-B5l" userLabel="lblSolutionTitle">
-                                    <rect key="frame" x="15" y="432" width="570" height="20"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Çözüm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRn-Bh-B5l" userLabel="lblSolutionTitle">
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="QOH-yq-7fa"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="16"/>
-                                    <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.75541263818740845" green="0.75272738933563232" blue="0.83488970994949341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Aliquam ut tellus sit amet nulla porta congue vitae vel leo. Pellentesque ac accumsan felis. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Hr-bX-KIf" userLabel="lblSolution">
-                                    <rect key="frame" x="15" y="457" width="570" height="41"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aliquam ut tellus sit amet nulla porta congue vitae vel leo. Pellentesque ac accumsan felis. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Hr-bX-KIf" userLabel="lblSolution">
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="osp-kp-Wh4"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
-                                    <color key="textColor" red="0.14117647058823529" green="0.33725490196078434" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.11181522905826569" green="0.26564440131187439" blue="0.37107929587364197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="15" y="368" width="370" height="100"/>
-                                    </variation>
                                 </label>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fAB-wq-X3t" userLabel="viewTagContainer">
-                                    <rect key="frame" x="15" y="513" width="570" height="30"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fAB-wq-X3t" userLabel="viewTagContainer">
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="2lS-w9-bwl"/>
                                     </constraints>
-                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="15" y="478" width="370" height="30"/>
-                                    </variation>
                                 </view>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aer-PR-reE" userLabel="viewProfile">
-                                    <rect key="frame" x="15" y="553" width="570" height="40"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aer-PR-reE" userLabel="viewProfile">
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lhh-rX-NDz" userLabel="imgCreator">
-                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="Ikg-Ge-99f"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kamil Can" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFa-yr-4JN" userLabel="lblCreatorName">
-                                            <rect key="frame" x="50" y="0.0" width="520" height="40"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
-                                            <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.75541263818740845" green="0.75272738933563232" blue="0.83488970994949341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0c1-xo-WVg" userLabel="btnProfile">
-                                            <rect key="frame" x="0.0" y="0.0" width="570" height="40"/>
                                             <state key="normal">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="actProfile:" destination="-1" eventType="touchUpInside" id="Y4a-SD-tAU"/>
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="lhh-rX-NDz" secondAttribute="bottom" id="8S1-Z7-QA9"/>
                                         <constraint firstItem="pFa-yr-4JN" firstAttribute="top" secondItem="Aer-PR-reE" secondAttribute="top" id="FXg-Pc-mB1"/>
@@ -309,7 +263,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="0mh-uj-uhZ" firstAttribute="bottom" secondItem="LRH-bD-gAh" secondAttribute="bottom" constant="34" id="0Mz-at-Bd1"/>
                                 <constraint firstAttribute="trailing" secondItem="C3R-M3-O6a" secondAttribute="trailing" constant="15" id="1NQ-AA-EeD"/>
@@ -359,87 +313,68 @@
                         <constraint firstItem="iNN-6b-Hif" firstAttribute="width" secondItem="3ak-aK-0d4" secondAttribute="width" id="fEl-nB-NIf"/>
                         <constraint firstAttribute="bottom" secondItem="iNN-6b-Hif" secondAttribute="bottom" id="mYQ-fn-ynJ"/>
                     </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="nnI-ed-acg"/>
+                    </connections>
                 </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyx-5t-jbs" userLabel="viewHeader">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QbO-ZG-Fh5" userLabel="btnBack">
-                            <rect key="frame" x="5" y="30" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="OZs-eN-rC2"/>
                                 <constraint firstAttribute="height" constant="40" id="hqM-Y7-ALa"/>
                             </constraints>
                             <state key="normal" image="navigation-back">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="actBack:" destination="-1" eventType="touchUpInside" id="rla-4y-x7P"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p15-OV-Q25" userLabel="btnSupport">
-                            <rect key="frame" x="480" y="30" width="115" height="40"/>
-                            <color key="backgroundColor" red="0.26666666666666666" green="0.63137254901960782" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.21805909276008606" green="0.55724543333053589" blue="0.84826415777206421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="115" id="AxX-wY-pto"/>
                                 <constraint firstAttribute="height" constant="40" id="Ya1-QM-We3"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
                             <state key="normal" title="DESTEKLEDİM">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="actSupport:" destination="-1" eventType="touchUpInside" id="Etf-sv-mDT"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAk-ml-Lvu" userLabel="btnShare">
-                            <rect key="frame" x="430" y="30" width="40" height="40"/>
-                            <color key="backgroundColor" red="0.14117647058823529" green="0.33725490196078434" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.11181522905826569" green="0.26564440131187439" blue="0.37107929587364197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="5H4-7y-SnL"/>
                                 <constraint firstAttribute="width" constant="40" id="GUk-Q2-m3s"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
                             <state key="normal">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="actShare:" destination="-1" eventType="touchUpInside" id="YvD-0p-yFP"/>
-                            </connections>
-                        </button>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1p-RA-9nD" userLabel="btnEdit">
-                            <rect key="frame" x="495" y="30" width="100" height="40"/>
-                            <color key="backgroundColor" red="0.2666666667" green="0.63529411759999999" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="2By-wS-gZw"/>
-                                <constraint firstAttribute="width" constant="100" id="Ex4-v9-Rky"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
-                            <state key="normal" title="DÜZENLE">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="actEdit:" destination="-1" eventType="touchUpInside" id="0e0-f9-eN5"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="KAk-ml-Lvu" secondAttribute="bottom" constant="10" id="5AF-zk-ghi"/>
+                        <constraint firstAttribute="trailing" secondItem="KAk-ml-Lvu" secondAttribute="trailing" constant="10" id="5X7-W3-tov"/>
                         <constraint firstItem="QbO-ZG-Fh5" firstAttribute="leading" secondItem="gyx-5t-jbs" secondAttribute="leading" constant="5" id="IwS-eg-0Sz"/>
                         <constraint firstAttribute="bottom" secondItem="p15-OV-Q25" secondAttribute="bottom" constant="10" id="UfS-e1-YjD"/>
-                        <constraint firstAttribute="bottom" secondItem="V1p-RA-9nD" secondAttribute="bottom" constant="10" id="Zd8-Lu-Tjk"/>
+                        <constraint firstItem="KAk-ml-Lvu" firstAttribute="leading" secondItem="p15-OV-Q25" secondAttribute="trailing" constant="10" id="daW-Aq-C1q"/>
                         <constraint firstAttribute="bottom" secondItem="QbO-ZG-Fh5" secondAttribute="bottom" constant="10" id="etN-xB-Blq"/>
-                        <constraint firstItem="p15-OV-Q25" firstAttribute="leading" secondItem="KAk-ml-Lvu" secondAttribute="trailing" constant="10" id="o1o-b1-TOt"/>
-                        <constraint firstAttribute="trailing" secondItem="p15-OV-Q25" secondAttribute="trailing" constant="5" id="ono-kz-60q"/>
-                        <constraint firstAttribute="trailing" secondItem="V1p-RA-9nD" secondAttribute="trailing" constant="5" id="pD4-Gg-gyl"/>
                         <constraint firstAttribute="height" constant="80" id="zPo-pm-2ye"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="gyx-5t-jbs" secondAttribute="trailing" id="9dW-iD-xjP"/>
                 <constraint firstItem="gyx-5t-jbs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="DJ8-D6-YJM"/>
@@ -450,35 +385,33 @@
                 <constraint firstAttribute="bottom" secondItem="3ak-aK-0d4" secondAttribute="bottom" id="g1r-bl-bEx"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="33.5" y="155.5"/>
         </view>
         <view contentMode="scaleToFill" id="QRz-AG-3Pf">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbR-5V-9c2" userLabel="viewLine">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
-                    <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.75541263818740845" green="0.75272738933563232" blue="0.83488970994949341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="D4E-G2-MUZ"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tSH-U8-TEI">
-                    <rect key="frame" x="0.0" y="1" width="320" height="567"/>
-                    <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.97037827968597412" green="0.97034925222396851" blue="0.97036570310592651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="rbD-Pi-xnC"/>
                         <outlet property="delegate" destination="-1" id="5yM-TJ-7PM"/>
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zpo-oy-6Hv" userLabel="viewLine">
-                    <rect key="frame" x="0.0" y="567" width="320" height="1"/>
-                    <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.75541263818740845" green="0.75272738933563232" blue="0.83488970994949341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="E3C-zJ-Ck1"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="fbR-5V-9c2" secondAttribute="trailing" id="4QU-4W-n1H"/>
                 <constraint firstItem="tSH-U8-TEI" firstAttribute="top" secondItem="fbR-5V-9c2" secondAttribute="bottom" id="5Qt-Et-ijG"/>

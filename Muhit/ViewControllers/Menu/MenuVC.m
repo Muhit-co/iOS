@@ -55,7 +55,7 @@
     if ([MT isLoggedIn]) {
         [viewLoggedIn setHidden:NO];
         [viewLoggedOut setHidden:YES];
-        NSString *imgUrl = [NSString stringWithFormat:@"%@/80x80/%@",IMAGE_PROXY,[UD objectForKey:UD_USER_PICTURE]];
+        NSString *imgUrl = [NSString stringWithFormat:@"%@/80x80/users/%@",IMAGE_PROXY,[UD objectForKey:UD_USER_PICTURE]];
         [imgProfile sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"userPlaceholder"]];
         lblName.text = [NSString stringWithFormat:@"%@ %@",[UD objectForKey:UD_FIRSTNAME],[UD objectForKey:UD_SURNAME]];
     }

@@ -11,7 +11,7 @@
 
 @interface IssueVC (){
     IBOutlet UILabel *lblSupportTitle,*lblSupportCount,*lblHood,*lblDistrict,*lblDate,*lblType,*lblIssueTitle,*lblProblemTitle,*lblProblemDescription,*lblSolutionTitle,*lblSolutionDescription,*lblCommentTitle,*lblCreatorName;
-    IBOutlet UIButton *btnBack,*btnSupport,*btnEdit,*btnShare;
+    IBOutlet UIButton *btnBack,*btnSupport,*btnShare;
     IBOutlet UIImageView *imgLocationIcon,*imgTypeIcon,*imgCreator;
     IBOutlet UIView *viewSupport,*viewType,*viewTagsContainer,*viewCommentsHolder,*viewProfile;
     IBOutlet UIScrollView *scrollImages;
@@ -40,7 +40,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     ADD_HUD_TOP
-    [btnEdit setHidden:YES];
     [btnSupport setHidden:YES];
     [scrollRoot setHidden:YES];
     [self adjustUI];
@@ -74,7 +73,6 @@
     imgCreator.layer.cornerRadius = 20;
     imgCreator.layer.masksToBounds = YES;
     btnSupport.layer.cornerRadius = cornerRadius;
-    btnEdit.layer.cornerRadius = cornerRadius;
     btnShare.layer.cornerRadius = cornerRadius;
     [btnShare setImage:[IonIcons imageWithIcon:ion_share size:24 color:[UIColor whiteColor]]];
     [imgLocationIcon setImage:[IonIcons imageWithIcon:ion_location size:24 color:[UIColor whiteColor]]];
@@ -84,11 +82,9 @@
     NSLog(@"issueDetail:%@",dict);
     
     if ([dict[@"user_id"] integerValue] == [UD integerForKey:UD_USER_ID]) {
-        [btnEdit setHidden:NO];
         [btnSupport setHidden:YES];
     }
     else{
-        [btnEdit setHidden:YES];
         [btnSupport setHidden:NO];
         if ([dict[@"is_supported"] boolValue]) {
             isSupported = YES;
@@ -299,9 +295,9 @@
     [ScreenOperations openProfileWithId:STRING_W_INT([detail[USER][@"id"] intValue])];
 }
 
--(IBAction)actEdit:(id)sender{
-    [ScreenOperations openEditIssueWithInfo:detail];
-}
+//-(IBAction)actEdit:(id)sender{
+//    [ScreenOperations openEditIssueWithInfo:detail];
+//}
 
 -(IBAction)actShare:(id)sender{
     
@@ -370,11 +366,20 @@
 #pragma mark - UIScrollView Delegates
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    // Update the page when more than 50% of the previous/next page is visible
-    CGFloat pageWidth = scrollImages.frame.size.width;
-    int page = floor((scrollImages.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    pageControl.currentPage = page;
+    
+    if (scrollView == scrollRoot) {
+        if(scrollView.contentOffset.y <0){
+        	NSLog(@"scrollview:%f",scrollView.contentOffset.y);
+        }
+    }
+    else{
+        // Update the page when more than 50% of the previous/next page is visible
+        CGFloat pageWidth = scrollImages.frame.size.width;
+        int page = floor((scrollImages.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+        pageControl.currentPage = page;
+    }
 }
+
 #pragma mark -
 
 - (void)didReceiveMemoryWarning {
@@ -384,8 +389,7 @@
 - (void)setLocalizedStrings{
     [lblCommentTitle setText:LocalizedString(@"comments")];
     [lblSupportTitle setText:[LocalizedString(@"supporter") toUpper]];
-    [btnEdit setTitle:[LocalizedString(@"edit") toUpper]];
-    
+
     [lblProblemTitle setText:LocalizedString(@"problem")];
     [lblSolutionTitle setText:LocalizedString(@"solution")];
     

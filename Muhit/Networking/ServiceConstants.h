@@ -24,8 +24,8 @@
 #define SERVICE_PROFILE @"profile"
 #define SERVICE_GET_TAGS @"tags"
 #define SERVICE_GET_ISSUES @"issues/list"
-#define SERVICE_ADD_ISSUE @"issues/create"
-#define SERVICE_DELETE_ISSUE @"issues/delete"
+#define SERVICE_ADD_ISSUE @"issue/create"
+#define SERVICE_DELETE_ISSUE @"issue/delete"
 #define SERVICE_GET_ANNOUNCEMENTS @"announcements"
 
 /*********************************************************/
@@ -44,11 +44,10 @@
 #define KEY_USERNAME @"username"
 #define KEY_FIRSTNAME @"first_name"
 #define KEY_LASTNAME @"last_name"
-#define KEY_ACTIVE_HOOD @"active_hood"
 #define KEY_ISSUE_TITLE @"title"
 #define KEY_ISSUE_PROBLEM @"problem"
 #define KEY_ISSUE_SOLUTION @"solution"
-#define KEY_ISSUE_LOCATION @"location"
+#define KEY_LOCATION @"location"
 #define KEY_ISSUE_TAGS @"tags"
 #define KEY_ISSUE_IMAGES @"images"
 #define KEY_SEARCH @"search"

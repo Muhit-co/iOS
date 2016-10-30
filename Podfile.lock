@@ -20,9 +20,9 @@ PODS:
   - Bolts/AppLinks (1.7.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.7.0)
-  - Crashlytics (3.7.2):
+  - Crashlytics (3.8.2):
     - Fabric (~> 1.6.3)
-  - Fabric (1.6.7)
+  - Fabric (1.6.8)
   - FBSDKCoreKit (4.13.1):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.13.1):
@@ -50,11 +50,11 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1)
-  - Crashlytics (~> 3.7)
+  - Crashlytics (~> 3.8)
   - Fabric (~> 1.6)
-  - FBSDKCoreKit (~> 4.13)
-  - FBSDKLoginKit (~> 4.13)
-  - GoogleAnalytics (~> 3.14)
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - GoogleAnalytics
   - GoogleMaps
   - HexColors (~> 4.0)
   - ionicons (~> 2.0)
@@ -65,8 +65,8 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
-  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
-  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
+  Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
   FBSDKCoreKit: 2807fe0da2ddb49a1469da6d6ff597f99912980f
   FBSDKLoginKit: 6d350cb6a22d6956e9d078885de6ee8a0ebc51b4
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
@@ -77,4 +77,6 @@ SPEC CHECKSUMS:
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
-COCOAPODS: 0.39.0.beta.4
+PODFILE CHECKSUM: 7fd3b62cebff4c1bad4eb3209e1fea33615cb143
+
+COCOAPODS: 1.0.1

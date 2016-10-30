@@ -76,7 +76,7 @@
     }
     
     ADD_HUD
-    [SERVICES signUp:txtFirstname.text lastName:txtSurname.text email:txtEmail.text password:txtPassword.text activeHood:@"" handler:^(NSDictionary *response, NSError *error) {
+    [SERVICES signUp:txtFirstname.text lastName:txtSurname.text email:txtEmail.text password:txtPassword.text location:fullGeoCode handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
         }

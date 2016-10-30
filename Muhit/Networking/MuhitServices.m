@@ -13,15 +13,18 @@ const int itemPerPage = 10;
 
 @implementation MuhitServices
 
-+(void)signUp:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password activeHood:(NSString *)activeHood handler:(GeneralResponseHandler)handler{
++(void)signUp:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password location:(NSString *)location handler:(GeneralResponseHandler)handler{
     
-    NSDictionary *requestDict = @{
+    NSMutableDictionary *requestDict = [NSMutableDictionary dictionaryWithDictionary: @{
                                   KEY_FIRSTNAME : firstName,
                                   KEY_LASTNAME : lastName,
                                   KEY_EMAIL : email,
-                                  KEY_PASSWORD : password,
-                                  KEY_ACTIVE_HOOD : activeHood
-                                  };
+                                  KEY_PASSWORD : password
+                                  }];
+    
+    if (location) {
+        [requestDict setObject:location forKey:KEY_LOCATION];
+    }
     
     [SERVICES postRequestWithMethod:SERVICE_SIGNUP requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
@@ -51,17 +54,20 @@ const int itemPerPage = 10;
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
-+ (void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName password:(NSString *)password activeHood:(NSString *)activeHood photo:(NSString *)photo email:(NSString *)email username:(NSString *)username handler:(GeneralResponseHandler)handler{
++ (void)updateProfile:(NSString *)firstName lastName:(NSString *)lastName password:(NSString *)password location:(NSString *)location photo:(NSString *)photo email:(NSString *)email username:(NSString *)username handler:(GeneralResponseHandler)handler{
     
     NSMutableDictionary *requestDict = [NSMutableDictionary dictionaryWithDictionary:
                                         @{
                                           KEY_FIRSTNAME : firstName,
                                           KEY_LASTNAME : lastName,
                                           KEY_PASSWORD : password,
-                                          KEY_ACTIVE_HOOD : activeHood,
                                           KEY_USERNAME : username,
                                           KEY_EMAIL : email
                                           }];
+    
+    if (location) {
+        [requestDict setObject:location forKey:KEY_LOCATION];
+    }
     
     if (photo) {
         [requestDict setObject:photo forKey:KEY_PICTURE];
@@ -72,7 +78,7 @@ const int itemPerPage = 10;
     [SERVICES postRequestWithMethod:url requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
-+(void)getIssues:(int)from handler:(GeneralResponseHandler)handler{
++(void)getIssues:(int)from type:(NSString*)type handler:(GeneralResponseHandler)handler{
     
     NSString *url = [NSString stringWithFormat:@"%@/%d/%d",SERVICE_GET_ISSUES,from,itemPerPage];
     
@@ -97,28 +103,23 @@ const int itemPerPage = 10;
         [requestDict setObject:[images componentsJoinedByString:@","] forKey:KEY_ISSUE_IMAGES];
     }
     if (location) {
-        [requestDict setObject:location forKey:KEY_ISSUE_LOCATION];
+        [requestDict setObject:location forKey:KEY_LOCATION];
     }
     if (coordinate) {
         [requestDict setObject:coordinate forKey:KEY_COORDINATE];
     }
     
-    if(!issueId){
-        [SERVICES postRequestWithMethod:SERVICE_ADD_ISSUE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
-    }
-    else{
-        NSString *url = [NSString stringWithFormat:@"%@/%@/%@",SERVICE_DELETE_ISSUE,[MT userId],issueId];
-        [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:^(NSDictionary *response, NSError *error) {
-            if(!error){
-                [SERVICES postRequestWithMethod:SERVICE_ADD_ISSUE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
-            }
-        }];
-    }
+    [SERVICES postRequestWithMethod:SERVICE_ADD_ISSUE requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
+}
+
++ (void)deleteIssue:(NSString *)issueId handler:(GeneralResponseHandler)handler{
+    NSString *url = [NSString stringWithFormat:@"%@/%@/%@",SERVICE_DELETE_ISSUE,[MT userId],issueId];
+	[SERVICES postRequestWithMethod:url requestDict:nil backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
 +(void)getAnnouncements:(NSString *)userId handler:(GeneralResponseHandler)handler{
     
-    NSString *url = [NSString stringWithFormat:@"user/%@/announcements",userId];
+    NSString *url = [NSString stringWithFormat:@"user/show/%@/announcements",userId];
     
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
@@ -130,30 +131,30 @@ const int itemPerPage = 10;
 
 +(void)support:(NSString *)issueId handler:(GeneralResponseHandler)handler{
     
-    NSString *url = [NSString stringWithFormat:@"issues/%@/support",issueId];
-    [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
+    NSString *url = [NSString stringWithFormat:@"issue/show/%@/support",issueId];
+	[SERVICES postRequestWithMethod:url requestDict:nil backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
 +(void)unSupport:(NSString *)issueId handler:(GeneralResponseHandler)handler{
     
-    NSString *url = [NSString stringWithFormat:@"issues/%@/unsupport",issueId];
-    [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
+    NSString *url = [NSString stringWithFormat:@"issue/show/%@/unsupport",issueId];
+    [SERVICES postRequestWithMethod:url requestDict:nil backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
 + (void)getSupporteds:(NSString *)userId handler:(GeneralResponseHandler)handler{
-    NSString *url = [NSString stringWithFormat:@"user/%@/supported",userId];
+    NSString *url = [NSString stringWithFormat:@"user/show/%@/supported",userId];
     
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
 + (void)getCreateds:(NSString *)userId handler:(GeneralResponseHandler)handler{
-    NSString *url = [NSString stringWithFormat:@"user/%@/created",userId];
+    NSString *url = [NSString stringWithFormat:@"user/show/%@/created",userId];
     
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
 + (void)getHeadman:(NSString *)userId handler:(GeneralResponseHandler)handler{
-    NSString *url = [NSString stringWithFormat:@"user/%@/headman",userId];
+    NSString *url = [NSString stringWithFormat:@"user/show/%@/headman",userId];
     
     [SERVICES getRequestWithMethod:url backgroundCall:NO repeatCall:NO responseHandler:handler];
 }

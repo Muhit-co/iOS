@@ -85,12 +85,12 @@
     
     [lblUsername setText:dict[@"username"]];
     [lblName setText:dict[@"full_name"]];
-    [lblAddress setText:dict[@"address"]];
+    [lblAddress setText:dict[@"location"]];
     [lblMail setText:dict[@"email"]];
     [lblSupportsCount setText:[dict[@"supported_issue_counter"] stringValue]];
     [lblIdeasCount setText:[dict[@"opened_issue_counter"] stringValue]];
     
-    NSString *imgUrl = [NSString stringWithFormat:@"%@/240x240/%@",IMAGE_PROXY,dict[@"picture"]];
+    NSString *imgUrl = [NSString stringWithFormat:@"%@/240x240/users/%@",IMAGE_PROXY,dict[@"picture"]];
     [imgUser sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:PLACEHOLDER_IMAGE];
     
     CGSize textSize = [[lblIdeasCount text] sizeWithAttributes:@{NSFontAttributeName:[lblIdeasCount font]}];

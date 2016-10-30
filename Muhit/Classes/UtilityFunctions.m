@@ -880,11 +880,11 @@
     [UD setObject:details[USER][@"picture"] forKey:UD_USER_PICTURE];
     [UD setObject:details[USER][@"username"] forKey:UD_USERNAME];
     
-    if (isNotNull(details[USER][@"hood_id"])) {
-        [UD setObject:details[USER][@"hood_id"] forKey:UD_HOOD_ID];
+    if (isNotNull(details[USER][@"location"])) {
+        [UD setObject:details[USER][@"location"] forKey:UD_LOCATION];
     }
     else{
-        [UD setObject:nil forKey:UD_HOOD_ID];
+        [UD removeObjectForKey:UD_LOCATION];
     }
     
     [MT setUserId: details[USER][@"id"]];

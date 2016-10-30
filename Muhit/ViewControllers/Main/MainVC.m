@@ -86,7 +86,7 @@
 - (void)getIssues{
     ADD_HUD
     lastIndex = (int)arrIssues.count;
-    [SERVICES getIssues:lastIndex handler:^(NSDictionary *response, NSError *error) {
+    [SERVICES getIssues:lastIndex type:@"latest" handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             REMOVE_HUD
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);

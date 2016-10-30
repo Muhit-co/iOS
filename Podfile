@@ -4,16 +4,16 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'Muhit' do
-    pod 'GoogleAnalytics', '~> 3.14'
+    pod 'GoogleAnalytics'
+    pod 'GoogleMaps'
     pod 'MBProgressHUD', '~> 0.9'
     pod 'MMDrawerController', '~> 0.6'
     pod 'HexColors', '~> 4.0'
     pod 'AFNetworking', '~> 3.1'
     pod 'SDWebImage', '~> 3.8'
     pod 'ionicons', '~> 2.0'
-    pod 'FBSDKCoreKit', '~> 4.13'
-    pod 'FBSDKLoginKit', '~> 4.13'
-    pod 'GoogleMaps'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
     pod 'Fabric', '~> 1.6'
-    pod 'Crashlytics', '~> 3.7'
+    pod 'Crashlytics', '~> 3.8'
 end

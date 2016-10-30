@@ -29,7 +29,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     if (fromMenu) {
         [btnMenu setSize:CGSizeMake(40, 36)];
         [btnMenu setImage:[IonIcons imageWithIcon:ion_navicon size:36 color:CLR_WHITE]];
@@ -44,7 +43,27 @@
     [btnCreateIssue setImage:[IonIcons imageWithIcon:ion_plus size:15 color:CLR_WHITE]];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnCreateIssue];
     
+    [tblIdeas setAllowsSelection:YES];
+    [tblIdeas setSectionFooterHeight:0];
+    [tblIdeas setSeparatorInset:UIEdgeInsetsZero];
     [self getCreateds];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [tblIdeas setEditing:NO];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    if ([tblIdeas respondsToSelector:@selector(setSeparatorInset:)]) {
+        [tblIdeas setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([tblIdeas respondsToSelector:@selector(setLayoutMargins:)]) {
+        [tblIdeas setLayoutMargins:UIEdgeInsetsZero];
+    }
+    [self.view layoutIfNeeded];
 }
 
 -(void)getCreateds{
@@ -61,6 +80,22 @@
         }
     }];
 }
+
+-(void)deleteIssue:(NSDictionary *)issue{
+    ADD_HUD
+    [SERVICES deleteIssue:issue[@"id"] handler:^(NSDictionary *response, NSError *error) {
+        if (error) {
+            REMOVE_HUD
+            SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
+        }
+        else{
+            arrIdeas = response[@"issues"];
+            [tblIdeas reloadData];
+            REMOVE_HUD
+        }
+    }];
+}
+
 
 -(IBAction)actMenu:(id)sender{
     [self.view endEditing:YES];
@@ -109,9 +144,25 @@
     [ScreenOperations openIssueWitDetail:item];
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    return NO;
+//- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return YES;
+//}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSDictionary *item = arrIdeas[indexPath.row];
+        [self deleteIssue:item];
+    }
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return LocalizedString(@"delete");
+}
+
 #pragma mark -
 
 - (void)didReceiveMemoryWarning {

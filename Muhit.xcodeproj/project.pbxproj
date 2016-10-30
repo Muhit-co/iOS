@@ -69,6 +69,7 @@
 		4B9F053E1B1DE38E009CB713 /* SourceSansPro-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F05391B1DE38E009CB713 /* SourceSansPro-Italic.ttf */; };
 		4B9F053F1B1DE38E009CB713 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F053A1B1DE38E009CB713 /* SourceSansPro-Regular.ttf */; };
 		4B9F05401B1DE38E009CB713 /* SourceSansPro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F053B1B1DE38E009CB713 /* SourceSansPro-Semibold.ttf */; };
+		4BB5865AD451567119546252 /* libPods-Muhit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A517C388466985FDE078B0 /* libPods-Muhit.a */; };
 		4BC583811B1C4D4800180B3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC583801B1C4D4800180B3D /* main.m */; };
 		4BC583841B1C4D4800180B3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC583831B1C4D4800180B3D /* AppDelegate.m */; };
 		4BC5838C1B1C4D4800180B3D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BC5838B1B1C4D4800180B3D /* Images.xcassets */; };
@@ -87,12 +88,9 @@
 		4BF7F9061B1CF39D00A35FD1 /* ServiceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7F9041B1CF39D00A35FD1 /* ServiceHandler.m */; };
 		4BF7F90A1B1CF43A00A35FD1 /* TrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7F9091B1CF43A00A35FD1 /* TrackManager.m */; };
 		4BF7F90D1B1D882100A35FD1 /* LanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7F90C1B1D882100A35FD1 /* LanguageManager.m */; };
-		5C3C2924A058694C22EE0003 /* libPods-Muhit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE7C34FB45BFDDACF4BF7B4 /* libPods-Muhit.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		337E1D8B8459AB7B86DF7213 /* Pods-Muhit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Muhit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Muhit/Pods-Muhit.debug.xcconfig"; sourceTree = "<group>"; };
-		4A96C53F71E5C1549FCD3C74 /* Pods-Muhit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Muhit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Muhit/Pods-Muhit.release.xcconfig"; sourceTree = "<group>"; };
 		4B2169281B1F138500DEBA01 /* MTTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTextField.h; sourceTree = "<group>"; };
 		4B2169291B1F138500DEBA01 /* MTTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTextField.m; sourceTree = "<group>"; };
 		4B21692B1B20798400DEBA01 /* IssueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueCell.h; sourceTree = "<group>"; };
@@ -222,7 +220,10 @@
 		4BF7F9091B1CF43A00A35FD1 /* TrackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackManager.m; sourceTree = "<group>"; };
 		4BF7F90B1B1D882100A35FD1 /* LanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageManager.h; sourceTree = "<group>"; };
 		4BF7F90C1B1D882100A35FD1 /* LanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageManager.m; sourceTree = "<group>"; };
-		ABE7C34FB45BFDDACF4BF7B4 /* libPods-Muhit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Muhit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91A517C388466985FDE078B0 /* libPods-Muhit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Muhit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91D609EA61FFA9375F97D768 /* Pods-Muhit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Muhit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Muhit/Pods-Muhit.debug.xcconfig"; sourceTree = "<group>"; };
+		CC54391DF970A716806959A4 /* Pods-Muhit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Muhit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Muhit/Pods-Muhit.release.xcconfig"; sourceTree = "<group>"; };
+		E899C93E31A5F4073249DA11 /* Pods-Muhit.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Muhit.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-Muhit/Pods-Muhit.adhoc.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,7 +233,7 @@
 			files = (
 				4B2169731B24830600DEBA01 /* CoreLocation.framework in Frameworks */,
 				4B2169711B247C1700DEBA01 /* MapKit.framework in Frameworks */,
-				5C3C2924A058694C22EE0003 /* libPods-Muhit.a in Frameworks */,
+				4BB5865AD451567119546252 /* libPods-Muhit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,8 +457,8 @@
 				4BC5837D1B1C4D4800180B3D /* Muhit */,
 				4BC583971B1C4D4800180B3D /* MuhitTests */,
 				4BC5837C1B1C4D4800180B3D /* Products */,
-				836232E9984ACA82463BAFF3 /* Pods */,
 				A0A7E66DD1FBD04BD70EF69C /* Frameworks */,
+				B66A2B9D4776A6644A0735D8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -685,23 +686,24 @@
 			path = Managers/Language;
 			sourceTree = "<group>";
 		};
-		836232E9984ACA82463BAFF3 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				337E1D8B8459AB7B86DF7213 /* Pods-Muhit.debug.xcconfig */,
-				4A96C53F71E5C1549FCD3C74 /* Pods-Muhit.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		A0A7E66DD1FBD04BD70EF69C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				4B2169721B24830600DEBA01 /* CoreLocation.framework */,
 				4B2169701B247C1700DEBA01 /* MapKit.framework */,
-				ABE7C34FB45BFDDACF4BF7B4 /* libPods-Muhit.a */,
+				91A517C388466985FDE078B0 /* libPods-Muhit.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B66A2B9D4776A6644A0735D8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				91D609EA61FFA9375F97D768 /* Pods-Muhit.debug.xcconfig */,
+				CC54391DF970A716806959A4 /* Pods-Muhit.release.xcconfig */,
+				E899C93E31A5F4073249DA11 /* Pods-Muhit.adhoc.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1009,10 +1011,11 @@
 		};
 		4BC5839F1B1C4D4800180B3D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 337E1D8B8459AB7B86DF7213 /* Pods-Muhit.debug.xcconfig */;
+			baseConfigurationReference = 91D609EA61FFA9375F97D768 /* Pods-Muhit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5EVA6K9E87;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Muhit/Supporting Files/Prefix-Header.pch";
@@ -1026,10 +1029,11 @@
 		};
 		4BC583A01B1C4D4800180B3D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A96C53F71E5C1549FCD3C74 /* Pods-Muhit.release.xcconfig */;
+			baseConfigurationReference = CC54391DF970A716806959A4 /* Pods-Muhit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5EVA6K9E87;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Muhit/Supporting Files/Prefix-Header.pch";
@@ -1082,10 +1086,11 @@
 		};
 		4BE862821D0AD0FF00CF4013 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A96C53F71E5C1549FCD3C74 /* Pods-Muhit.release.xcconfig */;
+			baseConfigurationReference = E899C93E31A5F4073249DA11 /* Pods-Muhit.adhoc.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5EVA6K9E87;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Muhit/Supporting Files/Prefix-Header.pch";
