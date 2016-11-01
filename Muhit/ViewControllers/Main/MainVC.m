@@ -170,8 +170,8 @@
 }
 
 -(IBAction)actCreateIssue:(id)sender{
-    if ([MT isLoggedIn]) {
-        [ScreenOperations openCreateIssue];
+    if ([USER isLoggedIn]) {
+        [ScreenOperations openAddIdea];
     }
     else{
         [ScreenOperations openLogin];
@@ -232,9 +232,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-   	NSDictionary *item = [arrIssues objectAtIndex:indexPath.row];
-    [ScreenOperations openIssueWitDetail:item];
+    Idea *idea = [[Idea alloc] initWithInfo:[arrIssues objectAtIndex:indexPath.row]];
+    [ScreenOperations openIdeaWithIdea:idea];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{

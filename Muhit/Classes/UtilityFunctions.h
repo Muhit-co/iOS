@@ -97,8 +97,6 @@ typedef enum{
 
 + (NSDictionary *)parsePlaces:(GMSAutocompletePrediction *)address;
 
-+(void)setUserDefaultsWithDetails:(NSDictionary*)details;
-
 +(NSString*)urlEscapeString:(NSString *)unencodedString;
 +(NSString*)addQueryStringToUrlString:(NSString *)urlString withDictionary:(NSDictionary *)dictionary;
 +(NSString*)getDistrictFromAddress:(NSString *)address;

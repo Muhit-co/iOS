@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IdeasVC : RootVC <UITableViewDelegate,UITableViewDataSource>
+@interface MyIdeasVC : RootVC <UITableViewDelegate,UITableViewDataSource>
 
 - (id)initFromMenu;
 

@@ -60,9 +60,8 @@
         }
         else{
             NSLog(@"loginResponse:%@",response);
-            [UF setUserDefaultsWithDetails:response];
+            [USER setDetailsWithInfo:response[@"user"]];
             [self.view endEditing:YES];
-            [MT setIsLoggedIn:YES];
         }
         REMOVE_HUD
     }];
@@ -81,9 +80,8 @@
             }
             else{
                 NSLog(@"loginFacebookResponse:%@",response);
-                [UF setUserDefaultsWithDetails:response];
+                [USER setDetailsWithInfo:response[@"user"]];
                 [self.view endEditing:YES];
-                [MT setIsLoggedIn:YES];
             }
             REMOVE_HUD
         }];

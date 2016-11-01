@@ -73,7 +73,7 @@ const int itemPerPage = 10;
         [requestDict setObject:photo forKey:KEY_PICTURE];
     }
     
-    NSString *url = [NSString stringWithFormat:@"%@/%@/update",SERVICE_PROFILE,[MT userId]];
+    NSString *url = [NSString stringWithFormat:@"%@/%@/update",SERVICE_PROFILE,[USER userId]];
     
     [SERVICES postRequestWithMethod:url requestDict:requestDict backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
@@ -113,7 +113,7 @@ const int itemPerPage = 10;
 }
 
 + (void)deleteIssue:(NSString *)issueId handler:(GeneralResponseHandler)handler{
-    NSString *url = [NSString stringWithFormat:@"%@/%@/%@",SERVICE_DELETE_ISSUE,[MT userId],issueId];
+    NSString *url = [NSString stringWithFormat:@"%@/%@/%@",SERVICE_DELETE_ISSUE,[USER userId],issueId];
 	[SERVICES postRequestWithMethod:url requestDict:nil backgroundCall:NO repeatCall:NO responseHandler:handler];
 }
 
@@ -205,8 +205,8 @@ const int itemPerPage = 10;
     
     NSString *url = [NSString stringWithFormat:@"%@/api/%@",[MT serviceURL],method];
     
-    if([UD objectForKey:UD_API_TOKEN] && [MT userId]){
-        url = [NSString stringWithFormat:@"%@?api_token=%@&user_id=%@",url,[UD objectForKey:UD_API_TOKEN],[MT userId]];
+    if([USER token] && [USER userId]){
+        url = [NSString stringWithFormat:@"%@?api_token=%@&user_id=%@",url,[USER token],[USER userId]];
     }
     
     [SERVICE_HANDLER getRequest: url
@@ -228,9 +228,9 @@ const int itemPerPage = 10;
     [reqDict setObject:VAL_CLIENT_ID forKey: KEY_CLIENT_ID];
     [reqDict setObject:VAL_CLIENT_SECRET forKey: KEY_CLIENT_SECRET];
     
-    if([UD objectForKey:UD_API_TOKEN] && [MT userId]){
-        [reqDict setObject:[UD objectForKey:UD_API_TOKEN] forKey: KEY_API_TOKEN];
-        [reqDict setObject:[MT userId] forKey: KEY_USER_ID];
+    if([USER token] && [USER userId]){
+        [reqDict setObject:[USER token] forKey: KEY_API_TOKEN];
+        [reqDict setObject:[USER userId] forKey: KEY_USER_ID];
     }
     
     [SERVICE_HANDLER postRequest: url

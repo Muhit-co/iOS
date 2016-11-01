@@ -1,15 +1,15 @@
 //
-//  AddEditIssueVC.m
+//  AddIdeaVC.m
 //  Muhit
 //
 //  Created by Emre YANIK on 05/06/15.
 //  Copyright (c) 2015 Muhit. All rights reserved.
 //
 
-#import "AddEditIssueVC.h"
+#import "AddIdeaVC.h"
 #import "PickFromMapVC.h"
 
-@interface AddEditIssueVC ()<UIAlertViewDelegate>{
+@interface AddIdeaVC ()<UIAlertViewDelegate>{
     NSDictionary *issueDict;
     IBOutlet UILabel *lblTitle,*lblProblem,*lblSolution,*lblHood,*lblTags,*lblPhotos,*lblAnonim,*lblAddTag;
     IBOutlet UITextField *txtTitle;
@@ -31,7 +31,7 @@
 
 @end
 
-@implementation AddEditIssueVC
+@implementation AddIdeaVC
 
 - (id)initWithInfo:(NSDictionary *)_info{
     self = [super init];

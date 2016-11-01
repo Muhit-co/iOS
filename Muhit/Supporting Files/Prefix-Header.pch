@@ -31,6 +31,8 @@
 #import "MTTextField.h"
 #import "UIImageView+WebCache.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "User.h"
+#import "Idea.h"
 
 #endif
 

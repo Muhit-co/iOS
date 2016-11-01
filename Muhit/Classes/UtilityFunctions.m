@@ -872,24 +872,6 @@
              @"detail":detail};
 }
 
-+(void)setUserDefaultsWithDetails:(NSDictionary*)details{
-    [UD setObject:details[USER][KEY_API_TOKEN] forKey:UD_API_TOKEN];
-    [UD setObject:details[USER][@"first_name"] forKey:UD_FIRSTNAME];
-    [UD setObject:details[USER][@"last_name"] forKey:UD_SURNAME];
-    [UD setObject:details[USER][@"id"] forKey:UD_USER_ID];
-    [UD setObject:details[USER][@"picture"] forKey:UD_USER_PICTURE];
-    [UD setObject:details[USER][@"username"] forKey:UD_USERNAME];
-    
-    if (isNotNull(details[USER][@"location"])) {
-        [UD setObject:details[USER][@"location"] forKey:UD_LOCATION];
-    }
-    else{
-        [UD removeObjectForKey:UD_LOCATION];
-    }
-    
-    [MT setUserId: details[USER][@"id"]];
-}
-
 +(NSString*)urlEscapeString:(NSString *)unencodedString
 {
     CFStringRef originalStringRef = (__bridge_retained CFStringRef)unencodedString;

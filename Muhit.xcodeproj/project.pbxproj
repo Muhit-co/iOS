@@ -22,14 +22,16 @@
 		4B2169581B21D48C00DEBA01 /* ProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2169561B21D48C00DEBA01 /* ProfileVC.xib */; };
 		4B21695C1B21D49B00DEBA01 /* EditProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B21695A1B21D49B00DEBA01 /* EditProfileVC.m */; };
 		4B21695D1B21D49B00DEBA01 /* EditProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B21695B1B21D49B00DEBA01 /* EditProfileVC.xib */; };
-		4B2169641B21D5A600DEBA01 /* AddEditIssueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2169621B21D5A600DEBA01 /* AddEditIssueVC.m */; };
-		4B2169651B21D5A600DEBA01 /* AddEditIssueVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2169631B21D5A600DEBA01 /* AddEditIssueVC.xib */; };
-		4B2169691B21D5B500DEBA01 /* IssueVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2169671B21D5B500DEBA01 /* IssueVC.m */; };
-		4B21696A1B21D5B500DEBA01 /* IssueVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2169681B21D5B500DEBA01 /* IssueVC.xib */; };
+		4B2169641B21D5A600DEBA01 /* AddIdeaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2169621B21D5A600DEBA01 /* AddIdeaVC.m */; };
+		4B2169651B21D5A600DEBA01 /* AddIdeaVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2169631B21D5A600DEBA01 /* AddIdeaVC.xib */; };
+		4B2169691B21D5B500DEBA01 /* IdeaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2169671B21D5B500DEBA01 /* IdeaVC.m */; };
+		4B21696A1B21D5B500DEBA01 /* IdeaVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2169681B21D5B500DEBA01 /* IdeaVC.xib */; };
 		4B21696E1B21D5C500DEBA01 /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B21696C1B21D5C500DEBA01 /* SearchVC.m */; };
 		4B21696F1B21D5C500DEBA01 /* SearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B21696D1B21D5C500DEBA01 /* SearchVC.xib */; };
 		4B2169711B247C1700DEBA01 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2169701B247C1700DEBA01 /* MapKit.framework */; };
 		4B2169731B24830600DEBA01 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2169721B24830600DEBA01 /* CoreLocation.framework */; };
+		4B5156311DC780FB00F0029A /* Idea.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5156301DC780FB00F0029A /* Idea.m */; };
+		4B5156341DC7824800F0029A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5156331DC7824800F0029A /* User.m */; };
 		4B6FF5A91B3F0D0500F3ED8A /* TagSelectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6FF5A71B3F0D0500F3ED8A /* TagSelectorVC.m */; };
 		4B6FF5AA1B3F0D0500F3ED8A /* TagSelectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B6FF5A81B3F0D0500F3ED8A /* TagSelectorVC.xib */; };
 		4B6FF5AE1B3F0D5B00F3ED8A /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6FF5AC1B3F0D5B00F3ED8A /* TagCell.m */; };
@@ -39,8 +41,8 @@
 		4B70C8FE1B51A093009BC526 /* NSString+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B70C8FD1B51A093009BC526 /* NSString+Extended.m */; };
 		4B7688A71B2B181500B2B6EF /* MTTagLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7688A61B2B181500B2B6EF /* MTTagLabel.m */; };
 		4B77A5741D1AC87F00F5B6B2 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B77A5731D1AC87F00F5B6B2 /* LocationManager.m */; };
-		4B80C41C1D12D53500D39F02 /* IdeasVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B80C41A1D12D53500D39F02 /* IdeasVC.m */; };
-		4B80C41D1D12D53500D39F02 /* IdeasVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B80C41B1D12D53500D39F02 /* IdeasVC.xib */; };
+		4B80C41C1D12D53500D39F02 /* MyIdeasVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B80C41A1D12D53500D39F02 /* MyIdeasVC.m */; };
+		4B80C41D1D12D53500D39F02 /* MyIdeasVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B80C41B1D12D53500D39F02 /* MyIdeasVC.xib */; };
 		4B8A073D1D229C7700C1470C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B8A073C1D229C7700C1470C /* LaunchScreen.storyboard */; };
 		4B9F04EF1B1D8A6C009CB713 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F04EE1B1D8A6C009CB713 /* Podfile */; };
 		4B9F04F31B1D9415009CB713 /* lang-en.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F04F01B1D9415009CB713 /* lang-en.plist */; };
@@ -114,17 +116,21 @@
 		4B2169591B21D49B00DEBA01 /* EditProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileVC.h; sourceTree = "<group>"; };
 		4B21695A1B21D49B00DEBA01 /* EditProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileVC.m; sourceTree = "<group>"; };
 		4B21695B1B21D49B00DEBA01 /* EditProfileVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileVC.xib; sourceTree = "<group>"; };
-		4B2169611B21D5A600DEBA01 /* AddEditIssueVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEditIssueVC.h; sourceTree = "<group>"; };
-		4B2169621B21D5A600DEBA01 /* AddEditIssueVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEditIssueVC.m; sourceTree = "<group>"; };
-		4B2169631B21D5A600DEBA01 /* AddEditIssueVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEditIssueVC.xib; sourceTree = "<group>"; };
-		4B2169661B21D5B500DEBA01 /* IssueVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueVC.h; sourceTree = "<group>"; };
-		4B2169671B21D5B500DEBA01 /* IssueVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueVC.m; sourceTree = "<group>"; };
-		4B2169681B21D5B500DEBA01 /* IssueVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueVC.xib; sourceTree = "<group>"; };
+		4B2169611B21D5A600DEBA01 /* AddIdeaVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddIdeaVC.h; sourceTree = "<group>"; };
+		4B2169621B21D5A600DEBA01 /* AddIdeaVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddIdeaVC.m; sourceTree = "<group>"; };
+		4B2169631B21D5A600DEBA01 /* AddIdeaVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddIdeaVC.xib; sourceTree = "<group>"; };
+		4B2169661B21D5B500DEBA01 /* IdeaVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeaVC.h; sourceTree = "<group>"; };
+		4B2169671B21D5B500DEBA01 /* IdeaVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdeaVC.m; sourceTree = "<group>"; };
+		4B2169681B21D5B500DEBA01 /* IdeaVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IdeaVC.xib; sourceTree = "<group>"; };
 		4B21696B1B21D5C500DEBA01 /* SearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchVC.h; sourceTree = "<group>"; };
 		4B21696C1B21D5C500DEBA01 /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
 		4B21696D1B21D5C500DEBA01 /* SearchVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchVC.xib; sourceTree = "<group>"; };
 		4B2169701B247C1700DEBA01 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4B2169721B24830600DEBA01 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4B51562F1DC780FB00F0029A /* Idea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Idea.h; path = ../../../Pokekit/Pokekit/Classes/Idea.h; sourceTree = "<group>"; };
+		4B5156301DC780FB00F0029A /* Idea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Idea.m; path = ../../../Pokekit/Pokekit/Classes/Idea.m; sourceTree = "<group>"; };
+		4B5156321DC7824800F0029A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		4B5156331DC7824800F0029A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		4B6FF5A61B3F0D0500F3ED8A /* TagSelectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagSelectorVC.h; sourceTree = "<group>"; };
 		4B6FF5A71B3F0D0500F3ED8A /* TagSelectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagSelectorVC.m; sourceTree = "<group>"; };
 		4B6FF5A81B3F0D0500F3ED8A /* TagSelectorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagSelectorVC.xib; sourceTree = "<group>"; };
@@ -140,9 +146,9 @@
 		4B7688A61B2B181500B2B6EF /* MTTagLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTagLabel.m; sourceTree = "<group>"; };
 		4B77A5721D1AC87F00F5B6B2 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		4B77A5731D1AC87F00F5B6B2 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
-		4B80C4191D12D53500D39F02 /* IdeasVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeasVC.h; sourceTree = "<group>"; };
-		4B80C41A1D12D53500D39F02 /* IdeasVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdeasVC.m; sourceTree = "<group>"; };
-		4B80C41B1D12D53500D39F02 /* IdeasVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IdeasVC.xib; sourceTree = "<group>"; };
+		4B80C4191D12D53500D39F02 /* MyIdeasVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIdeasVC.h; sourceTree = "<group>"; };
+		4B80C41A1D12D53500D39F02 /* MyIdeasVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIdeasVC.m; sourceTree = "<group>"; };
+		4B80C41B1D12D53500D39F02 /* MyIdeasVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyIdeasVC.xib; sourceTree = "<group>"; };
 		4B8A073C1D229C7700C1470C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B9F04EE1B1D8A6C009CB713 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = ../../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4B9F04F01B1D9415009CB713 /* lang-en.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "lang-en.plist"; sourceTree = "<group>"; };
@@ -304,24 +310,24 @@
 			path = ../Search;
 			sourceTree = "<group>";
 		};
-		4B21695F1B21D55B00DEBA01 /* Issue */ = {
+		4B21695F1B21D55B00DEBA01 /* Idea */ = {
 			isa = PBXGroup;
 			children = (
-				4B2169661B21D5B500DEBA01 /* IssueVC.h */,
-				4B2169671B21D5B500DEBA01 /* IssueVC.m */,
-				4B2169681B21D5B500DEBA01 /* IssueVC.xib */,
+				4B2169661B21D5B500DEBA01 /* IdeaVC.h */,
+				4B2169671B21D5B500DEBA01 /* IdeaVC.m */,
+				4B2169681B21D5B500DEBA01 /* IdeaVC.xib */,
 			);
-			path = Issue;
+			path = Idea;
 			sourceTree = "<group>";
 		};
-		4B2169601B21D56300DEBA01 /* AddEditIssue */ = {
+		4B2169601B21D56300DEBA01 /* AddIdea */ = {
 			isa = PBXGroup;
 			children = (
-				4B2169611B21D5A600DEBA01 /* AddEditIssueVC.h */,
-				4B2169621B21D5A600DEBA01 /* AddEditIssueVC.m */,
-				4B2169631B21D5A600DEBA01 /* AddEditIssueVC.xib */,
+				4B2169611B21D5A600DEBA01 /* AddIdeaVC.h */,
+				4B2169621B21D5A600DEBA01 /* AddIdeaVC.m */,
+				4B2169631B21D5A600DEBA01 /* AddIdeaVC.xib */,
 			);
-			path = AddEditIssue;
+			path = AddIdea;
 			sourceTree = "<group>";
 		};
 		4B6FF5A51B3F0CBA00F3ED8A /* TagSelector */ = {
@@ -366,14 +372,14 @@
 			path = Membering;
 			sourceTree = "<group>";
 		};
-		4B80C4181D12D4E600D39F02 /* Ideas */ = {
+		4B80C4181D12D4E600D39F02 /* My Ideas */ = {
 			isa = PBXGroup;
 			children = (
-				4B80C4191D12D53500D39F02 /* IdeasVC.h */,
-				4B80C41A1D12D53500D39F02 /* IdeasVC.m */,
-				4B80C41B1D12D53500D39F02 /* IdeasVC.xib */,
+				4B80C4191D12D53500D39F02 /* MyIdeasVC.h */,
+				4B80C41A1D12D53500D39F02 /* MyIdeasVC.m */,
+				4B80C41B1D12D53500D39F02 /* MyIdeasVC.xib */,
 			);
-			path = Ideas;
+			path = "My Ideas";
 			sourceTree = "<group>";
 		};
 		4B9F05121B1D96E1009CB713 /* Root */ = {
@@ -603,13 +609,13 @@
 		4BF7F8FB1B1CF31100A35FD1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4B2169601B21D56300DEBA01 /* AddEditIssue */,
+				4B2169601B21D56300DEBA01 /* AddIdea */,
 				4B2169341B218DBF00DEBA01 /* Announcements */,
 				4BC9BF191D1044B400707A4D /* Commons */,
 				4B21694E1B21D46300DEBA01 /* EditProfile */,
 				4B21694C1B21D45600DEBA01 /* Headman */,
-				4B80C4181D12D4E600D39F02 /* Ideas */,
-				4B21695F1B21D55B00DEBA01 /* Issue */,
+				4B80C4181D12D4E600D39F02 /* My Ideas */,
+				4B21695F1B21D55B00DEBA01 /* Idea */,
 				4B9F052B1B1DBFAB009CB713 /* Main */,
 				4B80C4171D1293BB00D39F02 /* Membering */,
 				4B9F052A1B1DBE1F009CB713 /* Menu */,
@@ -625,6 +631,10 @@
 		4BF7F8FC1B1CF31F00A35FD1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4B5156321DC7824800F0029A /* User.h */,
+				4B5156331DC7824800F0029A /* User.m */,
+				4B51562F1DC780FB00F0029A /* Idea.h */,
+				4B5156301DC780FB00F0029A /* Idea.m */,
 				4B9F04F71B1D950D009CB713 /* Constants.h */,
 				4B9F05141B1DBD04009CB713 /* NavBar.h */,
 				4B9F05151B1DBD04009CB713 /* NavBar.m */,
@@ -769,13 +779,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B80C41D1D12D53500D39F02 /* IdeasVC.xib in Resources */,
+				4B80C41D1D12D53500D39F02 /* MyIdeasVC.xib in Resources */,
 				4B2169441B218E6F00DEBA01 /* SupportedsVC.xib in Resources */,
 				4B70C8F41B4BE01E009BC526 /* PickFromMapVC.xib in Resources */,
 				4B9F04F31B1D9415009CB713 /* lang-en.plist in Resources */,
 				4B9F04EF1B1D8A6C009CB713 /* Podfile in Resources */,
 				4B9F053C1B1DE38E009CB713 /* SourceSansPro-Black.ttf in Resources */,
-				4B21696A1B21D5B500DEBA01 /* IssueVC.xib in Resources */,
+				4B21696A1B21D5B500DEBA01 /* IdeaVC.xib in Resources */,
 				4B9F05111B1D96D7009CB713 /* RootVC.xib in Resources */,
 				4B2169531B21D47900DEBA01 /* HeadmanVC.xib in Resources */,
 				4B9F053E1B1DE38E009CB713 /* SourceSansPro-Italic.ttf in Resources */,
@@ -800,7 +810,7 @@
 				4BC5838C1B1C4D4800180B3D /* Images.xcassets in Resources */,
 				4BD654E51B32043700343C16 /* PlacesCell.xib in Resources */,
 				4B21695D1B21D49B00DEBA01 /* EditProfileVC.xib in Resources */,
-				4B2169651B21D5A600DEBA01 /* AddEditIssueVC.xib in Resources */,
+				4B2169651B21D5A600DEBA01 /* AddIdeaVC.xib in Resources */,
 				4B9F04F41B1D9415009CB713 /* lang-tr.plist in Resources */,
 				4B9F05291B1DBE0F009CB713 /* MenuVC.xib in Resources */,
 				4B2169491B218E8B00DEBA01 /* AnnouncementsVC.xib in Resources */,
@@ -865,7 +875,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -884,8 +894,8 @@
 				4B9F04FA1B1D950D009CB713 /* Muhit.m in Sources */,
 				4B9F05051B1D9524009CB713 /* UIView+CustomNib.m in Sources */,
 				4BF7F9061B1CF39D00A35FD1 /* ServiceHandler.m in Sources */,
-				4B80C41C1D12D53500D39F02 /* IdeasVC.m in Sources */,
-				4B2169691B21D5B500DEBA01 /* IssueVC.m in Sources */,
+				4B80C41C1D12D53500D39F02 /* MyIdeasVC.m in Sources */,
+				4B2169691B21D5B500DEBA01 /* IdeaVC.m in Sources */,
 				4B21696E1B21D5C500DEBA01 /* SearchVC.m in Sources */,
 				4B9F05161B1DBD04009CB713 /* NavBar.m in Sources */,
 				4B7688A71B2B181500B2B6EF /* MTTagLabel.m in Sources */,
@@ -895,7 +905,9 @@
 				4B9F052F1B1DBFE0009CB713 /* MainVC.m in Sources */,
 				4BC583811B1C4D4800180B3D /* main.m in Sources */,
 				4BD654DF1B32035100343C16 /* PlacesView.m in Sources */,
+				4B5156341DC7824800F0029A /* User.m in Sources */,
 				4B9F05351B1DDA42009CB713 /* LoginVC.m in Sources */,
+				4B5156311DC780FB00F0029A /* Idea.m in Sources */,
 				4B2169571B21D48C00DEBA01 /* ProfileVC.m in Sources */,
 				4B9F05061B1D9524009CB713 /* UIView+Layout.m in Sources */,
 				4B9F05281B1DBE0F009CB713 /* MenuVC.m in Sources */,
@@ -913,7 +925,7 @@
 				4B6FF5A91B3F0D0500F3ED8A /* TagSelectorVC.m in Sources */,
 				4B2169431B218E6F00DEBA01 /* SupportedsVC.m in Sources */,
 				4B21695C1B21D49B00DEBA01 /* EditProfileVC.m in Sources */,
-				4B2169641B21D5A600DEBA01 /* AddEditIssueVC.m in Sources */,
+				4B2169641B21D5A600DEBA01 /* AddIdeaVC.m in Sources */,
 				4B9F04FB1B1D950D009CB713 /* ScreenOperations.m in Sources */,
 				4B9F05071B1D9524009CB713 /* UtilityFunctions.m in Sources */,
 				4BE862881D0AD2CD00CF4013 /* KeyboardControls.m in Sources */,

@@ -16,11 +16,11 @@
 #import "EditProfileVC.h"
 #import "SearchVC.h"
 #import "HeadmanVC.h"
-#import "IssueVC.h"
-#import "AddEditIssueVC.h"
+#import "IdeaVC.h"
+#import "AddIdeaVC.h"
 #import "PickFromMapVC.h"
 #import "MainVC.h"
-#import "IdeasVC.h"
+#import "MyIdeasVC.h"
 #import "NavBar.h"
 
 @implementation ScreenOperations
@@ -45,8 +45,8 @@
     [[MT navCon] pushViewController:vc animated:YES];
 }
 
-+ (void)openEditProfileWithInfo:(NSDictionary *)profileInfo{
-    EditProfileVC *vc = [[EditProfileVC alloc] initWithInfo:profileInfo];
++ (void)openEditProfile{
+    EditProfileVC *vc = [[EditProfileVC alloc] init];
     [[MT navCon] pushViewController:vc animated:YES];
 }
 
@@ -55,18 +55,13 @@
     [[MT navCon] pushViewController:vc animated:YES];
 }
 
-+ (void)openIssueWitDetail:(NSDictionary *)issueDetail{
-    IssueVC *vc = [[IssueVC alloc] initWithDetail:issueDetail];
++ (void)openIdeaWithIdea:(Idea *)idea{
+    IdeaVC *vc = [[IdeaVC alloc] initWithIdea:idea];
     [[MT navCon] pushViewController:vc animated:YES];
 }
 
-+ (void)openCreateIssue{
-    AddEditIssueVC *vc = [[AddEditIssueVC alloc] initWithInfo:nil];
-    [[MT navCon] pushViewController:vc animated:YES];
-}
-
-+ (void)openEditIssueWithInfo:(NSDictionary *)info{
-    AddEditIssueVC *vc = [[AddEditIssueVC alloc] initWithInfo:info];
++ (void)openAddIdea{
+    AddIdeaVC *vc = [[AddIdeaVC alloc] initWithInfo:nil];
     [[MT navCon] pushViewController:vc animated:YES];
 }
 
@@ -86,13 +81,13 @@
     }
 }
 
-+ (void)openIdeas:(BOOL)fromMenu{
++ (void)openMyIdeas:(BOOL)fromMenu{
     if(fromMenu){
-        IdeasVC *vc = [[IdeasVC alloc] initFromMenu];
+        MyIdeasVC *vc = [[MyIdeasVC alloc] initFromMenu];
         [self setCenterVC:vc];
     }
     else{
-        IdeasVC *vc = [[IdeasVC alloc] init];
+        MyIdeasVC *vc = [[MyIdeasVC alloc] init];
         [[MT navCon] pushViewController:vc animated:YES];
     }
 }

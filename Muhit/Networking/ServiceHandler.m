@@ -49,7 +49,6 @@
     
     [manager setResponseSerializer:[AFJSONResponseSerializer serializer]];
     [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
-    //    [[manager requestSerializer] setValue:[UD objectForKey:UD_API_TOKEN] forHTTPHeaderField:KEY_API_TOKEN];
     [[manager responseSerializer] setAcceptableContentTypes:[NSSet setWithObjects:@"text/plain",@"application/json", nil]];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -106,7 +105,6 @@
     
     [manager setResponseSerializer:[AFJSONResponseSerializer serializer]];
     [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
-    //    [[manager requestSerializer] setValue:[UD objectForKey:UD_API_TOKEN] forHTTPHeaderField:KEY_API_TOKEN];
     [[manager responseSerializer] setAcceptableContentTypes:[NSSet setWithObjects:@"application/json", nil]];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];

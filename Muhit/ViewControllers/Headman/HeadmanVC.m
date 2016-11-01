@@ -75,7 +75,7 @@
 
 -(void)getHeadman{
     ADD_HUD
-    [SERVICES getHeadman:[MT userId] handler:^(NSDictionary *response, NSError *error) {
+    [SERVICES getHeadman:[USER userId] handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             REMOVE_HUD
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);

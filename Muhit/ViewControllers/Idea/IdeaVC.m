@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Muhit. All rights reserved.
 //
 
-#import "IssueVC.h"
+#import "IdeaVC.h"
 #import "AnnouncementCell.h"
 
-@interface IssueVC (){
+@interface IdeaVC (){
     IBOutlet UILabel *lblSupportTitle,*lblSupportCount,*lblHood,*lblDistrict,*lblDate,*lblType,*lblIssueTitle,*lblProblemTitle,*lblProblemDescription,*lblSolutionTitle,*lblSolutionDescription,*lblCommentTitle,*lblCreatorName;
     IBOutlet UIButton *btnBack,*btnSupport,*btnShare;
     IBOutlet UIImageView *imgLocationIcon,*imgTypeIcon,*imgCreator;
@@ -18,21 +18,20 @@
     IBOutlet UITableView *tblComments;
     IBOutlet UIPageControl *pageControl;
     IBOutlet NSLayoutConstraint *constViewTypeWidth,*constTagsViewHeight,*constContainerHeight;
-    NSDictionary *detail;
+    Idea *idea;
     NSArray *arrComments;
     IBOutlet GMSMapView *map;
-    NSString *issueCoordinate;
     BOOL isSupported;
 }
 
 @end
 
-@implementation IssueVC
+@implementation IdeaVC
 
-- (id)initWithDetail:(NSDictionary *)_detail{
+- (id)initWithIdea:(Idea *)_idea{
     self = [super init];
     if (self){
-        detail = _detail;
+        idea = _idea;
     }
     return self;
 }
@@ -44,7 +43,7 @@
     [scrollRoot setHidden:YES];
     [self adjustUI];
     self.automaticallyAdjustsScrollViewInsets=NO;
-    [self setDetailsWithDictionary:detail];
+    [self setDetails];
 }
 
 -(void)viewDidLayoutSubviews{
@@ -78,15 +77,13 @@
     [imgLocationIcon setImage:[IonIcons imageWithIcon:ion_location size:24 color:[UIColor whiteColor]]];
 }
 
--(void)setDetailsWithDictionary:(NSDictionary*)dict{
-    NSLog(@"issueDetail:%@",dict);
-    
-    if ([dict[@"user_id"] integerValue] == [UD integerForKey:UD_USER_ID]) {
+-(void)setDetails{
+    if ([idea.userId isEqualToString:[USER userId]]) {
         [btnSupport setHidden:YES];
     }
     else{
         [btnSupport setHidden:NO];
-        if ([dict[@"is_supported"] boolValue]) {
+        if (idea.isSupported) {
             isSupported = YES;
             [btnSupport setTitle:[LocalizedString(@"unsupport") toUpper]];
         }
@@ -95,28 +92,25 @@
         }
     }
     
-    if (dict[@"comments"]) {
-        arrComments = [NSArray arrayWithArray:dict[@"comments"]];
+    if (idea.comments) {
+        arrComments = idea.comments;
         [tblComments reloadData];
     }
     
-    [imgCreator sd_setImageWithURL:[NSURL URLWithString:dict[USER][@"picture"]] placeholderImage:PLACEHOLDER_IMAGE];
-    [lblCreatorName setText:dict[@"user"][@"full_name"]];
-    [lblSupportCount setText:dict[@"supporter_count"]];
+    [imgCreator sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/80x80/users/%@",IMAGE_PROXY,idea.userProfileImageUrl]] placeholderImage:PLACEHOLDER_IMAGE];
     
-    [lblHood setText:[UF getHoodFromAddress:dict[@"location"]]];
-    [lblDistrict setText:[UF getDistrictFromAddress:dict[@"location"]]];
-    [lblDate setText:[UF getDetailedDateString:dict[@"created_at"]]];
-    [lblIssueTitle setText:dict[@"title"]];
-    [lblProblemDescription setText:dict[@"problem"]];
-    [lblSolutionDescription setText:dict[@"solution"]];
+    [lblCreatorName setText:idea.userFullName];
+    [lblSupportCount setText:idea.supporterCount];
+    
+    [lblHood setText:[UF getHoodFromAddress:idea.locationText]];
+    [lblDistrict setText:[UF getDistrictFromAddress:idea.locationText]];
+    [lblDate setText:[UF getDetailedDateString:idea.createdAt]];
+    [lblIssueTitle setText:idea.title];
+    [lblProblemDescription setText:idea.problem];
+    [lblSolutionDescription setText:idea.solution];
     [self.view layoutIfNeeded];
     
-    if (isNotNull(dict[@"coordinates"]) && [dict[@"coordinates"] length]>0) {
-        issueCoordinate = dict[@"coordinates"];
-    }
-    
-    if ([dict[@"status"] isEqualToString:@"new"]) {
+    if ([idea.status isEqualToString:@"new"]) {
         
         if ([lblSupportCount.text isEqualToString:@"0"]) {
             [viewType setBackgroundColor:CLR_WHITE];
@@ -131,7 +125,7 @@
         }
         [lblType setText:LocalizedString(@"status-start")];
     }
-    else if ([dict[@"status"] isEqualToString:@"status-developing"]){
+    else if ([idea.status isEqualToString:@"status-developing"]){
         [lblType setText:LocalizedString(@"Gelişmekte")];
         [viewType setBackgroundColor:[HXColor hx_colorWithHexRGBAString:@"C678EA"]];
         [imgTypeIcon setImage:[IonIcons imageWithIcon:ion_wrench size:16 color:CLR_WHITE]];
@@ -146,31 +140,31 @@
     constViewTypeWidth.constant = 45 + textSize.width;
     
     /************ Images Area ************/
-    NSArray * arrImages = [NSArray arrayWithArray:dict[@"images"]];
     [scrollImages removeSubviews];
-    [pageControl setNumberOfPages:arrImages.count];
     
-    if (arrImages.count>0) {
-        for (int i = 0; i < arrImages.count; i++) {
+    if (idea.images) {
+        [pageControl setNumberOfPages:idea.images.count];
+        for (int i = 0; i < idea.images.count; i++) {
             CGRect frame = CGRectMake([UF screenSize].width * i, 0, [UF screenSize].width, scrollImages.height);
             UIImageView *img = [[UIImageView alloc] initWithFrame:frame];
-            NSString *imgUrl = [NSString stringWithFormat:@"%@/%dx%d/%@",IMAGE_PROXY,2*(int)frame.size.width,2*(int)frame.size.height,arrImages[i][@"image"]];
+            NSString *imgUrl = [NSString stringWithFormat:@"%@/%dx%d/%@",IMAGE_PROXY,2*(int)frame.size.width,2*(int)frame.size.height,idea.images[i][@"image"]];
             [img sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"issue-placeholder"]];
             [img setContentMode:UIViewContentModeScaleToFill];
             [scrollImages addSubview:img];
         }
         
-        if (issueCoordinate) {
-            [pageControl setNumberOfPages:arrImages.count + 1];
-            [scrollImages setContentSize:CGSizeMake([UF screenSize].width * (arrImages.count+1), scrollImages.height)];
+        if (idea.coordinate) {
+            [pageControl setNumberOfPages:idea.images.count + 1];
+            [scrollImages setContentSize:CGSizeMake([UF screenSize].width * (idea.images.count+1), scrollImages.height)];
         }
         else{
-            [pageControl setNumberOfPages:arrImages.count];
-            [scrollImages setContentSize:CGSizeMake([UF screenSize].width * arrImages.count, scrollImages.height)];
+            [pageControl setNumberOfPages:idea.images.count];
+            [scrollImages setContentSize:CGSizeMake([UF screenSize].width * idea.images.count, scrollImages.height)];
         }
     }
     else{
-        if (issueCoordinate) {
+        [pageControl setNumberOfPages:0];
+        if (idea.coordinate) {
             [pageControl setHidden:YES];
             [scrollImages setContentSize:CGSizeMake([UF screenSize].width, scrollImages.height)];
         }
@@ -182,12 +176,10 @@
     /**************************************/
     /************ Map Area ************/
     
-    if (issueCoordinate) {
+    if (idea.coordinate) {
         
         CGRect mapFrame = CGRectMake(scrollImages.contentSize.width - [UF screenSize].width, 0, [UF screenSize].width, scrollImages.height);
-        NSArray *points = [issueCoordinate componentsSeparatedByString:@", "];
-        
-        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:[points[0] floatValue] longitude:[points[1] floatValue] zoom:15];
+        GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:idea.coordinate.coordinate zoom:15];
         map = [GMSMapView mapWithFrame:mapFrame camera:camera];
         map.settings.rotateGestures = NO;
         map.settings.tiltGestures = NO;
@@ -208,34 +200,37 @@
     UIFont *tagFont = [UIFont fontWithName:FONT_BOLD size:16.0];
     [viewTagsContainer removeSubviews];
     
-    for (NSDictionary* tag in dict[@"tags"]) {
-        
-        float lblWidth = [[tag[@"name"] toUpper] sizeWithAttributes:@{NSFontAttributeName:tagFont}].width;
-        float viewItemWidth = lblWidth + 10;
-        
-        if ((totalTagsWidth + viewItemWidth)>[UF screenSize].width-30) {
-            totalTagsWidth = 0;
-            lastTagsY += 40;
-            constTagsViewHeight.constant = 30 + lastTagsY;
-            [self.view layoutIfNeeded];
+    if (idea.tags) {
+        for (NSDictionary* tag in idea.tags) {
+            
+            float lblWidth = [[tag[@"name"] toUpper] sizeWithAttributes:@{NSFontAttributeName:tagFont}].width;
+            float viewItemWidth = lblWidth + 10;
+            
+            if ((totalTagsWidth + viewItemWidth)>[UF screenSize].width-30) {
+                totalTagsWidth = 0;
+                lastTagsY += 40;
+                constTagsViewHeight.constant = 30 + lastTagsY;
+                [self.view layoutIfNeeded];
+            }
+            
+            UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, lblWidth, 30)];
+            [lbl setText:[tag[@"name"] toUpper]];
+            [lbl setFont:tagFont];
+            [lbl setTextAlignment:NSTextAlignmentCenter];
+            [lbl setTextColor:[UIColor whiteColor]];
+            
+            
+            UIView *viewItem = [[UIView alloc] initWithFrame:CGRectMake(totalTagsWidth, lastTagsY, viewItemWidth, 30)];
+            viewItem.layer.cornerRadius = cornerRadius;
+            [viewItem setClipsToBounds:YES];
+            [viewItem setBackgroundColor:[HXColor hx_colorWithHexRGBAString:tag[@"background"]]];
+            [viewItem addSubview:lbl];
+            
+            totalTagsWidth += viewItemWidth + 10;
+            
+            [viewTagsContainer addSubview:viewItem];
         }
-        
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, lblWidth, 30)];
-        [lbl setText:[tag[@"name"] toUpper]];
-        [lbl setFont:tagFont];
-        [lbl setTextAlignment:NSTextAlignmentCenter];
-        [lbl setTextColor:[UIColor whiteColor]];
-        
-        
-        UIView *viewItem = [[UIView alloc] initWithFrame:CGRectMake(totalTagsWidth, lastTagsY, viewItemWidth, 30)];
-        viewItem.layer.cornerRadius = cornerRadius;
-        [viewItem setClipsToBounds:YES];
-        [viewItem setBackgroundColor:[HXColor hx_colorWithHexRGBAString:tag[@"background"]]];
-        [viewItem addSubview:lbl];
-        
-        totalTagsWidth += viewItemWidth + 10;
-        
-        [viewTagsContainer addSubview:viewItem];
+
     }
     /**************************************/
     [scrollRoot setContentSize:CGSizeMake(scrollRoot.width, viewProfile.bottomPosition + 10)];
@@ -254,11 +249,11 @@
 }
 
 -(IBAction)actSupport:(id)sender{
-    if ([MT isLoggedIn]) {
+    if ([USER isLoggedIn]) {
         ADD_HUD
         
         if (isSupported) {
-            [SERVICES unSupport:STRING_W_INT([detail[@"id"] intValue]) handler:^(NSDictionary *response, NSError *error) {
+            [SERVICES unSupport:idea.ideaId handler:^(NSDictionary *response, NSError *error) {
                 if (error) {
                     SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
                 }
@@ -272,7 +267,7 @@
             }];
         }
         else{
-            [SERVICES support:STRING_W_INT([detail[@"id"] intValue]) handler:^(NSDictionary *response, NSError *error) {
+            [SERVICES support:idea.ideaId handler:^(NSDictionary *response, NSError *error) {
                 if (error) {
                     SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
                 }
@@ -292,16 +287,12 @@
 }
 
 -(IBAction)actProfile:(id)sender{
-    [ScreenOperations openProfileWithId:STRING_W_INT([detail[USER][@"id"] intValue])];
+    [ScreenOperations openProfileWithId:idea.userId];
 }
-
-//-(IBAction)actEdit:(id)sender{
-//    [ScreenOperations openEditIssueWithInfo:detail];
-//}
 
 -(IBAction)actShare:(id)sender{
     
-    NSURL *shareUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/issues/view/%@",[MT serviceURL],STRING_W_INT([detail[@"id"] intValue])]];
+    NSURL *shareUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/issues/view/%@",[MT serviceURL],idea.ideaId]];
     
     UIActivityViewController *sharer = [[UIActivityViewController alloc] initWithActivityItems:@[shareUrl] applicationActivities:nil];
     
@@ -332,7 +323,7 @@
 #pragma mark - UITableView Delegates
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    float textHeight = [UF heightOfTextForString:arrComments[indexPath.row][@"description"] andFont:[UIFont fontWithName:@"SourceSansPro-It" size:17.0] maxSize:CGSizeMake(self.view.width-100, 200)];
+    float textHeight = [UF heightOfTextForString:arrComments[indexPath.row][@"description"] andFont:[UIFont fontWithName:FONT_ITALIC size:17.0] maxSize:CGSizeMake(self.view.width-100, 200)];
     
     return textHeight + 81;
 }

@@ -21,21 +21,12 @@
     KeyboardControls *keyboardControl;
     UIActionSheet *actionSheet;
     UIImagePickerController * imgPicker;
-    NSDictionary *profileDict;
     UIImage *imageForProfile;
 }
 
 @end
 
 @implementation EditProfileVC
-
-- (id)initWithInfo:(NSDictionary *)_info{
-    self = [super init];
-    if (self){
-        profileDict = _info;
-    }
-    return self;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,7 +36,7 @@
     keyboardControl = [[KeyboardControls alloc] initWithFields:@[txtName, txtSurname, txtEmail,txtPassword]];
     [keyboardControl setDelegate:self];
     
-    [self setDetailsWithDictionary:profileDict];
+    [self setDetails];
     [NC addObserver:self selector:@selector(geoCodePicked:) name:NC_GEOCODE_PICKED object:nil];
 }
 
@@ -59,16 +50,22 @@
     [NC removeObserver:self name:NC_GEOCODE_PICKED object:nil];
 }
 
--(void)setDetailsWithDictionary:(NSDictionary*)dict{
+-(void)setDetails{
     
-    [txtName setText:dict[@"first_name"]];
-    [txtSurname setText:dict[@"last_name"]];
-    [txtEmail setText:dict[@"email"]];
-    [btnHood setTitle:dict[@"address"]];
-    fullGeoCode = dict[@"address"];
+    [txtName setText:[USER name]];
+    [txtSurname setText:[USER surname]];
+    [txtEmail setText:[USER email]];
     
-    NSString *imgUrl = [NSString stringWithFormat:@"%@/180x180/users/%@",IMAGE_PROXY,dict[@"picture"]];
-    [imgProfile sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"userPlaceholder"]];
+    if ([USER locationText]) {
+        [btnHood setTitle:[USER hood]];
+        fullGeoCode = [USER locationText];
+    }
+    if ([USER profileImage]) {
+        [imgProfile setImage:[USER profileImage]];
+    }
+    else{
+    	[imgProfile setImage:PLACEHOLDER_IMAGE];
+    }
 }
 
 - (void)geoCodePicked:(NSNotification*)notification{
@@ -95,7 +92,7 @@
 -(IBAction)actSave:(id)sender{
     ADD_HUD
     NSString * base64Photo = [UIImageJPEGRepresentation(imageForProfile, 0.7) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    [SERVICES updateProfile:txtName.text lastName:txtSurname.text password:txtPassword.text location:fullGeoCode photo:base64Photo email:profileDict[KEY_EMAIL] username:profileDict[KEY_USERNAME] handler:^(NSDictionary *response, NSError *error) {
+    [SERVICES updateProfile:txtName.text lastName:txtSurname.text password:txtPassword.text location:fullGeoCode photo:base64Photo email:[USER email] username:[USER username] handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
             REMOVE_HUD

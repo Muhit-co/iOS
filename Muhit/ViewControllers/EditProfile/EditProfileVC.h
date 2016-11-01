@@ -10,6 +10,4 @@
 
 @interface EditProfileVC : RootVC <KeyboardControlsDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate>
 
-- (id)initWithInfo:(NSDictionary *)_info;
-
 @end

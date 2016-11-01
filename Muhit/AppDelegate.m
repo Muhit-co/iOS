@@ -28,6 +28,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
+    [USER startInstance];
+    
     [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
     [[self window] setBackgroundColor:CLR_LIGHT_BLUE];
     [[self window] setRootViewController:[UIViewController new]];
@@ -40,11 +43,6 @@
     //    [MT setServiceURL:@"http://muhit.co"];//Production
     //    [MT setServiceURL:@"http://stage.muhit.co"];//Sandbox
     [MT setServiceURL:@"http://api.ersoypembe.com"];
-    
-    if ([UD objectForKey:UD_API_TOKEN]) {
-        [MT setIsLoggedIn:YES];
-        [MT setUserId: [UD objectForKey:UD_USER_ID]];
-    }
     
     [self initNavigationBar];
     [self initThirdPartyServices];

@@ -15,6 +15,7 @@ static const CGFloat cornerRadius = 6;
 #define UD [NSUserDefaults standardUserDefaults]
 #define NC [NSNotificationCenter defaultCenter]
 #define MT [Muhit instance]
+#define USER [User instance]
 #define LM [LanguageManager instance]
 #define LocalizedString(key) [[LanguageManager instance] localizedStringForKey:key]
 #define TRACKER [TrackManager sharedManager]
@@ -39,7 +40,6 @@ static const CGFloat cornerRadius = 6;
 
 #define USER_LANGUAGE @"UserSelectedLanguage"
 #define AUTH @"oauth2"
-#define USER @"user"
 
 #define isNotNull(variable) variable == [NSNull null] ? NO : (variable ? YES : NO)
 #define nilOrJson(VAL) [VAL isKindOfClass:[NSNull class]] ? nil : VAL
@@ -49,7 +49,6 @@ static const CGFloat cornerRadius = 6;
 #define CLR_DARK_PUPRPLE [HXColor hx_colorWithHexRGBAString:@"666677"]
 #define CLR_WHITE [HXColor hx_colorWithHexRGBAString:@"FFFFFF"]
 
-#define NC_LOGGED_OUT @"NC_LOGGED_OUT"
 #define NC_GEOCODE_PICKED @"NC_GEOCODE_PICKED"
 
 #define UD_FIRSTNAME @"UD_FIRSTNAME"
@@ -61,6 +60,7 @@ static const CGFloat cornerRadius = 6;
 #define UD_LOCATION @"UD_LOCATION"
 #define UD_USER_ID @"UD_USER_ID"
 #define UD_USERNAME @"UD_USERNAME"
+#define UD_EMAIL @"UD_USERNAME"
 #define UD_USER_PICTURE @"UD_USER_PICTURE"
 
 #define FONT_BLACK @"SourceSansPro-Black"

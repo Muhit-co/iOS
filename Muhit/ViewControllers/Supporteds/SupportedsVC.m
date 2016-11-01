@@ -49,7 +49,7 @@
 
 -(void)getSupporteds{
     ADD_HUD
-    [SERVICES getSupporteds:[MT userId] handler:^(NSDictionary *response, NSError *error) {
+    [SERVICES getSupporteds:[USER userId] handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             REMOVE_HUD
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
@@ -68,8 +68,8 @@
 }
 
 -(IBAction)actCreateIssue:(id)sender{
-    if ([MT isLoggedIn]) {
-        [ScreenOperations openCreateIssue];
+    if ([USER isLoggedIn]) {
+        [ScreenOperations openAddIdea];
     }
     else{
         [ScreenOperations openLogin];
@@ -104,9 +104,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSDictionary *item = [arrSupporteds objectAtIndex:indexPath.row];
-    [ScreenOperations openIssueWitDetail:item];
+    Idea *idea = [[Idea alloc] initWithInfo:[arrSupporteds objectAtIndex:indexPath.row]];
+    [ScreenOperations openIdeaWithIdea:idea];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{

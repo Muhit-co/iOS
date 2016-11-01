@@ -6,21 +6,22 @@
 //  Copyright (c) 2015 Muhit. All rights reserved.
 //
 
+#import "Idea.h"
+
 @interface ScreenOperations : NSObject
 
 + (void)openLogin;
 + (void)openSignUp;
 + (void)openForgotPassword;
 + (void)openProfileWithId:(NSString *)profileId;
-+ (void)openEditProfileWithInfo:(NSDictionary *)profileInfo;
++ (void)openEditProfile;
 + (void)openSearch;
-+ (void)openIssueWitDetail:(NSDictionary *)issueDetail;
-+ (void)openCreateIssue;
-+ (void)openEditIssueWithInfo:(NSDictionary *)info;
++ (void)openIdeaWithIdea:(Idea *)idea;
++ (void)openAddIdea;
 + (void)openMain;
 + (void)openSupporteds:(BOOL)fromMenu;
 + (void)openHeadman:(BOOL)fromMenu;
-+ (void)openIdeas:(BOOL)fromMenu;
++ (void)openMyIdeas:(BOOL)fromMenu;
 + (void)openAnnouncements:(BOOL)fromMenu;
 + (void)openPickFromMap;
 

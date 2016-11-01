@@ -46,7 +46,10 @@
             REMOVE_HUD
         }
         else{
-            [self setDetailsWithDictionary:response[USER]];
+            if ([profileId isEqualToString:[USER userId]]) {
+                [USER setDetailsWithInfo:response[@"user"] refreshNav:NO];
+            }
+            [self setDetailsWithDictionary:response[@"user"]];
         }
     }];
 }
@@ -69,7 +72,7 @@
     imgUser.layer.cornerRadius = 60;
     imgUser.layer.masksToBounds = YES;
     
-    if ([profileId isEqualToString:[MT userId]]) {
+    if ([profileId isEqualToString:[USER userId]]) {
         UIButton *btnEdit = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
         [btnEdit setImage:[IonIcons imageWithIcon:ion_edit size:20 color:CLR_WHITE]];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnEdit];
@@ -105,7 +108,7 @@
 }
 
 -(void)editProfile{
-    [ScreenOperations openEditProfileWithInfo:dictProfile];
+    [ScreenOperations openEditProfile];
 }
 
 #pragma mark - UITableView Delegates
@@ -135,9 +138,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-   	NSDictionary *item = [arrIdeas objectAtIndex:indexPath.row];
-    [ScreenOperations openIssueWitDetail:item];
+    Idea *idea = [[Idea alloc] initWithInfo:[arrIdeas objectAtIndex:indexPath.row]];
+    [ScreenOperations openIdeaWithIdea:idea];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{

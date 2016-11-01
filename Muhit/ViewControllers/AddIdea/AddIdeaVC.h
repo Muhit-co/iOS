@@ -1,5 +1,5 @@
 //
-//  AddEditIssueVC.h
+//  AddIdeaVC.h
 //  Muhit
 //
 //  Created by Emre YANIK on 05/06/15.
@@ -8,7 +8,7 @@
 #import "TagSelectorVC.h"
 #import "KeyboardControls.h"
 
-@interface AddEditIssueVC : RootVC <KeyboardControlsDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,TagSelectorDelegate>
+@interface AddIdeaVC : RootVC <KeyboardControlsDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,TagSelectorDelegate>
 
 - (id)initWithInfo:(NSDictionary *)_info;
 

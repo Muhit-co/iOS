@@ -82,7 +82,7 @@
 
 - (void)getAnnouncements{
     ADD_HUD
-    [SERVICES getAnnouncements:[MT userId] handler:^(NSDictionary *response, NSError *error) {
+    [SERVICES getAnnouncements:[USER userId] handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
             REMOVE_HUD

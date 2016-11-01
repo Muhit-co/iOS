@@ -52,12 +52,18 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if ([MT isLoggedIn]) {
+    if ([USER isLoggedIn]) {
         [viewLoggedIn setHidden:NO];
         [viewLoggedOut setHidden:YES];
-        NSString *imgUrl = [NSString stringWithFormat:@"%@/80x80/users/%@",IMAGE_PROXY,[UD objectForKey:UD_USER_PICTURE]];
-        [imgProfile sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"userPlaceholder"]];
-        lblName.text = [NSString stringWithFormat:@"%@ %@",[UD objectForKey:UD_FIRSTNAME],[UD objectForKey:UD_SURNAME]];
+        
+        if ([USER profileImage]) {
+            [imgProfile setImage:[USER profileImage]];
+        }
+        else{
+        	[imgProfile setImage:PLACEHOLDER_IMAGE];
+        }
+        
+        lblName.text = [NSString stringWithFormat:@"%@ %@",[USER name],[USER surname]];
     }
     else{
         [viewLoggedIn setHidden:YES];
@@ -71,7 +77,7 @@
     
     [arrMenu addObject:@{@"title":[LocalizedString(@"all") toUpper],@"icon":ion_home,@"selector":SELECTOR_MAIN}];
     
-    if ([MT isLoggedIn]) {
+    if ([USER isLoggedIn]) {
         [arrMenu addObject:@{@"title":[LocalizedString(@"my-supporteds") toUpper],@"icon":ion_thumbsup,@"selector":SELECTOR_SUPPORTS}];
         [arrMenu addObject:@{@"title":[LocalizedString(@"my-ideas") toUpper],@"icon":ion_lightbulb,@"selector":SELECTOR_IDEAS}];
         
@@ -79,7 +85,7 @@
     
     [arrMenu addObject:@{@"title":[LocalizedString(@"announcements") toUpper],@"icon":ion_speakerphone,@"selector":SELECTOR_NOTIFICATIONS}];
     
-    if ([MT isLoggedIn]) {
+    if ([USER isLoggedIn]) {
         [arrMenu addObject:@{@"title":[LocalizedString(@"my-headman") toUpper],@"icon":ion_information_circled,@"selector":SELECTOR_HEADMAN}];
     }
 }
@@ -97,7 +103,7 @@
 }
 
 - (void)openIdeas:(id)sender{
-    [ScreenOperations openIdeas:YES];
+    [ScreenOperations openMyIdeas:YES];
 }
 
 - (void)openAnnouncements:(id)sender{
@@ -117,17 +123,15 @@
 }
 
 - (IBAction)actProfile:(id)sender{
-    [ScreenOperations openProfileWithId:[MT userId]];
+    [ScreenOperations openProfileWithId:[USER userId]];
 }
 
 - (IBAction)actLogout:(id)sender{
     
     [FACEBOOK logout];
     [self viewWillAppear:NO];
-    [NC postNotificationName:NC_LOGGED_OUT object:nil];
-    [UF setUserDefaultsWithDetails:nil];
+    [USER clearUser];
     [self.view endEditing:YES];
-    [MT setIsLoggedIn:NO];
 }
 
 - (IBAction)actFacebook:(id)sender{
@@ -143,9 +147,8 @@
             }
             else{
                 NSLog(@"loginFacebookResponse:%@",response);
-                [UF setUserDefaultsWithDetails:response];
+                [USER setDetailsWithInfo:response[@"user"]];
                 [self.view endEditing:YES];
-                [MT setIsLoggedIn:YES];
             }
             REMOVE_HUD
         }];

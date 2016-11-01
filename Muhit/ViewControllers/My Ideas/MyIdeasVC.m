@@ -6,10 +6,10 @@
 //  Copyright © 2016 Muhit. All rights reserved.
 //
 
-#import "IdeasVC.h"
+#import "MyIdeasVC.h"
 #import "IssueCell.h"
 
-@interface IdeasVC (){
+@interface MyIdeasVC (){
     IBOutlet UITableView *tblIdeas;
     IBOutlet UIButton *btnMenu,*btnCreateIssue;
     NSArray *arrIdeas;
@@ -17,7 +17,7 @@
 }
 @end
 
-@implementation IdeasVC
+@implementation MyIdeasVC
 
 - (id)initFromMenu{
     self = [super init];
@@ -68,7 +68,7 @@
 
 -(void)getCreateds{
     ADD_HUD
-    [SERVICES getCreateds:[MT userId] handler:^(NSDictionary *response, NSError *error) {
+    [SERVICES getCreateds:[USER userId] handler:^(NSDictionary *response, NSError *error) {
         if (error) {
             REMOVE_HUD
             SHOW_ALERT(response[KEY_ERROR][KEY_MESSAGE]);
@@ -103,8 +103,8 @@
 }
 
 -(IBAction)actCreateIssue:(id)sender{
-    if ([MT isLoggedIn]) {
-        [ScreenOperations openCreateIssue];
+    if ([USER isLoggedIn]) {
+        [ScreenOperations openAddIdea];
     }
     else{
         [ScreenOperations openLogin];
@@ -139,9 +139,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSDictionary *item = [arrIdeas objectAtIndex:indexPath.row];
-    [ScreenOperations openIssueWitDetail:item];
+    Idea *idea = [[Idea alloc] initWithInfo:[arrIdeas objectAtIndex:indexPath.row]];
+    [ScreenOperations openIdeaWithIdea:idea];
 }
 
 //- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
