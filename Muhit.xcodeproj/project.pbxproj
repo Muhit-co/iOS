@@ -30,7 +30,6 @@
 		4B21696F1B21D5C500DEBA01 /* SearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B21696D1B21D5C500DEBA01 /* SearchVC.xib */; };
 		4B2169711B247C1700DEBA01 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2169701B247C1700DEBA01 /* MapKit.framework */; };
 		4B2169731B24830600DEBA01 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2169721B24830600DEBA01 /* CoreLocation.framework */; };
-		4B5156311DC780FB00F0029A /* Idea.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5156301DC780FB00F0029A /* Idea.m */; };
 		4B5156341DC7824800F0029A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5156331DC7824800F0029A /* User.m */; };
 		4B6FF5A91B3F0D0500F3ED8A /* TagSelectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6FF5A71B3F0D0500F3ED8A /* TagSelectorVC.m */; };
 		4B6FF5AA1B3F0D0500F3ED8A /* TagSelectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B6FF5A81B3F0D0500F3ED8A /* TagSelectorVC.xib */; };
@@ -71,6 +70,7 @@
 		4B9F053E1B1DE38E009CB713 /* SourceSansPro-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F05391B1DE38E009CB713 /* SourceSansPro-Italic.ttf */; };
 		4B9F053F1B1DE38E009CB713 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F053A1B1DE38E009CB713 /* SourceSansPro-Regular.ttf */; };
 		4B9F05401B1DE38E009CB713 /* SourceSansPro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B9F053B1B1DE38E009CB713 /* SourceSansPro-Semibold.ttf */; };
+		4BA603EA1DC9C5710002F3BA /* Idea.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA603E91DC9C5710002F3BA /* Idea.m */; };
 		4BB5865AD451567119546252 /* libPods-Muhit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A517C388466985FDE078B0 /* libPods-Muhit.a */; };
 		4BC583811B1C4D4800180B3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC583801B1C4D4800180B3D /* main.m */; };
 		4BC583841B1C4D4800180B3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC583831B1C4D4800180B3D /* AppDelegate.m */; };
@@ -127,8 +127,6 @@
 		4B21696D1B21D5C500DEBA01 /* SearchVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchVC.xib; sourceTree = "<group>"; };
 		4B2169701B247C1700DEBA01 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4B2169721B24830600DEBA01 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		4B51562F1DC780FB00F0029A /* Idea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Idea.h; path = ../../../Pokekit/Pokekit/Classes/Idea.h; sourceTree = "<group>"; };
-		4B5156301DC780FB00F0029A /* Idea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Idea.m; path = ../../../Pokekit/Pokekit/Classes/Idea.m; sourceTree = "<group>"; };
 		4B5156321DC7824800F0029A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4B5156331DC7824800F0029A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		4B6FF5A61B3F0D0500F3ED8A /* TagSelectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagSelectorVC.h; sourceTree = "<group>"; };
@@ -192,6 +190,8 @@
 		4B9F05391B1DE38E009CB713 /* SourceSansPro-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Italic.ttf"; sourceTree = "<group>"; };
 		4B9F053A1B1DE38E009CB713 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
 		4B9F053B1B1DE38E009CB713 /* SourceSansPro-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.ttf"; sourceTree = "<group>"; };
+		4BA603E81DC9C5710002F3BA /* Idea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Idea.h; sourceTree = "<group>"; };
+		4BA603E91DC9C5710002F3BA /* Idea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Idea.m; sourceTree = "<group>"; };
 		4BC5837B1B1C4D4800180B3D /* Muhit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muhit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BC5837F1B1C4D4800180B3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BC583801B1C4D4800180B3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -631,10 +631,10 @@
 		4BF7F8FC1B1CF31F00A35FD1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4BA603E81DC9C5710002F3BA /* Idea.h */,
+				4BA603E91DC9C5710002F3BA /* Idea.m */,
 				4B5156321DC7824800F0029A /* User.h */,
 				4B5156331DC7824800F0029A /* User.m */,
-				4B51562F1DC780FB00F0029A /* Idea.h */,
-				4B5156301DC780FB00F0029A /* Idea.m */,
 				4B9F04F71B1D950D009CB713 /* Constants.h */,
 				4B9F05141B1DBD04009CB713 /* NavBar.h */,
 				4B9F05151B1DBD04009CB713 /* NavBar.m */,
@@ -895,6 +895,7 @@
 				4B9F05051B1D9524009CB713 /* UIView+CustomNib.m in Sources */,
 				4BF7F9061B1CF39D00A35FD1 /* ServiceHandler.m in Sources */,
 				4B80C41C1D12D53500D39F02 /* MyIdeasVC.m in Sources */,
+				4BA603EA1DC9C5710002F3BA /* Idea.m in Sources */,
 				4B2169691B21D5B500DEBA01 /* IdeaVC.m in Sources */,
 				4B21696E1B21D5C500DEBA01 /* SearchVC.m in Sources */,
 				4B9F05161B1DBD04009CB713 /* NavBar.m in Sources */,
@@ -907,7 +908,6 @@
 				4BD654DF1B32035100343C16 /* PlacesView.m in Sources */,
 				4B5156341DC7824800F0029A /* User.m in Sources */,
 				4B9F05351B1DDA42009CB713 /* LoginVC.m in Sources */,
-				4B5156311DC780FB00F0029A /* Idea.m in Sources */,
 				4B2169571B21D48C00DEBA01 /* ProfileVC.m in Sources */,
 				4B9F05061B1D9524009CB713 /* UIView+Layout.m in Sources */,
 				4B9F05281B1DBE0F009CB713 /* MenuVC.m in Sources */,
